@@ -5,15 +5,15 @@
 To interact with R-RECs, you will need to sign up for a MetaMask cryptocurrency wallet, add the Binance Smart Chain (BSC) network to your wallet, 
 
 ### Get a MetaMask wallet
-Visit [https://metamask.io/](MetaMask.io). Download and install the browser extension and sign up for an account.
+Visit [MetaMask.io](https://metamask.io/). Download and install the browser extension and sign up for an account.
 
 ### Add the Binance Smart Chain (BSC) network to your wallet
-Follow the instructions in this [https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain](BSC News) article to connect your MetaMask wallet to the Binance Smart Chain.
+Follow the instructions in this [BSC News](https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain) article to connect your MetaMask wallet to the Binance Smart Chain.
 
 ### Purchase Binance Coin (BNB) to pay gas fees
 Download the Crypto.com app on your smartphone. Sign up for an account. Buy enough BNB to pay for gas fees for the transactions. I would recommend purchasing about 0.1 BNB, which is about $40 USD at the time of writing.
 
-After purchasing BNB, you will need to transfer it to your MetaMask wallet. Follow the instructions in [https://decentralizedcreator.com/transfer-crypto-from-crypto-com-to-metamask/](this DC post) to transfer BNB from your Crypto.com account to your MetaMask wallet.
+After purchasing BNB, you will need to transfer it to your MetaMask wallet. Follow the instructions in [this DC post](https://decentralizedcreator.com/transfer-crypto-from-crypto-com-to-metamask/) to transfer BNB from your Crypto.com account to your MetaMask wallet.
 
 ### And that's it!
 You're ready to trade R-RECs!
@@ -22,8 +22,8 @@ You're ready to trade R-RECs!
 If you are making your own R-REC blockchain, follow these steps after completing the above instructions:
 
 ### Deploy R-REC from Remix Ethereum IDE
-1. Navigate to the [https://remix.ethereum.org/](Remix Ethereum IDE).
-2. Upload [https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol](RenewviaREC.sol) from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
+1. Navigate to the [Remix Ethereum IDE](https://remix.ethereum.org/).
+2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
 4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.4+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
 5. Once the compiler has finished running, click the "Deploy and run transactions" icon in the left sidebar. Change the environment to "Injected Web3" and click the "Next" button on the resulting MetaMask pop-up. Then, click the "Connect" button on the MetaMask pop-up.
 6. Confirm that your MetaMask account number has now appeared in the "ACCOUNT" selector.
@@ -33,7 +33,7 @@ If you are making your own R-REC blockchain, follow these steps after completing
 10. Click the green checkmark at the bottom of the window, scroll to the bottom of the Remix terminal, and copy the transaction `hash`. Save this for later.
 
 ### Verify the transaction on BSC Scan
-1. Navigate to [https://bscscan.com/](BSCScan.com) and enter the transaction hash from Remix into the search bar at the top of the page. Press the "Enter" button on your keyboard.
+1. Navigate to [BSCScan.com](https://bscscan.com/) and enter the transaction hash from Remix into the search bar at the top of the page. Press the "Enter" button on your keyboard.
 2. Confirm that the Status of the transaction is "Success."
 
 ### Add R-RECs to your MetaMask wallet
