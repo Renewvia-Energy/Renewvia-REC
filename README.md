@@ -2,7 +2,7 @@
  Blockchain-Based Renewable Energy Credits
 
 ## Start
-To interact with R-RECs, you will need to sign up for a MetaMask cryptocurrency wallet, add the Binance Smart Chain (BSC) network to your wallet, 
+To interact with R-RECs, you will need to sign up for a MetaMask cryptocurrency wallet, add the Binance Smart Chain (BSC) network to your wallet, and purchase some Binance Coin (BNB) to pay for gas fees.
 
 ### Get a MetaMask wallet
 Visit [MetaMask.io](https://metamask.io/). Download and install the browser extension and sign up for an account.
