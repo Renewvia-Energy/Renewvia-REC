@@ -24,7 +24,7 @@ This section assumes there already exists a contract for R-RECs. If you are tryi
 ### Deploy R-REC from Remix Ethereum IDE from the Official R-REC Contract
 1. Navigate to the [Remix Ethereum IDE](https://remix.ethereum.org/).
 2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
-4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.4+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
+4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.9+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
 5. Once the compiler has finished running, click the "Deploy and run transactions" icon in the left sidebar. Change the environment to "Injected Provider (MetaMask)" and click the "Next" button on the resulting MetaMask pop-up. Then, click the "Connect" button on the MetaMask pop-up.
 6. Confirm that your MetaMask account number has now appeared in the "ACCOUNT" selector.
 7. Select "RenewviaREC - RenewviaREC.sol" from the "CONTRACT" selector.
@@ -44,7 +44,7 @@ If you are trying to mint new R-RECs on an already-existing contract (e.g. you a
 ### Deploy R-REC from Remix Ethereum IDE from the Your Own Custom R-REC Contract
 1. Navigate to the [Remix Ethereum IDE](https://remix.ethereum.org/).
 2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
-4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.4+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
+4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.9+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
 5. Once the compiler has finished running, click the "Deploy and run transactions" icon in the left sidebar. Change the environment to "Injected Provider (MetaMask)" and click the "Next" button on the resulting MetaMask pop-up. Then, click the "Connect" button on the MetaMask pop-up.
 6. Confirm that your MetaMask account number has now appeared in the "ACCOUNT" selector.
 7. Select "RenewviaREC - RenewviaREC.sol" from the "CONTRACT" selector.
