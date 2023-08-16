@@ -1,0 +1,27 @@
+[
+	{
+		"name": "Alabama R-REC",
+		"symbol": "RREC-AL",
+		"address": "0x7cafd97da50fc8a7d8ed45749a29ad6a64bffaf1"
+	},
+	{
+		"name": "Georgia R-REC",
+		"symbol": "RREC-GA",
+		"address": "0x1b729ccf7f7b767d0d070747fd3a3fa8ab5b9a45"
+	},
+	{
+		"name": "North Carolina R-REC",
+		"symbol": "RREC-NC",
+		"address": "0xd035ed03bee3dd3448184b6f8477a44fcd47228a"
+	},
+	{
+		"name": "Virginia R-REC",
+		"symbol": "RREC-VA",
+		"address": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f"
+	},
+	{
+		"name": "Zambia M-REC",
+		"symbol": "MREC-ZM",
+		"address": "0x25c25f7744a83b2a44fb14395def294f83c9a921"
+	}
+]
