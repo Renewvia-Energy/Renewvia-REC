@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="styles.css">
+	<title>Renewvia-RECs</title>
+
+	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+</head>
+<body id="app">
+	<header>
+		<h1>Renewvia-RECs</h1>
+	</header>
+	<main>
+		<section class="wallet-assets">
+		<h2>Your Carbon Assets</h2>
+			<ul class="asset-list" id="asset-list">
+				<li class="asset" v-for="[name, qty] in tokenMap">
+					<span class="asset-name">{{ name }}</span>
+					<span class="asset-amount">{{ qty }}</span>
+				</li>
+			</ul>
+		</section>
+	</main>
+
+	<script>
+		const { createApp } = Vue
+
+		const API_KEY = 'GJ5JPKMIUN3EH7U8AFYVQS36K185N2P2EG'
+		const WALLET_ADDR = window.location.href.split('?')[1]
+
+		createApp({
+			data() {
+				// Get list of all R-REC contracts from GitHub
+				let allContracts = []
+				fetch('https://renewvia-energy.github.io/Renewvia-REC/contracts.json')
+				.then(allContractsResp => allContractsResp.json())
+				.then(allContractsData => {
+					allContracts = allContractsData
+
+				// Get list of all transactions involving this wallet from BscScan
+				}).then(() => {
+					return fetch(`https://api.bscscan.com/api?module=account&action=tokentx&address=${WALLET_ADDR}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey=${API_KEY}`)
+				}).then(txResp => txResp.json())
+				.then(txData => {
+					let txs = txData.result
+
+					// For each transaction involving this wallet
+					let contracts = []
+					for (let tx of txs) {
+						// If the contract in the transaction corresponds to an R-REC, and the contract hasn't already been recorded, record it.
+						for (let contract of allContracts) {
+							if (tx.contractAddress===contract.address && !contracts.includes(tx.contractAddress)) {
+								contracts.push({
+									"address": tx.contractAddress,
+									"name": contract.name
+								})
+								break
+							}
+						}
+					}
+					return contracts
+				}).then(contracts => {
+					this.tokenMap = new Map()
+
+					// For each contract, get the current number of tokens of that contract are in the wallet
+					for (let c=0; c<contracts.length; c++) {
+						let contract = contracts[c]
+						setTimeout(() => {
+							fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${contract.address}&address=${WALLET_ADDR}&tag=latest&apikey=${API_KEY}`)
+							.then(contractResp => contractResp.json())
+							.then(contractData => {
+								this.tokenMap.set(contract.name, contractData.result.slice(0,-18))	// The tokens technically have 18 extra digits in case we ever want to mint partial RECs.
+							})
+						}, parseInt(c/5)*1000)	// We only get 5 calls per second. TODO: check the values to make sure we haven't hit the max limit. I tried using await instead of then, but Vue stopped working. I think data() can't be async.
+					}
+				})
+
+				return {
+					tokenMap: new Map()
+				}
+			}
+		}).mount('#app')
+	</script>
+</body>
+</html>
