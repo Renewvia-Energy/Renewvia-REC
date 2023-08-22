@@ -23,12 +23,12 @@ This section assumes there already exists a contract for R-RECs. If you are tryi
 
 ### Deploy R-REC from Remix Ethereum IDE from the Official R-REC Contract
 1. Navigate to the [Remix Ethereum IDE](https://remix.ethereum.org/).
-2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
+2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) or one of the deployed contracts from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
 4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.9+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
 5. Once the compiler has finished running, click the "Deploy and run transactions" icon in the left sidebar. Change the environment to "Injected Provider (MetaMask)" and click the "Next" button on the resulting MetaMask pop-up. Then, click the "Connect" button on the MetaMask pop-up.
 6. Confirm that your MetaMask account number has now appeared in the "ACCOUNT" selector.
 7. Select "RenewviaREC - RenewviaREC.sol" from the "CONTRACT" selector.
-8. Enter the the contract address of your cryptocurrency in the input box to the right of the "At Address" label with preview text "Load contract from address." The official R-REC contract address is `0x32d78de00df87c84e09a89cc89ef139152a41be2`.
+8. Enter the the contract address of your cryptocurrency in the input box to the right of the "At Address" label with preview text "Load contract from address." The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json).
 9. Scroll down to the "Deployed Contracts" section. You should see a contract titled "RENEWVIAREC AT" followed by the contract address. Expand that contract by clicking the `>` icon to the left of the contract name.
 10. Mint the desired number of R-RECs to the desired wallet. In the input box to the right of the orange "mint" button wiht preview text "address to, uint256 amount," type the address of the wallet to which you want to mint the R-RECs, then a comma, then a space, then the number of R-RECs you want to mint. For example, to mint 100 R-RECs to the official Renewvia R-REC wallet, type `0xF9C289f1C0341fb336224958a885163F5017BC16, 100`.
 11. Click the orange "mint" button and pay the gas fees using via the MetaMask pop-up.
@@ -57,7 +57,7 @@ If you are trying to mint new R-RECs on an already-existing contract (e.g. you a
 2. Confirm that the Status of the transaction is "Success."
 
 ## Add R-RECs to your MetaMask wallet
-1. If you created your own R-REC contract, copy the contract address from the "Interacted With (To):" field from BSCScan. The contract address should be a hexadecimal hyperlink, and you can copy it by clicking the "Copy" icon to the right of the address. The official R-REC contract address is `0x32d78de00df87c84e09a89cc89ef139152a41be2`.
+1. If you created your own R-REC contract, copy the contract address from the "Interacted With (To):" field from BSCScan. The contract address should be a hexadecimal hyperlink, and you can copy it by clicking the "Copy" icon to the right of the address. The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json).
 2. Open your MetaMask wallet by clicking the MetaMask extension icon in your browser. Scroll to the bottom of the extension pop-up and click "Import tokens."
 3. Paste the contract address into the "Token Contract Address" field.
 4. Confirm that the remaining fields have been autofilled and click "Next."
@@ -81,7 +81,7 @@ You have successfully sent R-RECs. Your recipient will now be able to view them 
 These instructions allow you to view any R-RECs you have in your MetaMask wallet. You only need to follow these instructions when you receive your first R-RECs. After you complete these steps once, you only need to open your MetaMask wallet to view your R-RECs.
 
 1. Open your MetaMask wallet by clicking the MetaMask extension icon in your browser. Scroll to the bottom of the extension pop-up and click "Import tokens."
-2. Paste the contract address into the "Token Contract Address" field. The official R-REC contract address is `0x32d78de00df87c84e09a89cc89ef139152a41be2`. Note that, if you created your own R-REC contract, that address will be different.
+2. Paste the contract address into the "Token Contract Address" field. The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json). Note that, if you created your own R-REC contract, that address will be different.
 3. Confirm that the remaining fields have been autofilled and click "Next."
 4. Click "Add Token."
 
