@@ -7,7 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 
 /// @custom:security-contact technical-africa@renewvia.com
 contract RenewviaREC is ERC20, Pausable, Ownable {
-    constructor(uint256 premint) ERC20("MiniGridREC-Zambia", "MREC-ZM") {
+    constructor(uint256 premint) ERC20("RenewviaREC-Zambia", "RREC-AZM") {
         _mint(msg.sender, premint * 10 ** decimals());
     }
 
