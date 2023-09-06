@@ -27,8 +27,9 @@
 	<script>
 		const { createApp } = Vue
 
-		const API_KEY = 'GJ5JPKMIUN3EH7U8AFYVQS36K185N2P2EG'
-		const WALLET_ADDR = window.location.href.split('?')[1]
+		const HREF_DATA = window.location.href.split('?')[1].split('&')
+		const API_KEY = HREF_DATA[0]
+		const WALLET_ADDR = HREF_DATA[1]
 
 		createApp({
 			data() {
@@ -71,9 +72,13 @@
 							fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${contract.address}&address=${WALLET_ADDR}&tag=latest&apikey=${API_KEY}`)
 							.then(contractResp => contractResp.json())
 							.then(contractData => {
-								this.tokenMap.set(contract.name, contractData.result.slice(0,-18))	// The tokens technically have 18 extra digits in case we ever want to mint partial RECs.
+								var tokenQty = contractData.result.slice(0,-18)
+								if (isNaN(tokenQty)) {
+									console.log('TODO: If the max limit is reached, try again.')
+								}
+								this.tokenMap.set(contract.name, tokenQty)	// The tokens technically have 18 extra digits in case we ever want to mint partial RECs.
 							})
-						}, parseInt(c/5)*1000)	// We only get 5 calls per second. TODO: check the values to make sure we haven't hit the max limit. I tried using await instead of then, but Vue stopped working. I think data() can't be async.
+						}, parseInt(c/4)*1000)	// We only get 5 calls per second. TODO: check the values to make sure we haven't hit the max limit. I tried using await instead of then, but Vue stopped working. I think data() can't be async.
 					}
 				})
 
