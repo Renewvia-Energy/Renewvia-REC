@@ -1,0 +1,667 @@
+*, *::after *::before{
+    box-sizing: border-box;
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+img {
+    width: 200px; /* Set the desired width */
+    height: auto; /* Maintain the aspect ratio by setting height to 'auto' */
+}
+
+.info {
+    float: right; /* Float the .info div to the right */
+    color: #e4950b; /* text color */
+    padding: 10px; 
+    font-weight: bold;
+}
+
+.info p {
+    display: inline; /* Display the <p> tags inline (in a single row) */
+    margin: 0 10px; /* Add margin for spacing between <p> tags */
+    padding-right: 50px;
+}
+
+.image-carousel {
+    background-image: url("background-image.jpg");
+    background-size: cover;
+    text-align: center;
+    width: 100%; 
+    position: relative; /* Position it relative to the body */
+}
+
+.image-carousel img {
+    width: 100%;
+    height: 600px;
+    opacity: 65%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+/* Add a dark overlay on top of the image */
+.image-carousel.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Dark overlay color */
+}
+
+/* Center the text within the container */
+.text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: bolder;
+    font-size: xx-large;
+    color: #0e0e0e; /* Text color */
+    padding: 40px; /* Add some padding for better visibility */
+}
+
+.text p{
+    font-size: large;
+    font-weight: 700;
+}
+
+/* Style the arrows */
+.prev-arrow, .next-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 24px;
+    color: #050505;
+    cursor: pointer;
+    font-weight: 800;
+}
+
+.prev-arrow {
+    /* left: 20px; */
+}
+
+.next-arrow {
+    right: 134px;
+}
+
+/*what makes R-REC unique*/
+.uniqueness{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: xx-large;
+}
+
+.uniqueness p{
+    font-weight:100;
+    font-size: 18px;
+}
+
+/*cards*/
+.cards{
+    display: flex;
+}
+.card {
+    width: 45%;
+    padding: 20px;
+    background: linear-gradient(180deg, bisque, rgb(234, 156, 13));/* Light orange to medium orange gradient */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 10px;
+}
+
+.inner-cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.inner-card {
+    width: 30%;
+    padding: 10px;
+    background-color: bisque;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+.inner-card p{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.inner-card button{
+    padding: 10px 10px;
+    background-color: #f87e05;
+    margin-top: 4px;
+    color: #101010;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* Center the icon vertically and horizontally */
+.card-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 30px; /* Adjust the height as needed */
+    width: 30px;
+    border-radius: 50%;
+    background-color: #e49c0b;
+}
+
+/* Add styling for icons */
+.card-icon i {
+    font-size: 16px; /* Adjust icon size as needed */
+}
+
+.about{
+    text-align: center;
+    margin-top: 20px;
+    font-weight: bolder;
+    font-size: xx-large;
+    align-items: center;
+    justify-content: center;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.main-about p{
+    display: flex;
+    font-weight:100;
+    font-size: 18px;
+    text-align: center;
+}
+
+.video {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 16px;
+    max-width: 100%;
+}
+
+.responsive-video {
+    border-radius: 2%;
+    height: 400px;
+    width: 100%;
+    /* background-color: aliceblue; */
+    opacity: 90%;
+
+}
+
+.top-shadow{
+    margin-top: 24px;
+    color: rgb(228, 130, 11);
+    background: linear-gradient(180deg, rgb(239, 136, 11), rgb(240, 174, 50));
+}
+.main-marketplace{
+    background-color: rgb(45, 43, 43);
+    
+}
+
+.shadow-div {
+    display: flex;
+    height: 300px; /* Adjust the height as needed */
+}
+
+.left-column, .right-column {
+    flex: 1;
+    color: rgb(255, 254, 254);
+}
+
+.centered-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Vertically and horizontally centered content */
+}
+
+.image2{
+    width: 70%;
+}
+
+.left-column {
+    background: url('imagemarketplace.png') center/contain no-repeat rgb(42, 41, 41); /* White shadow of an image */
+}
+
+.right-column {
+    background-color: rgb(42, 41, 41); /* Adjust the background as needed */
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 40px; 
+    margin: 20px 0;
+}
+
+.all-news {
+    background-color: white;
+    color: orange;
+    border: 2px solid orange;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.platform {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom:40px ;
+}
+
+.platforms::before {
+    content: '';
+    height: 10px; /* Adjust the height as needed */
+    position: absolute;
+    top: 0;
+    left: 20px;
+    right: 20px;
+}
+
+.platform-card {
+    position: relative;
+    padding-top: 10px; /* Top padding to offset the colored top bar */
+    background-color: rgb(228, 130, 11);
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 20px;
+}
+
+.platform-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.platform-text {
+    padding: 20px;
+    text-align: center;
+    background-color: white;
+    border-radius: 0 0 10px 10px; /* Rounded corners at the bottom */
+    margin-top: -10px; /* Offset to align with platform card */
+    box-shadow: 0 4px 8px rgba(124, 123, 122, 0.2);
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.platform-text h4 {
+    font-size: 24px;
+}
+
+.platform-text h5 {
+    font-size: 18px;
+    color: rgb(228, 130, 11);
+}
+
+.platform-text p {
+    font-size: 16px;
+}
+
+/* Board styles */
+.main-board{
+    background-color: black;
+}
+.board {
+    width: 100%;
+    text-align: center;
+    padding: 20px 0;
+    position: relative;
+}
+
+.board h1 {
+    color: white;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.board p {
+    color: white;
+    font-size: 16px;
+    margin: 0;
+}
+
+/* Board cards styles */
+.board-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    width: 80%;
+    max-width: 950px;
+    margin: 20px auto;
+    position: relative;
+}
+
+.board-card {
+    flex: 1;
+    width: calc(25% - 20px); /* Adjust card width based on the number of cards per row */
+    background-color: rgb(228, 130, 11);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    margin: 0 10px 20px; /* Add margin to create spacing between cards */
+}
+
+.board-card img {
+    margin-bottom: 10px;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.board-card h2 {
+    margin: 0;
+    color: white;
+    font-size: 18px;
+}
+
+/* Arrow styles */
+.arrows {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    right: 28px;
+    transform: translateY(-50%);
+    z-index: 9;
+    color:rgb(228, 130, 11);
+    font-weight: bold;
+    font-size: large;
+}
+
+.arrow.prev, .arrow.next {
+    width: 30px;
+    height: 30px;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(228, 130, 11);
+    /* colo
+    r: rgb(228, 11, 54); */
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-left: 60px;
+    margin-right: 60px;
+    z-index: 9;
+}
+
+.arrow.prev {
+    left: 20px;
+}
+
+.arrow.next {
+    right: 20px;
+}
+
+.partners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.partners h1 {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.partners p {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.images{
+    width:90%;
+    max-width: 900px;
+    padding: 10px;
+    margin: 40px 0 0 3%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.images img{
+    width: 100%;
+}
+
+.line {
+    width: 100%;
+    height: 2px; /* Adjust the height of the line as needed */
+    background: linear-gradient(180deg, rgb(239, 136, 11), rgb(240, 174, 50));
+    margin-bottom: 20px;
+  }
+
+  .two-column-div {
+    display: flex;
+    margin-bottom: 20px;
+    justify-content: space-between;
+    /* Adjust the margin as needed */
+  }
+
+  .column1 {
+    background: url('images/solarcover.png') center/cover no-repeat; /* Background image for the first column */
+    background-size: cover;
+    margin-left: 100px; /* Adjust the margin as needed */
+  }
+
+  .column1 p{
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .column1 h4{
+    color: rgb(239, 136, 11);
+    font-size: medium;
+  }
+  
+  .column2 {
+    margin: 0 20px; /* Adjust the margin between columns */
+  }
+
+  .column2 p{
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .column2 h4{
+    color: rgb(239, 136, 11);
+    font-size: medium;
+  }
+  
+  .column3 {
+    margin: 0 30px; /* Adjust the margin between columns */
+  }
+
+  .column3 p{
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .column3 h4{
+    color: rgb(239, 136, 11);
+    font-size: medium;
+  }
+
+  .rights{
+    width: 100%;
+    height: 2px; /* Adjust the height of the line as needed */
+    background-color: rgb(233, 227, 227);
+    margin-bottom: 4px;
+  }
+
+  .rights-container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 40px;
+    margin-right: 40px;
+    opacity: 40%;
+    padding-bottom: 20px;
+    font-size: smaller;
+  }
+
+  .social-icons {
+    display: flex;
+    gap: 10px; /* Adjust the spacing between icons as needed */
+    font-size: 16px; /* Adjust the icon size as needed */
+  }
+
+
+
+
+  /* mobile view  */
+  /**/
+  /**/
+
+
+
+@media screen and (max-width: 480px) {
+    
+    .container{
+        width: 90%;
+    }
+    .nav{
+        flex-direction: column;   
+    }
+    .nav .info{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .info p{
+        margin: 0;
+    }
+    .board p{
+        width :90%;
+    }
+    .cards{
+        flex-direction: column;
+    }
+    .card{
+        width: 90%;
+        margin: 20px auto;
+    }
+    .responsive-video {
+        height: auto;
+    }
+    .shadow-div{
+        display: flex;
+        flex-direction: column;
+    }
+    .board-cards{
+        width: 85%;
+    }
+    .main-board{
+        margin-bottom: 20px;
+    }
+    .board-card{
+        flex: 0;
+    }
+    .arrows{
+       top:65%;
+    }
+    .hide{
+        display: none;
+    }
+
+
+    .two-column-div{
+        display:flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .platform{
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .all-news{
+        width:50%;
+        margin-left: 30%;
+    }
+    .shadow-div{
+        width: 100%;
+    }
+    .partners{
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .images{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .images div{
+        width: 50%;
+    }
+    .images div img{
+        width:70px;
+        height: 70px;
+        object-fit: contain;
+    }
+    .column1{
+        margin-left:0 !important;
+    }
+  
+  .column {
+    flex: 1;
+    padding: 5px;
+    text-align: center;
+  }
+  .next-arrow {
+    right: 23px;
+}
+
+}
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
