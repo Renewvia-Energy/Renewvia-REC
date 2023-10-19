@@ -78,9 +78,9 @@ img {
     top: 50%;
     transform: translateY(-50%);
     font-size: 24px;
-    color: #050505;
+    color: rgb(16, 15, 15);
     cursor: pointer;
-    font-weight: 800;
+    font-weight: bolder;
 }
 
 .prev-arrow {
@@ -173,6 +173,17 @@ h2 {
 .card-icon i {
     font-size: 16px; /* Adjust icon size as needed */
 }
+
+.hidden-text {
+    display: none;
+    margin-top: 10px;
+  }
+  .cancel-icon {
+    cursor: pointer;
+    color: rgb(186, 38, 38);
+    font-weight: bold;
+    margin-top: 10px;
+  }
 
 .about{
     text-align: center;

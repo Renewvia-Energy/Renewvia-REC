@@ -19,7 +19,7 @@
         </div>
         </nav>  
     </div>
-
+<!-- hero section -->
 <section class="hero-image">
     <div>
     <div class="image-carousel">
@@ -54,17 +54,29 @@
                     <div class="card-icon orange-bg"><i class="fas fa-shield"></i>
                     </div>
                     <p>Trustworthy Assets</p>
-                    <button>Read More</button>
+                    <button onclick="showContent('content1', 'Best for Buyers')">Read More</button>
+                    <div id="content1" class="hidden-text">
+                        <p>R-RECs are backed by a transparent distributed ledger infrastructure, ensuring the trustworthiness of your carbon offset investment with indisputable proof of their origin and impact.</p>
+                        <i class="fas fa-times cancel-icon" onclick="hideContent('content1', 'Best for Buyers')"></i>
+                    </div>
                 </div>
                 <div class="inner-card">
                     <div class="card-icon orange-bg"><i class="fas fa-rocket"></i></div>
                     <p>End-to-End Solution</p>
-                    <button>Read More</button>
+                    <button onclick="showContent('content2', 'Best for Buyers')">Read More</button>
+                    <div id="content2" class="hidden-text">
+                        <p>Experience the simplicity of our platform, your one-stop-shop for all your carbon asset needs, making it effortless to invest in renewable energy and reduce your carbon footprint.</p>
+                        <i class="fas fa-times cancel-icon" onclick="hideContent('content2', 'Best for Buyers')"></i>
+                    </div>
                 </div>
                 <div class="inner-card">
                     <div class="card-icon orange-bg"><i class="fas fa-eye"></i></div>
                     <p>More than a REC</p>
-                    <button>Read More</button>
+                    <button onclick="showContent('content3', 'Best for Buyers')">Read More</button>
+                    <div id="content3" class="hidden-text">
+                        <p>R-RECs go beyond traditional RECs, embodying additional value by supporting the communities where renewable energy is generated, enriching the local ecosystem alongside your sustainability efforts.</p>
+                        <i class="fas fa-times cancel-icon" onclick="hideContent('content3', 'Best for Buyers')"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -75,19 +87,31 @@
                     <div class="card-icon orange-bg"><i class="fas fa-wheelchair"></i>
                     </div>
                     <p>Accessible</p>
-                    <button>Read More</button>
+                    <button onclick="showContent('content4', 'Best for Sellers')">Read More</button>
+                    <div id="content4" class="hidden-text">
+                        <p>No renewable energy project is too small; we uniquely cater to mini-grid developers, helping you easily convert your clean energy production into valuable carbon assets that drive revenue and sustainability.</p>
+                        <i class="fas fa-times cancel-icon" onclick="hideContent('content4', 'Best for Sellers')"></i>
+                    </div>
                 </div>
                 <div class="inner-card">
                     <div class="card-icon orange-bg"><i class="fas fa-balance-scale"></i>
                     </div>
                     <p>Fair</p>
-                    <button>Read More</button>
+                    <button onclick="showContent('content5', 'Best for Sellers')">Read More</button>
+                    <div id="content5" class="hidden-text">
+                        <p>Our platform offers a fair pricing mechanism that sets us apart from the rest; we recognize the true value of renewable energy and leverage its social and economic impact to ensure R-RECs deliver substantial returns, making it worthwhile even for small-scale developers.</p>
+                        <i class="fas fa-times cancel-icon" onclick="hideContent('content5', 'Best for Sellers')"></i>
+                    </div>
                 </div>
                 <div class="inner-card">
                     <div class="card-icon orange-bg"><i class="fas fa-check-circle"></i>
                     </div>
                     <p>Genuine</p>
-                    <button>Read More</button>
+                    <button onclick="showContent('content6', 'Best for Sellers')">Read More</button>
+                    <div id="content6" class="hidden-text">
+                        <p>Just like you, we are renewable energy generators committed to a sustainable future. We genuinely care about your needs and best interests.</p>
+                        <i class="fas fa-times cancel-icon" onclick="hideContent('content6', 'Best for Sellers')"></i>
+                    </div>
                 </div>
             </div>
         </div>
@@ -273,5 +297,7 @@
 </section>
 
     <script src="index.js"></script>
+    <script src="board.js"></script>
+
 </body>
 </html>
