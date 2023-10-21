@@ -1,3 +1,26 @@
+// toggle menu to be fixed
+document.getElementById("menuButton").addEventListener("click", function() {
+  var info = document.getElementById("info");
+  info.classList.toggle("info-small");
+});
+
+
+
+// anchor tag js
+document.querySelectorAll('.info a').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+
+        const targetId = this.getAttribute('href').substring(1); // Remove the '#' symbol
+        const targetSection = document.getElementById(targetId);
+        if (targetSection) {
+            targetSection.scrollIntoView({
+                behavior: 'smooth',
+            });
+        }
+    });
+});
+
 // function to show content in read more buttons
 function showContent(contentId) {
     var content = document.getElementById(contentId);
@@ -63,8 +86,7 @@ const images = [
     // Update the image source and associated text
     imageElement.src = images[currentImageIndex];
     textContainer.innerHTML = `
-      <div>${texts[currentImageIndex].title}</div>
-      <br />
+      <h1>${texts[currentImageIndex].title}</h1>
       <p>${texts[currentImageIndex].description}</p>
     `;
   }
@@ -73,18 +95,22 @@ const images = [
 const boardMembers = [
     {
         name: "John Doe",
+        text: "Head of Engineering",
         imageSrc: "/images/board/Mask group (1).png",
     },
     {
         name: "Jane Smith",
+        text: "Head of Engineering",
         imageSrc: "/images/board/Mask group.png",
     },
     {
         name: "Bob Johnson",
+        text: "Head of Engineering",
         imageSrc: "/images/board/Mask group (2).png",
     },
     {
         name: "Sarah Adams",
+        text: "Head of Engineering",
         imageSrc: "/images/board/Mask group (3).png",
     },
     // Add more board members as needed
@@ -114,20 +140,11 @@ function changeBoardMember(direction) {
         card.innerHTML = `
             <img src="${member.imageSrc}" alt="${member.name}">
             <h2>${member.name}</h2>
+            <h4>${member.text}</h4>
+            <i class="fas fa-arrow-right">
         `;
     }
 }
 
 // Call the function on page load to show the initial set of board members
 changeBoardMember(0);
-
-
-
-
-
-
-
-
-
-
-

@@ -4,160 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>R-RECs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <div class="header">
-        <nav class=" nav container">
-            <img src="/images/renewvia.webp" alt="">
-        <div class="info">
-            <p>ABOUT US</p>
-            <p>WHAT ARE R-RECS</p>
-            <p>PRODUCTS</p>
-            <p>OUR TEAM</p>
-        </div>
+        <nav class="container nav">
+            <div class="navtop">
+                <img src="/images/renewvia.webp" alt="" >
+                <a onclick="toggleMenu()" id="menuButton"><i class="fas fa-bars"></i>
+                </a>
+            </div>
+            <div class="hide info" id="info">
+                <ul  class="">
+                    <li><a href="#about">ABOUT US</a></li>
+                    <li>WHAT ARE R-RECS</li>
+                    <li><a href="#products">PRODUCTS</a></li>
+                    <li><a href="#board">OUR TEAM</a></li>
+                </ul>
+            </div>
         </nav>  
     </div>
 <!-- hero section -->
 <section class="hero-image">
-    <div>
-    <div class="image-carousel">
-        <div class="overlay"></div>
-        <img src="/images/background1.jpg" alt="Image 1">
-        <div class="container">
-            <div class="text">R-RECs
-            <br/>
-            <p>Promoting renewable energy, empowering minigrids in Africa, and ensuring transparency and fairness in the carbon asset market.</p>
+    <div class="overlay">
+        <div class="image-carousel">
+            <img src="/images/background1.jpg" alt="Image 1">
+            <div class="container">
+                <div class="text">
+                    <h1> R-RECs </h1>
+                    <p>Promoting renewable energy, empowering minigrids in Africa, and ensuring transparency and fairness in the carbon asset market.</p>
+                </div>
+                
+                    <div class="prev-arrow" onclick="changeImage(-1)"><i class="custom-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
+                            <path d="M25 50 L60 50 M45 30 L25 50 L45 70" stroke="orange" stroke-width="5" fill="none" />
+                          </svg>
+                      </i></div> <!-- Left arrow -->
+                    <div class="next-arrow" onclick="changeImage(1)"><i class="custom-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 150 150">
+                        <circle cx="75" cy="75" r="60" stroke="orange" stroke-width="9" fill="transparent"/>
+                        <path d="M55 75 L105 75 M105 75 L85 60 M105 75 L85 90" stroke="orange" stroke-width="9" fill="none" />
+                        </svg>
+                        </i>       
+                    </div> <!-- Right arrow -->
             </div>
-
-            <div class="prev-arrow" onclick="changeImage(-1)">&#9665;</div> <!-- Left arrow -->
-            <div class="next-arrow" onclick="changeImage(1)">&#9655;</div> <!-- Right arrow -->
         </div>
     </div>
 </section>
 
     <!-- what sets R-RECs apart -->
-<section>
+<section id="products">
     <div class="container">
-            <div class="uniqueness">Most Efficient Carbon platform
-                <br/>
-                <p>R-RECs use a clear system to make sure mini-grid energy producers have secure ownership and control over their energy assets.</p>
+            <div class="uniqueness">
+                <h1>Most Efficient Carbon platform</h1>
+                <!-- <p>R-RECs use a clear system to make sure mini-grid energy producers have secure ownership and control over their energy assets.</p> -->
+                <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
+                
             </div>
 
         <!-- cards -->
         <div class="cards">
-        <div class="card">
-            <h2>Best for Buyers</h2>
-            <div class="inner-cards">
+            <div class="card">
+                <h2>Best for Buyers</h2>
                 <div class="inner-card">
-                    <div class="card-icon orange-bg"><i class="fas fa-shield"></i>
+                    <div class="inner-card-row">
+                        <div class="icon">
+                            <i class="fas fa-shield"></i>
+                            <p>Trustworthy Assets</p>
+                        </div>
+                        <a onclick="showContent('content1', 'Best for Buyers')">Read More...</a>
                     </div>
-                    <p>Trustworthy Assets</p>
-                    <button onclick="showContent('content1', 'Best for Buyers')">Read More</button>
-                    <div id="content1" class="hidden-text">
-                        <p>R-RECs are backed by a transparent distributed ledger infrastructure, ensuring the trustworthiness of your carbon offset investment with indisputable proof of their origin and impact.</p>
-                        <i class="fas fa-times cancel-icon" onclick="hideContent('content1', 'Best for Buyers')"></i>
-                    </div>
+                        <div id="content1" class="hidden-text hide ">
+                            <p>R-RECs are backed by a transparent distributed ledger infrastructure, ensuring the trustworthiness of your carbon offset investment with indisputable proof of their origin and impact.</p>
+                            <i class="fas fa-times cancel-icon" onclick="hideContent('content1', 'Best for Buyers')"></i>
+                        </div>
                 </div>
                 <div class="inner-card">
-                    <div class="card-icon orange-bg"><i class="fas fa-rocket"></i></div>
-                    <p>End-to-End Solution</p>
-                    <button onclick="showContent('content2', 'Best for Buyers')">Read More</button>
-                    <div id="content2" class="hidden-text">
-                        <p>Experience the simplicity of our platform, your one-stop-shop for all your carbon asset needs, making it effortless to invest in renewable energy and reduce your carbon footprint.</p>
-                        <i class="fas fa-times cancel-icon" onclick="hideContent('content2', 'Best for Buyers')"></i>
-                    </div>
+                    <div class="inner-card-row">
+                        <div class="icon">
+                            <i class="fas fa-rocket"></i>
+                            <p>End-to-End Solution</p>
+                        </div>
+                        <a onclick="showContent('content2', 'Best for Buyers')">Read More...</a>
+                        </div>
+                        <div id="content2" class="hidden-text hide">
+                            <p>Experience the simplicity of our platform, your one-stop-shop for all your carbon asset needs, making it effortless to invest in renewable energy and reduce your carbon footprint.</p>
+                            <i class="fas fa-times cancel-icon" onclick="hideContent('content2', 'Best for Buyers')"></i>
+                        </div>
                 </div>
                 <div class="inner-card">
-                    <div class="card-icon orange-bg"><i class="fas fa-eye"></i></div>
-                    <p>More than a REC</p>
-                    <button onclick="showContent('content3', 'Best for Buyers')">Read More</button>
-                    <div id="content3" class="hidden-text">
+                    <div class="inner-card-row">
+                        <div class="icon">
+                            <i class="fas fa-eye"></i>
+                            <p>More than a REC</p>
+                        </div>
+                    <a onclick="showContent('content3', 'Best for Buyers')">Read More...</a>
+                    </div>
+                    <div id="content3" class="hidden-text hide">
                         <p>R-RECs go beyond traditional RECs, embodying additional value by supporting the communities where renewable energy is generated, enriching the local ecosystem alongside your sustainability efforts.</p>
                         <i class="fas fa-times cancel-icon" onclick="hideContent('content3', 'Best for Buyers')"></i>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="card">
-            <h2>Best for Sellers</h2>
-            <div class="inner-cards">
+            <div class="card">
+                <h2>Best for Sellers</h2>
                 <div class="inner-card">
-                    <div class="card-icon orange-bg"><i class="fas fa-wheelchair"></i>
+                    <div class="inner-card-row">
+                        <div class="icon">
+                            <i class="fas fa-wheelchair"></i>
+                            <p>Accessible</p>
+                        </div>
+                    <a onclick="showContent('content4', 'Best for Sellers')">Read More...</a>
                     </div>
-                    <p>Accessible</p>
-                    <button onclick="showContent('content4', 'Best for Sellers')">Read More</button>
-                    <div id="content4" class="hidden-text">
+                    <div id="content4" class="hidden-text hide">
                         <p>No renewable energy project is too small; we uniquely cater to mini-grid developers, helping you easily convert your clean energy production into valuable carbon assets that drive revenue and sustainability.</p>
                         <i class="fas fa-times cancel-icon" onclick="hideContent('content4', 'Best for Sellers')"></i>
                     </div>
                 </div>
                 <div class="inner-card">
-                    <div class="card-icon orange-bg"><i class="fas fa-balance-scale"></i>
+                    <div class="inner-card-row">
+                        <div class="icon">
+                            <i class="fas fa-balance-scale"></i>
+                            <p>Fair</p>
+                        </div>
+                            <a onclick="showContent('content5', 'Best for Sellers')">Read More...</a>
                     </div>
-                    <p>Fair</p>
-                    <button onclick="showContent('content5', 'Best for Sellers')">Read More</button>
-                    <div id="content5" class="hidden-text">
+                    <div id="content5" class="hidden-text hide">
                         <p>Our platform offers a fair pricing mechanism that sets us apart from the rest; we recognize the true value of renewable energy and leverage its social and economic impact to ensure R-RECs deliver substantial returns, making it worthwhile even for small-scale developers.</p>
                         <i class="fas fa-times cancel-icon" onclick="hideContent('content5', 'Best for Sellers')"></i>
                     </div>
                 </div>
                 <div class="inner-card">
-                    <div class="card-icon orange-bg"><i class="fas fa-check-circle"></i>
+                    <div class="inner-card-row">
+                        <div class="icon">
+                            <i class="fas fa-check-circle"></i>
+                            <p>Genuine</p>
+                        </div>
+                        <a onclick="showContent('content6', 'Best for Sellers')">Read More...</a>
                     </div>
-                    <p>Genuine</p>
-                    <button onclick="showContent('content6', 'Best for Sellers')">Read More</button>
-                    <div id="content6" class="hidden-text">
+                    <div id="content6" class="hidden-text hide">
                         <p>Just like you, we are renewable energy generators committed to a sustainable future. We genuinely care about your needs and best interests.</p>
                         <i class="fas fa-times cancel-icon" onclick="hideContent('content6', 'Best for Sellers')"></i>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
     </div>
 </section>
 
 <!-- About -->
-<section>
+<section id="about">
     <div class="container main-about">
         <h1 class="about">About R-RECs</h1> 
             <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, verifiable transactions, and full control of carbon assets for mini-grid energy producers. Through the use of smart contracts and distributed consensus, R-RECs guarantee the integrity and immutability of each certificate</p>
+                <img src="/images/image_19.svg" alt="solar man">
     </div>
 </section>
+<!-- end About -->
 
-    <!-- video loop -->
-<section>
-    <div class="container video">
-        <video class="responsive-video" autoplay loop muted>
-            <source src="/images/about1.mp4" type="video/mp4">
-        </video>
-    </div>
-</section>
-
-    <!-- marketplace section -->
+<!-- marketplace section -->
 <section class="main-marketplace">
-    <div class="top-shadow">R-RECS</div>
     <div class="container">
         <div class="shadow-div">
             <div class="left-column">
-                <div class="centered-content">
                     <img src="/images/imagemarketplace.png" class="image2"/>
-                </div>   
             </div>
             <div class="right-column">
-                <div class="centered-content">
                     <h1>The Marketplace</h1>
-                    <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, <br/>verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
-                </div>
+                    <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
             </div>
         </div> 
     </div>
-</section>
-    
+</section>    
+
 <!-- news blog section -->
-<section>
+<section class="news">
     <div class="container">
         <div class="row">
             <h2>Latest from the blog</h2>
@@ -165,26 +191,26 @@
         </div>
 
         <div class="platform">
-            <div class="platforms">
+            <div class="platforms platforms-small">
                 <div class="platform-card">
-                    <img src="/images/platform1.jpg" alt="#">
+                    <img src="/images/platform1.jpg" alt="#" width="100%">
                 </div>
                 <div class="platform-text">
                     <h4>Introducing R-REC Platform V1</h4>
                     <h5>September 14, 2023</h5>
-                    <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, <br/>verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
+                    <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership,verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
                 </div>
                 
           </div>
         
-            <div class="platforms">
+            <div class="platforms platforms-big">
                 <div class="platform-card">
-                    <img src="/images/platform2.jpg" alt="#">
+                    <img src="/images/platform2.jpg" alt="#" width="100%">
                 </div>
                 <div class="platform-text">
                     <h4>Introducing R-REC Platform V2</h4>
                     <h5>September 14, 2023</h5>
-                    <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, <br/>verifiable transactions, and full control of carbon assets for mini-grid energy producers.</p>
+                    <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership,verifiable transactions, and full control of carbon assets for mini-grid energy producers.</p>
                 </div>
                 
             </div>
@@ -193,11 +219,11 @@
 </section>
 
 <!-- board -->
-<section class="main-board">
+<section class="main-board" id="board">
     <div class="container">
         <div class="board">
             <h1>Governing Board</h1>
-            <p>The R-REC Board of Directors is comprised of leaders from a variety of sectors <br/>who bring their expertise and knowledge to the ongoing development of R-RECs</p>
+            <p>The R-REC Board of Directors is comprised of leaders from a variety of sectors who bring their expertise and knowledge to the ongoing development of R-RECs</p>
         
             <div class="board-cards">
                 <div class="board-card hide">
@@ -215,8 +241,10 @@
                 
             </div>
             <div class="arrows">
-                <div class="arrow.prev" onclick="changeBoardMember(-1)">&#9665;</div> <!-- Left arrow -->
-                <div class="arrow.next" onclick="changeBoardMember(1)">&#9655;</div> <!-- Right arrow -->
+                <div class="arrow.prev" onclick="changeBoardMember(-1)">
+                    <i class="fas fa-arrow-circle-left"></i></div> <!-- Left arrow -->
+                <div class="arrow.next" onclick="changeBoardMember(1)">
+                    <i class="fas fa-arrow-circle-right"></i></div> <!-- Right arrow -->
             </div>
         </div>
     </div>
@@ -226,9 +254,8 @@
 <section>
     <div class="partners container">
         <div>
-
             <h1>The standards we exceed</h1>
-            <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, <br/>verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
+            <p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
         </div>
             <div class="images">
                 <div>
@@ -252,26 +279,27 @@
 
 <!-- footer -->
 <section>
-    <div class="line"></div>
     <div class="container">
         <div class="two-column-div">
-            <div class="column column1">
-            <img src="/images/renewvia.webp">
-            <p>Renewvia-RECs<br>
-                1425 Mayson Street Atlanta, GA 30324</p>
-            <h4>info@renewvia.com</h4>
+            <div class="column-img">
+                <img src="/images/renewvia.webp">
+                <p>Renewvia-RECs 1425 Mayson Street Atlanta, GA 30324</p>
+                <h4>info@renewvia.com</h4>
             </div>
-            <div class="column column2">
-            <p>Resources</p>
-            <h4>Announcements<br>
-                Guides<br>
-                FAQs</h4>
+            <div class="column">
+                <p>Resources</p>
+                <ul>
+                    <li>Announcements</li>
+                    <li>Guides</li>
+                    <li>FAQs</li>
+                </ul>
             </div>
-
-            <div class="column column3">
+            <div class="column">
                 <p>Company</p>
-                <h4>About<br>
-                Contact US</h4>
+                <ul>
+                    <li>About</li>
+                    <li>Contact US</li>
+                </ul>
             </div>
         </div>
     </div>
@@ -282,8 +310,12 @@
     <div class="rights"></div>
     <div class="container">
         <div class="rights-container">
-            <div class="rights-div">2023 R-RECs. All rights reserved</div>
-            <div class="rights-div">Privacy  Policy  | Terms of Services</div>
+            <div class="rights-div">
+                <p>&copy; 2023 R-RECs. All rights reserved</p>
+            </div>
+            <div class="rights-div">
+                <p>Privacy  Policy  | Terms of Services</p>
+            </div>
             <div class="social-icons">
                 <i class="fab fa-linkedin"></i>
                 <i class="fab fa-instagram"></i>
@@ -293,8 +325,7 @@
     </div>
 </section>
 
-    <script src="index.js"></script>
-    <script src="board.js"></script>
+    <script src="index.js"  type="text/javascript"></script>
 
 </body>
 </html>
