@@ -87,7 +87,7 @@ const images = [
     imageElement.src = images[currentImageIndex];
     textContainer.innerHTML = `
       <h1>${texts[currentImageIndex].title}</h1>
-      <p>${texts[currentImageIndex].description}</p>
+      <h2>${texts[currentImageIndex].description}</h2>
     `;
   }
 //

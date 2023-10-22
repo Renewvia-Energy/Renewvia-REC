@@ -32,26 +32,33 @@
 <section class="hero-image">
     <div class="overlay">
         <div class="image-carousel">
-            <img src="/images/background1.jpg" alt="Image 1">
+            <div class="bg-image">
+
+                <img src="/images/background1.jpg" alt="Image 1">
+            </div>
             <div class="container">
                 <div class="text">
-                    <h1> R-RECs </h1>
-                    <p>Promoting renewable energy, empowering minigrids in Africa, and ensuring transparency and fairness in the carbon asset market.</p>
+                    <div class="image-overlay">
+                        <h1> R-RECs </h1>
+                        <h2>Promoting renewable energy, empowering minigrids in Africa, and ensuring transparency and fairness in the carbon asset market.</h2>
+                    </div>
                 </div>
-                
-                    <div class="prev-arrow" onclick="changeImage(-1)"><i class="custom-icon">
+                <div class="arrow-container">
+                    <i class="custom-icon prev-arrow" onclick="changeImage(-1)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
                             <circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
                             <path d="M25 50 L60 50 M45 30 L25 50 L45 70" stroke="orange" stroke-width="5" fill="none" />
                           </svg>
-                      </i></div> <!-- Left arrow -->
-                    <div class="next-arrow" onclick="changeImage(1)"><i class="custom-icon">
+                      </i> <!-- Left arrow -->
+                    <i class="custom-icon next-arrow"onclick="changeImage(1)">
                         <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 150 150">
                         <circle cx="75" cy="75" r="60" stroke="orange" stroke-width="9" fill="transparent"/>
                         <path d="M55 75 L105 75 M105 75 L85 60 M105 75 L85 90" stroke="orange" stroke-width="9" fill="none" />
                         </svg>
                         </i>       
-                    </div> <!-- Right arrow -->
+                     <!-- Right arrow -->
+                </div>
+                    
             </div>
         </div>
     </div>
@@ -241,10 +248,18 @@
                 
             </div>
             <div class="arrows">
-                <div class="arrow.prev" onclick="changeBoardMember(-1)">
-                    <i class="fas fa-arrow-circle-left"></i></div> <!-- Left arrow -->
-                <div class="arrow.next" onclick="changeBoardMember(1)">
-                    <i class="fas fa-arrow-circle-right"></i></div> <!-- Right arrow -->
+                    <i class="arrow.prev" onclick="changeBoardMember(-1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
+                            <path d="M25 50 L60 50 M45 30 L25 50 L45 70" stroke="orange" stroke-width="5" fill="none" />
+                          </svg>
+                    </i> <!-- Left arrow -->
+                    <i class="arrow.next" onclick="changeBoardMember(1)">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 150 150">
+                            <circle cx="75" cy="75" r="60" stroke="orange" stroke-width="9" fill="transparent"/>
+                            <path d="M55 75 L105 75 M105 75 L85 60 M105 75 L85 90" stroke="orange" stroke-width="9" fill="none" />
+                            </svg>
+                    </i> <!-- Right arrow -->
             </div>
         </div>
     </div>
