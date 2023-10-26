@@ -244,9 +244,7 @@ background-color: #FFFFFF;
 color: #F47920;
 text-transform: uppercase;
 }
-.platform{
 
-}
 .platform .platforms{
     border-width: 0;
     border-top: 5px;
@@ -259,6 +257,7 @@ text-transform: uppercase;
 }
 .platforms .platform-card img{
     border-radius: 0 0 0.5rem 0.5rem;
+    width: 100%;
 }
 .platforms .platform-text h4{
     font-weight: 600;
@@ -374,8 +373,8 @@ font-size: 1.1rem;
 .two-column-div .column-img{
         background-image: url('./images/solarcover.png');
         background-size: cover;
-        background-position:cover;
-        z-index: 2rem;
+        background-position: right;
+        z-index: 2;
 }
 .two-column-div .column-img h4{
 font-size: 1rem;
@@ -442,7 +441,7 @@ margin: 0 0 2rem 0;
         display: flex;
         flex-direction: row;
         /* align-items: center; */
-        width: 90%;
+        width: 100%;
         max-width: 1300px;
         margin: 0 auto;
     }
@@ -450,9 +449,10 @@ margin: 0 0 2rem 0;
         display: none;
     }
     .navtop{
-        width: 50%;
+        width: 60%;
         align-content: center;
         margin: 1rem 0 0 0;
+        justify-content: flex-start;
     }
     .navtop img{
     width: 149px;
@@ -462,6 +462,7 @@ margin: 0 0 2rem 0;
         display: flex;
         width: 50%;
         margin: 1rem 0 0 0;
+        margin-left: 0.5rem;
 
     }
     .info ul{
@@ -667,6 +668,7 @@ margin: 0 0 2rem 0;
     }
     .platform .platform-card img{
         height: 228px;
+        width: 100%;
     }
     .platform .platform-text h4{
         font-weight: 600;
@@ -801,11 +803,10 @@ margin: 0 0 2rem 0;
         color: #F47920;
     }
     .two-column-div .column-img{
-        /* background: url('images/solarcover.png') center/contain no-repeat;  */
         background-image: url('./images/solarcover.png');
         background-size: cover;
-        background-position:right;
-        z-index: 2rem;
+        background-position: right;
+        z-index: 2;
     }
 
     /* end footer */

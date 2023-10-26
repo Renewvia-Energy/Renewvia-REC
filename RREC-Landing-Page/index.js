@@ -55,15 +55,15 @@ const images = [
   const texts = [
     {
       title: "R-RECs",
-      description: "Promoting renewable energy, empowering minigrids in Africa, and ensuring transparency and fairness in the carbon asset market."
+      description: "Pioneering the future of sustainable energy, R-RECs is committed to driving decarbonization with minimal environmental impact."
     },
     {
       title: "R-RECs",
-      description: "R-RECS efforts aim to drive sustainable development and reduce carbon emissions."
+      description: "Embracing sustainable energy solutions is not just a choice for R-RECs; it's a commitment to a healthier planet for generations to come."
     },
     {
       title: "R-RECs",
-      description: "Fostering renewable energy and empowering local communities with minigrids, our initiative seeks to create a more equitable and eco-friendly energy landscape."
+      description: "Standing at the forefront of the renewable energy revolution, we are determined to reduce our carbon footprint while securing a brighter, cleaner future."
     }
   ];
   
