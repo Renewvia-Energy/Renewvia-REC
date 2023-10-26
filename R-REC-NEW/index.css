@@ -117,6 +117,14 @@ img {
     font-size: 1rem;
     color: #FFFFFF;
 }
+.impact-icon{
+  display: flex;
+  
+}
+.my-impact i{
+  margin: 1rem 0 0 0.5rem;
+  size: 1rem;
+}
 .my-impact div p{
     font-weight: 400;
     font-size: 1.8rem;
@@ -179,7 +187,7 @@ img {
     border:0;
 }
 .table1 td {
-    padding: 0.5rem;
+    padding-left: 0.5rem;
     border-bottom: 2px solid #ccc;
     font-weight: 300;
     font-size: 1rem;
@@ -214,7 +222,7 @@ color: gray;
 }
 .table2 th{
   border-bottom: 2px solid #ccc;
-
+  font-weight: bold;
 }
 
 .table2 td {
@@ -232,6 +240,7 @@ color: gray;
     font-weight: bold;
     font-size: small;
     padding: 0.5rem;
+    margin-right: 0.2rem;
 }
 /* tables */
 
@@ -317,7 +326,7 @@ color: gray;
 /* retire and purchase */
 
 .retire-purchase {
-  width: 70%; 
+  width: 115%; 
   height: 4rem; 
   background-color: #fff; 
   border-radius: 0.7rem; 
@@ -326,6 +335,8 @@ color: gray;
   justify-content: space-around;
   align-items: center;
   text-align: center;
+  text-transform: capitalize;
+  padding: 0 1rem 0 1rem;
 }
 
 .retire, .purchase {
@@ -333,21 +344,31 @@ color: gray;
   font-weight: bold;
 }
 .retire{
-  background: #e3823c;
+  /* background: #e3823c; */
+  outline: 0.2rem solid #f46f11;
   border-radius: 0.7rem;
-  color: #fff;
+  /* color: #fff; */
   font-size: medium;
   text-transform: capitalize;
   padding: 0.5rem 1rem;
 
 }
 .purchase{
-  background: #F5F5F5;
+  /* background: #F5F5F5; */
+  outline: 0.2rem solid rgb(218, 148, 68);
   border-radius: 0.7rem;
   font-size: medium;
   text-transform: capitalize;
   padding: 0.5rem 1rem;
 
+}
+.credits{
+  outline: 0.2rem solid green;
+  border-radius: 0.7rem;
+  font-size: medium;
+  text-transform: capitalize;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
 }
 
 .retire:before, .purchase:before {
