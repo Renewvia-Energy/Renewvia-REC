@@ -803,6 +803,7 @@ margin: 0 0 2rem 0;
         font-weight: 700;
         font-size: 1.2rem;
         color: #757575;
+        text-align: left;
     }
     .two-column-div .column ul{
         font-weight: 600;
