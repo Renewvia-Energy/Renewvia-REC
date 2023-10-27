@@ -1,4 +1,4 @@
-// toggle menu to be fixed
+// toggle menu
 document.getElementById("menuButton").addEventListener("click", function() {
   var info = document.getElementById("info");
   info.classList.toggle("info-small");
@@ -96,22 +96,22 @@ const boardMembers = [
     {
         name: "John Doe",
         text: "Head of Engineering",
-        imageSrc: "/images/board/Mask group (1).png",
+        imageSrc: "images/board/Mask-group1.png",
     },
     {
         name: "Jane Smith",
         text: "Head of Engineering",
-        imageSrc: "/images/board/Mask group.png",
+        imageSrc: "images/board/Mask-group.png",
     },
     {
         name: "Bob Johnson",
         text: "Head of Engineering",
-        imageSrc: "/images/board/Mask group (2).png",
+        imageSrc: "images/board/Mask-group2.png",
     },
     {
         name: "Sarah Adams",
         text: "Head of Engineering",
-        imageSrc: "/images/board/Mask group (3).png",
+        imageSrc: "images/board/Mask-group3.png",
     },
     // Add more board members as needed
 ];
