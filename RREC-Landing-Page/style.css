@@ -17,7 +17,7 @@
     text-align: center;
     font-weight: 700;
     font-size: 1.8rem;
-    color: #F47920;
+    color: #EB6600;
 }
 .container p{
     font-style: normal;
@@ -45,11 +45,11 @@
 .info-small li{
     list-style: none;
     margin-bottom: 0.5rem;
-    color: #F47920;
+    color: #EB6600;
 }
 .info-small li a{
     text-decoration: none;
-    color: #F47920;
+    color: #EB6600;
 }
 .info-small li :focus, .info li a:hover{
     opacity: 80%;
@@ -116,11 +116,11 @@
 }
 
 .prev-arrow{
-    color: #F47920;
+    color: #EB6600;
 
 }
 .next-arrow{
-    color: #F47920;
+    color: #EB6600;
 
 }
 /* end hero section */
@@ -133,7 +133,7 @@
     border-width: 0;
     border-top: 5px;
     border-style: solid;
-    border-image: linear-gradient(270deg, #F47920 0%, #F8D6C8 100%)1;
+    border-image: linear-gradient(270deg, #EB6600 0%, #F8D6C8 100%)1;
     box-shadow: 0px 4px 4px #D9D9D9;
     border-radius: 6px 6px 0px 0px;
     margin: 1rem 0;
@@ -173,7 +173,7 @@
 }
 .inner-card a{
     font-weight: 300;
-    color: #F47920;
+    color: #EB6600;
 }
 .inner-card a:hover{
     opacity: 90%;
@@ -203,7 +203,7 @@ border-radius: 0.5rem;
     border-width: 0;
     border-top: 5px;
     border-style: solid;
-    border-image: linear-gradient(270deg, #F47920 0%, #F8D6C8 100%)1;
+    border-image: linear-gradient(270deg, #EB6600 0%, #F8D6C8 100%)1;
     background-color: #292929;
     color: #FFFFFF;
     margin-bottom: 1.5rem;
@@ -237,11 +237,11 @@ font-size: 1.5rem;
 }
 .row .all-news{
 box-sizing: border-box;
-border: 1px solid #F47920;
+border: 1px solid #EB6600;
 border-radius: 33px;
 padding: 0.5rem 1rem;
 background-color: #FFFFFF;
-color: #F47920;
+color: #EB6600;
 text-transform: uppercase;
 }
 
@@ -249,7 +249,7 @@ text-transform: uppercase;
     border-width: 0;
     border-top: 5px;
     border-style: solid;
-    border-image: linear-gradient(270deg, #F47920 0%, #F8D6C8 100%)1;
+    border-image: linear-gradient(270deg, #EB6600 0%, #F8D6C8 100%)1;
     border-radius: 6px 6px 0px 0px;
     margin: 1rem 0;
     padding-bottom: 1rem;
@@ -267,7 +267,7 @@ text-transform: uppercase;
 .platforms .platform-text h5{
     font-weight: 400;
     font-size: 1rem;
-    color: #F47920;
+    color: #EB6600;
 }
 .platforms .platform-text p{
     font-weight: 400;
@@ -304,10 +304,11 @@ text-transform: uppercase;
     flex-direction: row;
     gap: 1rem;
     padding:0 3.5rem;
+    color: #0D0D0D;
 }
 .board-cards .board-card{
     border-radius: 0 0 0 1.5rem;
-    background-color: #F47920;
+    background-color: #EB6600;
     padding-bottom: 0.7rem;
 }
 .board .board-cards img{
@@ -337,10 +338,10 @@ font-size: 1.2rem;
 }
 
 .arrow.prev{
-    color: #F47920;
+    color: #EB6600;
 }
 .arrow.next{
-    color: #F47920;
+    color: #EB6600;
 }
 
 /* end board */
@@ -378,7 +379,7 @@ font-size: 1.1rem;
 }
 .two-column-div .column-img h4{
 font-size: 1rem;
-color: #F47920;
+color: #EB6600;
 margin: 0 0 2rem 0;
 }
 .two-column-div .column-img img{
@@ -396,7 +397,7 @@ margin: 0 0 2rem 0;
 .two-column-div .column p{
     font-weight: 400;
     font-size: 1.2rem;
-    color: #C7C5C5;
+    color: #757575;
     margin: 0 0 0.5rem 0;
 }
 .two-column-div .column ul{
@@ -406,7 +407,7 @@ margin: 0 0 2rem 0;
 .two-column-div .column li{
     list-style: none;
     font-size: 0.9rem;
-    color: #F47920;
+    color: #EB6600;
     padding: 0;
 }
 /* end footer */
@@ -425,7 +426,7 @@ margin: 0 0 2rem 0;
 .rights-div p{
     font-weight: 400;
     font-size:0.5rem;
-    color: #C7C5C5;
+    color: #998A8A;
     margin: 0;
 }
 .social-icons{
@@ -474,11 +475,11 @@ margin: 0 0 2rem 0;
     .info li{
         list-style: none;
         margin: 0 0 0 1rem;
-        color: #F47920;
+        color: #EB6600;
     }
     .info li a{
         text-decoration: none;
-        color: #F47920;
+        color: #EB6600;
         font-weight: 400;
     }
     .info li :focus, .info li a:hover{
@@ -526,10 +527,10 @@ margin: 0 0 2rem 0;
     }
     
     .prev-arrow{
-        color: #F47920;
+        color: #EB6600;
     }
     .next-arrow{
-        color: #F47920;
+        color: #EB6600;
     }
     #products{
         margin-bottom: 3.6rem;
@@ -592,7 +593,7 @@ margin: 0 0 2rem 0;
         line-height: 3.5rem;
         text-align: center;
         margin-bottom: 1.2rem;
-        color: #F47920;
+        color: #EB6600;
     }
     .main-about p{
         font-weight: 300;
@@ -645,7 +646,7 @@ margin: 0 0 2rem 0;
         font-size: 20px;
         text-align: center;
         text-transform: uppercase;
-        color: #F47920;
+        color: #EB6600;
         margin-right: 1.4rem;
 
     }
@@ -679,7 +680,7 @@ margin: 0 0 2rem 0;
     .platform .platform-text h5{
         font-weight: 400;
         font-size: 1.5rem;
-        color: #F47920;
+        color: #EB6600;
     }
     .platform .platform-text p{
         font-weight: 300;
@@ -707,6 +708,11 @@ margin: 0 0 2rem 0;
     .board .board-cards{
         gap: 1.9rem;
         margin-left: 2rem;
+        color: #0D0D0D;
+        /* font-weight: bold; */
+    }
+    .board .board-cards h2{
+        font-weight: bold;
     }
     .main-board .container .hide{
         display: block;
@@ -721,10 +727,10 @@ margin: 0 0 2rem 0;
     }
     
     .arrow.prev{
-        color: #F47920;
+        color: #EB6600;
     }
     .arrow.next{
-        color: #F47920;
+        color: #EB6600;
     }
 
     /* partners */
@@ -775,6 +781,7 @@ margin: 0 0 2rem 0;
     }
     .two-column-div .column{
         width:10%;
+        justify-content: flex-start;
     }
     
     .two-column-div .column-img img{
@@ -790,17 +797,17 @@ margin: 0 0 2rem 0;
         font-weight: 400;
         font-size: 1.1rem;
         margin-left: 7.6rem;
-        color: #F47920;
+        color: #EB6600;
     }
     .two-column-div .column p{
         font-weight: 700;
         font-size: 1.2rem;
-        color: #C7C5C5;
+        color: #757575;
     }
     .two-column-div .column ul{
         font-weight: 600;
         font-size: 1.8rem;
-        color: #F47920;
+        color: #EB6600;
     }
     .two-column-div .column-img{
         background-image: url('./images/solarcover.png');
@@ -827,7 +834,7 @@ margin: 0 0 2rem 0;
         font-weight: 600;
         font-size: 1rem;
         line-height: 2.6rem;
-        color: #C7C5C5;
+        color: #998A8A;
     }
     /*end copyright */
 
