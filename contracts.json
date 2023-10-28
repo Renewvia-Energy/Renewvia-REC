@@ -20,6 +20,11 @@
 		"address": "0xd035ed03bee3dd3448184b6f8477a44fcd47228a"
 	},
 	{
+		"name": "South Carolina R-REC",
+		"symbol": "RREC-SC",
+		"address": "0x0F6880db4445b82B5e652EFB6c50D51bE62bE164"
+	},
+	{
 		"name": "Texas R-REC",
 		"symbol": "RREC-TX",
 		"address": "0x142d6987332009e7356bed4d54749577558bf496"
