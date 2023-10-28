@@ -38,7 +38,10 @@
 				fetch('https://renewvia-energy.github.io/Renewvia-REC/contracts.json')
 				.then(allContractsResp => allContractsResp.json())
 				.then(allContractsData => {
-					allContracts = allContractsData
+					allContracts = allContractsData.map(contract => {
+						contract.address = contract.address.toLowerCase()
+						return contract
+					})
 
 				// Get list of all transactions involving this wallet from BscScan
 				}).then(() => {
@@ -61,6 +64,7 @@
 							}
 						}
 					}
+
 					return contracts
 				}).then(contracts => {
 					this.tokenMap = new Map()
