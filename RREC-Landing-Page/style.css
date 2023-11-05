@@ -140,41 +140,35 @@
     padding-bottom: 1rem;
 }
 .card h2{
-    text-align: center;
-    margin: 0.5rem 0;
-    font-weight: 600;
-    font-size: 1.9rem;
-    text-align: center;
-    color: #000000;
+    margin-left: 1rem;
 }
-.cards .card .inner-card{
-    display: flex;
-    flex-direction: column;
-}
-.inner-card-row{
+
+.card summary{
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 0 1rem;
 }
-.cards .card .inner-card .icon{
+.card summary .icon{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin-top: 1.2rem;
 }
-.cards .card .inner-card .icon p{
-    margin-left: 1rem;
-    font-weight: 400;
-    font-size: 1rem;
-    color: #000000;
-}
-.cards .card .inner-card button{
-    align-self: self-end;
-}
-.inner-card a{
+.card summary .more{
     font-weight: 300;
     color: #EB6600;
+    font-size: 1rem;
+    cursor: pointer;
 }
+
+.card summary .icon .values{
+    margin-left: 1rem;
+    font-weight: 400;
+    font-size: 1.1rem;
+    color: #000000;
+}
+
 .inner-card a:hover{
     opacity: 90%;
 }
@@ -326,7 +320,7 @@ margin-left: 0.5rem;
 }
 .board .board-cards i{
 align-self: flex-end;
-margin-left: 85%;
+margin-left: 75%;
 font-size: 1.2rem;
 }
 .arrows{
@@ -523,7 +517,7 @@ margin: 0 0 2rem 0;
         display: flex;
         justify-content: space-between;
         position: relative;
-        top: -7rem;
+        /* top: -7rem; */
     }
     
     .prev-arrow{
@@ -567,17 +561,31 @@ margin: 0 0 2rem 0;
         color: #000000;
         margin-top: 0;
     }
-    .card .inner-card .inner-card-row .icon p{
-        font-weight: 600;
-        font-size: 1.5rem;
-        line-height: 2rem;
+    
+    .card summary{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem 1rem;
     }
-    .card .inner-card .inner-card-row a{
+    .card summary .icon{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-top: 0.8rem;
+    }
+    .card summary .more{
+        font-weight: 300;
+        color: #EB6600;
         font-size: 1.2rem;
     }
-    .card .inner-card p{
-        font-size: 1.3rem;
+    .card summary .icon .values{
+        margin-left: 1rem;
+        font-weight: bold;
+        font-size: 1.5rem;
+        color: #000000;
     }
+
     .main-about{
         flex-direction: column;
         text-align: center;
@@ -722,7 +730,7 @@ margin: 0 0 2rem 0;
         display: flex;
         justify-content: space-between;
         position: relative;
-        top: -12.94rem;
+        top:-14.94rem;
         width: 100%;
     }
     

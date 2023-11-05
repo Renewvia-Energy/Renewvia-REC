@@ -22,6 +22,11 @@ document.querySelectorAll('.info a').forEach(anchor => {
 });
 
 // function to show content in read more buttons
+// const readmoreBtn = document.querySelector("#readmore")
+// readmoreBtn.addEventListener('click', function(event) {
+  
+//   showContent()
+// })
 function showContent(contentId) {
     var content = document.getElementById(contentId);
     
@@ -47,9 +52,9 @@ function showContent(contentId) {
 // js for the carousel hero section
 
 const images = [
-    "/images/background1.jpg", 
-    "/images/background2.jpg", 
-    "/images/background3.jpg", 
+    "images/background1.jpg", 
+    "images/background2.jpg", 
+    "images/background3.jpg", 
   ];
   
   const texts = [
