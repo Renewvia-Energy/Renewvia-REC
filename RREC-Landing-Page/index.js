@@ -125,9 +125,9 @@ let currentBoardIndex = 0;
 const boardCardGroupSizeLarge = 4; // Display four cards on larger screens
 const boardCardGroupSizeSmall = 2; // Display two cards on smaller screens
 
+
 function changeBoardMember(direction) {
     const boardCardGroupSize = window.innerWidth < 768 ? boardCardGroupSizeSmall : boardCardGroupSizeLarge;
-
     currentBoardIndex += direction;
 
     if (currentBoardIndex < 0) {

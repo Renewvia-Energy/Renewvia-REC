@@ -32,6 +32,7 @@
     display: flex;
     justify-content: space-between;    
     margin: 1rem 0 0 0 ;
+    align-items: center;
 }
 .nav img{
     width: 50%;
@@ -89,13 +90,17 @@
 }
 .image-carousel img{
     width: 100%;
-    object-fit: contain;
+    object-fit: fit;
+    height: 200px;
 }
 .image-carousel .container{
     position: absolute;
     top: 19%;
     left: 4%;
     color: #FFFFFF;
+}
+.text{
+    height: 100px;
 }
 .text h1{
     color: #FFFFFF;
@@ -112,7 +117,7 @@
     display: flex;
     justify-content: space-between;
     position: relative;
-    top: -4.94rem;
+    top: -3.9rem;
 }
 
 .prev-arrow{
@@ -431,12 +436,12 @@ margin: 0 0 2rem 0;
 }
 /* end copyrights */
 
-@media screen and (min-width:500px) {
+@media screen and (min-width:550px) {
     .container{
         display: flex;
         flex-direction: row;
         /* align-items: center; */
-        width: 100%;
+        /* width: 100%; */
         max-width: 1300px;
         margin: 0 auto;
     }
@@ -452,6 +457,7 @@ margin: 0 0 2rem 0;
     .navtop img{
     width: 149px;
     /* height: 33px; */
+    object-fit: contain;
     }
     .info{
         display: flex;
@@ -517,7 +523,7 @@ margin: 0 0 2rem 0;
         display: flex;
         justify-content: space-between;
         position: relative;
-        /* top: -7rem; */
+        top: 2rem;
     }
     
     .prev-arrow{
@@ -715,7 +721,7 @@ margin: 0 0 2rem 0;
     }
     .board .board-cards{
         gap: 1.9rem;
-        margin-left: 2rem;
+        margin: 0 2rem;
         color: #0D0D0D;
         /* font-weight: bold; */
     }
@@ -730,7 +736,7 @@ margin: 0 0 2rem 0;
         display: flex;
         justify-content: space-between;
         position: relative;
-        top:-14.94rem;
+        top:-10.94rem;
         width: 100%;
     }
     
@@ -852,3 +858,39 @@ margin: 0 0 2rem 0;
 
 
 }
+
+@media screen and (750px <= width <= 820px) {
+    .arrow-container{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        top: -11rem;
+    }
+    .bg-image img{
+        height: 500px;
+    }
+    .text{
+        height: 300px;
+    }
+    .arrows {
+        top: -7.9rem;
+      }
+}
+
+@media screen and (max-width: 290px){
+    .bg-image img{
+        height: 270px;
+    }
+    .two-column-div{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+     .two-column-div .column ul{
+        text-align: center;
+    }
+    .board .board-cards{
+        padding: 0 3rem;
+    }
+}
+
