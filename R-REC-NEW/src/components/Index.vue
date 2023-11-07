@@ -12,6 +12,7 @@
             <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
             <!-- <link rel="stylesheet" href="index.css"> -->
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+            
         </head>
         <body>
             <!-- section nav -->
@@ -136,10 +137,14 @@
 
                     <!-- chart -->
                         <div class="pie-chart" v-if="carbonAssetsData && carbonAssetsData.length > 0" >
-                            
                             <div>
                                 <h1>Carbon assets in four states.</h1>
-                                <div class="chart"></div>
+                                <!-- <div class="chart"></div> -->
+                                <!-- chart -->
+                                <div>
+                                    <canvas ref="myChart"></canvas>
+                                </div>
+
                                 <ul class="key assets" v-for="asset in carbonAssetsData" :key="asset.id">
                                 <li>
                                     <strong class="percent gray">4%</strong>
@@ -158,26 +163,63 @@
                             </div>
                         </div>    
                         <!-- end of chart -->
-                        
-                    
                 </div>
 
             </div>
             <!-- end of tables -->
-
-            <!-- <script src="index.js"></script> -->
         </body>
     </html>
 </template>
 
 <script>
-export default {
-  props: {
-    carbonAssetsData: Array,
-  },
-  // ...
-}
 
+import Chart from 'chart.js/auto';
+
+export default {
+  props: ['carbonAssetsData'],
+  data() {
+    return {
+      chart: null,
+    };
+  },
+  mounted() {
+    this.renderChart();
+  },
+  beforeDestroy() {
+    // Destroy the existing chart instance
+    if (this.chart) {
+      this.chart.destroy();
+    }
+  },
+  watch: {
+    carbonAssetsData: {
+      handler(newData) {
+        // Check if the chart instance exists and destroy it
+        if (this.chart) {
+          this.chart.destroy();
+        }
+        // Render the chart with the new data
+        this.renderChart();
+      },
+      deep: true, // Watch for changes in nested properties of carbonAssetsData
+    },
+  },
+  methods: {
+    renderChart() {
+      if (this.carbonAssetsData && this.carbonAssetsData.length > 0) {
+        const ctx = this.$refs.myChart.getContext('2d');
+        this.chart = new Chart(ctx, {
+          type: 'doughnut', // Set your chart type
+          data: this.carbonAssetsData[this.carbonAssetsData.length - 1].chartData,
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+          },
+        });
+      }
+    },
+  },
+}
 </script>
 
 <style>

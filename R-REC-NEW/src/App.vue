@@ -1,24 +1,25 @@
 <template>
   <!-- <img alt="" src="./assets/logo.png"> -->
-  <index :carbon-assets-data="carbonAssetsData" />
+  <div>
+    <index :carbon-assets-data="carbonAssetsData" v-if="carbonAssetsData.length > 0"/>
+  </div>
   <!-- <Index /> -->
+  
 </template>
 
 <script>
-import Index from './components/Index.vue'
-
-
+import Index from './components/Index.vue' //import index component
 export default {
-  name: 'App',
-  components: { Index,
-  },
+  name: 'App', 
+  components: {Index},
   data() {
     return{
       carbonAssetsData: [],
       allTransactions: [],
       // defining the states to display
       statesToDisplay: ["Virginia R-REC", "Alabama R-REC", "Georgia R-REC", "North Carolina R-REC"],
-      newStates: []
+      newStates: [],
+      doughnutData: {},
     };
   },
   mounted() {
@@ -42,6 +43,7 @@ export default {
             // set the key values for qty to 0 and transaction to empty array
             allContractsData[i]['qty'] = 0;
             allContractsData[i]['transactions'] = [];
+            allContractsData[i]['chartData'] = {};
           }
 
           // filter the states if state address is passed in the url
@@ -51,7 +53,7 @@ export default {
           // if no adress is passed on the url return all the states (filter by statesToDisplay list)
           if (!stateAddress){
 					this.carbonAssetsData = allContractsData.filter((asset)=>this.statesToDisplay.includes(asset.name));
-          }
+          } 
 
             // get token quantity
             for (let contract of  this.carbonAssetsData){
@@ -60,10 +62,21 @@ export default {
                 fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${contract.address}&address=${WALLET_ADDR}&tag=latest&apikey=${API_KEY}`).then(resp => resp.json()).then(data => {
                   contract.qty = data.result.slice(0, -18)
                   console.log(data)
+                  
+                  const labels = this.carbonAssetsData.map((asset) => asset.name);
+                  const quantities = this.carbonAssetsData.map((asset) => asset.qty);
+
+                  this.doughnutData = {
+                    labels: labels,
+                    datasets: [
+                      {
+                        backgroundColor: ['#FF5733', '#33FF57', '#5733FF', '#33A3FF'], // Add colors as needed
+                        data: quantities,
+                      },]};
+                  contract.chartData = this.doughnutData
                   });
                   }, parseInt(contract/4)*1000)
-                  }
-
+            }
         });
 
         // get all transactions for REC wallet
@@ -80,8 +93,25 @@ export default {
           }
         }
         });
-    },
+    }
+
+  //   generateDoughnutData() {
+  //   const labels = this.carbonAssetsData.map((asset) => asset.name);
+  //   console.log(this.carbonAssetsData)
+  //   const quantities = this.carbonAssetsData.map((asset) => asset.qty);
+
+  //   this.doughnutData = {
+  //     labels: labels,
+  //     datasets: [
+  //       {
+  //         backgroundColor: ['#FF5733', '#33FF57', '#5733FF', '#33A3FF'], // Add colors as needed
+  //         data: quantities,
+  //       },
+  //     ],
+  //   };
+  // },
   },
+
 }
 </script>
 

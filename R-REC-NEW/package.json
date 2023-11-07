@@ -7,8 +7,10 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "chart.js": "^4.4.0",
     "core-js": "^3.8.3",
-    "vue": "^3.2.13"
+    "vue": "^3.2.13",
+    "vue-chartjs": "^5.2.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~5.0.0",
