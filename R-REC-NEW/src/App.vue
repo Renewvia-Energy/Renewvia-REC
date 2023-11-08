@@ -70,7 +70,7 @@ export default {
                     labels: labels,
                     datasets: [
                       {
-                        backgroundColor: ['#FF5733', '#33FF57', '#5733FF', '#33A3FF'], // Add colors as needed
+                        backgroundColor: ['#FF5733', 'rgb(239, 216, 6)', '#ff6d05', 'rgb(218, 148, 68)'], // Add colors as needed
                         data: quantities,
                       },]};
                   contract.chartData = this.doughnutData
