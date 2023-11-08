@@ -17,30 +17,8 @@
         <body>
             <!-- section nav -->
             <header>
-                
-                <nav class="nav">
-                    <div class="logo">
-                        <img src="@/assets/images/renewvia.webp" alt="renewvia-logo">
-                        <a onclick="toggleMenu()" id="menuButton"><i class="fas fa-bars"></i>
-                        </a>
-                    </div>
-                    <div class="hide container " id="info">
-                        <ul>
-                            <li>ABOUT US</li>
-                            <li>WHAT ARE R-RECs</li>
-                            <li>PRODUCTS</li>
-                            <li class="team">OUR TEAM</li>
-                            <li class="global">
-                                <i class="fas fa-g">
-                                    <span class="g"></span>
-                                </i>
-                                globalcorp</li>
-                        </ul>
-                    </div>
-                    
-                </nav>
+                <Navigation></Navigation>
             </header>
-
             <!-- end section nav -->
 
             <!-- section 2  -->
@@ -145,9 +123,9 @@
                                     <canvas ref="myChart"></canvas>
                                 </div>
 
-                                <ul class="key assets" v-for="asset in carbonAssetsData" :key="asset.id">
-                                <li>
-                                    <strong class="percent gray">4%</strong>
+                                <ul class="key assets">
+                                <li v-for="asset in carbonAssetsData" :key="asset.id">
+                                    <strong class="percent gray">{{ calculatePercentage(asset.qty) }}%</strong>
                                     <span class="choice">{{ asset.name }}</span>
                                 </li>
                                 </ul> 
@@ -176,48 +154,62 @@
 import Chart from 'chart.js/auto';
 
 export default {
-  props: ['carbonAssetsData'],
-  data() {
-    return {
-      chart: null,
-    };
-  },
-  mounted() {
-    this.renderChart();
-  },
-  beforeDestroy() {
-    // Destroy the existing chart instance
-    if (this.chart) {
-      this.chart.destroy();
-    }
-  },
-  watch: {
-    carbonAssetsData: {
-      handler(newData) {
-        // Check if the chart instance exists and destroy it
-        if (this.chart) {
-          this.chart.destroy();
-        }
-        // Render the chart with the new data
+    props: ['carbonAssetsData'],
+    data() {
+        return {
+            chart: null,
+            };
+    },
+    
+    mounted() {
         this.renderChart();
-      },
-      deep: true, // Watch for changes in nested properties of carbonAssetsData
     },
-  },
+    
+    beforeDestroy() {
+        // Destroy the existing chart instance
+        if (this.chart) {
+            this.chart.destroy();
+        }
+    },
+    
+    watch: {
+        carbonAssetsData: {
+            handler(newData) {
+                // Check if the chart instance exists and destroy it
+                if (this.chart) {
+                    this.chart.destroy();
+                }
+                // Render the chart with the new data
+                this.renderChart();
+            },
+            
+            deep: true, // Watch for changes in nested properties of carbonAssetsData
+        },
+    },
+  
   methods: {
-    renderChart() {
-      if (this.carbonAssetsData && this.carbonAssetsData.length > 0) {
-        const ctx = this.$refs.myChart.getContext('2d');
-        this.chart = new Chart(ctx, {
-          type: 'doughnut', // Set your chart type
-          data: this.carbonAssetsData[this.carbonAssetsData.length - 1].chartData,
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-          },
-        });
-      }
-    },
+      
+      calculatePercentage(quantity) {
+          // You can calculate the percentage here based on the total quantity
+          if (quantity === 0) {
+              return 0;
+              }
+              const totalQuantity = this.carbonAssetsData.reduce((total, asset) => total + asset.qty, 0);
+              return ((quantity / totalQuantity) * 100).toExponential(2);
+              
+      },
+                renderChart() {
+                    if (this.carbonAssetsData && this.carbonAssetsData.length > 0) {
+                        const ctx = this.$refs.myChart.getContext('2d');
+                        this.chart = new Chart(ctx, {
+                            type: 'doughnut', // Set your chart type
+                            data: this.carbonAssetsData[this.carbonAssetsData.length - 1].chartData,options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                },
+                            });
+                    }
+                },
   },
 }
 </script>

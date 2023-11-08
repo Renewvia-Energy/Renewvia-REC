@@ -9,9 +9,11 @@
 
 <script>
 import Index from './components/Index.vue' //import index component
+import Navigation from './components/Navigation.vue';
+
 export default {
   name: 'App', 
-  components: {Index},
+  components: {Index, Navigation},
   data() {
     return{
       carbonAssetsData: [],
