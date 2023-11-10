@@ -2,36 +2,49 @@
 	{
 		"name": "Alabama R-REC",
 		"symbol": "RREC-AL",
-		"address": "0x7cafd97da50fc8a7d8ed45749a29ad6a64bffaf1"
+		"address": "0x7cafd97da50fc8a7d8ed45749a29ad6a64bffaf1",
+		"qty": 0,
+		"transactions":[]
 	},
 	{
 		"name": "Colorado R-REC",
 		"symbol": "RREC-CO",
-		"address": "0x8480e85664461471b8fcf058e1c2d31dd2568855"
+		"address": "0x8480e85664461471b8fcf058e1c2d31dd2568855",
+		"qty": 0,
+		"transactions":[]
 	},
 	{
 		"name": "Georgia R-REC",
 		"symbol": "RREC-GA",
-		"address": "0x1b729ccf7f7b767d0d070747fd3a3fa8ab5b9a45"
+		"address": "0x1b729ccf7f7b767d0d070747fd3a3fa8ab5b9a45",
+		"qty": 0,
+		"transactions":[]
 	},
 	{
 		"name": "North Carolina R-REC",
 		"symbol": "RREC-NC",
-		"address": "0xd035ed03bee3dd3448184b6f8477a44fcd47228a"
+		"address": "0xd035ed03bee3dd3448184b6f8477a44fcd47228a",
+		"qty": 0,
+		"transactions":[]
 	},
 	{
 		"name": "Texas R-REC",
 		"symbol": "RREC-TX",
-		"address": "0x142d6987332009e7356bed4d54749577558bf496"
+		"address": "0x142d6987332009e7356bed4d54749577558bf496",
+		"qty": 0,
+		"transactions":[]
 	},
 	{
 		"name": "Virginia R-REC",
 		"symbol": "RREC-VA",
-		"address": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f"
+		"address": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f",
+		"qty": 0,
+		"transactions":[]
 	},
 	{
 		"name": "Zambia R-REC",
 		"symbol": "RREC-AZM",
-		"address": "0x77814c739d9c41daba5630651322d486d258d428"
+		"address": "0x77814c739d9c41daba5630651322d486d258d428",
+		"qty": 0,
 	}
 ]
