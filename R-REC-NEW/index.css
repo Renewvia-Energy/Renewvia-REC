@@ -1,8 +1,9 @@
 body{
     background-color: #F9FAF7;
     font-family: 'Roboto', sans-serif;
-    /* max-width: 1200px; */
+    /* margin: 0; */
   }
+ 
   
   /* navigation */
   .container{
@@ -65,7 +66,7 @@ body{
   .logo1{
     border-bottom: 2px solid #D9D9D9;
     display: flex;
-    padding: 2rem 2rem 0 2rem;
+    padding: 2rem 2rem 2rem 2rem;
     width: 90%;
     margin-bottom: 1rem;
   }
@@ -74,8 +75,9 @@ body{
     margin: 0;
   }
   .logo-container img {
-    width: 100%;
-    height: auto;
+    width: 8rem;
+    height: 8rem;
+    object-fit: contain;
     background-color: white;
     border-radius: 50%;
   }
@@ -87,6 +89,9 @@ body{
     font-weight: 600;
     font-size: 1.5rem;
     text-transform: capitalize;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   .column1{
     margin-top: 0.4rem;
@@ -94,8 +99,11 @@ body{
     gap: 2rem;
   }
   .binary{
+    width: 20%;
     color: #ff6d05;
     font-size: 1rem;
+    /* word-break:normal; */
+    overflow: hidden;
   }
   .date{
     font-weight: 400;
@@ -390,16 +398,21 @@ body{
     
     .logo-container img {
       width:4.4rem;
+      height:4.4rem;
     }
     .logo1 .logo-container{
       width: 30%;
     }
     .logo1 .column{
       margin: 0;
+      padding-left: 2rem;
       width: 90%;
     }
     .logo1 .column .inc{
       font-size: medium;
+    }
+    .logo1 .column .column1{
+      gap: 0.5rem;
     }
     .logo1 .column .column1 div{
       font-size: small;
