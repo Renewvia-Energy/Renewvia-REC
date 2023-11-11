@@ -7,6 +7,9 @@ const app = Vue.createApp({
             newStates: [],
             cart: [],
             showModal: false,
+            currentPage: 1,
+            itemsPerPage: 1, // Number of items per page
+            pageWindow: 2, // Number of pages to show around the current page
             };
         },
     
@@ -31,6 +34,19 @@ const app = Vue.createApp({
         },
         totalCartValue() {
           return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+        },
+        paginatedData() {
+          const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+          const endIndex = this.currentPage * this.itemsPerPage;
+          return this.carbonAssetsData.slice(startIndex, endIndex);
+        },
+        totalPages() {
+          return Math.ceil(this.carbonAssetsData.length / this.itemsPerPage);
+        },
+        visiblePages() {
+          const pageStart = Math.max(this.currentPage - this.pageWindow, 1);
+          const pageEnd = Math.min(this.currentPage + this.pageWindow, this.totalPages);
+          return Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i);
         },
       },
         methods: {
@@ -136,6 +152,20 @@ const app = Vue.createApp({
           goToCheckout() {
             window.location.href = '/checkout.html';
           },
+          nextPage() {
+            if (this.currentPage < this.totalPages) {
+              this.currentPage++;
+            }
+          },
+          prevPage() {
+            if (this.currentPage > 1) {
+              this.currentPage--;
+            }
+          },
+          jumpToPage(page) {
+            this.currentPage = page;
+          },
+      
         },
 });
 app.mount('#dashboard')
