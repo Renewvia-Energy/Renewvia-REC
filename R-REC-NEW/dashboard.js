@@ -1,4 +1,3 @@
-
 const app = Vue.createApp({
     data() {
         return {
@@ -6,27 +5,36 @@ const app = Vue.createApp({
             allTransactions: [],
             statesToDisplay: ["Virginia R-REC", "Alabama R-REC", "Georgia R-REC", "North Carolina R-REC", "SteelFab"],
             newStates: [],
-            doughnutData: {},
-            chart: null,
-            totalRenewableEnergy: 0,
-            totalCarbonOffsets: 0,
+            cart: [],
+            showModal: false,
             };
         },
     
     mounted() {
         this.statesData();
-    },
-    updated() {
-    // Check if the chart instance exists and destroy it
-    if (this.chart) {
-      this.chart.destroy();
-    }
-    // Render the chart with the new data
-    this.renderChart();
-    },
-
-    methods: {
-        statesData(){
+        // Retrieve cart from session storage on component mount
+        const storedCart = sessionStorage.getItem('cart');
+        if (storedCart) {
+          this.cart = JSON.parse(storedCart);
+        }
+      },
+      computed: {
+        totalItemsInCart() {
+          return this.cart.reduce((total, item) => total + item.quantity, 0);
+        },
+        totalPerAsset() {
+          const totalPerAsset = {};
+          this.cart.forEach(item => {
+            totalPerAsset[item.address] = item.price * item.quantity; // Assuming item.price is the price of the asset
+          });
+          return totalPerAsset;
+        },
+        totalCartValue() {
+          return this.cart.reduce((total, item) => total + item.price * item.quantity, 0);
+        },
+      },
+        methods: {
+          statesData(){
     
           // declear required variables to use on api call
           const API_KEY = "FV7VI88AT9SBQDZU3WYWGPWZNVDUEY9RTW"
@@ -88,52 +96,46 @@ const app = Vue.createApp({
                 }
               }
             }
-            console.log(this.carbonAssetsData)
-            this.calculateToken()
-
             });
-        }, 
-        calculatePercentage(quantity) {
-              // You can calculate the percentage here based on the total quantity
-              if (quantity === 0) {
-                  return 0;
-                  }
-                  const totalQuantity = this.carbonAssetsData.reduce((total, asset) => total + asset.qty, 0);
-                  return ((quantity / totalQuantity) * 100).toExponential(2);      
           },
-
-        calculateToken(){
-          let total = 0
-          for (let asset of this.carbonAssetsData){
-            if (asset.transactions.length > 0){
-              console.log(asset.name)
-              for(let transaction of asset.transactions){
-                let token = transaction.value.slice(0, 4)
-                token = parseInt(token)
-                total = total + token
+          addToCart(asset) {
+            const existingItem = this.cart.find(item => item.address === asset.address);
+            if (existingItem) {
+              existingItem.quantity += 1;
+            } else {
+              asset.quantity = 1;
+              this.cart.push(asset);
+            }
+            sessionStorage.setItem('cart', JSON.stringify(this.cart));
+          },
+          removeFromCart(asset) {
+            const existingItem = this.cart.find(item => item.address === asset.address);
+            if (existingItem) {
+              if (existingItem.quantity > 1) {
+                existingItem.quantity -= 1;
+              } else {
+                const index = this.cart.findIndex(item => item.address === asset.address);
+                this.cart.splice(index, 1);
               }
+              sessionStorage.setItem('cart', JSON.stringify(this.cart));
             }
-          }
-          this.totalRenewableEnergy = total
+          },
+          getQuantity(asset) {
+            const cartItem = this.cart.find(item => item.address === asset.address);
+            return cartItem ? cartItem.quantity : 0;
+          },
+          purchase(){
+            this.showModal = true;
+          },
+          openModal() {
+            this.showModal = true;
+          },
+          closeModal() {
+            this.showModal = false;
+          },
+          goToCheckout() {
+            window.location.href = '/checkout.html';
+          },
         },
-        
-        renderChart() {
-            if (this.$refs.myChart && this.carbonAssetsData && this.carbonAssetsData.length > 0) {
-                const ctx = this.$refs.myChart.getContext('2d');
-            if (ctx) {
-                this.chart = new Chart(ctx, {
-                    type: 'doughnut',
-                    data: this.carbonAssetsData[this.carbonAssetsData.length - 1].chartData,
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                    },
-                });
-            }
-        }
-        },
-    
-      },
 });
-app.mount('#app')
-
+app.mount('#dashboard')

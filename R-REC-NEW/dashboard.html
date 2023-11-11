@@ -7,10 +7,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="dashboard.css">
-    <!-- <link rel="stylesheet" href="index.css"> -->
-
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script defer src="/dashboard.js"></script>
 </head>
-<body>
+<body id="dashboard">
     <header>
         <nav class="nav">
             <div class="logo">
@@ -21,9 +21,9 @@
             </div>
             <div class="hide container " id="info">
                 <ul>
-                    <router-link to="/about">
+                    <a href="#">
                     <li>ABOUT US</li>
-                    </router-link>
+                    </a>
                     <li>WHAT ARE R-RECs</li>
                     <li>PRODUCTS</li>
                     <li class="team">OUR TEAM</li>
@@ -32,15 +32,19 @@
                 </ul>
             </div>        
         </nav>
-        </header>
+    </header>
+
         <div class="cart-container">
             <span class="cart">
                 <h1 class="text">
                     Get started by choosing your R-RECs below
                 </h1>
-                <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">
-                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
-                </svg>
+                <div class="cart-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="white" class="bi bi-cart3" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                    </svg>
+                    <span class="itemsInCart">{{ totalItemsInCart }}</span>
+                </div>
             </span>
         </div>
         <div class="columns">
@@ -117,36 +121,53 @@
                     <input type="checkbox" id="section8" name="section8">
                 </div>
             </div>
-            <div class="cards">
-                <div class="card-row">
-                    <div class="card">
+            <div class="cards" v-if="carbonAssetsData && carbonAssetsData.length > 0">
+                    <div class="card" v-for="asset in carbonAssetsData" :key="asset.id">
                         <div class="section1">
-                            <h3>North Carolina R-REC</h3>
-                            <span>$35.00/REC</span> 
-                            <p>A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)</p>
+                            <h3>{{asset.name}}</h3>
+                            <span>${{asset.price}}.00/REC</span> 
+                            <p>{{asset.description}}</p>
                         </div>
                         <div class="section2">
-                            <h2>$70.00</h2>
-                            <p>
-                                <button>A</button>
-                                <button>A</button>
-                            </p>
+                            <h2 class="totalPerAsset">${{ totalPerAsset[asset.address] || 0 }}</h2>
+                            <div class="buttons">
+                                <div class="first-buttons">
+                                    <button class="reduce" @click="removeFromCart(asset)">-</button>
+                                    <span class="quantity" :id="'quantity-' + asset.id">{{ getQuantity(asset) }}</span>
+                                    <!-- <span name="quantity" id="quantity" >0</span> -->
+                                    <button class="add" @click="addToCart(asset)">+</button>
+                                </div>
+                                <button class="purchase" @click="purchase()">Purchase</button>
+                            </div>
                         </div>
                     </div>
-                    <div class="card">Card 2</div>
-                    <div class="card">Card 3</div>
-                </div>
-    
-                <div class="card-row">
-                    <div class="card">Card 1</div>
-                    <div class="card">Card 2</div>
-                    <div class="card">Card 3</div>
-                </div>
             </div>
         </div>
-    </header>
 
-
-    <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+        <div class="modal" v-if="showModal">
+            <div class="modal-content">
+                <div class="modal-title">
+                    <div>
+                        <span class="close" @click="closeModal">&times;</span>
+                        <h2>Added to cart</h2>
+                    </div>
+                </div>
+                <ul class="cart-list">
+                    <li v-for="item in cart" :key="item.id">
+                        <span>{{ item.name }}</span>
+                        <span>${{ item.price * item.quantity }}</span>   
+                    </li>
+                </ul>
+                <hr>
+                <div class="modal-totals">
+                    <p>{{ totalItemsInCart }} Items in Cart</p>
+                    <p>Subtotal ${{ totalCartValue }}</p>   
+                </div>
+                <div class="modal-buttons">
+                    <button class="continue" @click="closeModal">Continue Shopping</button>
+                    <button class="tocart" @click="goToCheckout">Go to Checkout</button>
+                </div>
+            </div>
+          </div>
 </body>
 </html>
