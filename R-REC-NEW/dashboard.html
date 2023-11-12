@@ -152,14 +152,17 @@
     </div>
 
     <!-- pagination start -->
-    <div v-if="totalPages > 1">
-            <button @click="prevPage">Previous</button>
-            <span>Page {{ currentPage }} of {{ totalPages }}</span>
-            <button @click="nextPage">Next</button>
+    <div class="pagination" v-if="totalPages > 1">
+        <select v-model="currentPage" @change="jumpToPage($event.target.value)">
+          <option v-for="page in visiblePages" :value="page">{{ page }}</option>
+        </select>
+        <span>R-RECs per page</span>
+        <button @click="prevPage">Previous</button>
+        <ul>
+            <li v-for="page in visiblePages" @click="jumpToPage(page)">{{ page }}</li>
+        </ul>
+        <button @click="nextPage">Next</button>
             
-            <select v-model="currentPage" @change="jumpToPage($event.target.value)">
-              <option v-for="page in visiblePages" :value="page">{{ page }}</option>
-            </select>
     </div>
     <!-- pagination end -->
 

@@ -48,6 +48,20 @@ const app = Vue.createApp({
           const pageEnd = Math.min(this.currentPage + this.pageWindow, this.totalPages);
           return Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i);
         },
+        // visiblePages() {
+        //   let pageStart = Math.max(this.currentPage - this.pageWindow, 1);
+        //   let pageEnd = Math.min(this.currentPage + this.pageWindow, this.totalPages);
+    
+        //   // Adjust page start and end to ensure two pages behind and ahead
+        //   if (this.currentPage - this.pageWindow <= 1) {
+        //     pageEnd = Math.min(this.pageWindow * 2 + 1, this.totalPages);
+        //   }
+        //   if (this.currentPage + this.pageWindow >= this.totalPages) {
+        //     pageStart = Math.max(this.totalPages - this.pageWindow * 2, 1);
+        //   }
+    
+        //   return Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i);
+        // },
       },
         methods: {
           statesData(){

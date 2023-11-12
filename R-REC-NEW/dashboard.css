@@ -252,6 +252,41 @@ font-size: 16px;
 line-height: 19px;
 color: #000000;
 }
+
+/* pagination start */
+.pagination{
+  display: flex;
+  align-items: center;
+  align-content: end;
+  /* justify-content: space-around; */
+  /* justify-items: flex-end; */
+}
+.pagination select{
+  box-sizing: border-box;
+width: 96px;
+height: 41px;
+background: #FFFFFF;
+border: 0.5px solid #7A7A7A;
+border-radius: 6px;
+
+}
+.pagination span{
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+}
+.pagination button{
+/* width: 63px; */
+/* height: 22px; */
+font-weight: 400;
+font-size: 16px;
+line-height: 19px;
+color: #F47920;
+border: 0;
+padding: 1rem 1.5rem;
+border-radius: 1rem;
+}
+/* pagination end */
 .modal-totals{
   display: flex;
   justify-content: space-between;
@@ -293,4 +328,5 @@ border: 0;
   text-decoration: none;
   cursor: pointer;
 }
+
 
