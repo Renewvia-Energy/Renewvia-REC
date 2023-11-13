@@ -57,7 +57,12 @@ const app = Vue.createApp({
         paginatedData() {
           const startIndex = (this.currentPage - 1) * this.itemsPerPage;
           const endIndex = this.currentPage * this.itemsPerPage;
-          return this.carbonAssetsData.slice(startIndex, endIndex);
+          let manipulatedData = this.carbonAssetsData
+          if (this.filteredData){
+            manipulatedData = this.filteredData
+          }
+
+          return manipulatedData.slice(startIndex, endIndex);
         },
         totalPages() {
           return Math.ceil(this.carbonAssetsData.length / this.itemsPerPage);
@@ -77,12 +82,16 @@ const app = Vue.createApp({
           if (this.selectedCountries.length > 0 && !this.selectedCountries.includes('All')) {
             filteredData = filteredData.filter(asset => this.selectedCountries.includes(asset.country));
           }
-
-          this.carbonAssetsData = filteredData;
-          console.log(this.carbonAssetsData)
-    
           return filteredData;
         },
+      },
+      watch: {
+        selectedCategories: function () {
+          this.updateFilteredData();
+        },
+        selectedCountries: function () {
+          this.updateFilteredData();
+        }
       },
         methods: {
           statesData(){
@@ -177,6 +186,9 @@ const app = Vue.createApp({
           },
           purchase(){
             this.showModal = true;
+            // let modal = document.getElementsByClassName("modal")
+            // modal.classList.toggle("modal_inactive");
+            // console.log(modal);
           },
           openModal() {
             this.showModal = true;
@@ -200,6 +212,12 @@ const app = Vue.createApp({
           jumpToPage(page) {
             this.currentPage = page;
           },
+          updateFilteredData() {
+            this.$nextTick(() => {
+              // Re-filter the data when the selected categories or countries change
+              this.filteredData;
+            });
+          }
       
         },
 });

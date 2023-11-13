@@ -68,14 +68,13 @@
                 </div>
                 
             </div>
-            <!-- <div class="cards" v-if="carbonAssetsData && carbonAssetsData.length > 0"> -->
                 <div class="cards" v-if="paginatedData && paginatedData.length > 0">
-                    <!-- <div class="card" v-for="asset in carbonAssetsData" :key="asset.id"> -->
                         <div class="card" v-for="asset in paginatedData" :key="asset.id">
-                        <div class="section1">
+                        <div v-if="asset" class="section1">
                             <h3>{{asset.name}}</h3>
                             <span>${{asset.price}}.00/REC</span> 
                             <p>{{asset.description}}</p>
+
                         </div>
                         <div class="section2">
                             <h2 class="totalPerAsset">${{ totalPerAsset[asset.address] || 0 }}</h2>
@@ -91,7 +90,6 @@
                         </div>
                     </div>
                 </div>
-                <h2 v-else>loading...</h2>
     </div>
 
     <!-- pagination start -->
@@ -111,7 +109,7 @@
 
     
     <!-- modal start -->
-    <div class="modal" v-if="showModal">
+    <div class="modal modal_inactive" v-if="showModal">
         <div class="modal-content">
             <div class="modal-title">
                     <div>

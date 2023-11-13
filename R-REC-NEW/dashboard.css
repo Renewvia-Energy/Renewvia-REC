@@ -108,6 +108,7 @@ span .text{
     border-top: 5px;
     border-style: solid;
     border-image: linear-gradient(270deg, #EB6600 0%, #F8D6C8 100%)1;
+    height: fit-content;
 }
 
 .category-heading {
@@ -220,6 +221,12 @@ border: 0;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4); /* Background with some transparency */
 }
+/* .modal_inactive{
+  display: none;
+}
+.modal_active{
+  display: block;
+} */
 
 /* Style the modal content */
 .modal-content {
@@ -268,7 +275,7 @@ color: #000000;
   align-items: center;
   justify-content: flex-end;
   margin:0 4rem;
-  /* margin-bottom: 3rem; */
+  margin-bottom: 3rem;
 }
 .pagination select{
 width: 4rem;

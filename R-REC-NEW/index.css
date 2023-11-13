@@ -15,6 +15,7 @@ body{
     box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
     background-color: white;
     padding: 0 1rem;
+    justify-content: space-between;
   }
   #menuButton{
     display: none;
@@ -46,7 +47,7 @@ body{
     padding: 0.2rem 0.2rem;
     border-radius: 50%;
     margin-right: 0.6rem;
-    color:#FF9B53 ;
+    color:#EB6600 ;
   }
   .global i .g{
     padding: 0 0 0 0;
@@ -117,12 +118,21 @@ body{
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    background: linear-gradient(270deg, #FF9B53 0%, #eb7b2b 100%);
+    background: linear-gradient(270deg, #EB6600 0%, #eb7b2b 100%);
     border-radius: 6px;
     margin-bottom: 2.5rem;
   }
   .my-impact div{
     color: white;
+    width: 50%;
+  }
+  .my-impact .offset{
+    border-right: 1px white solid ;
+  }
+  .my-impact .generation{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
   .my-impact div h1{
     font-weight: 500;
@@ -141,17 +151,6 @@ body{
     font-weight: 400;
     font-size: 1.8rem;
   }
-  .my-impact::before {
-    content: '';
-    border-left: 1px solid #fff; 
-    height: 15%; 
-    position: absolute;
-    top: 16rem;
-    left: 50%; /* Position the line at the center of the container */
-    transform: translateX(-50%); /* Center the line horizontally */
-    z-index: 1;
-  }
-  
   /* end of impact section */
   
   /* tables */
@@ -198,15 +197,53 @@ body{
   .noborders td {
     border:0;
   }
-  .table1 td {
-    padding-left: 0.5rem;
+  .table1 .allassets{
+    background: #fff; 
+    box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+    border-radius: 0.6rem;
+  }
+  .table1 .assets details{
+    display: flex;
+    flex-direction: column;
+  }
+  .table1 .assets details summary{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 1rem;
     border-bottom: 2px solid #ccc;
+  }
+  .table1 .assets details summary span{
+    width: 33%;
+  }
+  .table1 .assets details summary .name{
     font-weight: 300;
     font-size: 1rem;
   }
-  .table1 tr.assets td h1{
-    font-weight: 200;
-    font-size: 1rem;
+  .table1 .assets details summary .qty{
+    text-align: right;
+    font-weight: 300;
+  }
+  .table1 .assets details summary .more{
+    /* display: flex; */
+    color: #EB6600;
+    font-size: 1.2rem;
+    font-weight: 300;
+    text-align: right;
+    /* justify-self: flex-end; */
+  }
+  .table1 .assets details summary .more:hover{
+    cursor: pointer;
+  }
+  .table1 .assets details .transaction span{
+    color: black;
+  }
+  .table1 .assets details .transactions{
+    display: flex;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: flex-start;
+    padding: 1rem 0;
+    border-bottom:1px #ccc solid;
   }
 
   .table2{
@@ -243,7 +280,7 @@ body{
     font-size: 1rem;
   }
   .table2 tr td button{
-    background-color: #FF9B53;
+    background-color: #EB6600;
     border-radius: 0.5rem;
     border: #ccc;
     color: white;
@@ -252,6 +289,7 @@ body{
     padding: 0.5rem;
     margin-right: 0.2rem;
   }
+
   /* tables */
   
   /* chart percentages */
@@ -300,7 +338,7 @@ body{
   align-items: center;
   text-align: center;
   text-transform: capitalize;
-  padding: 0 1rem 0 1rem;
+  /* padding: 0 1rem 0 1rem; */
   }
   
   .retire, .purchase {
@@ -499,14 +537,17 @@ body{
     }
     .pie-chart h1{
       margin-bottom: 1.5rem;
+      text-align: center;
     }
     .pie-chart .chart{
       margin: 1rem 0;
     }
     .pie-chart ul{
       display: flex;
+      flex-wrap: wrap;
       flex-direction: column;
-      width: 40%;
+      align-content: center;
+      width: 90%;
       margin: 1rem 0;
     }
     .pie-chart li{
