@@ -1,6 +1,7 @@
 const app = Vue.createApp({
     data() {
         return {
+            isHidden: true,
             cart: [],
             };
         },
@@ -39,6 +40,9 @@ const app = Vue.createApp({
           getQuantity(asset) {
             const cartItem = this.cart.find(item => item.address === asset.address);
             return cartItem ? cartItem.quantity : 0;
+          },
+          toggleMenu(){
+            this.isHidden = !this.isHidden;
           },
         },
 });

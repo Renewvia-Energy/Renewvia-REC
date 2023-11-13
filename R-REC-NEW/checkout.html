@@ -17,9 +17,9 @@
                      <a href="/">
                      <img src="images/renewvia.webp" alt="renewvia-logo">
                      </a>
-                    <a onclick="toggleMenu()" id="menuButton"><i class="fas fa-bars"></i></a>
+                    <a @click="toggleMenu" id="menuButton"><i class="fas fa-bars"></i></a>
                 </div>
-                <div class="hide container " id="info">
+                <div :class="{ 'hide': isHidden, 'container': !isHidden }" id="info">
                     <ul>
                         <a href="#">
                         <li>ABOUT US</li>

@@ -2,7 +2,7 @@
 const app = Vue.createApp({
     data() {
         return {
-          isHidden: true,
+            isHidden: true,
             carbonAssetsData: [],
             allTransactions: [],
             statesToDisplay: ["Virginia R-REC", "Alabama R-REC", "Georgia R-REC", "North Carolina R-REC", "SteelFab"],

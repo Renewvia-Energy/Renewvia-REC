@@ -19,9 +19,9 @@
                  <a href="/">
                  <img src="images/renewvia.webp" alt="renewvia-logo">
                  </a>
-                <a onclick="toggleMenu()" id="menuButton"><i class="fas fa-bars"></i></a>
+                <a @click="toggleMenu" id="menuButton"><i class="fas fa-bars"></i></a>
             </div>
-            <div class="hide container " id="info">
+            <div :class="{ 'hide': isHidden, 'container': !isHidden }" id="info">
                 <ul>
                     <a href="#">
                     <li>ABOUT US</li>
@@ -53,7 +53,8 @@
             </span>
     </div>
     <div class="columns">
-            <div class="category">
+        <a @click="toggleCategory" id="categoryButton"><i class="fas fa-bars"></i></a>
+            <div :class="{ 'hide category-big': isHiddenCategory, 'category-small': !isHiddenCategory }" id="category">
                 <h2 class="category-heading">Category</h2>
                 <div class="category-section" v-for="category in categories" :key="category.id">
                         <label :for="category.name">{{ category.name }}</label>

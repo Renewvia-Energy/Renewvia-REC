@@ -12,6 +12,7 @@ body{
       box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
       background-color: white;
       padding: 0 1rem;
+      justify-content: space-between;
     }
     #menuButton{
       display: none;
@@ -227,4 +228,32 @@ font-weight: 400;
 font-size: 32px;
 line-height: 38px;
 text-align: right;
+}
+
+@media screen and (max-width:600px) {
+  .nav{
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 0.5rem;
+  }
+  .hide{
+    display: none;
+  }
+  .nav ul{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .nav ul li{
+    margin-bottom: 1rem;
+  }
+  .logo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #menuButton{
+    display: block;
+    /* width: 20%; */
+  }
 }

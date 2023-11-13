@@ -1,6 +1,8 @@
 const app = Vue.createApp({
     data() {
         return {
+            isHidden: true,
+            isHiddenCategory: true,
             carbonAssetsData: [],
             allTransactions: [],
             newStates: [],
@@ -217,7 +219,13 @@ const app = Vue.createApp({
               // Re-filter the data when the selected categories or countries change
               this.filteredData;
             });
-          }
+          },
+          toggleMenu(){
+            this.isHidden = !this.isHidden;
+          },
+          toggleCategory(){
+            this.isHiddenCategory = !this.isHiddenCategory;
+          },
       
         },
 });
