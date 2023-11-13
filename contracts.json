@@ -3,31 +3,31 @@
 		"name": "Renewvia",
 		"country": "United States",
 		"category": "Hydro",
-        "logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
-        "join-date": "2022-02-01",
+         	"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
+        	"join-date": "2022-02-01",
 		"price": 48,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-        "address": "0xF9C289f1C0341fb336224958a885163F5017BC16"
+        	"address": "0xF9C289f1C0341fb336224958a885163F5017BC16"
 	},
 	{
-        "name": "SteelFab",
+       		"name": "SteelFab",
 		"country": "Others",
 		"category": "Wind",
-        "logo": "https://www.steelfab-inc.com/wp-content/uploads/2021/07/steelfab_logo.png",
-        "join-date": "2023-08-01",
+        	"logo": "https://www.steelfab-inc.com/wp-content/uploads/2021/07/steelfab_logo.png",
+        	"join-date": "2023-08-01",
 		"price": 23,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-        "address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
+        	"address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
 	},
 	{
-        "name": "Superpower Africa Fund",
+       		"name": "Superpower Africa Fund",
 		"country": "Kenya",
 		"category": "Geothermal",
-        "logo": "https://www.developmentaid.org/files/organizationLogos/tfe-energy-gmbh-103884.jpg",
-        "join-date": "2023-07-05",
+        	"logo": "https://www.developmentaid.org/files/organizationLogos/tfe-energy-gmbh-103884.jpg",
+       		"join-date": "2023-07-05",
 		"price": 53,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-        "address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10"
+        	"address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10"
     },
 	{
 		"name": "Alabama R-REC",
@@ -47,7 +47,7 @@
 		"symbol": "RREC-CO",
 		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
 		"join-date": "2022-04-07",
-		"price":55 ,
+		"price":55,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
 		"address": "0x8480e85664461471b8fcf058e1c2d31dd2568855"
 	},
@@ -80,7 +80,7 @@
 		"symbol": "RREC-TX",
 		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
 		"join-date": "2022-02-05",
-		"price":59 ,
+		"price":59,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
 		"address": "0x142d6987332009e7356bed4d54749577558bf496"
 	},
@@ -91,7 +91,7 @@
 		"symbol": "RREC-VA",
 		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
 		"join-date": "2022-04-01",
-		"price":44 ,
+		"price":44,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
 		"address": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f"
 	},
