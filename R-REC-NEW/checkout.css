@@ -330,7 +330,7 @@ text-align: right;
   }
   .back-button button{
     font-size: small;
-    font-weight: lighter;
+    font-weight:400px;
     padding: 0 0.2rem;
   }
 }
