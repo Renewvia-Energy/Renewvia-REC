@@ -23,9 +23,10 @@
             </div>
             <div :class="{ 'hide': isHidden, 'container': !isHidden }" id="info">
                 <ul>
-                    <a href="#">
-                    <li>ABOUT US</li>
-                    </a>
+                    <li>
+                        <a href="#">ABOUT US</a>
+                    </li>
+                    
                     <li>WHAT ARE R-RECs</li>
                     <li>PRODUCTS</li>
                     <li class="team">OUR TEAM</li>
@@ -95,7 +96,7 @@
 
     <!-- pagination start -->
     <div class="pagination" v-if="totalPages > 1">
-        <select v-model="currentPage" @change="jumpToPage($event.target.value)" menuPlacement="top" >
+        <select id="pageselect" v-model="currentPage" @change="jumpToPage($event.target.value)" menuPlacement="top" aria-label="Select a page">
           <option v-for="page in visiblePages" :value="page">{{ page }}</option>
         </select>
         <span>R-RECs per page</span>

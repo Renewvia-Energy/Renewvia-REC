@@ -27,15 +27,19 @@ body{
     margin: 0;
     padding: 0.5rem 0;
     margin-left: 1.5rem;
-    color: #ff6d05;
+    color: #F06300;
+  }
+  ul li a{
+    color: inherit;
   }
   .team{
     background: #F5F5F5;
     border-radius: 9px;
     padding: 0.5rem 1rem;
+    color: #EB6100;
   }
   .global{
-    background: #e3823c;
+    background: #F06300;
     border-radius: 9px;
     padding: 0.5rem 1rem; 
     color: white;
@@ -92,7 +96,7 @@ body{
     align-items: center;
 }
 span .text{
-    color: white;
+    color: #4A4A4A;
 }
 .columns{
     display: flex;
@@ -191,7 +195,7 @@ line-height: 28px;
   align-items: center;
 }
 .card .section2 .buttons .purchase{
-  background: #F47920;
+  background: #F06300;
   border-radius: 9px;
   font-weight: 500;
   font-size: 14px;
@@ -299,7 +303,7 @@ font-weight: 400;
 font-size: 16px;
 line-height: 19px;
 background: #F9FAF7;
-color: #F47920;
+color: #F06300;
 border: 0;
 padding: 1rem 1.5rem;
 border-radius: 1rem;
@@ -327,10 +331,10 @@ border-radius: 1rem;
 }
 .pagination ul li:hover{
   cursor: pointer;
-  color: #F47920;
+  color: #F06300;
 }
 .pagination ul .active{
-  color: #F47920;
+  color: #F06300;
 }
 /* pagination end */
 .modal-totals{
@@ -358,7 +362,7 @@ border: 0;
   background: #C1C1C1;
 }
 .modal-buttons .tocart{
-  background: #F47920;
+  background: #F06300;
 }
 
 .close {

@@ -29,7 +29,10 @@ body{
     margin: 0;
     padding: 0.5rem 0;
     margin-left: 1.5rem;
-    color: #ff6d05;
+    color: #F06300;
+  }
+  ul li a{
+    color: inherit;
   }
   .team{
     background: #F5F5F5;
@@ -37,7 +40,7 @@ body{
     padding: 0.5rem 1rem;
   }
   .global{
-    background: #e3823c;
+    background: #F06300;
     border-radius: 9px;
     padding: 0.5rem 1rem; 
     color: white;
@@ -101,7 +104,7 @@ body{
   }
   .binary{
     width: 20%;
-    color: #ff6d05;
+    color: #F06300;
     font-size: 1rem;
     /* word-break:normal; */
     overflow: hidden;
@@ -118,7 +121,7 @@ body{
     display: flex;
     justify-content: space-between;
     padding: 1rem;
-    background: linear-gradient(270deg, #EB6600 0%, #eb7b2b 100%);
+    background: linear-gradient(270deg, #F06300 0%, #eb7b2b 100%);
     border-radius: 6px;
     margin-bottom: 2.5rem;
   }
@@ -225,7 +228,7 @@ body{
   }
   .table1 .assets details summary .more{
     /* display: flex; */
-    color: #EB6600;
+    color: #F06300;
     font-size: 1.2rem;
     font-weight: 300;
     text-align: right;
@@ -280,7 +283,7 @@ body{
     font-size: 1rem;
   }
   .table2 tr td button{
-    background-color: #EB6600;
+    background-color: #F06300;
     border-radius: 0.5rem;
     border: #ccc;
     color: white;
@@ -318,6 +321,7 @@ body{
   }
   .choice {
     padding: 0 0.5rem;
+    color:#D15700;
   }
   
   * {

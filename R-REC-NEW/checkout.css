@@ -26,15 +26,19 @@ body{
       margin: 0;
       padding: 0.5rem 0;
       margin-left: 1.5rem;
-      color: #ff6d05;
+      color: #F06300;
+    }
+    ul li a{
+      color: inherit;
     }
     .team{
       background: #F5F5F5;
       border-radius: 9px;
       padding: 0.5rem 1rem;
+      color: #EB6100;
     }
     .global{
-      background: #e3823c;
+      background: #F06300;
       border-radius: 9px;
       padding: 0.5rem 1rem; 
       color: white;
@@ -66,7 +70,7 @@ body{
     margin: 0;
 }
 .back-button button{
-  background-color: #F47920;
+  background-color: #F06300;
   border-style: none;
   padding: 0.5rem;
   color: white;
@@ -84,7 +88,7 @@ body{
   text-align: center;
   top: -19px;
   right: -22px;
-  background: #F47920;
+  background: #F06300;
   font-weight: 600;
   font-size: 20px;
   line-height: 40px;
@@ -98,7 +102,7 @@ body{
     align-items: center;
 }
 span .text{
-    color: white;
+    color: #4A4A4A;
 }
 .cards{
     width: 80%;
@@ -171,7 +175,7 @@ color: #E90A0A;
   padding: 1rem 1rem 0 1rem;
 }
 .purchase-card .card-buttons .checkout{
-background: #F47920;
+background: #F06300;
 color: #FFFFFF;
 border: 0;
 padding: 0.5rem 2rem ;
@@ -190,7 +194,7 @@ padding: 0.5rem 2rem ;
 font-weight: 400;
 font-size: 20px;
 line-height: 23px;
-color: #FFFFFF;
+color: #4A4A4A;
 }
 .card-totals div{
   display: flex;
