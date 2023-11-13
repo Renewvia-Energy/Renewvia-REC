@@ -55,76 +55,18 @@
     <div class="columns">
             <div class="category">
                 <h2 class="category-heading">Category</h2>
-                <div class="category-section">
-                    <label for="section1">All</label>
-                    <input type="checkbox" id="section1" name="section1">
+                <div class="category-section" v-for="category in categories" :key="category.id">
+                        <label :for="category.name">{{ category.name }}</label>
+                      <input type="checkbox" v-model="selectedCategories" :value="category.name" :id="category.name"/>
                 </div>
-    
-                <div class="category-section">
-                    <label for="section2">Solar</label>
-                    <input type="checkbox" id="section2" name="section2">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section3">Hydro</label>
-                    <input type="checkbox" id="section3" name="section3">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section4">Wind</label>
-                    <input type="checkbox" id="section4" name="section4">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section5">Geothermal</label>
-                    <input type="checkbox" id="section5" name="section5">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section6">Biomass</label>
-                    <input type="checkbox" id="section6" name="section6">
-                </div>
+                
     
                 <h2 class="category-heading">Country</h2>
-                <div class="category-section">
-                    <label for="section1">All</label>
-                    <input type="checkbox" id="section1" name="section1">
+                <div class="category-section" v-for="country in countries" :key="country.id">
+                    <label :for="country.name">{{ country.name }}</label>
+                  <input type="checkbox" v-model="selectedCountries" :value="country.name" :id="country.name"/>
                 </div>
-    
-                <div class="category-section">
-                    <label for="section2">Alabama</label>
-                    <input type="checkbox" id="section2" name="section2">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section3">Colorado</label>
-                    <input type="checkbox" id="section3" name="section3">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section4">Georgia</label>
-                    <input type="checkbox" id="section4" name="section4">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section5">North Carolina</label>
-                    <input type="checkbox" id="section5" name="section5">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section6">Texas</label>
-                    <input type="checkbox" id="section6" name="section6">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section7">Virginia</label>
-                    <input type="checkbox" id="section7" name="section7">
-                </div>
-    
-                <div class="category-section">
-                    <label for="section8">Zambia</label>
-                    <input type="checkbox" id="section8" name="section8">
-                </div>
+                
             </div>
             <!-- <div class="cards" v-if="carbonAssetsData && carbonAssetsData.length > 0"> -->
                 <div class="cards" v-if="paginatedData && paginatedData.length > 0">
@@ -148,20 +90,21 @@
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
+                <h2 v-else>loading...</h2>
     </div>
 
     <!-- pagination start -->
     <div class="pagination" v-if="totalPages > 1">
-        <select v-model="currentPage" @change="jumpToPage($event.target.value)">
+        <select v-model="currentPage" @change="jumpToPage($event.target.value)" menuPlacement="top" >
           <option v-for="page in visiblePages" :value="page">{{ page }}</option>
         </select>
         <span>R-RECs per page</span>
-        <button @click="prevPage">Previous</button>
+        <button class="previous" @click="prevPage">Previous</button>
         <ul>
-            <li v-for="page in visiblePages" @click="jumpToPage(page)">{{ page }}</li>
+            <li :class="{ active: currentPage === page }" v-for="page in visiblePages" @click="jumpToPage(page)">{{ page }}</li>
         </ul>
-        <button @click="nextPage">Next</button>
+        <button class="next" @click="nextPage">Next</button>
             
     </div>
     <!-- pagination end -->
@@ -175,7 +118,7 @@
                         <span class="close" @click="closeModal">&times;</span>
                         <h2>Added to cart</h2>
                     </div>
-                </div>
+            </div>
                 <ul class="cart-list">
                     <li v-for="item in cart" :key="item.id">
                         <span>{{ item.name }}</span>
@@ -192,7 +135,7 @@
                     <button class="tocart" @click="goToCheckout">Go to Checkout</button>
                 </div>
             </div>
-    </div>
+        </div>
     <!-- modal end -->
 
     <!-- main section end -->

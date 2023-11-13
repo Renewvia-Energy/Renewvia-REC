@@ -35,6 +35,7 @@
         </header>
     <div class="cart-container">
         <span class="cart">
+        <a href="dashboard.html" class="back-button"><Button>Continue Shopping</Button></a>
             <h1 class="text">
                 Purchase Cart
             </h1>
@@ -47,22 +48,37 @@
         </span>
     </div>
     <div class="cards">
-        <ul class=" card items-card">
-            <li v-for="item in cart" :key="item.id">
-                <span>{{ item.name }}</span>
+        <ul class=" card items-card" >
+            <li v-if="cart.length > 0" v-for="item in cart" :key="item.id">
+                <span class="item-name">{{ item.name }}</span>
                 <div>
-                    <span>${{ item.price * item.quantity }}</span>   
+                    <span class="item-price">${{ item.price * item.quantity }}</span>   
                     <span class="removeCompletely" @click="removeFromCartCompletely(item)">remove</span>
                 </div>
             </li>
+            <h2 v-else>No item in cart</h2>
         </ul>
     
-        <div class=" card purchase-card">
-            <div class="modal-totals">
-                <p>{{ totalItemsInCart }} Items in Cart</p>
-                <p>Subtotal ${{ totalCartValue }}</p>   
+        <div class="card purchase-card">
+            <div class="card-title">
+                <div>
+                    <h2>Order Summary</h2>
+                </div>
             </div>
-            <div class="modal-buttons">
+            <div class="card-totals">
+                <div class="purchase">
+                    <p>Your Purchase</p>
+                </div>
+                <div class="cart-items">
+                    <p>Items in Cart </p> 
+                    <span>{{ totalItemsInCart }} </span>
+                </div>
+                <div class="total">
+                    <p>Total </p> 
+                    <span>${{ totalCartValue }}</span>  
+                </div>
+            </div>
+            <div class="card-buttons">
                 <button class="checkout" >Checkout Now</button>
             </div>
         </div>

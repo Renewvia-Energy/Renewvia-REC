@@ -3,13 +3,33 @@ const app = Vue.createApp({
         return {
             carbonAssetsData: [],
             allTransactions: [],
-            statesToDisplay: ["Virginia R-REC", "Alabama R-REC", "Georgia R-REC", "North Carolina R-REC", "SteelFab"],
             newStates: [],
             cart: [],
             showModal: false,
             currentPage: 1,
-            itemsPerPage: 1, // Number of items per page
+            itemsPerPage: 6, // Number of items per page
             pageWindow: 2, // Number of pages to show around the current page
+            categories: [
+              { id: 1, name: 'All' },
+              { id: 2, name: 'Solar' },
+              { id: 3, name: 'Hydro' },
+              { id: 4, name: 'Wind' },
+              { id: 5, name: 'Geothermal' },
+              { id: 6, name: 'Biomass' },
+            ],
+            countries: [
+              { id: 1, name: 'All' },
+              { id: 2, name: 'Alabama' },
+              { id: 3, name: 'Colorado' },
+              { id: 4, name: 'Georgia' },
+              { id: 5, name: 'North Carolina' },
+              { id: 6, name: 'Texas' },
+              { id: 7, name: 'Virginia' },
+              { id: 8, name: 'Zambia' }
+            ],
+            // Selected categories and countries
+            selectedCategories: [],
+            selectedCountries: [],
             };
         },
     
@@ -48,20 +68,22 @@ const app = Vue.createApp({
           const pageEnd = Math.min(this.currentPage + this.pageWindow, this.totalPages);
           return Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i);
         },
-        // visiblePages() {
-        //   let pageStart = Math.max(this.currentPage - this.pageWindow, 1);
-        //   let pageEnd = Math.min(this.currentPage + this.pageWindow, this.totalPages);
+        filteredData() {
+          let filteredData = this.carbonAssetsData;
     
-        //   // Adjust page start and end to ensure two pages behind and ahead
-        //   if (this.currentPage - this.pageWindow <= 1) {
-        //     pageEnd = Math.min(this.pageWindow * 2 + 1, this.totalPages);
-        //   }
-        //   if (this.currentPage + this.pageWindow >= this.totalPages) {
-        //     pageStart = Math.max(this.totalPages - this.pageWindow * 2, 1);
-        //   }
+          if (this.selectedCategories.length > 0 && !this.selectedCategories.includes('All')) {
+            filteredData = filteredData.filter(asset => this.selectedCategories.includes(asset.category));
+          }
     
-        //   return Array.from({ length: pageEnd - pageStart + 1 }, (_, i) => pageStart + i);
-        // },
+          if (this.selectedCountries.length > 0 && !this.selectedCountries.includes('All')) {
+            filteredData = filteredData.filter(asset => this.selectedCountries.includes(asset.country));
+          }
+
+          this.carbonAssetsData = filteredData;
+          console.log(this.carbonAssetsData)
+    
+          return filteredData;
+        },
       },
         methods: {
           statesData(){
@@ -87,7 +109,7 @@ const app = Vue.createApp({
               }
               // if no adress is passed on the url return all the states (filter by statesToDisplay list)
               if (!stateAddress){
-                        this.carbonAssetsData = allContractsData.filter((asset)=>this.statesToDisplay.includes(asset.name));
+                        this.carbonAssetsData = allContractsData
               } 
     
                 // get token quantity

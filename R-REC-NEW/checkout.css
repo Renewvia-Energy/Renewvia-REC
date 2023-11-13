@@ -64,6 +64,14 @@ body{
     width: 100%;
     margin: 0;
 }
+.back-button button{
+  background-color: #F47920;
+  border-style: none;
+  padding: 0.5rem;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
 .cart-container .cart-icon{
   position: relative;
 }
@@ -101,7 +109,6 @@ span .text{
 .card {
     display: flex;
     flex-direction: column;
-    padding: 20px;
     background-color: white;
     border-radius: 0.5rem;
     margin-top: 2rem;
@@ -111,17 +118,32 @@ span .text{
 .items-card{
     width: 60%;
     padding: 1rem 1.2rem  0 1.2rem;
+    justify-content: flex-start;
+    height: fit-content;
+
 }
 .items-card li{
     display: flex;
   justify-content: space-between;
   margin: 0;
   border-bottom:1px #D9D9D9 solid ;
+  padding: 2rem;
+}
+.items-card li .item-name{
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
 }
 .items-card li div{
     width: 25%;
     display: flex;
     justify-content: space-around;
+}
+.items-card li div .item-price{
+font-weight: 600;
+font-size: 20px;
+line-height: 23px;
+text-align: right;
 }
 .items-card li span{
     font-weight: 400;
@@ -137,11 +159,72 @@ line-height: 16px;
 text-decoration-line: underline;
 color: #E90A0A;
 }
-.cards .purchase-card{
+.items-card .removeCompletely:hover{
+  cursor: pointer;
 }
-.purchase-card .modal-buttons .checkout{
+.cards .purchase-card{
+  height: 280px;
+}
+.purchase-card .card-buttons{
+  padding: 1rem 1rem 0 1rem;
+}
+.purchase-card .card-buttons .checkout{
 background: #F47920;
 color: #FFFFFF;
 border: 0;
 padding: 0.5rem 2rem ;
+}
+.purchase-card .card-buttons .checkout:hover{
+  cursor: pointer;
+}
+.card-title{
+  background: #C1C1C1;
+  border-radius: 0px;
+}
+.card-title div{
+  padding: 0 20px;
+}
+.card-title div h2{
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+color: #FFFFFF;
+}
+.card-totals {
+}
+.card-totals div{
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+.card-totals .cart-items{
+  padding: 0 1rem;
+  border-bottom: 1px #D9D9D9 solid;
+}
+.card-total p{
+font-weight: 400;
+font-size: 16px;
+line-height: 17px;
+}
+.card-totals .purchase{
+  padding:0 1rem;
+}
+.card-totals .purchase p{
+  padding: 0;
+  margin-bottom: 0;
+font-weight: 600;
+font-size: 16px;
+line-height: 17px;
+align-items: center;
+}
+.card-totals .total{
+  padding:10px 1rem 0 1rem;
+}
+.total span{
+font-weight: 400;
+font-size: 32px;
+line-height: 38px;
+text-align: right;
 }
