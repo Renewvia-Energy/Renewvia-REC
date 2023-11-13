@@ -375,6 +375,15 @@ border: 0;
   cursor: pointer;
 }
 
+@media screen and (750px <= width <= 820px) {
+  .columns{
+    margin: 0;
+  }
+  .card{
+    width: 40%;
+  }
+}
+
 @media screen and (max-width:600px) {
   .nav{
     display: flex;
@@ -444,7 +453,8 @@ border: 0;
     justify-content: space-between;
   }
   .card .buttons .first-buttons{
-    justify-content: space-evenly;
+    justify-content: space-around;
+    width: 100%;
   }
   .pagination{
     justify-content: center;
@@ -459,5 +469,30 @@ border: 0;
     width: 100px;
   }
 }
+
+@media screen and (max-width:330px){
+  .card .section2 .buttons .purchase{
+    padding: 0.4rem 0.4rem;
+  }
+  .pagination{
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 1rem;
+  }
+  .pagination select{
+    margin: 0;
+  }
+  .pagination .previous{
+    margin: 0;
+  }
+  .pagination ul{
+    margin: 0;
+  }
+  .pagination .next{
+    margin: 0;
+  }
+}
+
+
 
 

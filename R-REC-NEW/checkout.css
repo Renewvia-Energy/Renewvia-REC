@@ -134,9 +134,10 @@ span .text{
 font-weight: 400;
 font-size: 20px;
 line-height: 23px;
+width: 45%;
 }
 .items-card li div{
-    width: 25%;
+    width: 50%;
     display: flex;
     justify-content: space-around;
 }
@@ -191,8 +192,6 @@ font-size: 20px;
 line-height: 23px;
 color: #FFFFFF;
 }
-.card-totals {
-}
 .card-totals div{
   display: flex;
   justify-content: space-between;
@@ -230,6 +229,17 @@ line-height: 38px;
 text-align: right;
 }
 
+@media screen and (750px <= width <= 820px) {
+  .items-card li .item-name{
+    width: 50%;
+    font-size: medium;
+  }
+  .items-card li div{
+    width: 50%;
+    justify-content: space-between;
+  }
+}
+
 @media screen and (max-width:600px) {
   .nav{
     display: flex;
@@ -255,5 +265,72 @@ text-align: right;
   #menuButton{
     display: block;
     /* width: 20%; */
+  }
+  .cards{
+    display: flex;
+    flex-direction: column;
+  }
+  .card{
+    width: 90%;
+  }
+  .items-card li{
+    padding: 2rem 0;
+  }
+  .items-card li .item-name{
+    font-size: medium;
+    font-weight: 400;
+    width: 40%;
+  }
+  .items-card li div{
+    width: 50%;
+    justify-content: space-between;
+
+  }
+  .purchase-card{
+    width: 100%;
+  }
+  .card-buttons{
+    justify-content: center;
+    padding: 0;
+    margin: 0 auto;
+  }
+  .cart{
+    margin: 0;
+    padding: 1rem 0;
+    justify-content: space-evenly;
+  }
+  .cart h1{
+    font-size: 1rem;
+  }
+  .cart-icon{
+    size: 0.5rem;
+  }
+}
+
+@media screen and (max-width:380px){
+  .cart{
+    margin: 0;
+    padding: 0.4rem 0;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .cart h1{
+    font-size: small;
+  }
+  .cart-container .itemsInCart {
+    font-size: medium;
+    width: 20px;
+    height: 20px;
+    top: -6px;
+    right: -10px;
+    text-align: center;
+    position: absolute;
+    line-height: 20px;
+  }
+  .back-button button{
+    font-size: small;
+    font-weight: lighter;
+    padding: 0 0.2rem;
   }
 }
