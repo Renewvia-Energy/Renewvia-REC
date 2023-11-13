@@ -19,13 +19,12 @@ const app = Vue.createApp({
             ],
             countries: [
               { id: 1, name: 'All' },
-              { id: 2, name: 'Alabama' },
-              { id: 3, name: 'Colorado' },
-              { id: 4, name: 'Georgia' },
-              { id: 5, name: 'North Carolina' },
-              { id: 6, name: 'Texas' },
-              { id: 7, name: 'Virginia' },
-              { id: 8, name: 'Zambia' }
+              { id: 2, name: 'Kenya' },
+              { id: 3, name: 'Nigeria' },
+              { id: 4, name: 'Uganda' },
+              { id: 5, name: 'United States' },
+              { id: 6, name: 'Zambia' },
+              { id: 7, name: 'Others' },
             ],
             // Selected categories and countries
             selectedCategories: [],
