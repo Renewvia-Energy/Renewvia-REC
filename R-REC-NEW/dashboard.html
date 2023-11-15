@@ -8,10 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="dashboard.css">
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
     <script defer src="https://unpkg.com/@vbarbarosh/vue-pager@1.0.2/dist/vue-pager.js"></script>
     <script defer src="/dashboard.js"></script>
 </head>
-<body id="dashboard">
+<body id="dashboard" v-cloak>
     <!-- navbar start -->
     <header>
         <nav class="nav">
@@ -40,7 +45,7 @@
 
     <!-- main section start -->
 
-    <div class="cart-container">
+    <div class="cart-container" v-cloak>
             <span class="cart">
                 <h1 class="text">
                     Get started by choosing your R-RECs below
@@ -53,7 +58,7 @@
                 </div>
             </span>
     </div>
-    <div class="columns">
+    <div class="columns" v-cloak>
         <a @click="toggleCategory" id="categoryButton"><i class="fas fa-bars"></i></a>
             <div :class="{ 'hide category-big': isHiddenCategory, 'category-small': !isHiddenCategory }" id="category">
                 <h2 class="category-heading">Category</h2>
@@ -94,7 +99,7 @@
     </div>
 
     <!-- pagination start -->
-    <div class="pagination" v-if="totalPages > 1">
+    <div class="pagination" v-if="totalPages > 1" v-cloak>
         <select id="pageselect" v-model="currentPage" @change="jumpToPage($event.target.value)" menuPlacement="top" aria-label="Select a page">
           <option v-for="page in visiblePages" :value="page">{{ page }}</option>
         </select>
@@ -110,7 +115,7 @@
 
     
     <!-- modal start -->
-    <div class="modal modal_inactive" v-if="showModal">
+    <div class="modal modal_inactive" v-if="showModal" v-cloak>
         <div class="modal-content">
             <div class="modal-title">
                     <div>

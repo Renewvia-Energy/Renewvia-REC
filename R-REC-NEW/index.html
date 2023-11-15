@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="index.css">
     <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
     <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="main.js"></script>
 
@@ -39,7 +44,7 @@
 
     <!-- section 2  -->
     <div>
-        <div class="logo1" v-if="carbonAssetsData && carbonAssetsData.length == 1">
+        <div class="logo1" v-if="carbonAssetsData && carbonAssetsData.length == 1" v-cloak>
             <div class="logo-container">
                 <img :src="carbonAssetsData[0].logo" alt="company-logo">
             </div>
@@ -51,7 +56,7 @@
                 </div>
             </div>
         </div>
-            <div class="logo1" v-else>
+            <div class="logo1" v-else v-cloak>
                 <div class="logo-container">
                     <img src="https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png" alt="company-logo">
                 </div>
@@ -67,7 +72,7 @@
     <!-- end section 2 -->
     
     <!-- impact section -->
-    <div class="impact">
+    <div class="impact" v-cloak>
         <div class="my-impact">
             <div class="offset">
                 <div class="impact-icon">
@@ -89,7 +94,7 @@
     <!-- end impact section -->
 
     <!-- tables -->
-    <div class="tables">
+    <div class="tables" v-cloak>
         <div class="two-tables">
             <div class="table-column">
                 <div class="table1" v-if="carbonAssetsData && carbonAssetsData.length > 0" >
