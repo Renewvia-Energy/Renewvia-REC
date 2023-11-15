@@ -188,9 +188,6 @@ const app = Vue.createApp({
           },
           purchase(){
             this.showModal = true;
-            // let modal = document.getElementsByClassName("modal")
-            // modal.classList.toggle("modal_inactive");
-            // console.log(modal);
           },
           openModal() {
             this.showModal = true;

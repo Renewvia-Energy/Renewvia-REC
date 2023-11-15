@@ -149,6 +149,10 @@ span .text{
     font-weight: 600;
     font-size: 0.85rem;
 }
+
+input[type="checkbox" i]{
+  accent-color: #F06300;
+}
 .cards{
     /* width: 100%; */
     display: flex;

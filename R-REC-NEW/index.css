@@ -1,7 +1,6 @@
 body{
     background-color: #F9FAF7;
     font-family: 'Roboto', sans-serif;
-    /* margin: 0; */
   }
  
   
@@ -106,7 +105,6 @@ body{
     width: 20%;
     color: #F06300;
     font-size: 1rem;
-    /* word-break:normal; */
     overflow: hidden;
   }
   .date{
@@ -148,7 +146,6 @@ body{
   }
   .my-impact i{
   margin: 1rem 0 0 0.5rem;
-  /* size: 1rem; */
   }
   .my-impact div p{
     font-weight: 400;
@@ -195,7 +192,6 @@ body{
     box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
     padding: 0.4rem 1rem;
     border-radius: 0.6rem;
-    /* width: 50%; */
   }
   .noborders td {
     border:0;
@@ -227,12 +223,10 @@ body{
     font-weight: 300;
   }
   .table1 .assets details summary .more{
-    /* display: flex; */
     color: #F06300;
     font-size: 1.2rem;
     font-weight: 300;
     text-align: right;
-    /* justify-self: flex-end; */
   }
   .table1 .assets details summary .more:hover{
     cursor: pointer;
@@ -278,7 +272,6 @@ body{
   .table2 td {
     padding: 0.5rem 0.7rem;
     border-bottom: 2px solid #ccc;
-    /* border: 2px solid #ccc; */
     font-weight: 300;
     font-size: 1rem;
   }
@@ -298,19 +291,18 @@ body{
   /* chart percentages */
   .key {
     width: 100%;
-    float: right;
-    list-style: none;
     display: flex;
     flex-direction: column;
-    border-collapse: separate;
-    > li {
-      display: table-row;
-      > * {
-        display: table-cell;
-        border-bottom: 12px solid rgb(251, 250, 250);
-        background-color: rgb(238, 234, 234);
-      }
-    }
+  }
+  
+  .key li {
+    display: table-row;
+  }
+  
+  .key li > * {
+    display: table-cell;
+    border-bottom: 12px solid rgb(251, 250, 250);
+    background-color: rgb(238, 234, 234);
   }
   
   .percent {
@@ -342,7 +334,6 @@ body{
   align-items: center;
   text-align: center;
   text-transform: capitalize;
-  /* padding: 0 1rem 0 1rem; */
   }
   
   .retire, .purchase {
@@ -350,17 +341,14 @@ body{
   font-weight: bold;
   }
   .retire{
-  /* background: #e3823c; */
   outline: 0.2rem solid #f46f11;
   border-radius: 0.7rem;
-  /* color: #fff; */
   font-size: medium;
   text-transform: capitalize;
   padding: 0.5rem 0;
   width: 30%;
   }
   .purchase{
-  /* background: #F5F5F5; */
   outline: 0.2rem solid rgb(218, 148, 68);
   border-radius: 0.7rem;
   font-size: medium;
@@ -396,7 +384,6 @@ body{
   /* tablet */
   @media screen and (max-width:600px) {
     *{
-      /* margin: 0; */
       padding: 0;
       box-sizing: border-box;
     }
@@ -427,7 +414,6 @@ body{
     }
     #menuButton{
       display: block;
-      /* width: 20%; */
     }
   
     .logo1{

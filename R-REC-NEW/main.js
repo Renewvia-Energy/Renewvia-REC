@@ -95,7 +95,7 @@ const app = Vue.createApp({
             });
         }, 
         calculatePercentage(quantity) {
-              // You can calculate the percentage here based on the total quantity
+              // Calculate the percentage here based on the total quantity
               if (quantity === 0) {
                   return 0;
                   }

@@ -306,9 +306,6 @@ text-align: right;
   .cart h1{
     font-size: 1rem;
   }
-  .cart-icon{
-    size: 0.5rem;
-  }
 }
 
 @media screen and (max-width:380px){
@@ -334,7 +331,7 @@ text-align: right;
   }
   .back-button button{
     font-size: small;
-    font-weight:400px;
+    font-weight:400;
     padding: 0 0.2rem;
   }
 }

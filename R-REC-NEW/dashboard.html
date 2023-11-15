@@ -84,7 +84,6 @@
                                 <div class="first-buttons">
                                     <button class="reduce" @click="removeFromCart(asset)">-</button>
                                     <span class="quantity" :id="'quantity-' + asset.id">{{ getQuantity(asset) }}</span>
-                                    <!-- <span name="quantity" id="quantity" >0</span> -->
                                     <button class="add" @click="addToCart(asset)">+</button>
                                 </div>
                                 <button class="purchase" @click="purchase()">Purchase</button>
