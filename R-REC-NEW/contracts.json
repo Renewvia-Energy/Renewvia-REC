@@ -4,7 +4,7 @@
 		"category": "Biomass",
 		"price": 37,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
+    		"company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
 		"address": "0x7cafd97da50fc8a7d8ed45749a29ad6a64bffaf1"
 	},
 	{
@@ -12,7 +12,7 @@
 		"category": "Solar",
 		"price":55,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+    		"company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 		"address": "0x8480e85664461471b8fcf058e1c2d31dd2568855"
 	},
 	{
@@ -20,7 +20,7 @@
 		"category": "Hydro",
 		"price": 47,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10",
+    		"company_address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10",
 		"address": "0x1b729ccf7f7b767d0d070747fd3a3fa8ab5b9a45"
 	},
 	{
@@ -28,7 +28,7 @@
 		"category": "Wind",
 		"price": 66,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
+    		"company_address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
 		"address": "0xd035ed03bee3dd3448184b6f8477a44fcd47228a"
 	},
 	{
@@ -36,7 +36,7 @@
 		"category": "Geothermal",
 		"price":59,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
+    		"company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
 		"address": "0x142d6987332009e7356bed4d54749577558bf496"
 	},
 	{
@@ -44,7 +44,7 @@
 		"category": "Geothermal",
 		"price":44,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+    		"company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 		"address": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f"
 	},
 	{
@@ -52,7 +52,7 @@
 		"category": "Biomass",
 		"price": 45,
 		"description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company-address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10",
+    		"company_address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10",
 		"address": "0x77814c739d9c41daba5630651322d486d258d428"
 	}
 ]
