@@ -16,5 +16,11 @@
         "logo": "https://www.developmentaid.org/files/organizationLogos/tfe-energy-gmbh-103884.jpg",
         "join-date": "2023-07-05",
         "address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10"
+    },
+    {
+        "name": "Sonic Automotive",
+        "logo": "https://www.iaawg.com/images/default-source/logos/sonic-automotive_logo.png?sfvrsn=69850009_3",
+        "join-date": "2023-08-22",
+        "address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393"
     }
 ]
