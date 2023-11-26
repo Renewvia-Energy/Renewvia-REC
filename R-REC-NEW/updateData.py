@@ -7,7 +7,7 @@ import os
 
 # keys to use in the Api call
 API_KEY = "FV7VI88AT9SBQDZU3WYWGPWZNVDUEY9RTW"
-WALLET_ADDR = "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
+# WALLET_ADDR = "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
 
 # get keys from environment variables
 # set environment variable  < export API_KEY="your key">
@@ -20,20 +20,28 @@ WALLET_ADDR = "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
 
 # url to get all contracts from github
 contractsUrl = 'https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/contracts.json'
+walletsUrl = 'https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/companies.json'
 
 print('Getting data from github ...')
+
+# get all the companies(wallets)
+response = requests.get(walletsUrl)
+allwallets = response.json()
 
 # use requests module to send get request and get json data from github contracts.json file
 response = requests.get(contractsUrl)
 allContracts = response.json()
 
 # transaction url for api
-TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={WALLET_ADDR}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
-# TRANSACTION_URL = "https://bscscan.com/address/0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
 
 print('Retrieving Transactions from API ...')
-response = requests.get(TRANSACTION_URL)
-allTransactions = response.json()['result']
+allTransactions = []
+for wallet  in allwallets:
+    TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={wallet['address']}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
+    response = requests.get(TRANSACTION_URL)
+    transPerwallet = (response.json()['result'])
+    for trans in transPerwallet:
+        allTransactions.append(trans)
 
 print('Sorting transactions per contact ...')
 for transaction in allTransactions:
@@ -45,7 +53,7 @@ for transaction in allTransactions:
 
 print('Setting the QTY value ...')
 for contract in allContracts:
-    QTY_URL = f"https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress={contract['address']}&address={WALLET_ADDR}&tag=latest&apikey={API_KEY}"
+    QTY_URL = f"https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress={contract['address']}&address={contract['company_address']}&tag=latest&apikey={API_KEY}"
 
     response = requests.get(QTY_URL)
     data = response.json()
