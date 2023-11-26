@@ -22,7 +22,7 @@ const app = Vue.createApp({
   },
   methods: {
     statesData() {
-      const companyAddress = window.location.href.split("?")[1];
+      const walletAddress = window.location.href.split("?")[1];
       const contracts_url =
         "https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/contracts.json";
       const companies_url =
@@ -39,23 +39,23 @@ const app = Vue.createApp({
           }
 
           // filter the contracts if company address is passed in the url
-          if (companyAddress) {
+          if (walletAddress) {
             this.carbonAssetsData = allContractsData.filter(
-              (asset) => asset.company_address === companyAddress
+              (asset) => asset.company_address === walletAddress
             );
             // getting company data
             fetch(companies_url)
               .then((allCompaniesResp) => allCompaniesResp.json())
               .then((allCompanyData) => {
                 for (let i = 0; i < allCompanyData.length; i++) {
-                  if (allCompanyData[i].address.toLowerCase() === companyAddress) {
+                  if (allCompanyData[i].address === walletAddress) {
                     this.companyData.push(allCompanyData[i]);
                   }
                 }
               });
           }
           // if no company address is passed on the url return all the contracts
-          if (!companyAddress) {
+          if (!walletAddress) {
             this.carbonAssetsData = allContractsData;
           }
 
