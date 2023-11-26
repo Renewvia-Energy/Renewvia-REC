@@ -5,7 +5,7 @@ import requests
 import json
 import os
 
-# kets to use in the Api call
+# keys to use in the Api call
 API_KEY = "FV7VI88AT9SBQDZU3WYWGPWZNVDUEY9RTW"
 WALLET_ADDR = "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
 
@@ -29,6 +29,7 @@ allContracts = response.json()
 
 # transaction url for api
 TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={WALLET_ADDR}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
+# TRANSACTION_URL = "https://bscscan.com/address/0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
 
 print('Retrieving Transactions from API ...')
 response = requests.get(TRANSACTION_URL)
@@ -68,7 +69,7 @@ print('contracts.json file updated')
 
 print('Pushing the contract.json file to github ...')
 # push contracts.json to git
-# os.system("git add contracts.json")
-# os.system("git commit -m 'updated contracts.json'")
-# os.system("git push")
-print ('Done')
+os.system("git add contracts.json")
+os.system("git commit -m 'updated contracts.json'")
+os.system("git push")
+# print ('Done')

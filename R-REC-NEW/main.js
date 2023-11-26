@@ -48,7 +48,7 @@ const app = Vue.createApp({
               .then((allCompaniesResp) => allCompaniesResp.json())
               .then((allCompanyData) => {
                 for (let i = 0; i < allCompanyData.length; i++) {
-                  if (allCompanyData[i].address === companyAddress) {
+                  if (allCompanyData[i].address.toLowerCase() === companyAddress) {
                     this.companyData.push(allCompanyData[i]);
                   }
                 }
