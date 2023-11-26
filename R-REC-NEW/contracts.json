@@ -1,1 +1,66 @@
-[{"name": "Virginia R-REC", "qty": 3442, "transactions": [{"blockNumber": "30673818", "timeStamp": "1691499257", "hash": "0x422e63e7ac4630a319fdf50cad30b2f0d769d137598c52d8f6c7660a7baa6e37", "nonce": "11", "blockHash": "0x1206256f72ed0a85b6e9dbf57a37931c1f5be94455f7e81c0e7e9a10c3611834", "from": "0xf9c289f1c0341fb336224958a885163f5017bc16", "contractAddress": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f", "to": "0x9db94e89db9798544494a71c01e3552d6ade79be", "value": "3026000000000000000000", "tokenName": "RenewviaREC-Virginia", "tokenSymbol": "RREC-VA", "tokenDecimal": "18", "transactionIndex": "88", "gas": "79219", "gasPrice": "3000000000", "gasUsed": "37813", "cumulativeGasUsed": "9995158", "input": "deprecated", "confirmations": "3164246"}, {"blockNumber": "30674284", "timeStamp": "1691500655", "hash": "0x30f6542fc4721464fb69c93f92d9fb6d2802c267b2437470fc539462ed6b800a", "nonce": "12", "blockHash": "0xd778fe5db6f4843fb200c44a903d6f40095d327e9755aa6a005e4aacb02e364a", "from": "0x0000000000000000000000000000000000000000", "contractAddress": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f", "to": "0x9db94e89db9798544494a71c01e3552d6ade79be", "value": "282000000000000000000", "tokenName": "RenewviaREC-Virginia", "tokenSymbol": "RREC-VA", "tokenDecimal": "18", "transactionIndex": "87", "gas": "39179", "gasPrice": "3000000000", "gasUsed": "39179", "cumulativeGasUsed": "8772064", "input": "deprecated", "confirmations": "3163780"}, {"blockNumber": "32563449", "timeStamp": "1697188204", "hash": "0x546c5fe59f1d6a023b820d76414c015a4ac37f7fa357a03848326c83fdcab30b", "nonce": "31", "blockHash": "0x2e4658e8d9072adfb152bd280e620a34a86b332bf0240948afef182568caea41", "from": "0x0000000000000000000000000000000000000000", "contractAddress": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f", "to": "0x9db94e89db9798544494a71c01e3552d6ade79be", "value": "134000000000000000000", "tokenName": "RenewviaREC-Virginia", "tokenSymbol": "RREC-VA", "tokenDecimal": "18", "transactionIndex": "76", "gas": "38167", "gasPrice": "3000000000", "gasUsed": "38167", "cumulativeGasUsed": "6642343", "input": "deprecated", "confirmations": "1274615"}, {"blockNumber": "30673818", "timeStamp": "1691499257", "hash": "0x422e63e7ac4630a319fdf50cad30b2f0d769d137598c52d8f6c7660a7baa6e37", "nonce": "11", "blockHash": "0x1206256f72ed0a85b6e9dbf57a37931c1f5be94455f7e81c0e7e9a10c3611834", "from": "0xf9c289f1c0341fb336224958a885163f5017bc16", "contractAddress": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f", "to": "0x9db94e89db9798544494a71c01e3552d6ade79be", "value": "3026000000000000000000", "tokenName": "RenewviaREC-Virginia", "tokenSymbol": "RREC-VA", "tokenDecimal": "18", "transactionIndex": "88", "gas": "79219", "gasPrice": "3000000000", "gasUsed": "37813", "cumulativeGasUsed": "9995158", "input": "deprecated", "confirmations": "3164537"}, {"blockNumber": "30674284", "timeStamp": "1691500655", "hash": "0x30f6542fc4721464fb69c93f92d9fb6d2802c267b2437470fc539462ed6b800a", "nonce": "12", "blockHash": "0xd778fe5db6f4843fb200c44a903d6f40095d327e9755aa6a005e4aacb02e364a", "from": "0x0000000000000000000000000000000000000000", "contractAddress": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f", "to": "0x9db94e89db9798544494a71c01e3552d6ade79be", "value": "282000000000000000000", "tokenName": "RenewviaREC-Virginia", "tokenSymbol": "RREC-VA", "tokenDecimal": "18", "transactionIndex": "87", "gas": "39179", "gasPrice": "3000000000", "gasUsed": "39179", "cumulativeGasUsed": "8772064", "input": "deprecated", "confirmations": "3164071"}, {"blockNumber": "32563449", "timeStamp": "1697188204", "hash": "0x546c5fe59f1d6a023b820d76414c015a4ac37f7fa357a03848326c83fdcab30b", "nonce": "31", "blockHash": "0x2e4658e8d9072adfb152bd280e620a34a86b332bf0240948afef182568caea41", "from": "0x0000000000000000000000000000000000000000", "contractAddress": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f", "to": "0x9db94e89db9798544494a71c01e3552d6ade79be", "value": "134000000000000000000", "tokenName": "RenewviaREC-Virginia", "tokenSymbol": "RREC-VA", "tokenDecimal": "18", "transactionIndex": "76", "gas": "38167", "gasPrice": "3000000000", "gasUsed": "38167", "cumulativeGasUsed": "6642343", "input": "deprecated", "confirmations": "1274906"}], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16", "address": "0x7c5f877ec67a8cf791bfc6dbafe90daedce9e23f"}, {"name": "R-REC", "qty": 0, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16", "address": "0x5c57dBd3c529Fe0efE677072c6D822124B4b4305"}, {"name": "Virginia R-REC", "qty": 3442, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE", "address": "0x7c5f877Ec67a8CF791bFc6dBAfe90DaeDCe9e23F"}, {"name": "Alabama R-REC", "qty": 4333, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE", "address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1"}, {"name": "Georgia R-REC", "qty": 2335, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE", "address": "0x1B729CCF7F7B767D0d070747FD3a3FA8aB5B9a45"}, {"name": "North Carolina R-REC", "qty": 3109, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE", "address": "0xd035Ed03bEE3dd3448184B6f8477a44FCD47228A"}, {"name": "Zambia R-REC", "qty": 0, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0x504BC5477bA9beA5c4e65396Cc43a7D9A7dbDa10", "address": "0x77814C739D9c41dABa5630651322D486d258d428"}, {"name": "Texas R-REC", "qty": 0, "transactions": [], "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)", "company_address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393", "address": "0x142D6987332009E7356Bed4d54749577558bf496"}]
+[
+  {
+    "name": "Virginia R-REC",
+    "qty": 3442,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
+    "address": "0x11491ac2583fe5a4D8e909Fff7DDea8DEB5C611e"
+  },
+  {
+    "name": "R-REC",
+    "qty": 0,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
+    "address": "0x5c57dBd3c529Fe0efE677072c6D822124B4b4305"
+  },
+  {
+    "name": "Virginia R-REC",
+    "qty": 3442,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+    "address": "0x7c5f877Ec67a8CF791bFc6dBAfe90DaeDCe9e23F"
+  },
+  {
+    "name": "Alabama R-REC",
+    "qty": 4333,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+    "address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1"
+  },
+  {
+    "name": "Georgia R-REC",
+    "qty": 2335,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+    "address": "0x1B729CCF7F7B767D0d070747FD3a3FA8aB5B9a45"
+  },
+  {
+    "name": "North Carolina R-REC",
+    "qty": 3109,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+    "address": "0xd035Ed03bEE3dd3448184B6f8477a44FCD47228A"
+  },
+  {
+    "name": "Zambia R-REC",
+    "qty": 0,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0x504BC5477bA9beA5c4e65396Cc43a7D9A7dbDa10",
+    "address": "0x77814C739D9c41dABa5630651322D486d258d428"
+  },
+  {
+    "name": "Texas R-REC",
+    "qty": 0,
+    "transactions": [],
+    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
+    "company_address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
+    "address": "0x142D6987332009E7356Bed4d54749577558bf496"
+  }
+]
