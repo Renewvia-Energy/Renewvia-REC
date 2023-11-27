@@ -115,7 +115,9 @@
                                     <span class="more">More...</span>
                                 </summary>
                                 <div class="more-details">
-                                    <span class="image"><img src="" alt="">{{ asset.img }}</span>
+                                    <span class="image"><img
+                                            :src="asset.img"
+                                            :alt="Image"></span>
                                     <span class="details">
                                         <p>{{ asset.description}}</p>
                                     </span>
