@@ -79,19 +79,20 @@
 
     <!-- impact section -->
     <div class="impact" v-cloak>
+        <h1>My Impact</h1>
         <div class="my-impact">
             <div class="offset">
                 <div class="impact-icon">
                     <h1>Total amount of carbon offset</h1>
-                    <i class="fas fa-leaf"></i>
+                    <i class="fas fa-tree tree-icon"></i>
                 </div>
 
-                <p>{{ totalCarbonOffsets }} </p>
+                <p>{{ totalCarbonOffsets }} tCO2e</p>
             </div>
             <div class="generation">
                 <div class="impact-icon">
                     <h1>Total amount of renewable energy generation</h1>
-                    <i class="fas fa-solar-panel"></i>
+                    <i class="fas fa-leaf leaf-icon"></i>
                 </div>
                 <p>{{totalRenewableEnergy}} MWh</p>
             </div>
@@ -114,9 +115,7 @@
                                     <span class="more">More...</span>
                                 </summary>
                                 <div class="more-details">
-                                    <span class="image"><img
-                                            src="https://www.undp.org/sites/g/files/zskgke326/files/2023-02/UNDP%20solar%20panels.jpg"
-                                            alt=""></span>
+                                    <span class="image"><img src="" alt="">{{ asset.img }}</span>
                                     <span class="details">
                                         <p>{{ asset.description}}</p>
                                     </span>

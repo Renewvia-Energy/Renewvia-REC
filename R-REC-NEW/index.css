@@ -130,14 +130,17 @@ body{
     border-right: 1px white solid ;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    margin-left: 2rem;
+    /* align-items: center; */
   }
   .my-impact .generation{
     display: flex;
     flex-direction: column;
-    align-items: center;
+    /* align-items: center; */
+    margin-left: 4rem;
   }
   .my-impact div h1{
+    flex-grow: 1;
     font-weight: 500;
     font-size: 1.1rem;
     color: #FFFFFF;
@@ -145,11 +148,19 @@ body{
   .impact-icon{
   display: flex;
   align-items: center;
-
+  gap: 3rem;
   }
   .my-impact i{
   margin: 1rem 0 0 0.5rem;
-  font-size: xx-large;
+  font-size: 4rem;
+  animation-fill-mode: backwards;
+  }
+
+  .tree-icon{
+    color:#0F9D58;
+  }
+  .leaf-icon{
+    color: #0F9D58;
   }
   .my-impact div p{
     font-weight: 400;
@@ -218,7 +229,7 @@ body{
     display: flex;
     justify-content: space-between;
     padding: 1rem 1rem;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #ccc;
   }
   .table1 .assets details summary span{
     width: 33%;
@@ -242,6 +253,9 @@ body{
   }
   .table1 .assets details .more-details{
     display: flex;
+    border-bottom: 2px solid #ccc;
+    width: 90%;
+    margin: 0 auto;
   }
   .table1 .assets details .more-details span{
     display: flex;
@@ -354,9 +368,10 @@ body{
   align-items: center;
   text-align: center;
   text-transform: capitalize;
+  margin-top: 2rem;
   }
 
-  .retire, .purchase {
+  .retire, .purchase, .credits {
   /* font-size: 18px; */
   font-weight: small;
   font-size: small;
@@ -387,7 +402,7 @@ body{
 
   }
 
-  .retire:before, .purchase:before {
+  .retire:before, .purchase:before{
   display: flex;
   margin: 0 auto 0.5rem;
   border-radius: 5px;
@@ -403,6 +418,9 @@ body{
   }
   .chart-info{
     flex-direction: column;
+  }
+  .my-impact i{
+    display: none;
   }
 }
 
@@ -496,6 +514,9 @@ body{
     .my-impact div p{
       margin-top: 1rem;
       font-size: 1.2rem;
+    }
+    .my-impact i{
+      display: none;
     }
     .tables{
       margin: 0;
@@ -592,5 +613,8 @@ body{
     }
     .table2 table tr{
       display: table-caption;
+    }
+    .my-impact i{
+      display: none;
     }
   }
