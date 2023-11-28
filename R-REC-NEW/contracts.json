@@ -1023,7 +1023,7 @@
         "confirmations": "881804"
       }
     ],
-    "action": "Generation",
+    "action": "Transaction",
     "img": "images/asset-images/pexels-trinh-tr\u1ea7n-11645008.jpg",
     "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
     "company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
@@ -1717,7 +1717,7 @@
         "confirmations": "1320657"
       }
     ],
-    "action": "Generation",
+    "action": "Transaction",
     "img": "images/asset-images/pexels-pixabay-159160.jpg",
     "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
     "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
@@ -2064,7 +2064,7 @@
         "confirmations": "1320657"
       }
     ],
-    "action": "Generation",
+    "action": "Retirement",
     "img": "images/asset-images/pexels-mark-stebnicki-15751124.jpg",
     "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
     "company_address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
@@ -2421,7 +2421,7 @@
     "name": "Zambia R-REC",
     "qty": 1774,
     "transactions": [],
-    "action": "Generation",
+    "action": "Transaction",
     "img": "images/asset-images/pexels-kelly-4320449.jpg",
     "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
     "company_address": "0x504BC5477bA9beA5c4e65396Cc43a7D9A7dbDa10",
