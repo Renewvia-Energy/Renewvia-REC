@@ -150,6 +150,10 @@ body{
   align-items: center;
   gap: 3rem;
   }
+  .generation .impact-icon{
+    gap: 0;
+    width: 70%;
+  }
   .my-impact i{
   margin: 1rem 0 0 0.5rem;
   font-size: 4rem;
