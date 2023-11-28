@@ -49,6 +49,11 @@ const app = Vue.createApp({
               .then((allCompanyData) => {
                 for (let i = 0; i < allCompanyData.length; i++) {
                   if (allCompanyData[i].address === walletAddress) {
+                    let smallAdress = allCompanyData[i].address;
+                    let startSubStr = smallAdress.substr(0, 4)
+                    let endSubStr = smallAdress.substr(-4)
+                    smallAdress = startSubStr + '...' + endSubStr
+                    allCompanyData[1]['smallAddress'] = smallAdress
                     this.companyData.push(allCompanyData[i]);
                   }
                 }

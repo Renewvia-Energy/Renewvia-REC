@@ -54,10 +54,14 @@
                 <img :src="companyData[0].logo" alt="company-logo">
             </div>
             <div class="column">
-                <div class="inc">{{companyData[0].name}}</div>
+                <div class="row">
+
+                    <div class="inc">{{companyData[0].name}}</div>
+                    <div>Date</div>
+                </div>
                 <div class="column1">
-                    <div class="binary">{{companyData[0].address}}</div>
-                    <div class="date">{{companyData[0].join_date}}</div>
+                    <div class="binary">{{companyData[0].smallAddress}}</div>
+                    <div class="date">Joined {{companyData[0].join_date}}</div>
                 </div>
             </div>
         </div>
@@ -67,10 +71,14 @@
                     alt="company-logo">
             </div>
             <div class="column">
-                <div class="inc">R-RECs.</div>
+                <div class="row">
+                    <div class="inc">R-RECs</div>
+                    <div>Date</div>
+                </div>
                 <div class="column1">
-                    <div class="binary">0x6Ba...147d</div>
-                    <div class="date">Joined Sep 18 2023</div>
+                    <div class="binary">0x6B...147d</div>
+                    <div class="date">
+                        Joined Sep 18, 2023</div>
                 </div>
             </div>
         </div>
@@ -84,15 +92,15 @@
             <div class="offset">
                 <div class="impact-icon">
                     <h1>Total amount of carbon offset</h1>
-                    <i class="fas fa-tree tree-icon"></i>
+                    <i class="fas fa-leaf leaf-icon"></i>
                 </div>
 
                 <p>{{ totalCarbonOffsets }} tCO2e</p>
             </div>
             <div class="generation">
                 <div class="impact-icon">
+                    <i class="fas fa-solar-panel solar-icon"></i>
                     <h1>Total amount of renewable energy generation</h1>
-                    <i class="fas fa-leaf leaf-icon"></i>
                 </div>
                 <p>{{totalRenewableEnergy}} MWh</p>
             </div>
@@ -157,7 +165,7 @@
 
             <!-- chart -->
             <div class="pie-chart" v-if="carbonAssetsData && carbonAssetsData.length > 0">
-                <h1>Portfolio Distribution.</h1>
+                <h1>Portfolio Distribution</h1>
                 <div class="chart-info">
                     <div>
                         <canvas ref="myChart"></canvas>
@@ -171,6 +179,8 @@
                         </li>
                     </ul>
                 </div>
+
+                <!-- 0x6E61B86d97EBe007E09770E6C76271645201fd07  -->
 
                 <!-- retire & purchase -->
                 <div class="retire-purchase">
