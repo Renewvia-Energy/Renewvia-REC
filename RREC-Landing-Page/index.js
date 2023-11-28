@@ -146,7 +146,6 @@ function changeBoardMember(direction) {
             <img src="${member.imageSrc}" alt="${member.name}">
             <h2>${member.name}</h2>
             <h4>${member.text}</h4>
-            <i class="fas fa-arrow-right">
         `;
     }
 }
