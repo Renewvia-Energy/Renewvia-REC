@@ -36,6 +36,7 @@ allContracts = response.json()
 
 print('Retrieving Transactions from API ...')
 allTransactions = []
+print(allTransactions)
 for wallet  in allwallets:
     TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={wallet['address']}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
     response = requests.get(TRANSACTION_URL)

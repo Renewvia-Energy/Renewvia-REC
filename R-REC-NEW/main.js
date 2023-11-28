@@ -37,14 +37,14 @@ const app = Vue.createApp({
             // set the key values for qty to 0 and transaction to empty array
             allContractsData[i]["chartData"] = {};
           }
-
+          
           // filter the contracts if company address is passed in the url
           if (walletAddress) {
             this.carbonAssetsData = allContractsData.filter(
               (asset) => asset.company_address === walletAddress
-            );
-            // getting company data
-            fetch(companies_url)
+              );
+              // getting company data
+              fetch(companies_url)
               .then((allCompaniesResp) => allCompaniesResp.json())
               .then((allCompanyData) => {
                 for (let i = 0; i < allCompanyData.length; i++) {
@@ -53,10 +53,10 @@ const app = Vue.createApp({
                   }
                 }
               });
-          }
-          // if no company address is passed on the url return all the contracts
-          if (!walletAddress) {
-            this.carbonAssetsData = allContractsData;
+            }
+            // if no company address is passed on the url return all the contracts
+            if (!walletAddress) {
+              this.carbonAssetsData = allContractsData;
           }
 
           // call function(method) to calculate renewable energy Total
