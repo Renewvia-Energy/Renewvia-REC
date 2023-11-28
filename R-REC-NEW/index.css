@@ -161,14 +161,15 @@ body{
   }
 
   .tree-icon{
-    color:#0F9D58;
+    /* color:#0F9D58; */
   }
   .leaf-icon{
-    color: #0F9D58;
+    /* color: #0F9D58; */
   }
   .my-impact div p{
     font-weight: 400;
     font-size: 1.8rem;
+    margin: 0;
   }
   /* end of impact section */
 

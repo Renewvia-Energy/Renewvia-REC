@@ -40,17 +40,32 @@ for wallet  in allwallets:
     TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={wallet['address']}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
     response = requests.get(TRANSACTION_URL)
     transPerwallet = (response.json()['result'])
+    # print(len(transPerwallet))
     for trans in transPerwallet:
         allTransactions.append(trans)
-        print(allTransactions)
+# print(len(allTransactions))
+
+# for contract in allContracts:
+#     for transaction in allTransactions:
+#         # print(transaction)
+#         value1 = contract['address']
+#         value2 = transaction['contractAddress']
+#         # print(f'value1 -> {value1}')
+#         # print(f'value2 -> {value2}')
+#         if value1 == value2:
+#             print(transaction)
+#             contract["transaction"].append('transactions')
 
 print('Sorting transactions per contact ...')
-for transaction in allTransactions:
-    for contract in allContracts:
+for contract in allContracts:
+    for transaction in allTransactions:
         #check if the transaction.contractAddress matches contract.address, add to contract.transaction[]
-        if transaction['contractAddress'] == contract['address']:
+        print( type(transaction.get('contractAddress')))
+        if contract.get('address') == transaction.get('contractAddress'):
+            print(transaction['contractAddress'], end='->') 
+            print(contract['address'])
             contract['transactions'].append(transaction)
-            break
+            print(transaction['input'])
 
 print('Setting the QTY value ...')
 for contract in allContracts:
@@ -73,6 +88,9 @@ print('Updating contracts.json file ...')
 # write new contracts with updated value to contracts.json file
 with open('contracts.json', 'w') as file:
     file.write(allContracts)
+
+with open('alltrn.json', 'w') as file:
+    file.write(json.dumps(allTransactions))
 
 print('contracts.json file updated')
 

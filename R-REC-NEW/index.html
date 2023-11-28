@@ -144,7 +144,7 @@
                             <tr class="assets" v-for="asset in carbonAssetsData" :key="asset.address">
                                 <td>{{companyData[0].join_date}}</td>
                                 <td> {{ asset.name}}</td>
-                                <td>Generation</td>
+                                <td>{{ asset.action }}</td>
                                 <td>{{ asset.qty}}</td>
                                 <td><button>Verified</button></td>
                             </tr>
