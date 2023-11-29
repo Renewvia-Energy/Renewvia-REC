@@ -40,32 +40,43 @@ for wallet  in allwallets:
     TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={wallet['address']}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
     response = requests.get(TRANSACTION_URL)
     transPerwallet = (response.json()['result'])
-    # print(len(transPerwallet))
     for trans in transPerwallet:
         allTransactions.append(trans)
-# print(len(allTransactions))
-
-# for contract in allContracts:
-#     for transaction in allTransactions:
-#         # print(transaction)
-#         value1 = contract['address']
-#         value2 = transaction['contractAddress']
-#         # print(f'value1 -> {value1}')
-#         # print(f'value2 -> {value2}')
-#         if value1 == value2:
-#             print(transaction)
-#             contract["transaction"].append('transactions')
+    transPerwallet = []
 
 print('Sorting transactions per contact ...')
 for contract in allContracts:
-    for transaction in allTransactions:
-        #check if the transaction.contractAddress matches contract.address, add to contract.transaction[]
-        print( type(transaction.get('contractAddress')))
-        if contract.get('address') == transaction.get('contractAddress'):
-            print(transaction['contractAddress'], end='->') 
-            print(contract['address'])
-            contract['transactions'].append(transaction)
-            print(transaction['input'])
+    contract['transactions'] = []
+    for trans in allTransactions:
+        if contract['address'].lower() == trans['contractAddress'].lower() and contract['company_address'].lower() == trans['to'].lower():
+            contract['transactions'].append(trans)
+
+# add action (method)
+for contract in allContracts:
+    if contract['transactions']:
+        for trans in contract['transactions']:
+            if trans['from'].lower() == '0x6E61B86d97EBe007E09770E6C76271645201fd07'.lower():
+                trans['method'] = 'Transaction'
+            elif trans['from'].lower() == '0x0000000000000000000000000000000000000000'.lower():
+                trans['method'] = 'Generation'
+            else:
+                trans['method'] = 'Retirement'
+
+# get latest transaction method save to contract action
+for contract in allContracts:
+    if contract['transactions']:
+        max = 0
+        latestTransaction = {}
+        for trans in contract['transactions']:
+            time = int(trans['timeStamp'])
+            if time > max:
+                max = time
+                latestTransaction = trans
+        contract['action'] = latestTransaction['method']
+
+
+
+
 
 print('Setting the QTY value ...')
 for contract in allContracts:
@@ -88,9 +99,6 @@ print('Updating contracts.json file ...')
 # write new contracts with updated value to contracts.json file
 with open('contracts.json', 'w') as file:
     file.write(allContracts)
-
-with open('alltrn.json', 'w') as file:
-    file.write(json.dumps(allTransactions))
 
 print('contracts.json file updated')
 
