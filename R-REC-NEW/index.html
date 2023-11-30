@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R-RECs</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+    <script defer src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script defer src="main.js"></script>
+
+</head>
+
+<body id="app">
+    <header>
+        <nav class="nav">
+            <div class="logo">
+                <a href="/">
+                    <img src="images/renewvia.webp" alt="renewvia-logo">
+                </a>
+                <a @click="toggleMenu" id="menuButton"><i class="fas fa-bars"></i></a>
+            </div>
+            <div :class="{ 'hide': isHidden, 'container': !isHidden }" id="info">
+                <ul>
+                    <li>ABOUT US</li>
+                    <li>WHAT ARE R-RECs</li>
+                    <li>PRODUCTS</li>
+                    <li class="team">OUR TEAM</li>
+                    <li class="global" v-if="companyData && companyData.length > 0" v-cloak>
+                        <img :src="companyData[0].logo" alt="logo">
+                        <span>{{companyData[0].name}}</span>
+                    </li>
+                    <li class="global" v-else v-cloak>
+                        <img src="https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png"
+                            alt="logo"><span>R-RECs.</span>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- section 2  -->
+    <div>
+        <div class="logo1" v-if="companyData && companyData.length > 0" v-cloak>
+            <div class="logo-container">
+                <img :src="companyData[0].logo" alt="company-logo">
+            </div>
+            <div class="column">
+                <div class="row">
+
+                    <div class="inc">{{companyData[0].name}}</div>
+                    <div>Date</div>
+                </div>
+                <div class="column1">
+                    <div class="binary">{{companyData[0].smallAddress}}</div>
+                    <div class="date">Joined {{companyData[0].join_date}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="logo1" v-else v-cloak>
+            <div class="logo-container">
+                <img src="https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png"
+                    alt="company-logo">
+            </div>
+            <div class="column">
+                <div class="row">
+                    <div class="inc">R-RECs</div>
+                    <div>Date</div>
+                </div>
+                <div class="column1">
+                    <div class="binary">0x6B...147d</div>
+                    <div class="date">
+                        Joined Sep 18, 2023</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end section 2 -->
+
+    <!-- impact section -->
+    <div class="impact" v-cloak>
+        <h1>My Impact</h1>
+        <div class="my-impact">
+            <div class="offset">
+                    <div class="texts">
+                        <h1>Total amount of carbon offset</h1>
+                        <p>{{ totalCarbonOffsets }} tCO2e</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-leaf leaf-icon"></i>
+                    </div>
+            </div>
+            <div class="generation">
+                <div class="texts">
+                    <h1>Total amount of renewable energy generation</h1>
+                    <p>{{totalRenewableEnergy}} MWh</p>
+                </div>
+                <div class="icon">
+                    <i class="fas fa-solar-panel solar-icon"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end impact section -->
+
+    <!-- tables -->
+    <div class="tables" v-cloak>
+        <div class="two-tables">
+            <div class="table-column">
+                <div class="table1" v-if="carbonAssetsData && carbonAssetsData.length > 0">
+                    <h1>Carbon Assets</h1>
+                    <div class="allassets">
+                        <div class="assets" v-for="asset in carbonAssetsData" :key="asset.id">
+                            <details>
+                                <summary>
+                                    <span class="name">{{ asset.name }}</span>
+                                    <span class="qty">{{ asset.qty }}</span>
+                                    <span class="more">More...</span>
+                                </summary>
+                                <div class="more-details">
+                                    <span class="image"><img
+                                            :src="asset.img"
+                                            :alt="Image"></span>
+                                    <span class="details">
+                                        <p>{{ asset.description}}</p>
+                                    </span>
+                                </div>
+                            </details>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="table2" v-if="companyData && companyData.length > 0">
+                    <h1>Activity</h1>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Carbon Assets</th>
+                                <th>Action</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr class="assets" v-for="asset in carbonAssetsData" :key="asset.address">
+                                <td>{{companyData[0].join_date}}</td>
+                                <td> {{ asset.name}}</td>
+                                <td>{{ asset.action}}</td>
+                                <td>{{ asset.qty}}</td>
+                                <td><button>Verified</button></td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+
+
+            <!-- chart -->
+            <div class="pie-chart" v-if="carbonAssetsData && carbonAssetsData.length > 0">
+                <h1>Portfolio Distribution</h1>
+                <div class="chart-info">
+                    <div>
+                        <canvas ref="myChart"></canvas>
+                    </div>
+                    <!-- chart -->
+
+                    <ul class="key">
+                        <li v-for="asset in carbonAssetsData" :key="asset.id">
+                            <strong class="percent gray">{{ calculatePercentage(asset.qty) }}%</strong>
+                            <span class="choice">{{ asset.name }}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- retire & purchase -->
+                <div class="retire-purchase">
+                    <div class="retire">Retire Current Credits</div>
+                    <div class="credits">Mark Credits for sale</div>
+                    <div class="purchase">Purchase New Credits</div>
+
+                </div>
+                <!-- end retire & purchase -->
+
+            </div>
+            <!-- end of chart -->
+        </div>
+
+    </div>
+    <!-- end of tables -->
+
+</body>
+
+</html>

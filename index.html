@@ -49,13 +49,14 @@
 				}).then(txResp => txResp.json())
 				.then(txData => {
 					let txs = txData.result
-
+					
 					// For each transaction involving this wallet
 					let contracts = []
 					for (let tx of txs) {
 						// If the contract in the transaction corresponds to an R-REC, and the contract hasn't already been recorded, record it.
 						for (let contract of allContracts) {
 							if (tx.contractAddress===contract.address && !contracts.includes(tx.contractAddress)) {
+								console.log(tx)
 								contracts.push({
 									"address": tx.contractAddress,
 									"name": contract.name
@@ -68,14 +69,16 @@
 					return contracts
 				}).then(contracts => {
 					this.tokenMap = new Map()
-
+					
 					// For each contract, get the current number of tokens of that contract are in the wallet
 					for (let c=0; c<contracts.length; c++) {
 						let contract = contracts[c]
+						// console.log(contract)
 						setTimeout(() => {
 							fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${contract.address}&address=${WALLET_ADDR}&tag=latest&apikey=${API_KEY}`)
 							.then(contractResp => contractResp.json())
 							.then(contractData => {
+								console.log(contractData)
 								var tokenQty = contractData.result.slice(0,-18)
 								if (isNaN(tokenQty)) {
 									console.log('TODO: If the max limit is reached, try again.')
