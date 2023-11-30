@@ -56,11 +56,11 @@ for contract in allContracts:
     if contract['transactions']:
         for trans in contract['transactions']:
             if trans['from'].lower() == '0x6E61B86d97EBe007E09770E6C76271645201fd07'.lower():
-                trans['method'] = 'Transaction'
+                trans['method'] = 'Return'
             elif trans['from'].lower() == '0x0000000000000000000000000000000000000000'.lower():
                 trans['method'] = 'Generation'
             else:
-                trans['method'] = 'Retirement'
+                trans['method'] = 'Generation'
 
 # get latest transaction method save to contract action
 for contract in allContracts:

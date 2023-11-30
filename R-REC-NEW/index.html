@@ -90,19 +90,22 @@
         <h1>My Impact</h1>
         <div class="my-impact">
             <div class="offset">
-                <div class="impact-icon">
-                    <h1>Total amount of carbon offset</h1>
-                    <i class="fas fa-leaf leaf-icon"></i>
-                </div>
-
-                <p>{{ totalCarbonOffsets }} tCO2e</p>
+                    <div class="texts">
+                        <h1>Total amount of carbon offset</h1>
+                        <p>{{ totalCarbonOffsets }} tCO2e</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-leaf leaf-icon"></i>
+                    </div>
             </div>
             <div class="generation">
-                <div class="impact-icon">
-                    <i class="fas fa-solar-panel solar-icon"></i>
+                <div class="texts">
                     <h1>Total amount of renewable energy generation</h1>
+                    <p>{{totalRenewableEnergy}} MWh</p>
                 </div>
-                <p>{{totalRenewableEnergy}} MWh</p>
+                <div class="icon">
+                    <i class="fas fa-solar-panel solar-icon"></i>
+                </div>
             </div>
         </div>
     </div>
