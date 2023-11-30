@@ -1,99 +1,357 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-US">
 <head>
-	<meta charset="UTF-8">
+	<title>R-RECs</title>
+	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="styles.css">
-	<title>Renewvia-RECs</title>
 
-	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+	<!-- SEO Description -->
+	<meta name="author" content="Renewvia Energy Technology">
+	<meta name="description" content="Pioneering the future of sustainable energy, R-RECs is committed to driving decarbonization with minimal environmental impact.">
+	<link rel="canonical" href="https://www.r-recs.com/">
+
+	<!-- Open Graph Tags -->
+	<meta property="og:title" content="R-RECs">
+	<meta property="og:description" content="Pioneering the future of sustainable energy, R-RECs is committed to driving decarbonization with minimal environmental impact.">
+	<meta property="og:image" content="https://www.r-recs.com/logo.png">
+	<meta property="og:image:width" content="711">
+	<meta property="og:image:height" content="711">
+	<meta property="og:image:alt" content="R-RECs Logo">
+	<meta property="og:url" content="https://www.r-recs.com/">
+	<meta property="og:type" content="website">
+
+	<!-- Favicon -->
+	<link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="style.css">
 </head>
-<body id="app">
+<body>
 	<header>
-		<h1>Renewvia-RECs</h1>
+		<nav class="container">
+			<div class="navtop">
+				<img src="images/renewvia.webp" alt="renewvia-logo" >
+				<a onclick="toggleMenu()" id="menuButton"><i class="fas fa-bars"></i></a>
+			</div>
+			<div class="hide info" id="info">
+				<ul>
+					<li><a href="#about">ABOUT US</a></li>
+					<li><a rel="external" target="_blank" href="https://www.renewvia.com/">RENEWVIA</a></li>
+					<li><a href="#board">OUR TEAM</a></li>
+				</ul>
+			</div>
+		</nav>  
 	</header>
+
 	<main>
-		<section class="wallet-assets">
-		<h2>Your Carbon Assets</h2>
-			<ul class="asset-list" id="asset-list">
-				<li class="asset" v-for="[name, qty] in tokenMap">
-					<span class="asset-name">{{ name }}</span>
-					<span class="asset-amount">{{ qty }}</span>
-				</li>
-			</ul>
-		</section>
+		<!-- hero section -->
+		<div class="hero-image " id="hero">
+			<div class="overlay"></div>
+			<div class="image-carousel">
+				<div class="bg-image">
+					<img src="images/background1.jpg" alt="background-images">
+				</div>
+				<div class="container" id="title-overlay">
+					<i class="custom-icon prev-arrow" onclick="changeImage(-1)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
+							<path d="M68 50 L35 50 M50 30 L35 50 L50 70" stroke="orange" stroke-width="5" fill="none" />
+						</svg>
+					</i>
+					<div class="text">
+						<h1>R-RECs</h1>
+						<h2>Transparent, Traceable, Trustworthy.</h2>
+					</div>
+					<i class="custom-icon next-arrow" onclick="changeImage(1)">
+						<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+							<circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
+							<path d="M68 50 L35 50 M50 30 L68 50 L50 70" stroke="orange" stroke-width="5" fill="none" />
+						</svg>
+					</i>
+				</div>
+			</div>
+		</div>
+
+		<!-- what sets R-RECs apart section -->
+		<div id="products">
+			<div class="container">
+				<h2 class="uniqueness">Efficiency and Integrity in Carbon Trading</h2>
+
+				<!-- cards -->
+				<div class="cards">
+					<div class="card">
+						<h2>Best for Buyers</h2>
+						<details>
+							<summary>
+								<span class="icon">
+									<i class="fas fa-shield"></i>
+									<strong class="values">Trustworthy Assets</strong>
+								</span>
+								<span class="more">
+									Read More...
+								</span>
+							</summary>
+							<p>With Renewvia's <b>extensive experience</b> spanning over a decade in the global sustainability sector, our assets are not just reliable, but also a beacon of trust in the carbon market. Leveraging the power of <b>distributed ledger technology,</b> R-RECs offer an enhanced layer of security and transparency, ensuring that every credit is a symbol of genuine renewable energy generation and environmental integrity.</p>
+						</details>
+
+						<details>
+							<summary>
+								<span class="icon">
+									<i class="fas fa-rocket"></i>
+									<strong class="values">End-to-End Solution</strong>
+								</span>
+								<span class="more">
+									Read More...
+								</span>
+							</summary>
+							<p>R-RECs isn't just a platform for trading; it's a comprehensive solution for your entire sustainability campaign. From <b>setting impactful environmental goals</b> based on your carbon footprint to identifying and managing the right carbon assets for your objectives, R-RECs facilitates a seamless journey. Our platform empowers you to <b>buy, sell, and retire</b> carbon credits and renewable energy certificates, ensuring that every step contributes effectively to your sustainability mission.</p>
+						</details>
+
+						<details>
+							<summary>
+								<span class="icon">
+									<i class="fas fa-eye"></i>
+									<strong class="values">More than a REC</strong>
+								</span>
+								<span class="more">
+									Read More...
+								</span>
+							</summary>
+							<p>Investing in R-RECs transcends the traditional concept of carbon assets. It's an opportunity to have a <b>tangible social, economic, and environmental impact,</b> particularly in rural Africa. Each R-REC represents not just a unit of clean energy but also contributes to vital rural electrification, fostering sustainable development in regions that need it the most. By choosing R-RECs, you're part of a larger movement towards global sustainability and equity.</p>
+						</details>
+					</div>
+
+					<div class="card">
+						<h2>Best for Sellers</h2>
+						<details>
+							<summary>
+								<span class="icon">
+									<i class="fas fa-wheelchair"></i>
+									<strong class="values">Accessible</strong>
+								</span>
+								<span class="more">
+									Read More...
+								</span>
+							</summary>
+							<p>Regardless of the scale of your project, our platform is designed to accommodate and support your needs. This inclusivity means that <b>even smaller community-level—or even individual-level—projects</b> can benefit from the revenue stream that R-RECs provide, breaking down the barriers often faced in other platforms that necessitate massive scale for participation.</p>
+						</details>
+						<details>
+							<summary>
+								<span class="icon">
+									<i class="fas fa-balance-scale"></i>
+									<strong class="values">Fair</strong>
+								</span>
+								<span class="more">
+									Read More...
+								</span>
+							</summary>
+							<p>Our commitment to fairness is reflected in our pricing mechanism. We understand the importance of ensuring that the revenue generated from R-RECs is substantial and impactful. That's why our platform operates with <b>minimal fees,</b> allowing a greater portion of the earnings to flow back into your projects and the communities they support. This approach fosters sustainable growth and reinvestment, aligning with our ethos of equitable and responsible trading practices.</p>
+						</details>
+
+						<details>
+							<summary>
+								<span class="icon">
+									<i class="fas fa-check-circle"></i>
+									<strong class="values">Genuine</strong>
+								</span>
+								<span class="more">
+									Read More...
+								</span>
+							</summary>
+							<p>Renewvia isn't just a platform provider; we are mini-grid developers ourselves. We've designed this product with a deep understanding and empathy for companies navigating the renewable energy landscape. Our platform is built from the ground up to <b>cater to the voices, needs, and best interests of renewable energy producers like you.</b> With R-RECs, you're not just a user of a service; you're a valued member of a community that shares your commitment to sustainable development and renewable energy.</p>
+						</details>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end -->
+
+		<!-- About section -->
+		<!-- <div id="about">
+			<div class="container main-about">
+				<h1 class="about">About R-RECs</h1> 
+				<p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership, verifiable transactions, and full control of carbon assets for mini-grid energy producers. Through the use of smart contracts and distributed consensus, R-RECs guarantee the integrity and immutability of each certificate</p>
+				<img src="images/image_19.svg" alt="solar man">
+			</div>
+		</div> -->
+		<!-- end About -->
+
+		<!-- marketplace section -->
+		<div class="main-marketplace">
+			<div class="container">
+				<div class="shadow-div">
+					<div class="left-column">
+						<img src="images/landing_page_mockup_nb_1.png" class="image2" alt="marketplace-image">
+					</div>
+					<div class="right-column">
+						<h1>Asset Management Hub</h1>
+						<p>Step into your personalized command center for managing your renewable energy contributions and carbon offset assets. The R-RECs Asset Management Hub is where clarity meets convenience, allowing you to seamlessly oversee your sustainability milestones; visualize your impact; and buy, sell, and retire your assets.</p>
+					</div>
+				</div> 
+			</div>
+		</div> 
+		<!-- end marketplace section -->   
+
+		<!-- news blog section -->
+		<!-- <div class="news">
+			<div class="container">
+				<div class="row">
+					<h2>Latest from the blog</h2>
+					<button class="all-news">All News</button>
+				</div>
+
+				<div class="platform">
+					<div class="platforms platforms-small">
+						<div class="platform-card">
+							<img src="images/platform1.jpg" alt="platform1" >
+						</div>
+						<div class="platform-text">
+							<h4>Introducing R-REC Platform V1</h4>
+							<h5>September 14, 2023</h5>
+							<p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership,verifiable transactions, and full control of carbon assets for mini-grid energy producers. </p>
+						</div>
+					</div>
+		
+					<div class="platforms platforms-big">
+						<div class="platform-card">
+							<img src="images/platform2.jpg" alt="platform2">
+						</div>
+						<div class="platform-text">
+							<h4>Introducing R-REC Platform V2</h4>
+							<h5>September 14, 2023</h5>
+							<p>By utilizing a decentralized and transparent ledger, R-RECs ensure secure ownership,verifiable transactions, and full control of carbon assets for mini-grid energy producers.</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- end news blog section -->
+
+		<!-- board -->
+		<!-- <div class="main-board" id="board">
+			<div class="container">
+				<div class="board">
+					<h1>Governing Board</h1>
+					<p>The R-REC Board of Directors is comprised of leaders from a variety of sectors who bring their expertise and knowledge to the ongoing development of R-RECs</p>
+		
+					<div class="board-cards">
+						<div class="board-card hide">
+						</div>
+						<div class="board-card">
+						</div>
+						<div class="board-card">
+						</div>
+						<div class="board-card hide">
+						</div>
+				
+					</div>
+					<div class="arrows">
+						<i class="arrow.prev" onclick="changeBoardMember(-1)">
+							<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+								<circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
+								<path d="M68 50 L35 50 M50 30 L35 50 L50 70" stroke="orange" stroke-width="5" fill="none" />
+							</svg>
+						</i>
+						<i class="arrow.next" onclick="changeBoardMember(1)">
+							<svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 100 100">
+								<circle cx="50" cy="50" r="40" stroke="orange" stroke-width="5" fill="transparent"/>
+								<path d="M68 50 L35 50 M50 30 L68 50 L50 70" stroke="orange" stroke-width="5" fill="none" />
+							</svg>
+						</i>
+					</div>
+				</div>
+			</div>
+		</div> -->
+		<!-- end board -->
+
+		<!-- partners -->
+		<div>
+			<div class="partners container">
+				<div>
+					<h1>The Most Robust Carbon Asset Standard for Mini-Grids in the World</h1>
+					<p>Our stringent criteria surpass international benchmarks, ensuring that every carbon asset we issue is compliant with industry standards. Through meticulous adherence to these rigorous standards, Renewvia's carbon assets represent the pinnacle of trust and ecological responsibility in the renewable energy sphere.</p>
+				</div>
+				<div class="images">
+					<div>
+						<img src="images/partners/image-11.png" alt="partner1">
+					</div>
+					<div>
+						<img src="images/partners/image-12.png" alt="partner2">
+					</div>
+					<div>
+						<img src="images/partners/image-16.png" alt="partner3">
+					</div>
+					<div>
+						<img src="images/partners/image-14.png" alt="partner4">
+					</div>
+					<div>
+						<img src="images/partners/image-15.png" alt="partner5">
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- end partners -->
 	</main>
 
-	<script>
-		const { createApp } = Vue
 
-		const HREF_DATA = window.location.href.split('?')[1].split('&')
-		const API_KEY = HREF_DATA[0]
-		const WALLET_ADDR = HREF_DATA[1]
+	<!-- footer -->
+	<div>
+		<div class="rights"></div>
+		<div class="container">
+			<div class="two-column-div">
+				<div class="column-img">
+					<img src="images/renewvia.webp" alt="renewvia">
+					<p>Renewvia-RECs 1425 Mayson Street Atlanta, GA 30324</p>
+					<h4>info@renewvia.com</h4>
+				</div>
+				<div class="column">
+					<p>Resources</p>
+					<ul>
+						<li>Announcements</li>
+						<li>Guides</li>
+						<li>FAQs</li>
+					</ul>
+				</div>
+				<div class="column">
+					<p>Company</p>
+					<ul>
+						<li>About</li>
+						<li>Contact US</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end footer -->
 
-		createApp({
-			data() {
-				// Get list of all R-REC contracts from GitHub
-				let allContracts = []
-				fetch('https://renewvia-energy.github.io/Renewvia-REC/contracts.json')
-				.then(allContractsResp => allContractsResp.json())
-				.then(allContractsData => {
-					allContracts = allContractsData.map(contract => {
-						contract.address = contract.address.toLowerCase()
-						return contract
-					})
+	<!-- copyright -->
+	<div>
+		<div class="container">
+			<div class="rights-container">
+				<div class="rights-div">
+					<p>&copy; 2023 R-RECs. All rights reserved</p>
+				</div>
+				<div class="rights-div">
+					<p>Privacy  Policy  | Terms of Services</p>
+				</div>
+				<div class="social-icons">
+					<i class="fab fa-linkedin"></i>
+					<i class="fab fa-instagram"></i>
+					<i class="fab fa-youtube"></i>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- end copyright -->
 
-				// Get list of all transactions involving this wallet from BscScan
-				}).then(() => {
-					return fetch(`https://api.bscscan.com/api?module=account&action=tokentx&address=${WALLET_ADDR}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey=${API_KEY}`)
-				}).then(txResp => txResp.json())
-				.then(txData => {
-					let txs = txData.result
-					
-					// For each transaction involving this wallet
-					let contracts = []
-					for (let tx of txs) {
-						// If the contract in the transaction corresponds to an R-REC, and the contract hasn't already been recorded, record it.
-						for (let contract of allContracts) {
-							if (tx.contractAddress===contract.address && !contracts.includes(tx.contractAddress)) {
-								console.log(tx)
-								contracts.push({
-									"address": tx.contractAddress,
-									"name": contract.name
-								})
-								break
-							}
-						}
-					}
+	<script src="index.js" ></script>
 
-					return contracts
-				}).then(contracts => {
-					this.tokenMap = new Map()
-					
-					// For each contract, get the current number of tokens of that contract are in the wallet
-					for (let c=0; c<contracts.length; c++) {
-						let contract = contracts[c]
-						// console.log(contract)
-						setTimeout(() => {
-							fetch(`https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress=${contract.address}&address=${WALLET_ADDR}&tag=latest&apikey=${API_KEY}`)
-							.then(contractResp => contractResp.json())
-							.then(contractData => {
-								console.log(contractData)
-								var tokenQty = contractData.result.slice(0,-18)
-								if (isNaN(tokenQty)) {
-									console.log('TODO: If the max limit is reached, try again.')
-								}
-								this.tokenMap.set(contract.name, tokenQty)	// The tokens technically have 18 extra digits in case we ever want to mint partial RECs.
-							})
-						}, parseInt(c/4)*1000)	// We only get 5 calls per second. TODO: check the values to make sure we haven't hit the max limit. I tried using await instead of then, but Vue stopped working. I think data() can't be async.
-					}
-				})
-
-				return {
-					tokenMap: new Map()
-				}
-			}
-		}).mount('#app')
-	</script>
 </body>
 </html>

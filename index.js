@@ -60,15 +60,18 @@ const images = [
   const texts = [
     {
       title: "R-RECs",
-      description: "Pioneering the future of sustainable energy, R-RECs is committed to driving decarbonization with minimal environmental impact."
+      description: "Transparent, Traceable, Trustworthy."
+      // description: "Pioneering the future of sustainable energy, R-RECs is committed to driving decarbonization with minimal environmental impact."
     },
     {
       title: "R-RECs",
-      description: "Embracing sustainable energy solutions is not just a choice for R-RECs; it's a commitment to a healthier planet for generations to come."
+      description: "Transparent, Traceable, Trustworthy."
+      // description: "Embracing sustainable energy solutions is not just a choice for R-RECs; it's a commitment to a healthier planet for generations to come."
     },
     {
       title: "R-RECs",
-      description: "Standing at the forefront of the renewable energy revolution, we are determined to reduce our carbon footprint while securing a brighter, cleaner future."
+      description: "Transparent, Traceable, Trustworthy."
+      // description: "Standing at the forefront of the renewable energy revolution, we are determined to reduce our carbon footprint while securing a brighter, cleaner future."
     }
   ];
   
