@@ -33,39 +33,6 @@
     "address": "0x11491ac2583fe5a4D8e909Fff7DDea8DEB5C611e"
   },
   {
-    "name": "R-REC",
-    "qty": 606,
-    "transactions": [
-      {
-        "blockNumber": "18508098",
-        "timeStamp": "1654686708",
-        "hash": "0xdc02e0a64819c0b6b380a1cce6adf33c30f2a89ef612293adc6338f21cb5da53",
-        "nonce": "0",
-        "blockHash": "0x444a990898a8cf77386ac395c6b626b11693949c8027623ae679f54bdbb588f8",
-        "from": "0x0000000000000000000000000000000000000000",
-        "contractAddress": "0x5c57dbd3c529fe0efe677072c6d822124b4b4305",
-        "to": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-        "value": "606000000000000000000",
-        "tokenName": "RenewviaREC",
-        "tokenSymbol": "RREC",
-        "tokenDecimal": "18",
-        "transactionIndex": "119",
-        "gas": "1786912",
-        "gasPrice": "5000000000",
-        "gasUsed": "1786912",
-        "cumulativeGasUsed": "13702038",
-        "input": "deprecated",
-        "confirmations": "15409625",
-        "method": "Generation"
-      }
-    ],
-    "action": "Generation",
-    "img": "images/asset-images/pexels-trinh-tr\u1ea7n-11645008.jpg",
-    "description": "A blend of RECs from our diverse portfolio of renewable energy projects. 1 REC = 1MWh (1000 kWh)",
-    "company_address": "0xF9C289f1C0341fb336224958a885163F5017BC16",
-    "address": "0x5c57dBd3c529Fe0efE677072c6D822124B4b4305"
-  },
-  {
     "name": "Virginia R-REC",
     "qty": 3442,
     "transactions": [
