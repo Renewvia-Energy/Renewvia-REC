@@ -402,20 +402,20 @@ font-weight: bold;
 	font-size: 1.5rem;
 }
 .retire-purchase {
-width: 100%;
-height: 5rem;
-background-color: #fff;
-border-radius: 0.7rem;
-box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-display: flex;
-justify-content: space-around;
-align-items: center;
-text-align: center;
-text-transform: capitalize;
-margin-top: 2rem;
-padding-left: 0.5rem;
-padding-right: 0.5rem;
-
+	width: 100%;
+	height: 5rem;
+	background-color: #fff;
+	border-radius: 0.7rem;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+	text-transform: capitalize;
+	text-decoration: none;
+	margin-top: 2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
 }
 
 .retire, .purchase, .credits {
