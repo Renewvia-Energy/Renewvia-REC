@@ -1,14 +1,28 @@
+const WALLET = window.location.href.split("?")[1];
+const CONTRACTS_URL = "https://renewvia-energy.github.io/Renewvia-REC/contracts.json";
+const COMPANIES_URL = "https://renewvia-energy.github.io/Renewvia-REC/companies.json";
+
 const app = Vue.createApp({
 	data() {
-		return {
-			isHidden: true,
-			carbonAssetsData: [],
-			companyData: [],
-			doughnutData: {},
-			chart: null,
-			totalRenewableEnergy: 0,
-			totalCarbonOffsets: 0,
-		};
+		fetch(contracts_url)
+			.then((allContractsResp) => allContractsResp.json())
+			.then((allContractsData) => {
+				for (let contract of allContractsData) {
+
+				}
+
+				return {
+					address: WALLET,
+					smallAddress: WALLET.substring(0,4)+'...'+WALLET.substring(WALLET.length-4),
+					isHidden: true,
+					carbonAssetsData: [],
+					companyData: [],
+					doughnutData: {},
+					chart: null,
+					totalRenewableEnergy: 0,
+					totalCarbonOffsets: 0,
+				};
+			})
 	},
 
 	mounted() {
@@ -25,8 +39,8 @@ const app = Vue.createApp({
 	methods: {
 		statesData() {
 			const walletAddress = window.location.href.split("?")[1];
-			const contracts_url = "https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/contracts.json";
-			const companies_url = "https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/companies.json";
+			const contracts_url = "https://renewvia-energy.github.io/Renewvia-REC/contracts.json";
+			const companies_url = "https://renewvia-energy.github.io/Renewvia-REC/companies.json";
 
 			// Get all the contracts from json in github
 			fetch(contracts_url)
@@ -40,9 +54,11 @@ const app = Vue.createApp({
 					
 					// filter the contracts if company address is passed in the url
 					if (walletAddress) {
+
+
 						this.carbonAssetsData = allContractsData.filter(
 							(asset) => asset.company_address === walletAddress
-							);
+						);
 							// getting company data
 							fetch(companies_url)
 							.then((allCompaniesResp) => allCompaniesResp.json())

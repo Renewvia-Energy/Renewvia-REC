@@ -42,24 +42,7 @@
 </head>
 <body id="app">
 	<header>
-		<nav>
-			<div class="logo">
-				<a href="/">
-					<img src="images/renewvia.webp" alt="renewvia-logo">
-				</a>
-				<a @click="toggleMenu" id="menuButton"><i class="fas fa-bars"></i></a>
-			</div>
-			<div :class="{ 'hide': isHidden, 'container': !isHidden }" id="info">
-				<ul>
-					<li><a href="index.html">WHAT ARE R-RECs</a></li>
-					<li class="team"><a rel="external" target="_blank" href="https://www.renewvia.com/">RENEWVIA</a></li>
-					<li class="global" v-cloak>
-						<img :src="companyData[0].logo" alt="logo">
-						<span>{{companyData[0].name}}</span>
-					</li>
-				</ul>
-			</div>
-		</nav>
+		<img src="images/logo-titled.png" alt="R-RECs Logo">
 	</header>
 
 	<main>

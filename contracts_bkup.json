@@ -1,0 +1,66 @@
+[
+	{
+		"name": "Alabama R-REC",
+		"abbreviation": "RREC-AL",
+		"img": "images/asset-images/RREC-AL.jpg",
+		"description": "Alabama R-RECs channel the energy of the Southern sun, supporting renewable initiatives that contribute to the state's robust and sustainable energy transformation.",
+		"address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1",
+		"transactions": []
+	},
+	{
+		"name": "Colorado R-REC",
+		"abbreviation": "RREC-CO",
+		"img": "images/asset-images/RREC-CO.jpg",
+		"description": "Colorado R-RECs capture the state's renewable endeavors, from solar panels gleaming in the high-altitude sunshine to wind turbines standing tall on the Eastern Plains.",
+		"address": "0x8480e85664461471B8fCf058e1C2d31dd2568855",
+		"transactions": []
+	},
+	{
+		"name": "Georgia R-REC",
+		"abbreviation": "RREC-GA",
+		"img": "images/asset-images/RREC-GA.jpg",
+		"description": "Georgia R-RECs are a beacon of progress in the Peach State, fueling its journey towards a clean and renewable energy future.",
+		"address": "0x1B729CCF7F7B767D0d070747FD3a3FA8aB5B9a45",
+		"transactions": []
+	},
+	{
+		"name": "North Carolina R-REC",
+		"abbreviation": "RREC-NC",
+		"img": "images/asset-images/RREC-NC.jpg",
+		"description": "North Carolina R-RECs weave renewable energy into the state's tapestry, from its coastal plains to its mountainous ridges, supporting a green and prosperous future.",
+		"address": "0xd035Ed03bEE3dd3448184B6f8477a44FCD47228A",
+		"transactions": []
+	},
+	{
+		"name": "South Carolina R-REC",
+		"abbreviation": "RREC-SC",
+		"img": "images/asset-images/RREC-SC.jpg",
+		"description": "South Carolina R-RECs embody the Palmetto State's sunny disposition, driving innovation in renewable energy to ensure a sustainable legacy.",
+		"address": "0x0F6880db4445b82B5e652EFB6c50D51bE62bE164",
+		"transactions": []
+	},
+	{
+		"name": "Texas R-REC",
+		"abbreviation": "RREC-TX",
+		"img": "images/asset-images/Generic.jpg",
+		"description": "Texas R-RECs emerge from the Lone Star State's vast energy landscape, marrying its pioneering spirit with a commitment to renewable and sustainable power.",
+		"address": "0x142D6987332009E7356Bed4d54749577558bf496",
+		"transactions": []
+	},
+	{
+		"name": "Virginia R-REC",
+		"abbreviation": "RREC-VA",
+		"img": "images/asset-images/RREC-VA.jpg",
+		"description": "Virginia R-RECs represent the Old Dominion's modern approach to clean energy, capturing solar power to brighten its future and preserve its natural heritage.",
+		"address": "0x7c5f877Ec67a8CF791bFc6dBAfe90DaeDCe9e23F",
+		"transactions": []
+	},
+	{
+		"name": "Zambia R-REC",
+		"abbreviation": "RREC-AZM",
+		"img": "images/asset-images/Generic.jpg",
+		"description": "Zambia R-RECs are a testament to the country's renewable energy journey, utilizing its abundant sunlight to energize and empower its communities.",
+		"address": "0x77814C739D9c41dABa5630651322D486d258d428",
+		"transactions": []
+	}
+]

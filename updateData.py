@@ -1,110 +1,65 @@
-#!/usr/bin/python3
-# update contracts json data with information from api
+import requests, json, sys
+from web3 import Web3
+w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed.binance.org/'))
 
-import requests
-import json
-import os
+RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07'
+RETIREMENT_WALLET = '0xNOT_YET_CREATED'
 
-# keys to use in the Api call
-API_KEY = "FV7VI88AT9SBQDZU3WYWGPWZNVDUEY9RTW"
-# WALLET_ADDR = "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
+API_KEY = sys.argv[1]
+CONTRACTS_FN = sys.argv[2]
+ABI_FN = sys.argv[3]
 
-# get keys from environment variables
-# set environment variable  < export API_KEY="your key">
-# API_KEY = os.environ.get('API_KEY')
-# WALLET_ADDR = os.environ.get("WALLET_ADDR")
+# Load all R-REC contracts
+with open(CONTRACTS_FN, 'r') as f:
+	contracts = json.load(f)
 
-# pass keys as arguments when running the script  => ./updateData <your API_KEY> <your WALLET_address>
-# API_KEY = os.sys.argv[1]
-# WALLET_ADDR = os.sys.argv[2]
+# Load ABI
+with open(ABI_FN, 'r') as f:
+	abi = json.load(f)
 
-# url to get all contracts from github
-contractsUrl = 'https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/contracts.json'
-walletsUrl = 'https://raw.githubusercontent.com/Faith-Kimongo/Renewvia-REC/main/R-REC-NEW/companies.json'
+for contract in contracts:
+	print(contract['name'])
+	w3Contract = w3.eth.contract(address=contract['address'], abi=abi)
 
-print('Getting data from github ...')
+	# Get Most Recent Already-Recorded Block
+	mostRecentTimeStamp = 0
+	if len(contract['transactions']) > 0:
+		mostRecentTimeStamp = int(contract['transactions'][-1]['timeStamp'])
 
-# get all the companies(wallets)
-response = requests.get(walletsUrl)
-allwallets = response.json()
+	# Get Contract Transactions from API
+	response = requests.get('https://api.bscscan.com/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={api_key}'.format(address=contract['address'], api_key=API_KEY))
+	if response.status_code == 200:
+		blocks = response.json()['result']
+		for block in blocks:
+			if not block['to']:	# Contract creation block
+				continue
+			if int(block['timeStamp']) > mostRecentTimeStamp:
+				decoded_data = w3Contract.decode_function_input(block['input'])
+				func = str(decoded_data[0])[10:]
+				func = func[:func.find('(')]
+				if func == 'mint':
+					action = 'mint'
+					amount = decoded_data[1]['amount']
+				elif func == 'transfer':
+					if block['to'] == RETURN_WALLET:
+						action = 'return'
+					elif block['to'] == RETIREMENT_WALLET:
+						action = 'retire'
+					else:
+						action = 'transfer'
+					amount = round(decoded_data[1]['amount']/1e18)
+				else:
+					raise Exception('Unknown function error: {func} in block {block} on contract {name} at {address}'.format(func=func, block=block['blockNumber'], name=contract['name'], address=contract['address']))
+				contract['transactions'].append({
+					'timeStamp': block['timeStamp'],
+					'action': action,
+					'amount': amount,
+					'to': block['to'],
+					'from': block['from'],
+					'blockNumber': block['blockNumber']
+				})
+	else:
+		raise Exception(f"Error fetching data: {response.status_code}")
 
-# use requests module to send get request and get json data from github contracts.json file
-response = requests.get(contractsUrl)
-allContracts = response.json()
-
-# transaction url for api
-
-print('Retrieving Transactions from API ...')
-allTransactions = []
-for wallet  in allwallets:
-    TRANSACTION_URL = f"https://api.bscscan.com/api?module=account&action=tokentx&address={wallet['address']}&page=1&offset=0&startblock=0&endblock=999999999&sort=asc&apikey={API_KEY}"
-    response = requests.get(TRANSACTION_URL)
-    transPerwallet = (response.json()['result'])
-    for trans in transPerwallet:
-        allTransactions.append(trans)
-    transPerwallet = []
-
-print('Sorting transactions per contact ...')
-for contract in allContracts:
-    contract['transactions'] = []
-    for trans in allTransactions:
-        if contract['address'].lower() == trans['contractAddress'].lower() and contract['company_address'].lower() == trans['to'].lower():
-            contract['transactions'].append(trans)
-
-# add action (method)
-for contract in allContracts:
-    if contract['transactions']:
-        for trans in contract['transactions']:
-            if trans['from'].lower() == '0x6E61B86d97EBe007E09770E6C76271645201fd07'.lower():
-                trans['method'] = 'Return'
-            elif trans['from'].lower() == '0x0000000000000000000000000000000000000000'.lower():
-                trans['method'] = 'Generation'
-            else:
-                trans['method'] = 'Generation'
-
-# get latest transaction method save to contract action
-for contract in allContracts:
-    if contract['transactions']:
-        max = 0
-        latestTransaction = {}
-        for trans in contract['transactions']:
-            time = int(trans['timeStamp'])
-            if time > max:
-                max = time
-                latestTransaction = trans
-        contract['action'] = latestTransaction['method']
-
-
-
-
-
-print('Setting the QTY value ...')
-for contract in allContracts:
-    QTY_URL = f"https://api.bscscan.com/api?module=account&action=tokenbalance&contractaddress={contract['address']}&address={contract['company_address']}&tag=latest&apikey={API_KEY}"
-
-    response = requests.get(QTY_URL)
-    data = response.json()
-    api_qty = data['result']
-    if api_qty == "0":
-        qty = 0
-    else:
-        qty = data['result'].strip("0")
-        qty = int(qty)
-    contract['qty'] = qty
-
-allContracts = json.dumps(allContracts)
-
-print('Updating contracts.json file ...')
-
-# write new contracts with updated value to contracts.json file
-with open('contracts.json', 'w') as file:
-    file.write(allContracts)
-
-print('contracts.json file updated')
-
-print('Pushing the contract.json file to github ...')
-# push contracts.json to git
-os.system("git add contracts.json")
-os.system("git commit -m 'updated contracts.json'")
-os.system("git push")
-# print ('Done')
+with open(CONTRACTS_FN[:CONTRACTS_FN.find('.')]+'_new.json', 'w', encoding='utf-8') as f:
+	json.dump(contracts, f, ensure_ascii=False, indent='\t')
