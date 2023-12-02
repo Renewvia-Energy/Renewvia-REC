@@ -9,11 +9,12 @@
 		"transactions": [
 			{
 				"timeStamp": "1691502541",
-				"action": "transfer",
+				"action": "mint",
 				"amount": 4147,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30674910"
+				"blockNumber": "30674910",
+				"note": "manually changed transfer to mint"
 			},
 			{
 				"timeStamp": "1697188513",
@@ -39,7 +40,9 @@
 				"amount": 4099,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31072060"
+				"blockNumber": "31072060",
+				"ignore": true,
+				"note": "Butler got credit for these assets elsewhere"
 			},
 			{
 				"timeStamp": "1692698753",
@@ -47,7 +50,9 @@
 				"amount": 4099,
 				"to": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31072315"
+				"blockNumber": "31072315",
+				"ignore": true,
+				"note": "Butler got credit for these assets elsewhere"
 			},
 			{
 				"timeStamp": "1693737174",
@@ -55,7 +60,9 @@
 				"amount": 4099,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xa7f05f1ad0bd0339e0154451b2e9580dc0eb8393",
-				"blockNumber": "31417071"
+				"blockNumber": "31417071",
+				"ignore": true,
+				"note":"Butler got credit for these assets elsewhere"
 			}
 		]
 	},
@@ -69,11 +76,12 @@
 		"transactions": [
 			{
 				"timeStamp": "1691502730",
-				"action": "transfer",
+				"action": "mint",
 				"amount": 2237,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30674973"
+				"blockNumber": "30674973",
+				"note": "manually changed transfer to mint"
 			},
 			{
 				"timeStamp": "1697188597",
@@ -86,10 +94,11 @@
 			{
 				"timeStamp": "1698509171",
 				"action": "mint",
-				"amount": 4039,
+				"amount": 2213,
 				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "33002289"
+				"blockNumber": "33002289",
+				"note": "manually changed amount from 4039 to 2213"
 			},
 			{
 				"timeStamp": "1700616695",
@@ -97,7 +106,9 @@
 				"amount": 1826,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
-				"blockNumber": "33702066"
+				"blockNumber": "33702066",
+				"ignore": true,
+				"note": "originally minted based off projections instead of actuals; fixed in above block"
 			}
 		]
 	},
@@ -111,11 +122,12 @@
 		"transactions": [
 			{
 				"timeStamp": "1691502892",
-				"action": "transfer",
+				"action": "mint",
 				"amount": 3109,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30675027"
+				"blockNumber": "30675027",
+				"note": "manually changed transfer to mint"
 			}
 		]
 	},
@@ -129,11 +141,12 @@
 		"transactions": [
 			{
 				"timeStamp": "1698509600",
-				"action": "transfer",
+				"action": "mint",
 				"amount": 497,
 				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "33002432"
+				"blockNumber": "33002432",
+				"note": "manually changed transfer to mint"
 			},
 			{
 				"timeStamp": "1700616885",
@@ -159,7 +172,9 @@
 				"amount": 4675,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31072095"
+				"blockNumber": "31072095",
+				"ignore": true,
+				"note": "minted to Renewvia wallet; returned instead of forwarded"
 			},
 			{
 				"timeStamp": "1692698819",
@@ -181,11 +196,12 @@
 		"transactions": [
 			{
 				"timeStamp": "1691499257",
-				"action": "transfer",
+				"action": "mint",
 				"amount": 3026,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30673818"
+				"blockNumber": "30673818",
+				"note": "manually changed transfer to mint"
 			},
 			{
 				"timeStamp": "1691500655",
@@ -215,11 +231,12 @@
 		"transactions": [
 			{
 				"timeStamp": "1693409048",
-				"action": "transfer",
+				"action": "mint",
 				"amount": 1774,
 				"to": "0x504BC5477bA9beA5c4e65396Cc43a7D9A7dbDa10",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31307959"
+				"blockNumber": "31307959",
+				"note": "manually changed transfer to mint"
 			}
 		]
 	}

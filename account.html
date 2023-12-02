@@ -32,11 +32,6 @@
 
 	<!-- JavaScript -->
 	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-	<style>
-		[v-cloak] {
-			display: none;
-		}
-	</style>
 	<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script defer src="account.js"></script>
 </head>
@@ -48,17 +43,17 @@
 	<main>
 		<!-- section 2  -->
 		<div id="">
-			<div class="logo1" v-cloak>
+			<div class="logo1">
 				<div class="logo-container">
-					<img :src="companyData[0].logo" alt="company-logo">
+					<img :src="logo" alt="Company Logo">
 				</div>
 				<div class="column">
 					<div class="row">
-						<div class="inc">{{companyData[0].name}}</div>
+						<div class="inc">{{name}}</div>
 					</div>
 					<div class="column1">
-						<div class="binary"><a rel="external" target="_blank" :href="`https://bscscan.com/address/${companyData[0].address}`">{{companyData[0].smallAddress}}</a></div>
-						<div class="date">Joined {{companyData[0].join_date}}</div>
+						<div class="binary"><a rel="external" target="_blank" :href="`https://bscscan.com/address/${address}`">{{smallAddress}}</a></div>
+						<div class="date">Joined {{join_date}}</div>
 					</div>
 				</div>
 			</div>
@@ -66,7 +61,7 @@
 		<!-- end section 2 -->
 
 		<!-- impact section -->
-		<div class="impact" v-cloak>
+		<div class="impact">
 			<h1>My Impact</h1>
 			<div class="my-impact">
 				<div class="offset">
@@ -92,17 +87,17 @@
 		<!-- end impact section -->
 
 		<!-- tables -->
-		<div class="tables" v-cloak>
+		<div class="tables">
 			<div class="two-tables">
 				<div class="table-column">
-					<div class="table1" v-if="carbonAssetsData && carbonAssetsData.length > 0">
+					<div class="table1" v-if="assets && assets.length > 0">
 						<h1>Carbon Assets</h1>
 						<div class="allassets">
-							<div class="assets" v-for="asset in carbonAssetsData" :key="asset.id">
+							<div class="assets" v-for="asset in assets" :key="asset.id">
 								<details>
 									<summary>
 										<span class="name">{{ asset.name }}</span>
-										<span class="qty">{{ asset.qty }}</span>
+										<span class="qty">{{ asset.amount }}</span>
 										<span class="more">More...</span>
 									</summary>
 									<div class="more-details">
@@ -118,13 +113,13 @@
 						</div>
 					</div>
 
-					<div class="table2" v-if="companyData && companyData.length > 0">
+					<div class="table2" v-if="activity && activity.length > 0">
 						<h1>Activity</h1>
 						<table>
 							<thead>
 								<tr>
 									<th>Date</th>
-									<th>Carbon Assets</th>
+									<th>Asset</th>
 									<th>Action</th>
 									<th>Amount</th>
 									<th>Status</th>
@@ -132,22 +127,21 @@
 							</thead>
 
 							<tbody>
-								<tr class="assets" v-for="asset in carbonAssetsData" :key="asset.address">
-									<td>{{companyData[0].join_date}}</td>
-									<td> {{ asset.name}}</td>
-									<td>{{ asset.action}}</td>
-									<td>{{ asset.qty}}</td>
+								<tr class="assets" v-for="trans in activity" :key="trans.address">
+									<td>{{trans.date}}</td>
+									<td>{{trans.name}}</td>
+									<td>{{trans.action}}</td>
+									<td>{{trans.amount}}</td>
 									<td><button>Verified</button></td>
 								</tr>
 							</tbody>
-
 						</table>
 					</div>
 				</div>
 
 
 				<!-- chart -->
-				<div class="pie-chart" v-if="carbonAssetsData && carbonAssetsData.length > 0">
+				<div class="pie-chart" v-if="assets && assets.length > 0">
 					<h1>Portfolio Distribution</h1>
 					<div class="chart-info">
 						<div>
@@ -156,9 +150,9 @@
 						<!-- chart -->
 
 						<ul class="key">
-							<li v-for="asset in carbonAssetsData" :key="asset.id">
-								<strong class="percent gray">{{ calculatePercentage(asset.qty) }}%</strong>
-								<span class="choice">{{ asset.name }}</span>
+							<li v-for="asset in assets" :key="asset.id">
+								<strong class="percent gray">{{ calculatePercentage(asset.amount) }}%</strong>
+								<span class="choice">{{ asset.name+'s' }}</span>
 							</li>
 						</ul>
 					</div>
