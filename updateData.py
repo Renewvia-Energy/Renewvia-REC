@@ -41,9 +41,9 @@ for contract in contracts:
 					action = 'mint'
 					amount = decoded_data[1]['amount']
 				elif func == 'transfer':
-					if block['to'] == RETURN_WALLET:
+					if block['to'].casefold() == RETURN_WALLET.casefold():
 						action = 'return'
-					elif block['to'] == RETIREMENT_WALLET:
+					elif block['to'].casefold() == RETIREMENT_WALLET.casefold():
 						action = 'retire'
 					else:
 						action = 'transfer'
