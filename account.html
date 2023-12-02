@@ -38,6 +38,15 @@
 <body id="app">
 	<header>
 		<img src="images/logo-titled.png" alt="R-RECs Logo">
+		<nav>
+			<input class="menu-btn" type="checkbox" id="menu-btn">
+			<label class="menu-icon" for="menu-btn" tabindex="0"><span class="navicon"></span></label>
+			<ul class="menu">
+				<li><a target="_blank" href="index.html">WHAT ARE R-RECS</a></li>
+				<li><a rel="external" target="_blank" href="https://www.renewvia.com/">VISIT RENEWVIA</a></li>
+				<li><a href="#">READ THE STANDARD</a></li>
+			</ul>
+		</nav>
 	</header>
 
 	<main>
@@ -138,7 +147,6 @@
 						</table>
 					</div>
 				</div>
-
 
 				<!-- chart -->
 				<div class="pie-chart" v-if="assets && assets.length > 0">

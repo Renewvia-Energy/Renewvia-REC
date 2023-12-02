@@ -47,7 +47,8 @@ const app = Vue.createApp({
 					for (let contract of allContractsData) {
 						// For each transaction of that contract
 						for (let trans of contract['transactions']) {
-							if (trans.ignore) {
+							if (trans.ignore || 
+								(trans.action==='mint' && strcmpi(trans['from'],WALLET) && !strcmpi(trans['to'],WALLET))) {
 								continue
 							}
 							// If this wallet is involved in the transaction

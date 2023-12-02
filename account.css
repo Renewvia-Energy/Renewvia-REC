@@ -1,5 +1,6 @@
 :root {
 	--left-padding: 1rem;
+	--orange: #F06300;
 }
 
 body {
@@ -12,58 +13,52 @@ body {
 	width: 90%;
 	margin: 0 auto;
 }
-nav {
+header {
 	display: flex;
 	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 	background-color: white;
 	padding: 0 1rem;
 	justify-content: space-between;
 }
-#menuButton {
+header img {
+	height: 4rem;
+	width: auto;
+}
+
+header .menu-btn {
 	display: none;
 }
-nav ul {
-	justify-content:end;
+header .menu-icon {
+	display: none;
+}
+header nav {
 	display: flex;
 	align-items: center;
+}
+header ul {
 	list-style: none;
-}
-nav ul li {
+	text-align: center;
+	font-size: 0.7em;
+	padding-left: 0;
 	margin: 0;
-	padding: 0.5rem 0;
-	margin-left: 1.5rem;
-	color: #F06300;
 }
-nav ul li a {
-	color: inherit;
+header ul li {
+	display: inline-block;
+	font-size: 0.9rem;
 }
-.team {
-	background: #F5F5F5;
-	border-radius: 9px;
-	padding: 0.5rem 1rem;
+header ul li a {
+	text-align: center;
+	margin: 0 1em;
+	white-space: nowrap;
+	color: var(--orange);
+	text-decoration: none;
+	font-weight: bold;
 }
-.global {
-	display: flex;
-	align-items: center;
-	background: #F06300;
-	border-radius: 9px;
-	padding: 0.5rem 1rem;
-	color: white;
-}
-.global img {
-	background-color: white;
-	padding: 0.2rem 0.2rem;
-	border-radius: 50%;
-	margin-right: 0.6rem;
-	color:#EB6600 ;
-	width: 2rem;
-	height: 2rem;
-}
+
 img {
 	width: 200px; /* Set the desired width */
 	height: auto;
 	padding: 0.5rem 0;
-
 }
 /* end navigation */
 
@@ -349,7 +344,7 @@ font-weight: bold;
 	font-size: 1rem;
 }
 .table2 tr td button{
-	background-color: #F06300;
+	background-color: var(--orange);
 	border-radius: 0.5rem;
 	border: #ccc;
 	color: white;
