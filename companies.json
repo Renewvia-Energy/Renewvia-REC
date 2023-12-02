@@ -1,26 +1,32 @@
 [
-  {
-    "name": "Renewvia",
-    "logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
-    "join_date": "2022-02-01",
-    "address": "0xF9C289f1C0341fb336224958a885163F5017BC16"
-  },
-  {
-    "name": "SteelFab",
-    "logo": "https://www.steelfab-inc.com/wp-content/uploads/2021/07/steelfab_logo.png",
-    "join_date": "2023-08-01",
-    "address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
-  },
-  {
-    "name": "Superpower Africa Fund",
-    "logo": "https://www.developmentaid.org/files/organizationLogos/tfe-energy-gmbh-103884.jpg",
-    "join_date": "2023-07-05",
-    "address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10"
-  },
-  {
-    "name": "Sonic Automotive",
-    "logo": "https://www.iaawg.com/images/default-source/logos/sonic-automotive_logo.png?sfvrsn=69850009_3",
-    "join_date": "2023-08-22",
-    "address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393"
-  }
+	{
+		"name": "Renewvia",
+		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
+		"join_date": "2022-02-01",
+		"address": "0xF9C289f1C0341fb336224958a885163F5017BC16"
+	},
+	{
+		"name": "SteelFab",
+		"logo": "https://www.steelfab-inc.com/wp-content/uploads/2021/07/steelfab_logo.png",
+		"join_date": "2023-08-01",
+		"address": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE"
+	},
+	{
+		"name": "Superpower Africa Fund",
+		"logo": "https://www.developmentaid.org/files/organizationLogos/tfe-energy-gmbh-103884.jpg",
+		"join_date": "2023-07-05",
+		"address": "0x504bc5477ba9bea5c4e65396cc43a7d9a7dbda10"
+	},
+	{
+		"name": "Sonic Automotive",
+		"logo": "https://www.iaawg.com/images/default-source/logos/sonic-automotive_logo.png?sfvrsn=69850009_3",
+		"join_date": "2023-08-22",
+		"address": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393"
+	},
+	{
+		"name": "Butler Automotive",
+		"logo": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gYne0f2yHy2fl3r2V-7YzAHaHa%26pid%3DApi&f=1&ipt=8a5473767944e9c2dd7df70a6f27013cfeda217a056eecbdbe77f1bb4a057eb2&ipo=images",
+		"join_date": "2023-11-22",
+		"address": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b"
+	}
 ]

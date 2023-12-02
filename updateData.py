@@ -3,7 +3,7 @@ from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed.binance.org/'))
 
 RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07'
-RETIREMENT_WALLET = '0xNOT_YET_CREATED'
+RETIREMENT_WALLET = 'NOT_YET_CREATED'
 
 API_KEY = sys.argv[1]
 CONTRACTS_FN = sys.argv[2]
@@ -33,7 +33,7 @@ for contract in contracts:
 		for block in blocks:
 			if not block['to']:	# Contract creation block
 				continue
-			if int(block['timeStamp']) > mostRecentTimeStamp:
+			if int(block['timeStamp']) > mostRecentTimeStamp:	# Only add blocks that you don't already have
 				decoded_data = w3Contract.decode_function_input(block['input'])
 				func = str(decoded_data[0])[10:]
 				func = func[:func.find('(')]
@@ -41,9 +41,9 @@ for contract in contracts:
 					action = 'mint'
 					amount = decoded_data[1]['amount']
 				elif func == 'transfer':
-					if block['to'].casefold() == RETURN_WALLET.casefold():
+					if decoded_data[1]['to'].casefold() == RETURN_WALLET.casefold():
 						action = 'return'
-					elif block['to'].casefold() == RETIREMENT_WALLET.casefold():
+					elif decoded_data[1]['to'].casefold() == RETIREMENT_WALLET.casefold():
 						action = 'retire'
 					else:
 						action = 'transfer'
@@ -54,7 +54,7 @@ for contract in contracts:
 					'timeStamp': block['timeStamp'],
 					'action': action,
 					'amount': amount,
-					'to': block['to'],
+					'to': decoded_data[1]['to'],
 					'from': block['from'],
 					'blockNumber': block['blockNumber']
 				})
