@@ -4,25 +4,48 @@ const COMPANIES_URL = "https://renewvia-energy.github.io/Renewvia-REC/companies.
 
 const app = Vue.createApp({
 	data() {
-		fetch(contracts_url)
-			.then((allContractsResp) => allContractsResp.json())
-			.then((allContractsData) => {
-				for (let contract of allContractsData) {
+		account = {
+			name: '',
+			address: WALLET,
+			smallAddress: WALLET.substring(0,4)+'...'+WALLET.substring(WALLET.length-4),
+			logo: '',
+			join_date: '',
+			assets: [],
+			activity: [],
+			carbonAssetsData: [],
+			companyData: [],
+			doughnutData: {},
+			chart: null,
+			totalRenewableEnergy: 0,
+			totalCarbonOffsets: 0,
+		}
 
+		fetch(COMPANIES_URL)
+			.then((companiesResp) => companiesResp.json())
+			.then((companies) => {
+				for (company of companies) {
+					if (company.address.toLowerCase() === WALLET) {
+						account.name = company['name']
+						account.logo = company['logo']
+						account.join_date = company['join_date']
+						break
+					}
 				}
+				fetch(contracts_url)
+					.then((allContractsResp) => allContractsResp.json())
+					.then((allContractsData) => {
+						for (let contract of allContractsData) {
+							for (let trans of contract['transactions']) {
+								if (trans['to'] === WALLET || trans['from'] === WALLET) {
+									
+								}
+							}
+						}
 
-				return {
-					address: WALLET,
-					smallAddress: WALLET.substring(0,4)+'...'+WALLET.substring(WALLET.length-4),
-					isHidden: true,
-					carbonAssetsData: [],
-					companyData: [],
-					doughnutData: {},
-					chart: null,
-					totalRenewableEnergy: 0,
-					totalCarbonOffsets: 0,
-				};
+						return account
+					})
 			})
+		
 	},
 
 	mounted() {
