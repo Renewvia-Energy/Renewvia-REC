@@ -357,33 +357,31 @@ font-weight: bold;
 
 .retire, .purchase, .credits {
 /* font-size: 18px; */
-font-weight: small;
-font-size: 1rem;
+	font-size: 1rem;
 }
 .retire{
-background:#f46f11;
-color: #fff;
-border-radius: 0.7rem;
-text-transform: capitalize;
-padding: 0.5rem 0;
-width: 30%;
+	background:#f46f11;
+	color: #fff;
+	border-radius: 0.7rem;
+	text-transform: capitalize;
+	padding: 0.5rem 0;
+	width: 30%;
 }
 .purchase{
-outline: 1px solid #ccc;
-color: #5a5a5a;
-border-radius: 0.7rem;
-text-transform: capitalize;
-padding: 0.5rem 0;
-width: 30%;
+	outline: 1px solid #ccc;
+	color: #5a5a5a;
+	border-radius: 0.7rem;
+	text-transform: capitalize;
+	padding: 0.5rem 0;
+	width: 30%;
 }
 .credits{
-background: #0F9D58;
-color: #fff;
-border-radius: 0.7rem;
-text-transform: capitalize;
-padding: 0.5rem 0;
-width: 30%;
-
+	background: #0F9D58;
+	color: #fff;
+	border-radius: 0.7rem;
+	text-transform: capitalize;
+	padding: 0.5rem 0;
+	width: 30%;
 }
 
 .retire:before, .purchase:before{
