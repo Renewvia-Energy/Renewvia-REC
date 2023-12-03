@@ -1,0 +1,19 @@
+html {
+	font-size: 16px;
+}
+
+main {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 70vh;
+	margin: 0 20%;
+}
+
+h1 {
+	color: var(--orange);
+}
+
+main p {
+	font-size: 1.3rem;
+}

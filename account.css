@@ -1,64 +1,11 @@
-:root {
-	--left-padding: 1rem;
-	--orange: #F06300;
-}
-
 body {
 	background-color: #F9FAF7;
-	font-family: 'Roboto', sans-serif;
 }
 
 /* navigation */
 .container {
 	width: 90%;
 	margin: 0 auto;
-}
-header {
-	display: flex;
-	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
-	background-color: white;
-	padding: 0 1rem;
-	justify-content: space-between;
-}
-header img {
-	height: 4rem;
-	width: auto;
-}
-
-header .menu-btn {
-	display: none;
-}
-header .menu-icon {
-	display: none;
-}
-header nav {
-	display: flex;
-	align-items: center;
-}
-header ul {
-	list-style: none;
-	text-align: center;
-	font-size: 0.7em;
-	padding-left: 0;
-	margin: 0;
-}
-header ul li {
-	display: inline-block;
-	font-size: 0.9rem;
-}
-header ul li a {
-	text-align: center;
-	margin: 0 1em;
-	white-space: nowrap;
-	color: var(--orange);
-	text-decoration: none;
-	font-weight: bold;
-}
-
-img {
-	width: 200px; /* Set the desired width */
-	height: auto;
-	padding: 0.5rem 0;
 }
 /* end navigation */
 
@@ -133,7 +80,7 @@ img {
 	padding: 3rem;
 	background: linear-gradient(270deg, #F06300 0%, #eb7b2b 100%);
 	border-radius: 6px;
-	margin-bottom: 2.5rem;
+	margin: 0 1rem 2.5rem 1rem;
 }
 .my-impact div{
 	color: white;
@@ -384,11 +331,6 @@ font-weight: bold;
 	padding: 0 0.5rem;
 	color:#D15700;
 }
-
-* {
-	box-sizing: border-box;
-}
-
 
 /* retire and purchase */
 

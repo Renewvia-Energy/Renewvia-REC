@@ -1,9 +1,3 @@
-* {
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-	font-family: 'Roboto', sans-serif;
-}
 .hide {
 	display: none;
 }
@@ -157,6 +151,9 @@ nav li a:hover{
 	font-size: 1rem;
 	cursor: pointer;
 }
+.card details b {
+	color: var(--orange);
+}
 
 .card summary .icon .values{
 	margin-left: 1rem;
@@ -222,17 +219,17 @@ text-align: left;
 	margin-bottom: 1.5rem;
 }
 .row h2{
-font-weight: 700;
-font-size: 1.5rem;
+	font-weight: 700;
+	font-size: 1.5rem;
 }
 .row .all-news{
-box-sizing: border-box;
-border: 1px solid #EB6600;
-border-radius: 33px;
-padding: 0.5rem 1rem;
-background-color: #FFFFFF;
-color: #EB6600;
-text-transform: uppercase;
+	box-sizing: border-box;
+	border: 1px solid #EB6600;
+	border-radius: 33px;
+	padding: 0.5rem 1rem;
+	background-color: #FFFFFF;
+	color: #EB6600;
+	text-transform: uppercase;
 }
 
 .platform .platforms{
@@ -306,20 +303,20 @@ text-transform: uppercase;
 	width: 100%;
 }
 .board .board-cards h2{
-font-weight: 300;
-font-size: 1rem;
-margin-left: 0.5rem;
+	font-weight: 300;
+	font-size: 1rem;
+	margin-left: 0.5rem;
 }
 .board .board-cards h4{
-font-weight: 300;
-font-size: 0.7rem;
-margin-left: 0.5rem;
-margin-bottom: 1rem;
+	font-weight: 300;
+	font-size: 0.7rem;
+	margin-left: 0.5rem;
+	margin-bottom: 1rem;
 }
 .board .board-cards i{
-align-self: flex-end;
-margin-left: 75%;
-font-size: 1.2rem;
+	align-self: flex-end;
+	margin-left: 75%;
+	font-size: 1.2rem;
 }
 .arrows{
 	display: flex;
@@ -335,25 +332,30 @@ font-size: 1.2rem;
 .arrow.next{
 	color: #EB6600;
 }
-
 /* end board */
 
 /* partners */
-.partners div h1{
+.partners div h1 {
 	color: #000000;
 	font-size: 2rem;
 }
-.partners div p{
-font-size: 1.1rem;
+.partners div p {
+	font-size: 1.1rem;
 }
-.partners .images{
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 0.5rem;
+.partners .images {
+	display: flex;
+	justify-content: space-between;
 	margin: 2rem 0;  
 }
-.partners .images img{
-	width: 100%;
+.partners .images div {
+	display: flex;
+	align-items: center;
+	background: white;
+	box-shadow: 0px 2px 11px rgba(217, 217, 217, 0.4);
+	border-radius: 0.4rem;
+}
+.partners .images div img{
+	padding: 1rem;
 }
 /* end partners */
 
@@ -756,19 +758,6 @@ margin: 0 0 2rem 0;
 		/* or 142% */
 		text-align: center;
 		color: #000000;
-	}
-	.partners .images{
-		display: flex;
-		justify-content: space-between;
-	}
-	.images div{
-		background: #FFFFFF;
-		box-shadow: 0px 2px 11px rgba(217, 217, 217, 0.4);
-		border-radius: 0.4rem;
-		/* align-items: center; */
-	}
-	.images img{
-		padding: 1rem 1rem 0 1rem;
 	}
 	/* end partners */
 	/* footer */

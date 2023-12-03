@@ -1,11 +1,3 @@
-// toggle menu
-document.getElementById("menuButton").addEventListener("click", function() {
-  var info = document.getElementById("info");
-  info.classList.toggle("info-small");
-});
-
-
-
 // anchor tag js
 document.querySelectorAll('.info a').forEach(anchor => {
     anchor.addEventListener('click', function(e) {

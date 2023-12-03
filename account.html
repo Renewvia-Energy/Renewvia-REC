@@ -3,12 +3,13 @@
 <head>
 	<title>R-RECs Asset Management Hub</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
 	<!-- SEO Description -->
 	<meta name="author" content="Renewvia Energy Technology">
 	<meta name="description" content="Pioneering the future of sustainable energy, R-RECs is committed to driving decarbonization with minimal environmental impact.">
 	<link rel="canonical" href="https://www.r-recs.com/account.html">
+	<meta name="robots" content="noindex">
 
 	<!-- Open Graph Tags -->
 	<meta property="og:title" content="R-RECs Asset Management Hub">
@@ -28,6 +29,7 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 	<!-- Custom CSS -->
+	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="account.css">
 
 	<!-- JavaScript -->
@@ -42,9 +44,10 @@
 			<input class="menu-btn" type="checkbox" id="menu-btn">
 			<label class="menu-icon" for="menu-btn" tabindex="0"><span class="navicon"></span></label>
 			<ul class="menu">
-				<li><a target="_blank" href="index.html">WHAT ARE R-RECS</a></li>
-				<li><a rel="external" target="_blank" href="https://www.renewvia.com/">VISIT RENEWVIA</a></li>
-				<li><a href="#">READ THE STANDARD</a></li>
+				<li><a target="_blank" href="index.html">What are R-RECs</a></li>
+				<li><a rel="external" target="_blank" href="https://www.renewvia.com/">Visit Renewvia</a></li>
+				<li><a href="#">Read the Standard</a></li>
+				<li><a href="mailto:recs@renewvia.com">Contact</a></li>
 			</ul>
 		</nav>
 	</header>
@@ -76,7 +79,7 @@
 				<div class="offset">
 						<div class="texts">
 							<h1>Total amount of carbon offset</h1>
-							<p>{{ totalCarbonOffsets }} tCO2e</p>
+							<p>{{ totalCarbonOffsets.toLocaleString() }} tCO2e</p>
 						</div>
 						<div class="icon">
 							<i class="fas fa-leaf leaf-icon"></i>
@@ -85,7 +88,7 @@
 				<div class="generation">
 					<div class="texts">
 						<h1>Total amount of renewable energy generation</h1>
-						<p>{{totalRenewableEnergy}} MWh</p>
+						<p>{{ totalRenewableEnergy.toLocaleString() }} MWh</p>
 					</div>
 					<div class="icon">
 						<i class="fas fa-solar-panel solar-icon"></i>

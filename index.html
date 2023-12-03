@@ -3,7 +3,7 @@
 <head>
 	<title>R-RECs</title>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
 
 	<!-- SEO Description -->
 	<meta name="author" content="Renewvia Energy Technology">
@@ -30,23 +30,21 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 	<!-- Custom CSS -->
-	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="main.css">
+	<link rel="stylesheet" href="home.css">
 </head>
 <body>
 	<header>
-		<nav class="container">
-			<div class="navtop">
-				<img src="images/renewvia.webp" alt="renewvia-logo" >
-				<a onclick="toggleMenu()" id="menuButton"><i class="fas fa-bars"></i></a>
-			</div>
-			<div class="hide info" id="info">
-				<ul>
-					<li><a href="#about">ABOUT US</a></li>
-					<li><a rel="external" target="_blank" href="https://www.renewvia.com/">RENEWVIA</a></li>
-					<li><a href="#board">OUR TEAM</a></li>
-				</ul>
-			</div>
-		</nav>  
+		<img src="images/logo-titled.png" alt="R-RECs Logo">
+		<nav>
+			<input class="menu-btn" type="checkbox" id="menu-btn">
+			<label class="menu-icon" for="menu-btn" tabindex="0"><span class="navicon"></span></label>
+			<ul class="menu">
+				<li><a rel="external" target="_blank" href="https://www.renewvia.com/">Visit Renewvia</a></li>
+				<li><a href="#">Read the Standard</a></li>
+				<li><a href="mailto:recs@renewvia.com">Contact</a></li>
+			</ul>
+		</nav>
 	</header>
 
 	<main>

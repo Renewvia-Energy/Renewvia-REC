@@ -1,6 +1,6 @@
 const WALLET = window.location.href.split("?")[1];
-const CONTRACTS_URL = "https://renewvia-energy.github.io/Renewvia-REC/contracts.json";
-const COMPANIES_URL = "https://renewvia-energy.github.io/Renewvia-REC/companies.json";
+const CONTRACTS_URL = "https://www.r-recs.com/contracts.json";
+const COMPANIES_URL = "https://www.r-recs.com/companies.json";
 
 function strcmpi(str1, str2) {
 	return str1.localeCompare(str2, undefined, {sensitivity: 'base'}) === 0
