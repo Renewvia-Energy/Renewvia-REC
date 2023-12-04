@@ -222,6 +222,15 @@
 		]
 	},
 	{
+		"name": "Chad R-REC",
+		"abbreviation": "RREC-ATD",
+		"superclass": "REC",
+		"img": "images/asset-images/Generic.jpg",
+		"description": "Chad R-RECs reflect the radiance of the Sahelian sun, marking the nation's stride towards a sustainable future by transforming its intense solar wealth into renewable prosperity.",
+		"address": "0xf07d4d68A8A3A8EE43dcb5E00Fe71303C54511b3",
+		"transactions": []
+	},
+	{
 		"name": "Zambia R-REC",
 		"abbreviation": "RREC-AZM",
 		"superclass": "REC",

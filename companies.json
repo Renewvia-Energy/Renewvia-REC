@@ -28,5 +28,11 @@
 		"logo": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.gYne0f2yHy2fl3r2V-7YzAHaHa%26pid%3DApi&f=1&ipt=8a5473767944e9c2dd7df70a6f27013cfeda217a056eecbdbe77f1bb4a057eb2&ipo=images",
 		"join_date": "2023-11-22",
 		"address": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b"
+	},
+	{
+		"name": "ZIZ Energie",
+		"logo": "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ls8fvhusspsbrnlurjyw",
+		"join_date": "2023-12-04",
+		"address": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631"
 	}
 ]
