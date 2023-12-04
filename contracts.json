@@ -228,7 +228,16 @@
 		"img": "images/asset-images/Generic.jpg",
 		"description": "Chad R-RECs reflect the radiance of the Sahelian sun, marking the nation's stride towards a sustainable future by transforming its intense solar wealth into renewable prosperity.",
 		"address": "0xf07d4d68A8A3A8EE43dcb5E00Fe71303C54511b3",
-		"transactions": []
+		"transactions": [
+			{
+				"timeStamp": "1701706417",
+				"action": "mint",
+				"amount": 27,
+				"to": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "34064204"
+			}
+		]
 	},
 	{
 		"name": "Zambia R-REC",
