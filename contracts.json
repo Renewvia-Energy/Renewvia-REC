@@ -162,7 +162,7 @@
 		"name": "Texas R-REC",
 		"abbreviation": "RREC-TX",
 		"superclass": "REC",
-		"img": "images/asset-images/Generic.jpg",
+		"img": "images/asset-images/RREC-TX.jpg",
 		"description": "Texas R-RECs emerge from the Lone Star State's vast energy landscape, marrying its pioneering spirit with a commitment to renewable and sustainable power.",
 		"address": "0x142D6987332009E7356Bed4d54749577558bf496",
 		"transactions": [
