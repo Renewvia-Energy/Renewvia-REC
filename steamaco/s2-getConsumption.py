@@ -1,4 +1,5 @@
 import requests, sys, json, csv, os
+from timeit import default_timer as timer
 
 URL_BASE = 'https://api.steama.co'
 AUTH_TOKEN = sys.argv[1]
@@ -78,15 +79,33 @@ if __name__ == '__main__':
 	with open(FN_CUSTOMERS, 'r') as cust_file:
 		reader = csv.DictReader(cust_file)
 		stillSkipping = bool(lastCustomer)
+		numSkipped = 0
+		startTime = timer()
 		for c, cust in enumerate(reader):
 			# Skip until you reach the last customer you already recorded
 			if stillSkipping:
 				stillSkipping = lastCustomer != cust['id']
+				numSkipped+= 1
 				print('{progress:.0f}% Complete. Already recorded customer {id}'.format(progress=100*c/num_customers, id=cust['id']))
 
 			# Start recording new customers
 			else:
-				print('{progress:.0f}% Complete. Recording customer {id} to file:'.format(progress=100*(c-1)/num_customers, id=cust['id']))
+				# Report progress and estimated time remaining
+				if c!=numSkipped:
+					timeLeft = (timer()-startTime)/(c-numSkipped)*(num_customers-c)
+					units = 'seconds'
+					if timeLeft > 120:
+						timeLeft/= 60
+						units = 'minutes'
+					if timeLeft > 120:
+						timeLeft/= 60
+						units = 'hours'
+					if timeLeft > 48:
+						timeLeft/= 24
+						units = 'days'
+					print('{progress:.0f}% Complete. Recording customer {id} to file. Estimated time to completion: {timeLeft:.0f} {units}.'.format(progress=100*(c-1)/num_customers, id=cust['id'], timeLeft=timeLeft, units=units))
+				else:
+					print('{progress:.0f}% Complete. Recording customer {id} to file:'.format(progress=100*(c-1)/num_customers, id=cust['id']))
 
 				# Get a list of all the meter readings, including time stamp and ID, for this iteration's customer
 				readings = getMeterReadings(cust['id'])
@@ -94,7 +113,7 @@ if __name__ == '__main__':
 				# Record the all positive customer meter readings, along with their ID and site name
 				with open(FN_READINGS, 'a') as readings_file:
 					writer = csv.writer(readings_file)
-					row = [cust['id'], cust['site_name']]
+					row = [cust['id'], cust['site_name'], cust['user_type']]
 					for reading in readings:
 						if float(reading['usage_amount']) != 0:
 							row+= [reading['timestamp'], reading['usage_amount']]
