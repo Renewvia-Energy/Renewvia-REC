@@ -1,4 +1,4 @@
-import requests, sys, json, csv, os
+import requests, sys, json, csv, os, math
 from timeit import default_timer as timer
 
 URL_BASE = 'https://api.steama.co'
@@ -86,7 +86,7 @@ if __name__ == '__main__':
 			if stillSkipping:
 				stillSkipping = lastCustomer != cust['id']
 				numSkipped+= 1
-				print('{progress:.0f}% Complete. Already recorded customer {id}'.format(progress=100*c/num_customers, id=cust['id']))
+				print('{progress:.0f}% Complete. Already recorded customer {id}'.format(progress=math.floor(100*c/num_customers), id=cust['id']))
 
 			# Start recording new customers
 			else:
@@ -97,15 +97,15 @@ if __name__ == '__main__':
 					if timeLeft > 120:
 						timeLeft/= 60
 						units = 'minutes'
-					if timeLeft > 120:
-						timeLeft/= 60
-						units = 'hours'
-					if timeLeft > 48:
-						timeLeft/= 24
-						units = 'days'
-					print('{progress:.0f}% Complete. Recording customer {id} to file. Estimated time to completion: {timeLeft:.0f} {units}.'.format(progress=100*(c-1)/num_customers, id=cust['id'], timeLeft=timeLeft, units=units))
+						if timeLeft > 120:
+							timeLeft/= 60
+							units = 'hours'
+							if timeLeft > 48:
+								timeLeft/= 24
+								units = 'days'
+					print('{progress:.0f}% Complete. Recording customer {id} to file. Estimated time to completion: {timeLeft:.0f} {units}.'.format(math.floor(progress=100*(c-1)/num_customers), id=cust['id'], timeLeft=timeLeft, units=units))
 				else:
-					print('{progress:.0f}% Complete. Recording customer {id} to file:'.format(progress=100*(c-1)/num_customers, id=cust['id']))
+					print('{progress:.0f}% Complete. Recording customer {id} to file:'.format(progress=math.floor(100*(c-1)/num_customers), id=cust['id']))
 
 				# Get a list of all the meter readings, including time stamp and ID, for this iteration's customer
 				readings = getMeterReadings(cust['id'])
