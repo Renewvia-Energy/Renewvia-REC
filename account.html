@@ -54,31 +54,27 @@
 
 	<main>
 		<!-- Basic Profile Info: Logo, Name, Wallet Address, and Join Date  -->
-		<div id="">
-			<div class="logo1">
-				<div class="logo-container">
-					<img :src="logo" alt="Company Logo">
-				</div>
-				<div class="column">
-					<div class="row">
-						<div class="inc">{{name}}</div>
-					</div>
-					<div class="column1">
-						<div class="binary"><a rel="external" target="_blank" :href="`https://bscscan.com/address/${address}`">{{smallAddress}}</a></div>
-						<div class="date">Joined {{join_date}}</div>
-					</div>
+		<section id="profile-info">
+			<div class="logo-container">
+				<img :src="logo" alt="Company Logo">
+			</div>
+			<div class="profile-info-right">
+				<div class="company-name">{{ name }}</div>
+				<div class="company-technical">
+					<a class="address" rel="external" target="_blank" :href="`https://bscscan.com/address/${address}`">{{ smallAddress }}</a>
+					<div class="date">Joined {{ join_date }}</div>
 				</div>
 			</div>
-		</div>
+		</section>
 		<!-- End Basic Profile Info -->
 
 		<!-- Big, Orange "My Impact" Bar -->
-		<div class="impact">
-			<h1>My Impact</h1>
+		<section id="impact">
+			<h2>My Impact</h2>
 			<div class="my-impact">
 				<div class="offset">
 						<div class="texts">
-							<h1>Approximate amount of carbon offset</h1>
+							<h3>Approximate amount of carbon offset</h3>
 							<p>{{ totalCarbonOffsets.toLocaleString() }} tCO2e</p>
 						</div>
 						<div class="icon">
@@ -87,7 +83,7 @@
 				</div>
 				<div class="generation">
 					<div class="texts">
-						<h1>Total amount of renewable energy generation</h1>
+						<h3>Total amount of renewable energy generation</h3>
 						<p>{{ totalRenewableEnergy.toLocaleString() }} MWh</p>
 					</div>
 					<div class="icon">
@@ -95,15 +91,17 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</section>
 		<!-- end impact section -->
 
-		<!-- tables -->
-		<div class="widgets">
+		<!-- Widgets -->
+		<div id="widgets">
+			<!-- Left Widget Column: Assets and Activity -->
 			<div class="widget-column">
-				<div class="widget" v-if="assets && assets.length > 0">
-					<h1>Carbon Assets</h1>
-					<div class="allassets">
+				<!-- Carbon Assets -->
+				<section class="widget" v-if="assets && assets.length > 0">
+					<h2>Carbon Assets</h2>
+					<div id="allassets">
 						<div class="assets" v-for="asset in assets" :key="asset.id">
 							<details>
 								<summary>
@@ -122,10 +120,11 @@
 							</details>
 						</div>
 					</div>
-				</div>
+				</section>
 
-				<div class="widget" v-if="activity && activity.length > 0">
-					<h1>Activity</h1>
+				<!-- Activity -->
+				<section class="widget" v-if="activity && activity.length > 0">
+					<h2>Activity</h2>
 					<table>
 						<thead>
 							<tr>
@@ -147,23 +146,23 @@
 							</tr>
 						</tbody>
 					</table>
-				</div>
+				</section>
 			</div>
 
+			<!-- Right Widget Column: Progress, Pie Chart, and Transaction Buttons -->
 			<div class="widget-column">
 				<!-- Goal -->
-				<!-- <div v-if="carbon_goal">
-					<h1>Progress Toward Your Carbon Goal</h1>
-				</div> -->
+				<section v-if="carbon_goal">
+					<h2>Progress Toward Your Carbon Goal</h2>
+				</section>
 
-				<!-- chart -->
-				<div class="pie-chart" v-if="assets && assets.length > 0">
-					<h1>Portfolio Distribution</h1>
-					<div class="chart-info">
+				<!-- Chart -->
+				<section class="widget" v-if="assets && assets.length > 0">
+					<h2>Portfolio Distribution</h2>
+					<div id="pie-chart">
 						<div>
 							<canvas ref="myChart"></canvas>
 						</div>
-						<!-- chart -->
 
 						<ul class="key">
 							<li v-for="asset in assets" :key="asset.id">
@@ -172,16 +171,18 @@
 							</li>
 						</ul>
 					</div>
+				</section>
+				<!-- end of chart -->
 
-					<!-- retire & purchase -->
+				<!-- Retire, Purchase, or Mark for Sale -->
+				<section id="transaction-buttons">
 					<a class="retire-purchase" rel="external" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=Ydc7R_ArakyrYud4pmPU-t4U5WxHzZBLmCpkuvMSmgpUOEtEUTRGS1ZaV09CTDM1VjlMOVJTNFpOWi4u">
 						<div class="retire">Retire Current Credits</div>
 						<div class="credits">Mark Credits for sale</div>
 						<div class="purchase">Purchase New Credits</div>
 					</a>
-					<!-- end retire & purchase -->
-				</div>
-				<!-- end of chart -->
+				</section>
+				<!-- end Retire, Purchase, or Mark for Sale -->
 			</div>
 		</div>
 		<!-- end of tables -->
