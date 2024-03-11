@@ -1,6 +1,7 @@
 :root {
 	--left-padding: 1rem;
 	--orange: #F06300;
+	--green: #0F9D58;
 }
 * {
 	font-family: 'Roboto', sans-serif;

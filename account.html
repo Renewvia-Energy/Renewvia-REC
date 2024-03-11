@@ -75,7 +75,7 @@
 				<div class="offset">
 						<div class="texts">
 							<h3>Approximate amount of carbon offset</h3>
-							<p>{{ totalCarbonOffsets.toLocaleString() }} tCO2e</p>
+							<p>{{ totalEstimatedCarbonOffsets.toLocaleString() }} tCO2e</p>
 						</div>
 						<div class="icon">
 							<i class="fas fa-leaf leaf-icon"></i>
@@ -152,8 +152,24 @@
 			<!-- Right Widget Column: Progress, Pie Chart, and Transaction Buttons -->
 			<div class="widget-column">
 				<!-- Goal -->
-				<section v-if="carbon_goal">
+				<section class="widget" v-if="carbon_goal">
 					<h2>Progress Toward Your Carbon Goal</h2>
+					<div class="center-contents">
+						<div class="goal-progress">
+							<div class="outer center-contents">
+								<div class="inner"></div>
+								<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+									<circle class="retired" cx="50%" cy="50%" r="42.5%" stroke-linecap="round" />
+									<circle class="total" cx="50%" cy="50%" r="42.5%" stroke-linecap="round" />
+								</svg>
+							</div>
+						</div>
+						<ul class="key">
+							<li><span class="label retired"></span>Credits Retired</li>
+							<li><span class="label total"></span>Credits Owned</li>
+						</ul>
+					</div>
+					<p>To reach your goal of offsetting {{carbon_goal}} tCO2e, </p>
 				</section>
 
 				<!-- Chart -->
@@ -175,7 +191,7 @@
 				<!-- end of chart -->
 
 				<!-- Retire, Purchase, or Mark for Sale -->
-				<section id="transaction-buttons">
+				<section class="widget" id="transaction-buttons">
 					<a class="retire-purchase" rel="external" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=Ydc7R_ArakyrYud4pmPU-t4U5WxHzZBLmCpkuvMSmgpUOEtEUTRGS1ZaV09CTDM1VjlMOVJTNFpOWi4u">
 						<div class="retire">Retire Current Credits</div>
 						<div class="credits">Mark Credits for sale</div>

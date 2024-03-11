@@ -1,9 +1,20 @@
+:root {
+	--progress-circle-diameter: 20rem;
+	--progress-circle-thickness: 3rem;
+}
+
 body {
 	background-color: #F9FAF7;
 }
 
 main {
 	margin: 0 1%;
+}
+
+.center-contents {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 /* Logo, Company Name, Wallet Address, and Join Date */
@@ -211,6 +222,35 @@ main {
 				}
 			}
 		
+			ul.key {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				list-style-type: none;
+
+				li {
+					width: fit-content;
+					padding: 0.7rem 0.5rem;
+					margin: 0.5rem 0;
+					// border-bottom: 12px solid rgb(251, 250, 250);
+					background-color: rgb(238, 234, 234);
+				}
+				li > * {
+					// display: table-cell;
+				}
+				.percent {
+					color: black;
+					padding: 10px 2px;
+					text-align: center;
+					padding-left: 0.5rem;
+				}
+				.choice {
+					padding: 0 0.5rem;
+					color:#D15700;
+				}
+			}
+
 			#allassets {
 				background: #fff;
 				box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
@@ -276,36 +316,55 @@ main {
 					}
 				}
 			}
-		}
 		
-		#pie-chart {
-			display: flex;
-			flex-direction: row;
-			display: flex;
-
-			.key {
-				width: 100%;
+			#pie-chart {
 				display: flex;
-				flex-direction: column;
-				justify-content: center;
+				flex-direction: row;
+				display: flex;
+			}
 
-				li {
-					display: table-row;
-				}
-				li > * {
-					display: table-cell;
-					border-bottom: 12px solid rgb(251, 250, 250);
-					background-color: rgb(238, 234, 234);
-				}
-				.percent {
-					color: black;
-					padding: 10px 2px;
-					text-align: center;
-					padding-left: 0.5rem;
-				}
-				.choice {
-					padding: 0 0.5rem;
-					color:#D15700;
+			.goal-progress {
+				width: var(--progress-circle-diameter);
+				height: var(--progress-circle-diameter);
+				position: relative;
+
+				.outer {
+					width: var(--progress-circle-diameter);
+					height: var(--progress-circle-diameter);
+					border-radius: 50%;
+					display: flex;
+					// border: 1px solid red;
+					box-shadow:  6px  6px 10px  1px rgba(  0,  0,  0,0.15),
+					            -6px -6px 10px -1px rgba(255,255,255,0.7 );
+
+					.inner {
+						position: absolute;
+						height: calc(var(--progress-circle-diameter) - 2*var(--progress-circle-thickness));
+						width: calc(var(--progress-circle-diameter) - 2*var(--progress-circle-thickness));
+						border-radius: 50%;
+						// border: 1px solid red;
+						box-shadow: inset  4px  4px  6px  -1px rgba(  0,  0,  0,0.2 ),
+						            inset -4px -4px  6px  -1px rgba(255,255,255,0.7 ),
+									            0    0     0   rgba(255,255,255,1   ),
+									            0    0     0   rgba(  0,  0,  0,0.15),
+										   0   12px 10px -10px rgba(  0,  0,  0,0.05);
+					}
+					svg {
+						position: absolute;
+
+						circle {
+							fill: none;
+							stroke-width: var(--progress-circle-thickness);
+						}
+						circle.retired {
+							stroke: var(--orange);
+							stroke-dasharray: 20em 999;
+						}
+						circle.total {
+							stroke: var(--green);
+							stroke-dasharray: 10em 999;
+						}
+					}
 				}
 			}
 		}
@@ -345,7 +404,7 @@ main {
 		width: 30%;
 	}
 	.credits {
-		background: #0F9D58;
+		background: var(--green);
 		color: #fff;
 		border-radius: 0.7rem;
 		text-transform: capitalize;
