@@ -151,24 +151,21 @@ animation-fill-mode: backwards;
 /* end of impact section */
 
 /* tables */
-.tables{
+.widgets{
+	width: 100%;
 	margin: 0 0 2.5rem var(--left-padding);
-}
-.two-tables {
 	display: flex;
-	/* align-items: flex-start; */
-	/* width: 100%; */
+	flex-flow: row wrap;
+	justify-content: space-around;
 }
-.table-column {
+.widget-column {
 	width: 40%;
-	padding-right: 1rem;
+	padding: 0 1rem;
 }
 .pie-chart {
 	display: flex;
 	flex-direction: column;
-	margin: 0 auto;
 	width: 40%;
-	/* padding:1rem 1rem 1rem 3rem; */
 }
 .chart-info{
 	display: flex;
@@ -176,18 +173,18 @@ animation-fill-mode: backwards;
 }
 
 
-.table1 {
+.widget {
 	display: flex;
 	flex-direction: column;
 	font-weight: 500;
 	margin-bottom: 3rem;
 }
-.table1 h1{
+.widget h1 {
 	text-transform: capitalize;
 	font-size: 1.5rem;
 }
 
-.table1 table {
+.widget table {
 	border-collapse: collapse;
 	width: 100%;
 	background-color: #fff;
@@ -198,48 +195,48 @@ animation-fill-mode: backwards;
 .noborders td {
 	border:0;
 }
-.table1 .allassets{
+.widget .allassets{
 	background: #fff;
 	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
 	border-radius: 0.6rem;
 }
-.table1 .assets details{
+.widget .assets details{
 	display: flex;
 	flex-direction: column;
 }
-.table1 .assets details summary{
+.widget .assets details summary{
 	display: flex;
 	justify-content: space-between;
 	padding: 1rem 1rem;
 	border-bottom: 1px solid #ccc;
 }
-.table1 .assets details summary span{
+.widget .assets details summary span{
 	width: 33%;
 }
-.table1 .assets details summary .name{
+.widget .assets details summary .name{
 	font-weight: 300;
 	font-size: 1rem;
 }
-.table1 .assets details summary .qty{
+.widget .assets details summary .qty{
 	text-align: right;
 	font-weight: 300;
 }
-.table1 .assets details summary .more{
+.widget .assets details summary .more{
 	color: #F06300;
 	font-size: 1.2rem;
 	font-weight: 300;
 	text-align: right;
 }
-.table1 .assets details summary .more:hover{
+.widget .assets details summary .more:hover{
 	cursor: pointer;
 }
-.table1 .assets details .more-details{
+.widget .assets details .more-details{
 	display: flex;
 	border-bottom: 2px solid #ccc;
 	width: 90%;
 	margin: 0 auto;
 }
-.table1 .assets details .more-details span{
+.widget .assets details .more-details span{
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -248,20 +245,20 @@ animation-fill-mode: backwards;
 	font-weight: 300;
 	text-align: center;
 }
-.table1.assets details .more-details span.image{
+.widget.assets details .more-details span.image{
 	width: 40%;
 }
-.table1.assets details .more-details span.details{
+.widget.assets details .more-details span.details{
 	width: 60%;
 }
-.table1 .assets details .more-details span img{
+.widget .assets details .more-details span img{
 	border-radius: 1.5rem;
 	width: 13rem;
 }
-.table2{
+.widget{
 font-weight: 500;
 }
-.table2 table{
+.widget table{
 	border-collapse: collapse;
 	width: 100%;
 	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
@@ -269,28 +266,28 @@ font-weight: 500;
 	padding: 0.4rem 1rem;
 	border-radius: 0.6rem;
 }
-.table2 h1{
+.widget h1{
 	font-size: 1.5rem;
 	text-transform: capitalize;
 }
-.table2 th{
+.widget th{
 	padding: 1.5rem 0.7rem;
 	text-align: left;
 	font-weight: 500;
 	font-size: 1rem;
 }
-.table2 th{
+.widget th{
 border-bottom: 2px solid #ccc;
 font-weight: bold;
 }
 
-.table2 td {
+.widget td {
 	padding: 0.5rem 0.7rem;
 	border-bottom: 2px solid #ccc;
 	font-weight: 300;
 	font-size: 1rem;
 }
-.table2 tr td button{
+.widget tr td button{
 	background-color: var(--orange);
 	border-radius: 0.5rem;
 	border: #ccc;
@@ -509,34 +506,34 @@ font-weight: bold;
 			flex-direction: column;
 			width: 100%;
 		}
-		.table1{
+		.widget{
 			width: 100%;
 		}
-		.table1 table{
+		.widget table{
 			width: 100%;
 			border-collapse: unset;
 			padding-bottom: 0;
 		}
-		.table1 table td{
+		.widget table td{
 			padding: 0 1.4rem;
 		}
-		.table2{
+		.widget{
 			margin-bottom: 2rem;
 			width: 100%;
 		}
 
-		.table2 td{
+		.widget td{
 			padding: 0.5rem 0.2rem;
 			font-size: 0.8rem;
 		}
-		.table2 th{
+		.widget th{
 			padding: 1.5rem 0.444rem;
 				text-align: left;
 				font-weight: bold;
 				font-size: 0.9rem;
 		}
 
-		.table2 table tbody{
+		.widget table tbody{
 			padding: 4rem 4rem;
 		}
 		.pie-chart{
@@ -580,10 +577,10 @@ font-weight: bold;
 
 	/* mobile small */
 	@media screen and (max-width:300px){
-		.table2 th{
+		.widget th{
 			padding: 1.5rem 4px;
 		}
-		.table2 table tr{
+		.widget table tr{
 			display: table-caption;
 		}
 		.my-impact i{

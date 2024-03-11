@@ -53,7 +53,7 @@
 	</header>
 
 	<main>
-		<!-- section 2  -->
+		<!-- Basic Profile Info: Logo, Name, Wallet Address, and Join Date  -->
 		<div id="">
 			<div class="logo1">
 				<div class="logo-container">
@@ -70,9 +70,9 @@
 				</div>
 			</div>
 		</div>
-		<!-- end section 2 -->
+		<!-- End Basic Profile Info -->
 
-		<!-- impact section -->
+		<!-- Big, Orange "My Impact" Bar -->
 		<div class="impact">
 			<h1>My Impact</h1>
 			<div class="my-impact">
@@ -99,57 +99,62 @@
 		<!-- end impact section -->
 
 		<!-- tables -->
-		<div class="tables">
-			<div class="two-tables">
-				<div class="table-column">
-					<div class="table1" v-if="assets && assets.length > 0">
-						<h1>Carbon Assets</h1>
-						<div class="allassets">
-							<div class="assets" v-for="asset in assets" :key="asset.id">
-								<details>
-									<summary>
-										<span class="name">{{ asset.name }}</span>
-										<span class="qty">{{ asset.amount }}</span>
-										<span class="more">More...</span>
-									</summary>
-									<div class="more-details">
-										<span class="image"><img
-												:src="asset.img"
-												:alt="Image"></span>
-										<span class="details">
-											<p>{{ asset.description}}</p>
-										</span>
-									</div>
-								</details>
-							</div>
+		<div class="widgets">
+			<div class="widget-column">
+				<div class="widget" v-if="assets && assets.length > 0">
+					<h1>Carbon Assets</h1>
+					<div class="allassets">
+						<div class="assets" v-for="asset in assets" :key="asset.id">
+							<details>
+								<summary>
+									<span class="name">{{ asset.name }}</span>
+									<span class="qty">{{ asset.amount }}</span>
+									<span class="more">More...</span>
+								</summary>
+								<div class="more-details">
+									<span class="image"><img
+											:src="asset.img"
+											:alt="Image"></span>
+									<span class="details">
+										<p>{{ asset.description}}</p>
+									</span>
+								</div>
+							</details>
 						</div>
 					</div>
-
-					<div class="table2" v-if="activity && activity.length > 0">
-						<h1>Activity</h1>
-						<table>
-							<thead>
-								<tr>
-									<th>Date</th>
-									<th>Asset</th>
-									<th>Action</th>
-									<th>Amount</th>
-									<th>Status</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<tr class="assets" v-for="trans in activity" :key="trans.address">
-									<td>{{trans.date}}</td>
-									<td>{{trans.name}}</td>
-									<td>{{trans.action}}</td>
-									<td>{{trans.amount}}</td>
-									<td><button>Verified</button></td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
 				</div>
+
+				<div class="widget" v-if="activity && activity.length > 0">
+					<h1>Activity</h1>
+					<table>
+						<thead>
+							<tr>
+								<th>Date</th>
+								<th>Asset</th>
+								<th>Action</th>
+								<th>Amount</th>
+								<th>Status</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr class="assets" v-for="trans in activity" :key="trans.address">
+								<td>{{trans.date}}</td>
+								<td>{{trans.name}}</td>
+								<td>{{trans.action}}</td>
+								<td>{{trans.amount}}</td>
+								<td><button>Verified</button></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+			<div class="widget-column">
+				<!-- Goal -->
+				<!-- <div v-if="carbon_goal">
+					<h1>Progress Toward Your Carbon Goal</h1>
+				</div> -->
 
 				<!-- chart -->
 				<div class="pie-chart" v-if="assets && assets.length > 0">

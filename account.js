@@ -30,6 +30,8 @@ const app = Vue.createApp({
 					this.name = company['name']
 					this.logo = company['logo']
 					this.join_date = company['join_date']
+					this.carbon_goal = company['carbon_goal']
+					this.rec_goal = company['rec_goal']
 					break
 				}
 			}
