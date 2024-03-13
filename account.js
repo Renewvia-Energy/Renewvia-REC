@@ -129,6 +129,10 @@ const app = Vue.createApp({
 			} else {
 				return carbonCredits
 			}
+		},
+
+		instructionsToAchieveCarbonGoal() {
+			return 0
 		}
 	},
 

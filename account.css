@@ -211,20 +211,36 @@ main {
   list-style-type: none;
 }
 #widgets .widget-column .widget ul.key li {
+  display: flex;
+  align-items: center;
   width: fit-content;
-  padding: 0.7rem 0.5rem;
+  padding: 0.7rem 0.7rem;
   margin: 0.5rem 0;
   background-color: rgb(238, 234, 234);
 }
-#widgets .widget-column .widget ul.key .percent {
+#widgets .widget-column .widget ul.key li .percent {
   color: black;
-  padding: 10px 2px;
   text-align: center;
-  padding-left: 0.5rem;
 }
-#widgets .widget-column .widget ul.key .choice {
-  padding: 0 0.5rem;
+#widgets .widget-column .widget ul.key li .choice {
+  padding-left: 0.5em;
   color: #D15700;
+}
+#widgets .widget-column .widget ul.key li .label {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 0.5em;
+  border: 1px solid darkgray;
+}
+#widgets .widget-column .widget ul.key li .label.retired {
+  background: var(--green);
+}
+#widgets .widget-column .widget ul.key li .label.total {
+  background: var(--orange);
+}
+#widgets .widget-column .widget ul.key li .label.remaining {
+  background: white;
 }
 #widgets .widget-column .widget #allassets {
   background: #fff;
