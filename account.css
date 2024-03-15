@@ -311,6 +311,7 @@ main {
   width: var(--progress-circle-diameter);
   height: var(--progress-circle-diameter);
   position: relative;
+  margin: 2rem 0;
 }
 #widgets .widget-column .widget .goal-progress .outer {
   width: var(--progress-circle-diameter);
@@ -334,12 +335,14 @@ main {
   stroke-width: var(--progress-circle-thickness);
 }
 #widgets .widget-column .widget .goal-progress .outer svg circle.retired {
-  stroke: var(--orange);
-  stroke-dasharray: 20em 999;
+  stroke: var(--green);
 }
 #widgets .widget-column .widget .goal-progress .outer svg circle.total {
-  stroke: var(--green);
-  stroke-dasharray: 10em 999;
+  stroke: var(--orange);
+}
+#widgets .widget-column .widget p.goal-instructions {
+  font-weight: 300;
+  font-size: larger;
 }
 
 .retire-purchase {

@@ -341,13 +341,13 @@ main {
 				width: var(--progress-circle-diameter);
 				height: var(--progress-circle-diameter);
 				position: relative;
+				margin: 2rem 0;
 
 				.outer {
 					width: var(--progress-circle-diameter);
 					height: var(--progress-circle-diameter);
 					border-radius: 50%;
 					display: flex;
-					// border: 1px solid red;
 					box-shadow:  6px  6px 10px  1px rgba(  0,  0,  0,0.15),
 					            -6px -6px 10px -1px rgba(255,255,255,0.7 );
 
@@ -356,7 +356,6 @@ main {
 						height: calc(var(--progress-circle-diameter) - 2*var(--progress-circle-thickness));
 						width: calc(var(--progress-circle-diameter) - 2*var(--progress-circle-thickness));
 						border-radius: 50%;
-						// border: 1px solid red;
 						box-shadow: inset  4px  4px  6px  -1px rgba(  0,  0,  0,0.2 ),
 						            inset -4px -4px  6px  -1px rgba(255,255,255,0.7 ),
 									            0    0     0   rgba(255,255,255,1   ),
@@ -371,15 +370,19 @@ main {
 							stroke-width: var(--progress-circle-thickness);
 						}
 						circle.retired {
-							stroke: var(--orange);
-							stroke-dasharray: 20em 999;
+							stroke: var(--green);
+							// stroke-dasharray: 0 999;
 						}
 						circle.total {
-							stroke: var(--green);
-							stroke-dasharray: 10em 999;
+							stroke: var(--orange);
+							// stroke-dasharray: 0 999;
 						}
 					}
 				}
+			}
+			p.goal-instructions {
+				font-weight: 300;
+				font-size: larger;
 			}
 		}
 	}
