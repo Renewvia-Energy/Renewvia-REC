@@ -430,6 +430,11 @@ margin: 0 0 2rem 0;
 .social-icons i{
 	margin-left: 0.5rem;
 }
+.fab {
+	text-decoration: none;
+	color: black;
+	margin: 0 0.3em;
+}
 /* end copyrights */
 
 /*big screen */
