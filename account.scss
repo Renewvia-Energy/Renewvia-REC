@@ -1,0 +1,437 @@
+:root {
+	--progress-circle-diameter: 20rem;
+	--progress-circle-thickness: 3rem;
+}
+
+body {
+	background-color: #F9FAF7;
+}
+
+main {
+	margin: 0 1%;
+}
+
+.center-contents {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Logo, Company Name, Wallet Address, and Join Date */
+#profile-info {
+	border-bottom: 2px solid #D9D9D9;
+	display: flex;
+	padding: 2rem 2rem 2rem 2rem;
+	width: 90%;
+	margin-bottom: 1rem;
+
+	.logo-container {
+		max-width: 200px; /*Adjust the size as needed*/
+		margin: 0;
+	}
+	.logo-container img {
+		width: 8rem;
+		height: 8rem;
+		object-fit: contain;
+		background-color: white;
+		border-radius: 50%;
+	}
+
+	.profile-info-right {
+		margin: 0.8rem 0 0.8rem 1.5rem ;
+		font-weight: 600;
+		font-size: 1.5rem;
+		text-transform: capitalize;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		width: 30%;
+
+		.company-name {
+			font-weight: bold;
+			width: 100%;
+			text-overflow: ellipsis;
+			width: 40%;
+			display: flex;
+			justify-content: flex-start;
+			gap: 1rem; 
+		}
+		.company-technical {
+			margin-top: 0.4rem;
+			display: flex;
+			justify-content: flex-start;
+			gap: 1rem;
+
+			div, a {
+				width: 40%;
+			}
+			.address {
+				color: #F06300;
+				font-size: 1rem;
+				overflow: hidden;
+			}
+			.date {
+				font-weight: 400;
+				font-size: 1rem;
+			}
+		}
+	}
+}
+
+/* impact section */
+#impact {
+	h2 {
+		text-transform: capitalize;
+		font-size: 1.5rem;
+		padding: 0;
+		padding-left: var(--left-padding);
+	}
+
+	.my-impact {
+		display: flex;
+		justify-content: space-between;
+		padding: 3rem;
+		background: linear-gradient(270deg, #F06300 0%, #eb7b2b 100%);
+		border-radius: 6px;
+		margin: 1rem 0;
+	
+		div {
+			color: white;
+			width: 50%;
+		}
+		.offset {
+			border-right: 1px white solid ;
+			display: flex;
+			align-items: center;
+			
+			.texts {
+				width: 40%;
+				margin-left: 2rem;
+			}
+			.icon {
+				display: flex;
+				justify-content: space-evenly;
+			}
+			.icon i {
+				font-size: 4.5rem;
+			}
+		}
+		
+		.generation{
+			display: flex;
+			flex-direction: row-reverse;
+			align-items: center;
+	
+			.icon {
+				display: flex;
+				justify-content: space-evenly;
+				
+				i {
+					font-size: 4rem;
+				}
+			}
+			.texts {
+				width: 80%;
+				text-align: right;
+			}
+		}
+		
+		.texts {
+			padding: 2rem 0;
+	
+			* {
+				padding: 0.4rem 0;
+			}
+		}
+		div h3 {
+			flex-grow: 1;
+			font-weight: 500;
+			font-size: 1.1rem;
+			color: #FFFFFF;
+			padding: 0;
+			margin: 0;
+		}
+		i {
+			font-size: 4rem;
+			animation-fill-mode: backwards;
+		}
+		div p {
+			font-weight: 400;
+			font-size: 1.8rem;
+			margin: 0;
+		}
+	}
+}
+/* end of impact section */
+
+/* tables */
+#widgets {
+	width: 100%;
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+
+	.widget-column {
+		width: 45%;
+		padding: 0 1rem;
+
+		.widget {
+			display: flex;
+			flex-direction: column;
+			font-weight: 500;
+			margin-bottom: 3rem;
+		
+			h2 {
+				text-transform: capitalize;
+				font-size: 1.5rem;
+			}
+		
+			table {
+				border-collapse: collapse;
+				width: 100%;
+				background-color: #fff;
+				box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+				padding: 0.4rem 1rem;
+				border-radius: 0.6rem;
+		
+				th {
+					padding: 1.5rem 0.7rem;
+					text-align: left;
+					font-weight: 500;
+					font-size: 1rem;
+					border-bottom: 2px solid #ccc;
+					font-weight: bold;
+				}
+		
+				td {
+					padding: 0.5rem 0.7rem;
+					border-bottom: 2px solid #ccc;
+					font-weight: 300;
+					font-size: 1rem;
+		
+					button {
+						background-color: var(--orange);
+						border-radius: 0.5rem;
+						border: #ccc;
+						color: white;
+						font-weight: bold;
+						font-size: small;
+						padding: 0.5rem;
+						margin-right: 0.2rem;
+					}
+				}
+			}
+		
+			ul.key {
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				list-style-type: none;
+
+				li {
+					display: flex;
+					align-items: center;
+					width: fit-content;
+					padding: 0.7rem 0.7rem;
+					margin: 0.5rem 0;
+					background-color: rgb(238, 234, 234);
+
+					.percent {
+						color: black;
+						text-align: center;
+					}
+					.choice {
+						padding-left: 0.5em;
+						color:#D15700;
+					}
+					
+					.label {
+						display: inline-block;
+						width: 1em;
+						height: 1em;
+						margin-right: 0.5em;
+						border: 1px solid darkgray;
+					}
+					.label.retired {
+						background: var(--green);
+					}
+					.label.total {
+						background: var(--orange);
+					}
+					.label.remaining {
+						background: white;
+					}
+				}
+			}
+
+			#allassets {
+				background: #fff;
+				box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+				border-radius: 0.6rem;
+
+				.assets details {
+					display: flex;
+					flex-direction: column;
+			
+					summary {
+						display: flex;
+						justify-content: space-between;
+						padding: 1rem 1rem;
+						border-bottom: 1px solid #ccc;
+						span{
+							width: 33%;
+						}
+						.name{
+							font-weight: 300;
+							font-size: 1rem;
+						}
+						.qty{
+							text-align: right;
+							font-weight: 300;
+						}
+						.more{
+							color: #F06300;
+							font-size: 1.2rem;
+							font-weight: 300;
+							text-align: right;
+						}
+						.more:hover{
+							cursor: pointer;
+						}
+					}
+			
+					.more-details {
+						display: flex;
+						border-bottom: 2px solid #ccc;
+						width: 90%;
+						margin: 0 auto;
+			
+						span {
+							display: flex;
+							align-items: center;
+							justify-content: center;
+							padding: 0.5rem 1rem;
+							font-size: 1rem;
+							font-weight: 300;
+							text-align: center;
+			
+							img {
+								border-radius: 1.5rem;
+								width: 13rem;
+							}
+						}
+						span.image {
+							width: 40%;
+						}
+						span.details {
+							width: 60%;
+						}
+					}
+				}
+			}
+		
+			#pie-chart {
+				display: flex;
+				flex-direction: row;
+				display: flex;
+			}
+
+			.goal-progress {
+				width: var(--progress-circle-diameter);
+				height: var(--progress-circle-diameter);
+				position: relative;
+				margin: 2rem 0;
+
+				.outer {
+					width: var(--progress-circle-diameter);
+					height: var(--progress-circle-diameter);
+					border-radius: 50%;
+					display: flex;
+					box-shadow:  6px  6px 10px  1px rgba(  0,  0,  0,0.15),
+					            -6px -6px 10px -1px rgba(255,255,255,0.7 );
+
+					.inner {
+						position: absolute;
+						height: calc(var(--progress-circle-diameter) - 2*var(--progress-circle-thickness));
+						width: calc(var(--progress-circle-diameter) - 2*var(--progress-circle-thickness));
+						border-radius: 50%;
+						box-shadow: inset  4px  4px  6px  -1px rgba(  0,  0,  0,0.2 ),
+						            inset -4px -4px  6px  -1px rgba(255,255,255,0.7 ),
+									            0    0     0   rgba(255,255,255,1   ),
+									            0    0     0   rgba(  0,  0,  0,0.15),
+										   0   12px 10px -10px rgba(  0,  0,  0,0.05);
+					}
+					svg {
+						position: absolute;
+
+						circle {
+							fill: none;
+							stroke-width: var(--progress-circle-thickness);
+						}
+						circle.retired {
+							stroke: var(--green);
+							// stroke-dasharray: 0 999;
+						}
+						circle.total {
+							stroke: var(--orange);
+							// stroke-dasharray: 0 999;
+						}
+					}
+				}
+			}
+			p.goal-instructions {
+				font-weight: 300;
+				font-size: larger;
+			}
+		}
+	}
+}
+
+.retire-purchase {
+	width: 100%;
+	height: 5rem;
+	background-color: #fff;
+	border-radius: 0.7rem;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	text-align: center;
+	text-transform: capitalize;
+	text-decoration: none;
+	margin-top: 2rem;
+	padding-left: 0.5rem;
+	padding-right: 0.5rem;
+
+	.retire {
+		background:#f46f11;
+		color: #fff;
+		border-radius: 0.7rem;
+		text-transform: capitalize;
+		padding: 0.5rem 0;
+		width: 30%;
+	}
+	.purchase {
+		outline: 1px solid #ccc;
+		color: #5a5a5a;
+		border-radius: 0.7rem;
+		text-transform: capitalize;
+		padding: 0.5rem 0;
+		width: 30%;
+	}
+	.credits {
+		background: var(--green);
+		color: #fff;
+		border-radius: 0.7rem;
+		text-transform: capitalize;
+		padding: 0.5rem 0;
+		width: 30%;
+	}
+	
+	.retire:before, .purchase:before{
+		display: flex;
+		margin: 0 auto 0.5rem;
+		border-radius: 5px;
+	}
+}

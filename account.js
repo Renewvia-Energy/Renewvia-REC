@@ -1,6 +1,9 @@
 const WALLET = window.location.href.split("?")[1];
 const CONTRACTS_URL = "https://www.r-recs.com/contracts.json";
 const COMPANIES_URL = "https://www.r-recs.com/companies.json";
+const RETIREMENT_WALLET = '';
+const RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07';
+const FULL_GOAL_CIRCLE = 850;
 
 function strcmpi(str1, str2) {
 	return str1.localeCompare(str2, undefined, {sensitivity: 'base'}) === 0
@@ -16,6 +19,7 @@ const app = Vue.createApp({
 			join_date: '',
 			assets: [],
 			activity: [],
+			retired_carbon: 0,
 			chart: null
 		}
 	},
@@ -30,6 +34,8 @@ const app = Vue.createApp({
 					this.name = company['name']
 					this.logo = company['logo']
 					this.join_date = company['join_date']
+					this.carbon_goal = company['carbon_goal']
+					this.rec_goal = company['rec_goal']
 					break
 				}
 			}
@@ -59,7 +65,15 @@ const app = Vue.createApp({
 								// Add the transaction to the activity table
 								switch (trans.action) {
 									case 'transfer':
-										trans.action = strcmpi(trans['from'], WALLET) ? 'Sale' : 'Purchase'
+										// If the action is a transfer to the retirement or return wallets, log accordingly
+										if (strcmpi(trans['to'], RETIREMENT_WALLET)) {
+											this.retired_carbon+= trans.amount
+											trans.action = 'Retirement'
+										} else if (strcmpi(trans['to'], RETURN_WALLET)) {
+											trans.action = 'Return'
+										} else {
+											trans.action = strcmpi(trans['from'], WALLET) ? 'Sale' : 'Purchase'
+										}
 										break
 									case 'mint':
 										trans.action = 'Generation'
@@ -104,9 +118,15 @@ const app = Vue.createApp({
 	},
 
 	updated() {
+		// Render the chart with the new data
 		if (!this.chart) {
-			// Render the chart with the new data
 			this.renderChart();
+		}
+
+		// Update carbon goal progress
+		if (this.carbon_goal) {
+			document.getElementById('retired-carbon').setAttribute('stroke-dasharray', `${Math.round(FULL_GOAL_CIRCLE * Math.min(this.retired_carbon / this.carbon_goal, 1))}, 999`)
+			document.getElementById('total-carbon').setAttribute('stroke-dasharray', `${Math.round(FULL_GOAL_CIRCLE * Math.min((this.retired_carbon + this.totalCarbonOffsets) / this.carbon_goal, 1))} 999`)
 		}
 	},
 
@@ -115,13 +135,44 @@ const app = Vue.createApp({
 			return this.assets.reduce((sum, asset) => asset.superclass === 'REC' ? sum+asset.amount : sum, 0)
 		},
 
-		// Note: This is weird, and we should probably simplify it later. When this was written, we hadn't minted any carbon credits, but we still wanted to show approximate carbon offset. Think of it like "If you converted all of your RECs to CCs, how many carbon credits would you have?" 1451 is from AVERT, and 2205 is the number of pounds in one ton.
 		totalCarbonOffsets() {
-			var carbonCredits = this.assets.reduce((sum, asset) => asset.superclass === 'CC' ? sum+asset.amount : sum, 0)
+			return this.assets.reduce((sum, asset) => asset.superclass === 'CC' ? sum+asset.amount : sum, 0)
+		},
+
+		// Note: This is weird, and we should probably simplify it later. When this was written, we hadn't minted any carbon credits, but we still wanted to show approximate carbon offset. Think of it like "If you converted all of your RECs to CCs, how many carbon credits would you have?" 1451 is from AVERT, and 2205 is the number of pounds in one ton.
+		totalEstimatedCarbonOffsets() {
+			var carbonCredits = this.totalCarbonOffsets
 			if (carbonCredits == 0) {
 				return Math.round(this.assets.reduce((sum, asset) => asset.superclass === 'REC' ? sum+asset.amount : sum, 0)*1451/2205)
 			} else {
 				return carbonCredits
+			}
+		},
+
+		instructionsToAchieveCarbonGoal() {
+			// If you haven't reached your goal yet
+			if (this.carbon_goal > this.retired_carbon) {
+				let instr = `So far, you have retired ${this.retired_carbon.toLocaleString()} carbon credits. You currently own ${this.totalCarbonOffsets.toLocaleString()}. To achieve your goal of retiring ${this.carbon_goal.toLocaleString()} carbon credits, `
+
+				// If you could reach your goal by retiring what you already have
+				if (this.retired_carbon + this.totalCarbonOffsets >= this.carbon_goal) {
+					return instr + `retire at least ${(this.carbon_goal-this.retired_carbon).toLocaleString()} more carbon credits.`
+
+				// If you need to buy or convert more credits in order to reach your goal
+				} else {
+					instr+= `purchase at least ${(this.carbon_goal - this.totalCarbonOffsets - this.retired_carbon).toLocaleString()} more carbon credits, then retire at least ${(this.carbon_goal - this.retired_carbon).toLocaleString()} carbon credits.`
+					
+					// If you have RECs you could convert to carbon credits
+					if (this.totalRenewableEnergy > 0) {
+						instr+= ` You do have ${(this.totalRenewableEnergy).toLocaleString()} renewable energy credits (RECs) that you can exchange for carbon credits, which may help you achieve your carbon goal.`
+					}
+
+					return instr
+				}
+				
+			// If you have reached your goal
+			} else {
+				return `Congratulations! You have accomplished your goal of retiring ${this.carbon_goal} carbon credits.`
 			}
 		}
 	},

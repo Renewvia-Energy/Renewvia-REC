@@ -37,7 +37,7 @@
 </head>
 <body>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
-
+  
 	<div id="app">
 		<header>
 			<img src="images/logo-titled.png" alt="R-RECs Logo">
@@ -54,33 +54,30 @@
 		</header>
 
 		<main>
-			<!-- section 2  -->
-			<div id="">
-				<div class="logo1">
-					<div class="logo-container">
-						<img :src="logo" alt="Company Logo">
-					</div>
-					<div class="column">
-						<div class="row">
-							<div class="inc">{{name}}</div>
-						</div>
-						<div class="column1">
-							<div class="binary"><a rel="external" target="_blank" :href="`https://bscscan.com/address/${address}`">{{smallAddress}}</a></div>
-							<div class="date">Joined {{join_date}}</div>
-						</div>
+			<!-- Basic Profile Info: Logo, Name, Wallet Address, and Join Date  -->
+			<section id="profile-info">
+				<div class="logo-container">
+					<img :src="logo" alt="Company Logo">
+				</div>
+				<div class="profile-info-right">
+					<div class="company-name">{{ name }}</div>
+					<div class="company-technical">
+						<a class="address" rel="external" target="_blank" :href="`https://bscscan.com/address/${address}`">{{ smallAddress }}</a>
+						<div class="date">Joined {{ join_date }}</div>
 					</div>
 				</div>
-			</div>
-			<!-- end section 2 -->
+			</section>
+			<!-- End Basic Profile Info -->
 
-			<!-- impact section -->
-			<div class="impact">
-				<h1>My Impact</h1>
+			<!-- Big, Orange "My Impact" Bar -->
+			<section id="impact">
+				<h2>My Impact</h2>
 				<div class="my-impact">
 					<div class="offset">
 							<div class="texts">
-								<h1>Approximate amount of carbon offset</h1>
-								<p>{{ totalCarbonOffsets.toLocaleString() }} tCO2e</p>
+								<h3>Approximate amount of carbon offset</h3>
+								<p>{{ totalEstimatedCarbonOffsets.toLocaleString() }} tCO2e</p>
+
 							</div>
 							<div class="icon">
 								<i class="fas fa-leaf leaf-icon"></i>
@@ -88,7 +85,7 @@
 					</div>
 					<div class="generation">
 						<div class="texts">
-							<h1>Total amount of renewable energy generation</h1>
+							<h3>Total amount of renewable energy generation</h3>
 							<p>{{ totalRenewableEnergy.toLocaleString() }} MWh</p>
 						</div>
 						<div class="icon">
@@ -96,70 +93,96 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</section>
 			<!-- end impact section -->
 
-			<!-- tables -->
-			<div class="tables">
-				<div class="two-tables">
-					<div class="table-column">
-						<div class="table1" v-if="assets && assets.length > 0">
-							<h1>Carbon Assets</h1>
-							<div class="allassets">
-								<div class="assets" v-for="asset in assets" :key="asset.id">
-									<details>
-										<summary>
-											<span class="name">{{ asset.name }}</span>
-											<span class="qty">{{ asset.amount }}</span>
-											<span class="more">More...</span>
-										</summary>
-										<div class="more-details">
-											<span class="image"><img
-													:src="asset.img"
-													:alt="Image"></span>
-											<span class="details">
-												<p>{{ asset.description}}</p>
-											</span>
-										</div>
-									</details>
-								</div>
+			<!-- Widgets -->
+			<div id="widgets">
+				<!-- Left Widget Column: Assets and Activity -->
+				<div class="widget-column">
+					<!-- Carbon Assets -->
+					<section class="widget" v-if="assets && assets.length > 0">
+						<h2>Carbon Assets</h2>
+						<div id="allassets">
+							<div class="assets" v-for="asset in assets" :key="asset.id">
+								<details>
+									<summary>
+										<span class="name">{{ asset.name }}</span>
+										<span class="qty">{{ asset.amount }}</span>
+										<span class="more">More...</span>
+									</summary>
+									<div class="more-details">
+										<span class="image"><img
+												:src="asset.img"
+												:alt="Image"></span>
+										<span class="details">
+											<p>{{ asset.description}}</p>
+										</span>
+									</div>
+								</details>
 							</div>
 						</div>
+					</section>
 
-						<div class="table2" v-if="activity && activity.length > 0">
-							<h1>Activity</h1>
-							<table>
-								<thead>
-									<tr>
-										<th>Date</th>
-										<th>Asset</th>
-										<th>Action</th>
-										<th>Amount</th>
-										<th>Status</th>
-									</tr>
-								</thead>
+					<!-- Activity -->
+					<section class="widget" v-if="activity && activity.length > 0">
+						<h2>Activity</h2>
+						<table>
+							<thead>
+								<tr>
+									<th>Date</th>
+									<th>Asset</th>
+									<th>Action</th>
+									<th>Amount</th>
+									<th>Status</th>
+								</tr>
+							</thead>
 
-								<tbody>
-									<tr class="assets" v-for="trans in activity" :key="trans.address">
-										<td>{{trans.date}}</td>
-										<td>{{trans.name}}</td>
-										<td>{{trans.action}}</td>
-										<td>{{trans.amount}}</td>
-										<td><button>Verified</button></td>
-									</tr>
-								</tbody>
-							</table>
+							<tbody>
+								<tr class="assets" v-for="trans in activity" :key="trans.address">
+									<td>{{trans.date}}</td>
+									<td>{{trans.name}}</td>
+									<td>{{trans.action}}</td>
+									<td>{{trans.amount}}</td>
+									<td><button>Verified</button></td>
+								</tr>
+							</tbody>
+						</table>
+					</section>
+				</div>
+
+				<!-- Right Widget Column: Progress, Pie Chart, and Transaction Buttons -->
+				<div class="widget-column">
+					<!-- Goal -->
+					<section class="widget" v-if="carbon_goal">
+						<h2>Progress Toward Your Carbon Goal</h2>
+						<div class="center-contents">
+							<div class="goal-progress">
+								<div class="outer center-contents">
+									<div class="inner"></div>
+									<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
+										<circle id="total-carbon" class="total" cx="50%" cy="50%" r="42.5%" stroke-linecap="round" />
+										<circle id="retired-carbon" class="retired" cx="50%" cy="50%" r="42.5%" stroke-linecap="round" />
+									</svg>
+								</div>
+							</div>
+							<ul class="key">
+								<li><div class="label retired"></div>Credits Retired</li>
+								<li><div class="label total"></div>Credits Owned</li>
+								<li><div class="label remaining"></div>Credits Remaining</li>
+							</ul>
 						</div>
-					</div>
+						<p class="goal-instructions">{{instructionsToAchieveCarbonGoal}}</p>
+					</section>
 
-					<!-- chart -->
-					<div class="pie-chart" v-if="assets && assets.length > 0">
-						<h1>Portfolio Distribution</h1>
-						<div class="chart-info">
+					<!-- Chart -->
+					<section class="widget" v-if="assets && assets.length > 0">
+						<h2>Portfolio Distribution</h2>
+						<div id="pie-chart">
 							<div>
 								<canvas ref="myChart"></canvas>
 							</div>
-							<!-- chart -->
+
 
 							<ul class="key">
 								<li v-for="asset in assets" :key="asset.id">
@@ -168,16 +191,18 @@
 								</li>
 							</ul>
 						</div>
+					</section>
+					<!-- end of chart -->
 
-						<!-- retire & purchase -->
+					<!-- Retire, Purchase, or Mark for Sale -->
+					<section class="widget" id="transaction-buttons">
 						<a class="retire-purchase" rel="external" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=Ydc7R_ArakyrYud4pmPU-t4U5WxHzZBLmCpkuvMSmgpUOEtEUTRGS1ZaV09CTDM1VjlMOVJTNFpOWi4u">
 							<div class="retire">Retire Current Credits</div>
 							<div class="credits">Mark Credits for sale</div>
 							<div class="purchase">Purchase New Credits</div>
 						</a>
-						<!-- end retire & purchase -->
-					</div>
-					<!-- end of chart -->
+					</section>
+					<!-- end Retire, Purchase, or Mark for Sale -->
 				</div>
 			</div>
 			<!-- end of tables -->
