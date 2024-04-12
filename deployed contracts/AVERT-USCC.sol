@@ -1,15 +1,15 @@
 // SPDX-License-Identifier: GPLv3
-pragma solidity ^0.8.20;
+pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Pausable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "../openzeppelin/ERC20.sol";
+import "../openzeppelin/Pausable.sol";
+import "../openzeppelin/Ownable.sol";
 
-contract MyToken is ERC20, ERC20Pausable, Ownable {
-	constructor(address initialOwner)
-		ERC20("AVERT-US Carbon Credit", "AVERT-USCC")
-		Ownable(initialOwner)
-	{}
+/// @custom:security-contact technical-africa@renewvia.com
+contract RenewviaREC is ERC20, Pausable, Ownable {
+	constructor(uint256 premint) ERC20("AVERT-US Carbon Credit", "AVERT-USCC") {
+		_mint(msg.sender, premint * 10 ** decimals());
+	}
 
 	function pause() public onlyOwner {
 		_pause();
@@ -20,13 +20,14 @@ contract MyToken is ERC20, ERC20Pausable, Ownable {
 	}
 
 	function mint(address to, uint256 amount) public onlyOwner {
-		_mint(to, amount);
+		_mint(to, amount * 10 ** decimals());
 	}
 
-	function _update(address from, address to, uint256 value)
+	function _beforeTokenTransfer(address from, address to, uint256 amount)
 		internal
-		override(ERC20, ERC20Pausable)
+		whenNotPaused
+		override
 	{
-		super._update(from, to, value);
+		super._beforeTokenTransfer(from, to, amount);
 	}
 }

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: GPLv3
 pragma solidity ^0.8.9;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
-import "@openzeppelin/contracts/access/Ownable.sol";
+import "../openzeppelin/ERC20.sol";
+import "../openzeppelin/Pausable.sol";
+import "../openzeppelin/Ownable.sol";
 
 /// @custom:security-contact technical-africa@renewvia.com
 contract RenewviaREC is ERC20, Pausable, Ownable {
