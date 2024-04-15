@@ -1,6 +1,6 @@
 [
 	{
-		"name": "Renewvia",
+		"name": "Main",
 		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
 		"join_date": "2022-02-01",
 		"address": "0xF9C289f1C0341fb336224958a885163F5017BC16"
@@ -35,5 +35,11 @@
 		"logo": "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/ls8fvhusspsbrnlurjyw",
 		"join_date": "2023-12-04",
 		"address": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631"
+	},
+	{
+		"name": "Renewvia Solar Africa",
+		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
+		"join_date": "2022-02-01",
+		"address": "0xf5E6097B172883D55Cf484a31d167EdFd611D261"
 	}
 ]
