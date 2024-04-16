@@ -272,7 +272,7 @@
 		"superclass": "REC",
 		"img": "https://scontent.fnbo12-1.fna.fbcdn.net/v/t39.30808-6/352531594_821210209364782_6981921900294538822_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=efb6e6&_nc_ohc=YULwro71ksgAX-MHGGa&_nc_ht=scontent.fnbo12-1.fna&oh=00_AfABynE8ILJlPpEbpz0o2HGiF88H4yUhHY5miLZ_bLpYNQ&oe=65B7DFE0",
 		"description": "RECs verified and tracked by Xcel Energy",
-		"address": "N/A",
+		"address": null,
 		"transactions": [
 			{
 				"timeStamp": "1706207128",
@@ -283,6 +283,46 @@
 				"blockNumber": "0",
 				"note": "Manual addition on 2024-01-25"
 			}
+		]
+	},
+	{
+		"name": "Renewgen Conservation Carbon Credit",
+		"abbreviation": "RCCC",
+		"superclass": "CC",
+		"img": "https://cdn.pixabay.com/photo/2016/12/15/09/56/corn-1908474_960_720.jpg",
+		"description": "Carbon credits verified by Renewgen Conservation",
+		"address": "0x6E656bD936299EDFe77F79Da4A748fA1249B2a5E",
+		"transactions": [
+		]
+	},
+	{
+		"name": "Mini-Grid Carbon Credit",
+		"abbreviation": "MCC",
+		"superclass": "CC",
+		"img": "https://static.wixstatic.com/media/f3e4c8_231dec05b16f4d8ba42f803fadb7b69a~mv2.jpg/v1/fill/w_744,h_552,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/f3e4c8_231dec05b16f4d8ba42f803fadb7b69a~mv2.jpg",
+		"description": "Mini-Grid Carbon Credits (MCCs) are a universal class of carbon assets within the R-REC ecosystem, designed to represent the carbon reduction achieved through decentralized renewable energy systems.",
+		"address": "0xe9f506E50950B5Cfa68F91E5a1f95f042e0f77c9",
+		"transactions": [
+		]
+	},
+	{
+		"name": "AVERT-US Carbon Credit",
+		"abbreviation": "AVERT-USCC",
+		"superclass": "CC",
+		"img": "https://static.wixstatic.com/media/f3e4c8_6492c3d37b054ddfb1593f1035bc9f0a~mv2.jpeg/v1/crop/x_47,y_0,w_3938,h_3024/fill/w_336,h_258,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/IMG_0094.jpeg",
+		"description": "AVERT-US Carbon Credits (AVERT-USCC), a distinct category within our carbon credit framework, are converted from US R-RECs using the Environmental Protection Agency's Avoided Emissions and Generation Tool (AVERT).",
+		"address": "0x85E2A25F153295655147f0EF35256159f4518c1A",
+		"transactions": [
+		]
+	},
+	{
+		"name": "Ember Grid Reduction Carbon Credit",
+		"abbreviation": "EGRCC",
+		"superclass": "CC",
+		"img": "https://static.wixstatic.com/media/f3e4c8_a7832ce7572645e2b4440bde063d0fe6~mv2.jpg/v1/fill/w_485,h_641,al_c,q_80,usm_0.66_1.00_0.01,enc_auto/f3e4c8_a7832ce7572645e2b4440bde063d0fe6~mv2.jpg",
+		"description": "Ember Grid Reduction Carbon Credits (EGRCCs), a specialized class of carbon credits in our framework, are derived from R-RECs associated with grid-tied renewable energy projects across various African countries.",
+		"address": "0x58534ea2d4A33A142337b960d9DE903D3866c046",
+		"transactions": [
 		]
 	}
 ]
