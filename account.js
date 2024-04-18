@@ -1,7 +1,7 @@
 const WALLET = window.location.href.split("?")[1];
 const CONTRACTS_URL = "https://www.r-recs.com/contracts.json";
 const COMPANIES_URL = "https://www.r-recs.com/companies.json";
-const RETIREMENT_WALLET = '';
+const RETIREMENT_WALLET = '0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f';
 const RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07';
 const FULL_GOAL_CIRCLE = 850;
 
@@ -65,18 +65,22 @@ const app = Vue.createApp({
 								// Add the transaction to the activity table
 								switch (trans.action) {
 									case 'transfer':
-										// If the action is a transfer to the retirement or return wallets, log accordingly
-										if (strcmpi(trans['to'], RETIREMENT_WALLET)) {
-											this.retired_carbon+= trans.amount
-											trans.action = 'Retirement'
-										} else if (strcmpi(trans['to'], RETURN_WALLET)) {
-											trans.action = 'Return'
+										// If the action is a transfer from the return wallet, log accordingly
+										if (strcmpi(trans['from'], RETURN_WALLET)) {
+											trans.action = 'Receipt'
 										} else {
 											trans.action = strcmpi(trans['from'], WALLET) ? 'Sale' : 'Purchase'
 										}
 										break
 									case 'mint':
 										trans.action = 'Generation'
+										break
+									case 'return':
+										trans.action = 'Return'
+										break
+									case 'retire':
+										this.retired_carbon+= trans.amount
+										trans.action = 'Retirement'
 										break
 									default:
 										trans.action = trans.action.charAt(0).toUpperCase() + trans.action.slice(1)
@@ -125,6 +129,7 @@ const app = Vue.createApp({
 
 		// Update carbon goal progress
 		if (this.carbon_goal) {
+			console.log(this.retired_carbon)
 			document.getElementById('retired-carbon').setAttribute('stroke-dasharray', `${Math.round(FULL_GOAL_CIRCLE * Math.min(this.retired_carbon / this.carbon_goal, 1))}, 999`)
 			document.getElementById('total-carbon').setAttribute('stroke-dasharray', `${Math.round(FULL_GOAL_CIRCLE * Math.min((this.retired_carbon + this.totalCarbonOffsets) / this.carbon_goal, 1))} 999`)
 		}
@@ -143,9 +148,9 @@ const app = Vue.createApp({
 		totalEstimatedCarbonOffsets() {
 			var carbonCredits = this.totalCarbonOffsets
 			if (carbonCredits == 0) {
-				return Math.round(this.assets.reduce((sum, asset) => asset.superclass === 'REC' ? sum+asset.amount : sum, 0)*1451/2205)
+				return Math.round(this.assets.reduce((sum, asset) => asset.superclass === 'REC' ? sum+asset.amount : sum, 0)*1451/2205)+this.retired_carbon
 			} else {
-				return carbonCredits
+				return carbonCredits+this.retired_carbon
 			}
 		},
 
