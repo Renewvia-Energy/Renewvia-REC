@@ -109,6 +109,14 @@
 				"blockNumber": "33702066",
 				"ignore": true,
 				"note": "originally minted based off projections instead of actuals; fixed in above block"
+			},
+			{
+				"timeStamp": "1713176656",
+				"action": "return",
+				"amount": 877,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
+				"blockNumber": "37878817"
 			}
 		]
 	},
@@ -244,6 +252,14 @@
 				"to": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "34064204"
+			},
+			{
+				"timeStamp": "1713177383",
+				"action": "return",
+				"amount": 27,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0x62df2d3bcdb67ae712beaa77712f08d339fcd631",
+				"blockNumber": "37879059"
 			}
 		]
 	},
@@ -293,6 +309,30 @@
 		"description": "Carbon credits verified by Renewgen Conservation",
 		"address": "0x6E656bD936299EDFe77F79Da4A748fA1249B2a5E",
 		"transactions": [
+			{
+				"timeStamp": "1709654018",
+				"action": "mint",
+				"amount": 10876,
+				"to": "0xd7da9f7F37954eB4E7b8CD14c9FFCC6d476C26Ea",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "36707155"
+			},
+			{
+				"timeStamp": "1713178427",
+				"action": "transfer",
+				"amount": 3169,
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xd7da9f7f37954eb4e7b8cd14c9ffcc6d476c26ea",
+				"blockNumber": "37879407"
+			},
+			{
+				"timeStamp": "1713178762",
+				"action": "retire",
+				"amount": 3169,
+				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
+				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
+				"blockNumber": "37879518"
+			}
 		]
 	},
 	{
@@ -303,6 +343,30 @@
 		"description": "Mini-Grid Carbon Credits (MCCs) are a universal class of carbon assets within the R-REC ecosystem, designed to represent the carbon reduction achieved through decentralized renewable energy systems.",
 		"address": "0xe9f506E50950B5Cfa68F91E5a1f95f042e0f77c9",
 		"transactions": [
+			{
+				"timeStamp": "1713175717",
+				"action": "mint",
+				"amount": 1398,
+				"to": "0xf5E6097B172883D55Cf484a31d167EdFd611D261",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "37878504"
+			},
+			{
+				"timeStamp": "1713178298",
+				"action": "transfer",
+				"amount": 1398,
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf5e6097b172883d55cf484a31d167edfd611d261",
+				"blockNumber": "37879364"
+			},
+			{
+				"timeStamp": "1713178789",
+				"action": "retire",
+				"amount": 1398,
+				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
+				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
+				"blockNumber": "37879527"
+			}
 		]
 	},
 	{
@@ -313,6 +377,38 @@
 		"description": "AVERT-US Carbon Credits (AVERT-USCC), a distinct category within our carbon credit framework, are converted from US R-RECs using the Environmental Protection Agency's Avoided Emissions and Generation Tool (AVERT).",
 		"address": "0x85E2A25F153295655147f0EF35256159f4518c1A",
 		"transactions": [
+			{
+				"timeStamp": "1713176947",
+				"action": "mint",
+				"amount": 633,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "37878914"
+			},
+			{
+				"timeStamp": "1713177109",
+				"action": "transfer",
+				"amount": 633,
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0x6e61b86d97ebe007e09770e6c76271645201fd07",
+				"blockNumber": "37878968"
+			},
+			{
+				"timeStamp": "1713178346",
+				"action": "transfer",
+				"amount": 500,
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
+				"blockNumber": "37879380"
+			},
+			{
+				"timeStamp": "1713178807",
+				"action": "retire",
+				"amount": 500,
+				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
+				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
+				"blockNumber": "37879533"
+			}
 		]
 	},
 	{
@@ -323,6 +419,38 @@
 		"description": "Ember Grid Reduction Carbon Credits (EGRCCs), a specialized class of carbon credits in our framework, are derived from R-RECs associated with grid-tied renewable energy projects across various African countries.",
 		"address": "0x58534ea2d4A33A142337b960d9DE903D3866c046",
 		"transactions": [
+			{
+				"timeStamp": "1713177629",
+				"action": "mint",
+				"amount": 18,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "37879141"
+			},
+			{
+				"timeStamp": "1713177707",
+				"action": "transfer",
+				"amount": 18,
+				"to": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631",
+				"from": "0x6e61b86d97ebe007e09770e6c76271645201fd07",
+				"blockNumber": "37879167"
+			},
+			{
+				"timeStamp": "1713178385",
+				"action": "transfer",
+				"amount": 18,
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0x62df2d3bcdb67ae712beaa77712f08d339fcd631",
+				"blockNumber": "37879393"
+			},
+			{
+				"timeStamp": "1713178828",
+				"action": "retire",
+				"amount": 18,
+				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
+				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
+				"blockNumber": "37879540"
+			}
 		]
 	}
 ]
