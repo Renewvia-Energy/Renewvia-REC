@@ -332,6 +332,14 @@
 				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
 				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
 				"blockNumber": "37879518"
+			},
+			{
+				"timeStamp": "1713862099",
+				"action": "mint",
+				"amount": 177293,
+				"to": "0xd7da9f7F37954eB4E7b8CD14c9FFCC6d476C26Ea",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "38106877"
 			}
 		]
 	},
