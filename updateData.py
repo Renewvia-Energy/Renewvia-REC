@@ -33,6 +33,11 @@ for contract in contracts:
 		response = requests.get('https://api.bscscan.com/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={api_key}'.format(address=contract['address'], api_key=API_KEY))
 		if response.status_code == 200:
 			blocks = response.json()['result']
+			
+			if (blocks == 'Invalid API Key'):
+				print('Invalid API Key')
+				exit(0)
+
 			for block in blocks:
 				if not block['to']:	# Contract creation block
 					continue

@@ -47,5 +47,11 @@
 		"logo": "https://static.wixstatic.com/media/f3e4c8_ef5dda097dc0414e813b4c2a8ff453fd~mv2.png/v1/fit/w_1000%2Ch_1000%2Cal_c/file.png",
 		"join_date": "2024-01-30",
 		"address": "0xd7da9f7F37954eB4E7b8CD14c9FFCC6d476C26Ea"
+	},
+	{
+		"name": "Kudura",
+		"logo": "https://kudura.africa/wp-content/uploads/brizy/imgs/photo_2021-04-28_08-22-33-210x220x0x0x210x220x1619700536.jpg",
+		"join_date": "2024-01-25",
+		"address": "0xcd91dA1A1E59163c712CEdec7D08596D4346Fe8C"
 	}
 ]
