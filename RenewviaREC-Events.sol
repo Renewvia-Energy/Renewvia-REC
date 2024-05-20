@@ -21,10 +21,9 @@ contract RenewviaREC is ERC20, ERC20Pausable, Ownable {
         _unpause();
     }
 
-    function mint(address to, uint256 amount) public onlyOwner {
+    function mint(address to, uint256 amount, string calldata additionalInfo) public onlyOwner {
         _mint(to, amount);
         emit MintWithInfo(to, amount, additionalInfo);
-
     }
 
     // The following functions are overrides required by Solidity.
