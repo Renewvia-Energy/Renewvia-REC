@@ -64,7 +64,8 @@ for contract in contracts:
 						'amount': amount,
 						'to': decoded_data[1]['to'],
 						'from': block['from'],
-						'blockNumber': block['blockNumber']
+						'blockNumber': block['blockNumber'],
+						'hash': block['hash']
 					})
 		else:
 			raise Exception(f"Error fetching data: {response.status_code}")

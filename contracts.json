@@ -14,6 +14,7 @@
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "30674910",
+				"hash": "0x795a83b5e72eeeff7638c39078c0674f919fb0e223f93b20e36427f7fbd7e7e6",
 				"note": "manually changed transfer to mint"
 			},
 			{
@@ -22,7 +23,8 @@
 				"amount": 186,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "32563552"
+				"blockNumber": "32563552",
+				"hash": "0xfd995185d2ac85fed866844730d369bd4ffb493506f133a5b96bd4b65cf34701"
 			}
 		]
 	},
@@ -41,6 +43,7 @@
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "31072060",
+				"hash": "0x4c7e6c43e3d325e3f6a165666ba08007dd971524a51ec8d8ddc9ea151d450b15",
 				"ignore": true,
 				"note": "Butler got credit for these assets elsewhere"
 			},
@@ -51,6 +54,7 @@
 				"to": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "31072315",
+				"hash": "0x87b644a8bfa8efd2115e7596a6165f8d7974cfcc563ae6a39cbf0c6d6c37fb9d",
 				"ignore": true,
 				"note": "Butler got credit for these assets elsewhere"
 			},
@@ -61,6 +65,7 @@
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xa7f05f1ad0bd0339e0154451b2e9580dc0eb8393",
 				"blockNumber": "31417071",
+				"hash": "0x8d0824fce6aacb211bae7b48ef2d99fdaf9f6a470b29f29e0adb3590bc5bb99a",
 				"ignore": true,
 				"note":"Butler got credit for these assets elsewhere"
 			}
@@ -81,6 +86,7 @@
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "30674973",
+				"hash": "0x5c76987c4e93c325312af69e28137d4f6815d27554b98e6f8669390db249462d",
 				"note": "manually changed transfer to mint"
 			},
 			{
@@ -89,7 +95,8 @@
 				"amount": 98,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "32563580"
+				"blockNumber": "32563580",
+				"hash": "0x3d295d57f65e95d0a12a82aef1eeda4fcc7a51223501e778c7b106769a541666"
 			},
 			{
 				"timeStamp": "1698509171",
@@ -98,6 +105,7 @@
 				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "33002289",
+				"hash": "0xb557f99c94f65543045a44cc0c1cf47bd64b172ed506bbb72b5b974138a5565d",
 				"note": "manually changed amount from 4039 to 2213"
 			},
 			{
@@ -107,6 +115,7 @@
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
 				"blockNumber": "33702066",
+				"hash": "0xbc4c277b24d46184f5fd80b2bf0da6a0a1f131aa98b7d8c3caa056693f3c2af1",
 				"ignore": true,
 				"note": "originally minted based off projections instead of actuals; fixed in above block"
 			},
@@ -116,7 +125,8 @@
 				"amount": 877,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
-				"blockNumber": "37878817"
+				"blockNumber": "37878817",
+				"hash": "0x76ce6c164c30a2630f5e43f29b4d9c977b72425b3832ec3209928a1b7cbb7654"
 			}
 		]
 	},
@@ -135,6 +145,7 @@
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "30675027",
+				"hash": "0xdc0539bf700aa26654f2a64f9fadc92e69507a78de1aa8302c2afd7c435d5325",
 				"note": "manually changed transfer to mint"
 			}
 		]
@@ -154,6 +165,7 @@
 				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "33002432",
+				"hash": "0xeab1542802d49f64b2725488984447c9fb6363528104f036e214ba835fff168f",
 				"note": "manually changed transfer to mint"
 			},
 			{
@@ -162,7 +174,8 @@
 				"amount": 25,
 				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "33702128"
+				"blockNumber": "33702128",
+				"hash": "0xebf98cd344b788f8127579a9106810a898ace9c47b5a85d14a7c352762261284"
 			}
 		]
 	},
@@ -181,6 +194,7 @@
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "31072095",
+				"hash": "0xd028099a8591bc1d88abaad1223353dd562d0861e16d98fbe6a90ee829743750",
 				"ignore": true,
 				"note": "minted to Renewvia wallet; returned instead of forwarded"
 			},
@@ -190,7 +204,8 @@
 				"amount": 4675,
 				"to": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31072337"
+				"blockNumber": "31072337",
+				"hash": "0xa2840be515261fb32f6ce3aa4179612681ec759fb2e0b1cb6a17c80989b6e872"
 			},
 			{
 				"timeStamp": "1706207128",
@@ -198,7 +213,8 @@
 				"amount": 318,
 				"to": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "35560421"
+				"blockNumber": "35560421",
+				"hash": "0xfcbc74ff5bfa8f5ebcb76fc8abf33f5b622fc5dfb73af5bb47c55ef0894dfa2b"
 			}
 		]
 	},
@@ -217,6 +233,7 @@
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "30673818",
+				"hash": "0x422e63e7ac4630a319fdf50cad30b2f0d769d137598c52d8f6c7660a7baa6e37",
 				"note": "manually changed transfer to mint"
 			},
 			{
@@ -225,7 +242,8 @@
 				"amount": 282,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30674284"
+				"blockNumber": "30674284",
+				"hash": "0x30f6542fc4721464fb69c93f92d9fb6d2802c267b2437470fc539462ed6b800a"
 			},
 			{
 				"timeStamp": "1697188204",
@@ -233,7 +251,8 @@
 				"amount": 134,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "32563449"
+				"blockNumber": "32563449",
+				"hash": "0x546c5fe59f1d6a023b820d76414c015a4ac37f7fa357a03848326c83fdcab30b"
 			}
 		]
 	},
@@ -251,7 +270,8 @@
 				"amount": 27,
 				"to": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "34064204"
+				"blockNumber": "34064204",
+				"hash": "0x9417e6ecdd1563e6c38e9a93fe12b3060b2bca29b81808812bcc765154b87224"
 			},
 			{
 				"timeStamp": "1713177383",
@@ -259,7 +279,8 @@
 				"amount": 27,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0x62df2d3bcdb67ae712beaa77712f08d339fcd631",
-				"blockNumber": "37879059"
+				"blockNumber": "37879059",
+				"hash": "0x71060d05f5eae7a1a01493750cce0b9bb97f0b4d76ee051c06c68cfdc3b8846f"
 			}
 		]
 	},
@@ -278,6 +299,7 @@
 				"to": "0x504BC5477bA9beA5c4e65396Cc43a7D9A7dbDa10",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "31307959",
+				"hash": "0xca9b45b40e2f03e8bae97519519ef6692fcd3b64cb982dbc9063e9069c627a97",
 				"note": "manually changed transfer to mint"
 			}
 		]
@@ -315,7 +337,8 @@
 				"amount": 10876,
 				"to": "0xd7da9f7F37954eB4E7b8CD14c9FFCC6d476C26Ea",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "36707155"
+				"blockNumber": "36707155",
+				"hash": "0x3d91a7b1bff5a91b01b4632d3b351b531629c9c757dd4cb589bb7d6ab81912ff"
 			},
 			{
 				"timeStamp": "1713178427",
@@ -323,7 +346,8 @@
 				"amount": 3169,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xd7da9f7f37954eb4e7b8cd14c9ffcc6d476c26ea",
-				"blockNumber": "37879407"
+				"blockNumber": "37879407",
+				"hash": "0xd6fac830e8afc4443a7ed8920709f077555a342cca71eea56931109aea0983a8"
 			},
 			{
 				"timeStamp": "1713178762",
@@ -331,7 +355,8 @@
 				"amount": 3169,
 				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
 				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
-				"blockNumber": "37879518"
+				"blockNumber": "37879518",
+				"hash": "0xffcb6513396754466c94e74613c6b0a82ecc7dce0fce5bd1e371dce950064da8"
 			},
 			{
 				"timeStamp": "1713862099",
@@ -339,7 +364,8 @@
 				"amount": 177293,
 				"to": "0xd7da9f7F37954eB4E7b8CD14c9FFCC6d476C26Ea",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "38106877"
+				"blockNumber": "38106877",
+				"hash": "0xa028abec91153de42789776699cdde524d8c6c322a4a846773e9e774679ff9f8"
 			}
 		]
 	},
@@ -357,7 +383,8 @@
 				"amount": 1398,
 				"to": "0xf5E6097B172883D55Cf484a31d167EdFd611D261",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "37878504"
+				"blockNumber": "37878504",
+				"hash": "0x1d21e1f3c5f2bde9cfb0e6b19d3a2b1d113cbde17ed424b30ac6d2efcef4e0bc"
 			},
 			{
 				"timeStamp": "1713178298",
@@ -365,7 +392,8 @@
 				"amount": 1398,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf5e6097b172883d55cf484a31d167edfd611d261",
-				"blockNumber": "37879364"
+				"blockNumber": "37879364",
+				"hash": "0x61a96d849c8f0654e583bfcbfb94facaadf92361decad9a60c8e294856df4c27"
 			},
 			{
 				"timeStamp": "1713178789",
@@ -373,7 +401,8 @@
 				"amount": 1398,
 				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
 				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
-				"blockNumber": "37879527"
+				"blockNumber": "37879527",
+				"hash": "0xe0030e95eb4e06cd1aff3ced2f6d971dafee7db8ee2f320d7fa78c2c5a3360e5"
 			},
 			{
 				"timeStamp": "1714400218",
@@ -381,7 +410,8 @@
 				"amount": 184,
 				"to": "0xcd91dA1A1E59163c712CEdec7D08596D4346Fe8C",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "38285947"
+				"blockNumber": "38285947",
+				"hash": "0x1016e409f7c79b9fed4ffce3b548ddf78c1a92f3dcce3248c28593679c13b3d7"
 			}
 		]
 	},
@@ -399,7 +429,8 @@
 				"amount": 633,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "37878914"
+				"blockNumber": "37878914",
+				"hash": "0xd2f671a9855d09f5f3e656dc6b4c83656555bd424a7e8d88cd3bf06871fb8816"
 			},
 			{
 				"timeStamp": "1713177109",
@@ -407,7 +438,8 @@
 				"amount": 633,
 				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
 				"from": "0x6e61b86d97ebe007e09770e6c76271645201fd07",
-				"blockNumber": "37878968"
+				"blockNumber": "37878968",
+				"hash": "0xa158192abd9b08d9c7a8c25321c0aa0236317dbb7546486b64471157e18a1f68"
 			},
 			{
 				"timeStamp": "1713178346",
@@ -415,7 +447,8 @@
 				"amount": 500,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
-				"blockNumber": "37879380"
+				"blockNumber": "37879380",
+				"hash": "0x9338b189e87d28ba4a11ed36c13f9b392fe33fff5edff3a273ad21d3fe7b1bb2"
 			},
 			{
 				"timeStamp": "1713178807",
@@ -423,7 +456,8 @@
 				"amount": 500,
 				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
 				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
-				"blockNumber": "37879533"
+				"blockNumber": "37879533",
+				"hash": "0x79957c44267c38e698a191ee9c5d32aba2594a1d47c17bc9ea8d04621ee91177"
 			}
 		]
 	},
@@ -441,7 +475,8 @@
 				"amount": 18,
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "37879141"
+				"blockNumber": "37879141",
+				"hash": "0xaf73e54573f5f9b119285a6887f255f82537a1d47f0c2583be208ac0ef7f3dae"
 			},
 			{
 				"timeStamp": "1713177707",
@@ -449,7 +484,8 @@
 				"amount": 18,
 				"to": "0x62Df2d3BCdb67AE712bEaa77712F08D339FCD631",
 				"from": "0x6e61b86d97ebe007e09770e6c76271645201fd07",
-				"blockNumber": "37879167"
+				"blockNumber": "37879167",
+				"hash": "0x7caacce58c123bed78e2ecb0bdd2bc265f63e0e977d699d5c78759bc047e06a8"
 			},
 			{
 				"timeStamp": "1713178385",
@@ -457,7 +493,8 @@
 				"amount": 18,
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0x62df2d3bcdb67ae712beaa77712f08d339fcd631",
-				"blockNumber": "37879393"
+				"blockNumber": "37879393",
+				"hash": "0xb4c99d767f9ff7437dfcc91c9cfb0a12d5958b63a1b10ac806439d9e94bc400c"
 			},
 			{
 				"timeStamp": "1713178828",
@@ -465,7 +502,8 @@
 				"amount": 18,
 				"to": "0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f",
 				"from": "0x9db94e89db9798544494a71c01e3552d6ade79be",
-				"blockNumber": "37879540"
+				"blockNumber": "37879540",
+				"hash": "0xcf0ea0f5ddaf82742f04914749398e5b97c039ffb878bc2d2a8c63c803024eea"
 			}
 		]
 	}
