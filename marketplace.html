@@ -30,10 +30,10 @@
 
 	<!-- Custom CSS -->
 	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="account.css">
+	<link rel="stylesheet" href="marketplace.css">
 
 	<!-- JavaScript -->
-	<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<!-- <script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script> -->
 </head>
 <body>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -54,162 +54,26 @@
 		</header>
 
 		<main>
-			<!-- Basic Profile Info: Logo, Name, Wallet Address, and Join Date  -->
-			<section id="profile-info">
-				<div class="logo-container">
-					<img :src="logo" alt="Company Logo">
-				</div>
-				<div class="profile-info-right">
-					<div class="company-name">{{ name }}</div>
-					<div class="company-technical">
-						<a class="address" rel="external" target="_blank" :href="`https://bscscan.com/address/${address}`">{{ smallAddress }}</a>
-						<div class="date">Joined {{ join_date }}</div>
-					</div>
-				</div>
-			</section>
-			<!-- End Basic Profile Info -->
+			<h2>Assets Available</h2>
+			<table>
+				<thead>
+					<tr>
+						<th>Asset</th>
+						<th>Amount</th>
+					</tr>
+				</thead>
 
-			<!-- Big, Orange "My Impact" Bar -->
-			<section id="impact">
-				<h2>My Impact</h2>
-				<div class="my-impact">
-					<div class="offset">
-							<div class="texts">
-								<h3>Approximate amount of carbon offset</h3>
-								<p>{{ totalEstimatedCarbonOffsets.toLocaleString() }} tCO2e</p>
-
-							</div>
-							<div class="icon">
-								<i class="fas fa-leaf leaf-icon"></i>
-							</div>
-					</div>
-					<div class="generation">
-						<div class="texts">
-							<h3>Total amount of renewable energy generation</h3>
-							<p>{{ totalRenewableEnergy.toLocaleString() }} MWh</p>
-						</div>
-						<div class="icon">
-							<i class="fas fa-solar-panel solar-icon"></i>
-						</div>
-					</div>
-				</div>
-			</section>
-			<!-- end impact section -->
-
-			<!-- Widgets -->
-			<div id="widgets">
-				<!-- Left Widget Column: Assets and Activity -->
-				<div class="widget-column">
-					<!-- Carbon Assets -->
-					<section class="widget" v-if="assets && assets.length > 0">
-						<h2>Carbon Assets</h2>
-						<div id="allassets">
-							<div class="assets" v-for="asset in assets" :key="asset.id">
-								<details>
-									<summary>
-										<span class="name">{{ asset.name }}</span>
-										<span class="qty">{{ asset.amount }}</span>
-										<span class="more">More...</span>
-									</summary>
-									<div class="more-details">
-										<span class="image"><img
-												:src="asset.img"
-												:alt="Image"></span>
-										<span class="details">
-											<p>{{ asset.description}}</p>
-										</span>
-									</div>
-								</details>
-							</div>
-						</div>
-					</section>
-
-					<!-- Activity -->
-					<section class="widget" v-if="activity && activity.length > 0">
-						<h2>Activity</h2>
-						<table>
-							<thead>
-								<tr>
-									<th>Date</th>
-									<th>Asset</th>
-									<th>Action</th>
-									<th>Amount</th>
-									<th>Status</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								<tr class="assets" v-for="trans in activity" :key="trans.address">
-									<td>{{trans.date}}</td>
-									<td>{{trans.name}}</td>
-									<td>{{trans.action}}</td>
-									<td>{{trans.amount}}</td>
-									<td><a class="verified-btn" target="_blank" rel="external" :href="`https://bscscan.com/tx/${trans.hash}`">Verified</a></td>
-								</tr>
-							</tbody>
-						</table>
-					</section>
-				</div>
-
-				<!-- Right Widget Column: Progress, Pie Chart, and Transaction Buttons -->
-				<div class="widget-column">
-					<!-- Goal -->
-					<section class="widget" v-if="carbon_goal">
-						<h2>Progress Toward Your Carbon Goal</h2>
-						<div class="center-contents">
-							<div class="goal-progress">
-								<div class="outer center-contents">
-									<div class="inner"></div>
-									<svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%">
-										<circle id="total-carbon" class="total" cx="50%" cy="50%" r="42.5%" stroke-linecap="round" />
-										<circle id="retired-carbon" class="retired" cx="50%" cy="50%" r="42.5%" stroke-linecap="round" />
-									</svg>
-								</div>
-							</div>
-							<ul class="key">
-								<li><div class="label retired"></div>Credits Retired</li>
-								<li><div class="label total"></div>Credits Owned</li>
-								<li><div class="label remaining"></div>Credits Remaining</li>
-							</ul>
-						</div>
-						<p class="goal-instructions">{{instructionsToAchieveCarbonGoal}}</p>
-					</section>
-
-					<!-- Chart -->
-					<section class="widget" v-if="assets && assets.length > 0">
-						<h2>Portfolio Distribution</h2>
-						<div id="pie-chart">
-							<div>
-								<canvas ref="myChart"></canvas>
-							</div>
-
-
-							<ul class="key">
-								<li v-for="asset in assets" :key="asset.id">
-									<strong class="percent gray">{{ calculatePercentage(asset.amount) }}%</strong>
-									<span class="choice">{{ asset.name+'s' }}</span>
-								</li>
-							</ul>
-						</div>
-					</section>
-					<!-- end of chart -->
-
-					<!-- Retire, Purchase, or Mark for Sale -->
-					<section class="widget" id="transaction-buttons">
-						<a class="retire-purchase" rel="external" target="_blank" href="https://forms.office.com/Pages/ResponsePage.aspx?id=Ydc7R_ArakyrYud4pmPU-t4U5WxHzZBLmCpkuvMSmgpUOEtEUTRGS1ZaV09CTDM1VjlMOVJTNFpOWi4u">
-							<div class="retire">Retire Current Credits</div>
-							<div class="credits">Mark Credits for sale</div>
-							<div class="purchase">Purchase New Credits</div>
-						</a>
-					</section>
-					<!-- end Retire, Purchase, or Mark for Sale -->
-				</div>
-			</div>
-			<!-- end of tables -->
+				<tbody>
+					<tr class="assets" v-for="contract in contracts">
+						<td>{{contract.name}}</td>
+						<td class="numeric">{{contract.amount}}</td>
+					</tr>
+				</tbody>
+			</table>
 		</main>
 	</div>
 
-	<script src="account.js"></script>
+	<script src="marketplace.js"></script>
 </body>
 
 </html>
