@@ -53,5 +53,11 @@
 		"logo": "https://kudura.africa/wp-content/uploads/brizy/imgs/photo_2021-04-28_08-22-33-210x220x0x0x210x220x1619700536.jpg",
 		"join_date": "2024-01-25",
 		"address": "0xcd91dA1A1E59163c712CEdec7D08596D4346Fe8C"
+	},
+	{
+		"name": "EcoX",
+		"logo": "https://cdn.pixabay.com/photo/2014/10/06/10/28/carbon-476168_640.jpg",
+		"join_date": "2024-08-27",
+		"address": "0xEcoX"
 	}
 ]
