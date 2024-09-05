@@ -334,6 +334,18 @@ text-align: left;
 }
 /* end board */
 
+/* pie chart */
+a.sign-up {
+	align-self: flex-start;
+	color: white;
+	text-decoration: none;
+	padding: 0.6em 1em;
+	margin: 0.2em 0.2em;
+	background-color: var(--orange);
+	border-radius: 1em;
+}
+/* end pie chart */
+
 /* partners */
 .partners div h1 {
 	color: #000000;
