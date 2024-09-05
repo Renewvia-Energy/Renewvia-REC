@@ -1,7 +1,5 @@
 User-agent: *
 Disallow: /account.html
-
-User-agent: GPTBot
-Disallow: /
+Disallow: /marketplace.html
 
 Sitemap: https://www.r-recs.com/sitemap.xml
