@@ -126,7 +126,8 @@
 				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
 				"from": "0x38281b14a73e56c59463ce5db50248acbf62b45b",
 				"blockNumber": "37878817",
-				"hash": "0x76ce6c164c30a2630f5e43f29b4d9c977b72425b3832ec3209928a1b7cbb7654"
+				"hash": "0x76ce6c164c30a2630f5e43f29b4d9c977b72425b3832ec3209928a1b7cbb7654",
+				"note": "exchanging for AVERT-USCCs"
 			}
 		]
 	},

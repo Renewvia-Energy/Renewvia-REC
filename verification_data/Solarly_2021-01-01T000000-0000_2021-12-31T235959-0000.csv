@@ -1,0 +1,36 @@
+﻿Project Name,Solarly Solar Home Systems
+Country,Cameroon
+US State (if applicable),
+US Region (if applicable),
+Latitude,3.8
+Longitude,13.7
+DC Capacity (kWp),220.05
+Begin Timestamp,1/1/2021 0:00
+End Timestamp,12/31/2021 23:59
+Total Energy Production (MWh),5.968067277
+Total Carbon Reduction (tCO2e),
+AVERT Emissions Factor,
+Ember Emissions Factor,
+No. of Type 1 Customers,
+No. of Type 2 Customers,
+Type 1-MA Consumption (MWh),
+Type 1-MB Consumption (MWh),
+Type 2 Consumption (MWh),
+Diesel Consumption (L),
+Diesel Production (MWh),
+Type of Installation,Solar Home Systems
+,
+Datetime,Measured kWh
+1/3/2021 3:00:00,323.167965
+2/2/2021 3:00:00,358.856482
+3/4/2021 3:00:00,389.522784
+4/3/2021 3:00:00,346.364279
+5/3/2021 3:00:00,447.018713
+6/2/2021 3:00:00,503.748268
+7/2/2021 3:00:00,442.327679
+8/1/2021 3:00:00,493.089798
+8/31/2021 3:00:00,532.586116
+9/30/2021 3:00:00,585.564354
+10/30/2021 3:00:00,585.060989
+11/29/2021 3:00:00,863.458461
+12/29/2021 3:00:00,97.301389
