@@ -526,5 +526,15 @@
 				"note": "Manual addition on 2024-08-27"
 			}
 		]
+	},
+	{
+		"name": "Cameroon R-REC",
+		"abbreviation": "RREC-ACM",
+		"superclass": "REC",
+		"img": "images/asset-images/Generic.jpg",
+		"description": "Cameroon R-RECs draw on the country's diverse renewable resources, reflecting a harmonious blend of tradition and sustainable innovation.",
+		"address": "0x7913fc4f7a141201f99cdd477f76b0b48baeb07e",
+		"transactions": [
+		]
 	}
 ]

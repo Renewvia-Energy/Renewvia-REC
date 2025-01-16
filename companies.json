@@ -59,5 +59,11 @@
 		"logo": "https://cdn.pixabay.com/photo/2014/10/06/10/28/carbon-476168_640.jpg",
 		"join_date": "2024-08-27",
 		"address": "0xEcoX"
+	},
+	{
+		"name": "Solarly",
+		"logo": "https://images.crunchbase.com/image/upload/c_lpad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1500372013/qz2jbxn6hm1pszr6f22v.png",
+		"join_date": "2025-01-16",
+		"address": "0x0400A72F71fec3a3060F2046d4fB103B345c0161"
 	}
 ]
