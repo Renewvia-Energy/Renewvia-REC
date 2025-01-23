@@ -19,8 +19,11 @@ const app = Vue.createApp({
 			join_date: '',
 			assets: [],
 			activity: [],
+			assetDates: [],
+			assetTimeSeries: [],
 			retired_carbon: 0,
-			chart: null
+			chart: null,
+			generationChart: null
 		}
 	},
 
@@ -117,6 +120,34 @@ const app = Vue.createApp({
 					}
 					this.assets = this.assets.filter((asset) => asset.amount>0)
 					this.activity.sort((action1, action2) => action1.timeStamp-action2.timeStamp)
+
+					// Organize data for time series chart
+					for (let trans of this.activity) {
+						if (trans.verification_data) {
+							// Get verification data CSV from GitHub
+							fetch(trans.verification_data)
+								.then((resp) => resp.text())
+								.then((csvText) => {
+									let lines = csvText.split('\n')
+
+									// Trim the header rows
+									lines = lines.slice(lines.findIndex((line) => line.trim() === ',') + 2)
+
+									// For each line of actual data
+									for (let line of lines) {
+										let data = line.split(',')
+
+										// If it has data in it, extract it and add it to the time series
+										if (data.length > 1) {
+											let date = new Date(data[0])
+											let timeIndex = findInsertionIndex(this.assetDates, date)
+											this.assetDates.splice(timeIndex, 0, date)
+											this.assetTimeSeries.splice(timeIndex, 0, parseFloat(data[1]))
+										}
+									}
+								})
+						}
+					}
 				})
 		})
 	},
@@ -124,7 +155,11 @@ const app = Vue.createApp({
 	updated() {
 		// Render the chart with the new data
 		if (!this.chart) {
-			this.renderChart();
+			this.renderChart()
+		}
+
+		if (!this.generationChart) {
+			this.renderGenerationTimeSeries()
 		}
 
 		// Update carbon goal progress
@@ -190,9 +225,16 @@ const app = Vue.createApp({
 		},
 
 		renderChart() {
+			// console.log(this.assets)
+			// console.log(this.assets.length)
 			if (this.$refs.myChart && this.assets && this.assets.length > 0) {
 				const ctx = this.$refs.myChart.getContext("2d");
 				if (ctx) {
+        			// Destroy the existing chart if it exists
+					if (this.chart) {
+						this.chart.destroy();
+					}
+
 					this.chart = new Chart(ctx, {
 						type: "doughnut",
 						data: {
@@ -212,6 +254,79 @@ const app = Vue.createApp({
 						options: {
 							responsive: true,
 							maintainAspectRatio: false,
+						},
+					});
+				}
+			}
+		},
+
+		renderGenerationTimeSeries() {
+			console.log('here0')
+			console.log(this.assetDates)
+			console.log(this.assetTimeSeries)
+			console.log(this.assetDates.length)
+			console.log(this.assetTimeSeries.length)
+			if (this.$refs.generationGraph && this.assetDates && this.assetDates.length > 0 && this.assetTimeSeries && this.assetTimeSeries.length > 0) {
+				console.log('here1')
+				const ctx = this.$refs.generationGraph.getContext("2d");
+				if (ctx) {
+        			// Destroy the existing chart if it exists
+					if (this.generationChart) {
+						this.generationChart.destroy();
+					}
+					
+					// Create a new chart
+					this.generationChart = new Chart(ctx, {
+						type: 'line', // Use a line chart
+						data: {
+							labels: this.assetDates, // Dates on the x-axis
+							datasets: [
+								{
+									label: 'Energy Generated', // Label for the dataset
+									data: this.assetTimeSeries, // Energy values on the y-axis
+									borderColor: 'rgba(75, 192, 192, 1)', // Line color
+									backgroundColor: 'rgba(75, 192, 192, 0.2)', // Fill color
+									borderWidth: 2, // Line width
+									fill: true, // Fill under the line
+								},
+							],
+						},
+						options: {
+							responsive: true, // Make the chart responsive
+							scales: {
+								x: {
+									type: 'time', // Use a time scale for the x-axis
+									time: {
+										unit: 'day', // Default time unit (can be 'hour', 'day', 'month', etc.)
+										tooltipFormat: 'yyyy-MM-dd', // Format for tooltips
+									},
+									title: {
+										display: true,
+										text: 'Date', // X-axis label
+									},
+								},
+								y: {
+									title: {
+										display: true,
+										text: 'Energy Generated (kWh)', // Y-axis label
+									},
+								},
+							},
+							plugins: {
+								tooltip: {
+									callbacks: {
+										title: (context) => {
+											// Format the tooltip title to show the full datetime
+											const date = new Date(context[0].raw.x || context[0].label);
+											return date.toLocaleString();
+										},
+										label: (context) => {
+											// Format the tooltip label to show the energy value
+											return `Energy: ${context.raw.y} kWh`;
+										},
+									},
+								},
+							},
 						},
 					});
 				}
