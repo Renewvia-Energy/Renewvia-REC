@@ -145,6 +145,7 @@ const app = Vue.createApp({
 											this.assetTimeSeries.splice(timeIndex, 0, parseFloat(data[1]))
 										}
 									}
+									console.log('in mounted', this.assetTimeSeries, this.assetTimeSeries.length)
 								})
 						}
 					}
@@ -159,12 +160,12 @@ const app = Vue.createApp({
 		}
 
 		if (!this.generationChart) {
-			this.renderGenerationTimeSeries()
+			console.log('in updated', this.assetTimeSeries, this.assetTimeSeries.length)
+			// this.renderGenerationTimeSeries()
 		}
 
 		// Update carbon goal progress
 		if (this.carbon_goal) {
-			console.log(this.retired_carbon)
 			document.getElementById('retired-carbon').setAttribute('stroke-dasharray', `${Math.round(FULL_GOAL_CIRCLE * Math.min(this.retired_carbon / this.carbon_goal, 1))}, 999`)
 			document.getElementById('total-carbon').setAttribute('stroke-dasharray', `${Math.round(FULL_GOAL_CIRCLE * Math.min((this.retired_carbon + this.totalCarbonOffsets) / this.carbon_goal, 1))} 999`)
 		}
@@ -214,6 +215,10 @@ const app = Vue.createApp({
 			} else {
 				return `Congratulations! You have accomplished your goal of retiring ${this.carbon_goal} carbon credits.`
 			}
+		},
+
+		assetTimeSeriesLength() {
+			return this.assetTimeSeries.length
 		}
 	},
 
@@ -225,8 +230,6 @@ const app = Vue.createApp({
 		},
 
 		renderChart() {
-			// console.log(this.assets)
-			// console.log(this.assets.length)
 			if (this.$refs.myChart && this.assets && this.assets.length > 0) {
 				const ctx = this.$refs.myChart.getContext("2d");
 				if (ctx) {
@@ -261,13 +264,7 @@ const app = Vue.createApp({
 		},
 
 		renderGenerationTimeSeries() {
-			console.log('here0')
-			console.log(this.assetDates)
-			console.log(this.assetTimeSeries)
-			console.log(this.assetDates.length)
-			console.log(this.assetTimeSeries.length)
-			if (this.$refs.generationGraph && this.assetDates && this.assetDates.length > 0 && this.assetTimeSeries && this.assetTimeSeries.length > 0) {
-				console.log('here1')
+			if (this.$refs.generationGraph && this.assetDates && this.assetTimeSeries) {
 				const ctx = this.$refs.generationGraph.getContext("2d");
 				if (ctx) {
         			// Destroy the existing chart if it exists
@@ -335,4 +332,4 @@ const app = Vue.createApp({
 	},
 });
 
-app.mount("#app");
+app.mount("#app")
