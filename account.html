@@ -33,7 +33,9 @@
 	<link rel="stylesheet" href="account.css">
 
 	<!-- JavaScript -->
+	<script src="https://rupumped.github.io/NicksAPPS/JavaScript/findInsertionIndex.js"></script>
 	<script defer src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script defer src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 </head>
 <body>
 	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
@@ -121,6 +123,14 @@
 									</div>
 								</details>
 							</div>
+						</div>
+					</section>
+
+					<!-- Assets by Time -->
+					<section class="widget" v-if="assetDates && assetDates.length > 0">
+						<h2>Generation</h2>
+						<div>
+							<canvas ref="generationGraph"></canvas>
 						</div>
 					</section>
 
