@@ -1,15 +1,16 @@
 // SPDX-License-Identifier: GPLv3
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.20;
 
 import "../openzeppelin/ERC20.sol";
-import "../openzeppelin/Pausable.sol";
+import "../openzeppelin/ERC20Pausable.sol";
 import "../openzeppelin/Ownable.sol";
 
-/// @custom:security-contact technical-africa@renewvia.com
-contract RenewviaREC is ERC20, Pausable, Ownable {
-	constructor(uint256 premint) ERC20("RenewviaREC-Alabama", "RREC-AL") {
-		_mint(msg.sender, premint * 10 ** decimals());
-	}
+contract RenewviaREC is ERC20, ERC20Pausable, Ownable {
+	event MintWithInfo(address indexed to, uint256 amount, string additionalInfo);
+	constructor(address initialOwner)
+		ERC20("RenewviaREC-AL", "RREC-AL")
+		Ownable(initialOwner)
+	{ }
 
 	function pause() public onlyOwner {
 		_pause();
@@ -19,15 +20,15 @@ contract RenewviaREC is ERC20, Pausable, Ownable {
 		_unpause();
 	}
 
-	function mint(address to, uint256 amount) public onlyOwner {
+	function mint(address to, uint256 amount, string calldata additionalInfo) public onlyOwner {
 		_mint(to, amount * 10 ** decimals());
+		emit MintWithInfo(to, amount, additionalInfo);
 	}
 
-	function _beforeTokenTransfer(address from, address to, uint256 amount)
+	function _update(address from, address to, uint256 value)
 		internal
-		whenNotPaused
-		override
+		override(ERC20, ERC20Pausable)
 	{
-		super._beforeTokenTransfer(from, to, amount);
+		super._update(from, to, value);
 	}
 }
