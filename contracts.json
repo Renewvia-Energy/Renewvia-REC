@@ -118,7 +118,28 @@
 		"superclass": "REC",
 		"img": "images/asset-images/RREC-GA.jpg",
 		"description": "Georgia R-RECs are a beacon of progress in the Peach State, fueling its journey towards a clean and renewable energy future.",
+		"address": "0x245af985B9e6b67dAdA2Afea07A65763D81374c9",
+		"transactions": [
+			{
+				"timeStamp": "1738740404",
+				"action": "mint",
+				"amount": 288,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfGA_2023-01-01T000000-0000_2023-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "46386352",
+				"hash": "0x2a88126bc61b01e12d166a85b676a4c194b2e17287521443479c695da819e990"
+			}
+		]
+	},
+	{
+		"name": "Georgia R-REC*",
+		"abbreviation": "RREC-GA*",
+		"superclass": "REC",
+		"img": "images/asset-images/RREC-GA.jpg",
+		"description": "Georgia R-RECs are a beacon of progress in the Peach State, fueling its journey towards a clean and renewable energy future.",
 		"address": "0x1B729CCF7F7B767D0d070747FD3a3FA8aB5B9a45",
+		"ignore": true,
 		"transactions": [
 			{
 				"timeStamp": "1691502730",
@@ -266,35 +287,17 @@
 		"superclass": "REC",
 		"img": "images/asset-images/RREC-VA.jpg",
 		"description": "Virginia R-RECs represent the Old Dominion's modern approach to clean energy, capturing solar power to brighten its future and preserve its natural heritage.",
-		"address": "0x7c5f877Ec67a8CF791bFc6dBAfe90DaeDCe9e23F",
+		"address": "0x5787d8892d2112bD65dC378f6eFA0A4AD0f1d0F2",
 		"transactions": [
 			{
-				"timeStamp": "1691499257",
+				"timeStamp": "1738741652",
 				"action": "mint",
-				"amount": 3026,
+				"amount": 457,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfVA_2023-01-01T000000-0000_2023-12-31T000000-0000.csv",
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30673818",
-				"hash": "0x422e63e7ac4630a319fdf50cad30b2f0d769d137598c52d8f6c7660a7baa6e37",
-				"note": "manually changed transfer to mint"
-			},
-			{
-				"timeStamp": "1691500655",
-				"action": "mint",
-				"amount": 282,
-				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
-				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30674284",
-				"hash": "0x30f6542fc4721464fb69c93f92d9fb6d2802c267b2437470fc539462ed6b800a"
-			},
-			{
-				"timeStamp": "1697188204",
-				"action": "mint",
-				"amount": 134,
-				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
-				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "32563449",
-				"hash": "0x546c5fe59f1d6a023b820d76414c015a4ac37f7fa357a03848326c83fdcab30b"
+				"blockNumber": "46386768",
+				"hash": "0x6b3790089a256302f772ad13c0f7091841d5672e2ca32b9b829df519354a3da8"
 			}
 		]
 	},

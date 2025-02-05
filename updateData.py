@@ -4,7 +4,7 @@ w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed.binance.org/'))
 
 RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07'
 RETIREMENT_WALLET = '0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f'
-MAX_TRIES = 1
+MAX_TRIES = 2
 
 if __name__ == '__main__':
 	# Argparse
@@ -12,6 +12,7 @@ if __name__ == '__main__':
 	parser.add_argument('api_key', help='Your BSC API key')
 	parser.add_argument('contracts_fn', help='Path to contracts.json')
 	parser.add_argument('abi_fn', help='Path to abi.json')
+	parser.add_argument('-c', '--contract', help='Only update the specified contract')
 	args = parser.parse_args()
 
 	# Load all R-REC contracts
@@ -26,6 +27,10 @@ if __name__ == '__main__':
 		print(contract['name'])
 		if contract['address'] is None:
 			print('\tNo address')
+		elif 'ignore' in contract and contract['ignore']:
+			print('\tIgnoring')
+		elif args.contract is not None and args.contract not in contract['name'] and args.contract not in contract['abbreviation']:
+			print('\tSkipping')
 		else:
 			try:
 				w3Contract = w3.eth.contract(address=contract['address'], abi=abi)
@@ -51,7 +56,7 @@ if __name__ == '__main__':
 					break
 				except OSError as e:
 					print('\t{}. Retrying...'.format(e.strerror))
-			if i==MAX_TRIES:
+			if i==MAX_TRIES-1:
 				print('Failed to establish network connection')
 				exit(0)
 
@@ -70,10 +75,10 @@ if __name__ == '__main__':
 							decoded_data = w3Contract.decode_function_input(block['input'])
 						except ValueError as e:
 							print("\tThere's probably an issue with your ABI. Sorry. Here's the error:")
-							print(str(e))
+							print(e)
 							exit(0)
 						except Exception as e:
-							print(str(e))
+							print(e)
 							exit(0)
 						func = str(decoded_data[0])[10:]
 						func = func[:func.find('(')]
