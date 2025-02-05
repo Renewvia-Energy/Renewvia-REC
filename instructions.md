@@ -23,22 +23,22 @@ You're ready to trade R-RECs!
 ### Deploy R-REC from Remix Ethereum IDE from an Official R-REC Contract
 1. Navigate to the [Remix Ethereum IDE](https://remix.ethereum.org/).
 2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) or one of the deployed contracts from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
-3. Upload the [openzeppelin directory](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/openzeppelin) into the default workspace.
-4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.9+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
+3. Upload the [openzeppelin directory](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/openzeppelin) into the default workspace. `RenewviaREC.sol` references these files in its imports, so make sure you upload the openzeppelin folder as a folder in the same directory as `RenewviaREC.sol` or else you'll have to change the import paths.
+4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.20+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
 5. Once the compiler has finished running, click the "Deploy and run transactions" icon in the left sidebar. Change the environment to "Injected Provider (MetaMask)" and click the "Next" button on the resulting MetaMask pop-up. Then, click the "Connect" button on the MetaMask pop-up.
 6. Confirm that your MetaMask account number has now appeared in the "ACCOUNT" selector.
 7. Select the contract you uploaded from the "CONTRACT" selector.
 
 #### If the contract has not already been deployed
-8. Enter the initial supply of R-RECs in the input box to the right of the "Deploy" button with preview text `uint256 premint`. For example, to have an initial supply of 10,000 R-RECs, enter `10000` into the input box. You will be able to mint more R-RECs later.
+8. Enter your wallet address in the input box to the right of the "Deploy" button with preview text `address initialOwner`. This will ensure your wallet has the right to mint tokens to the blockchain.
 9. Click the "Deploy" button and pay the gas fees using via the MetaMask pop-up.
 10. Click the green checkmark at the bottom of the window, scroll to the bottom of the Remix terminal, and copy the transaction `hash`. Save this for later.
 
 #### If the contract has already been deployed
 8. Enter the the contract address in the input box to the right of the "At Address" label with preview text "Load contract from address." The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json).
 9. Scroll down to the "Deployed Contracts" section. You should see a contract titled "RENEWVIAREC AT" followed by the contract address. Expand that contract by clicking the `>` icon to the left of the contract name.
-10. Mint the desired number of R-RECs to the desired wallet. In the input box to the right of the orange "mint" button wiht preview text "address to, uint256 amount," type the address of the wallet to which you want to mint the R-RECs, then a comma, then a space, then the number of R-RECs you want to mint. For example, to mint 100 R-RECs to the official Renewvia R-REC wallet, type `0xF9C289f1C0341fb336224958a885163F5017BC16, 100`.
-11. Click the orange "mint" button and pay the gas fees using via the MetaMask pop-up.
+10. Mint the desired number of R-RECs to the desired wallet. Click the wedge `∨` to the right of the orange "mint" button. Type the address of the wallet to which you want to mint the R-RECs in the `to` field, the whole number of R-RECs you want to mint in the `amount` field, and the URL containing the verification information into the `additionalInfo` field.
+11. Click the orange "transact" button and pay the gas fees using via the MetaMask pop-up.
 12. Click the green checkmark at the bottom of the window, scroll to the bottom of the Remix terminal, and copy the transaction `hash`. Save this for later.
 
 ### Verify the transaction on BSC Scan
