@@ -1,4 +1,4 @@
-import requests, json, sys, argparse
+import requests, json, argparse, web3.exceptions
 from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed.binance.org/'))
 
@@ -27,7 +27,17 @@ if __name__ == '__main__':
 		if contract['address'] is None:
 			print('\tNo address')
 		else:
-			w3Contract = w3.eth.contract(address=contract['address'], abi=abi)
+			try:
+				w3Contract = w3.eth.contract(address=contract['address'], abi=abi)
+			except web3.exceptions.InvalidAddress as e:
+				if 'web3.py only accepts checksum addresses' in str(e):
+					print('The {name} contract has a non-checksum address, {address}. Please replace this using the address from BSCScan: https://bscscan.com/address/{address}'.format(name=contract['name'], address=contract['address']))
+				else:
+					print(str(e))
+				exit(0)
+			except Exception as e:
+				print(str(e))
+				exit(0)
 
 			# Get Most Recent Already-Recorded Block
 			mostRecentTimeStamp = 0
@@ -56,7 +66,15 @@ if __name__ == '__main__':
 					if not block['to']:	# Contract creation block
 						continue
 					if int(block['timeStamp']) > mostRecentTimeStamp:	# Only add blocks that you don't already have
-						decoded_data = w3Contract.decode_function_input(block['input'])
+						try:
+							decoded_data = w3Contract.decode_function_input(block['input'])
+						except ValueError as e:
+							print("\tThere's probably an issue with your ABI. Sorry. Here's the error:")
+							print(str(e))
+							exit(0)
+						except Exception as e:
+							print(str(e))
+							exit(0)
 						func = str(decoded_data[0])[10:]
 						func = func[:func.find('(')]
 						if func == 'mint':
@@ -70,7 +88,12 @@ if __name__ == '__main__':
 								action = 'retire'
 							else:
 								action = 'transfer'
-							amount = round(decoded_data[1]['amount']/1e18)
+							try:
+								amount = round(decoded_data[1]['amount']/1e18)
+							except Exception as e:
+								print(decoded_data)
+								print(str(e))
+								exit(0)
 						else:
 							raise Exception('Unknown function error: {func} in block {block} on contract {name} at {address}'.format(func=func, block=block['blockNumber'], name=contract['name'], address=contract['address']))
 						contract['transactions'].append({

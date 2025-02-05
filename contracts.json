@@ -55,26 +55,17 @@
 		"superclass": "REC",
 		"img": "images/asset-images/RREC-AL.jpg",
 		"description": "Alabama R-RECs channel the energy of the Southern sun, supporting renewable initiatives that contribute to the state's robust and sustainable energy transformation.",
-		"address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1",
+		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
 		"transactions": [
 			{
-				"timeStamp": "1691502541",
+				"timeStamp": "1738737629",
 				"action": "mint",
-				"amount": 4147,
+				"amount": 576,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfAL_2023-01-01T000000-0000_2023-12-31T000000-0000.csv",
 				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "30674910",
-				"hash": "0x795a83b5e72eeeff7638c39078c0674f919fb0e223f93b20e36427f7fbd7e7e6",
-				"note": "manually changed transfer to mint"
-			},
-			{
-				"timeStamp": "1697188513",
-				"action": "mint",
-				"amount": 186,
-				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
-				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "32563552",
-				"hash": "0xfd995185d2ac85fed866844730d369bd4ffb493506f133a5b96bd4b65cf34701"
+				"blockNumber": "46385427",
+				"hash": "0xdbf9c4888976f3fd9451dd05cac631ed327aab1fae89075021b398ad49c0c622"
 			}
 		]
 	},
