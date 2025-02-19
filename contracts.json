@@ -70,49 +70,6 @@
 		]
 	},
 	{
-		"name": "Colorado R-REC",
-		"abbreviation": "RREC-CO",
-		"superclass": "REC",
-		"img": "images/asset-images/RREC-CO.jpg",
-		"description": "Colorado R-RECs capture the state's renewable endeavors, from solar panels gleaming in the high-altitude sunshine to wind turbines standing tall on the Eastern Plains.",
-		"address": "0x8480e85664461471B8fCf058e1C2d31dd2568855",
-		"transactions": [
-			{
-				"timeStamp": "1692697988",
-				"action": "return",
-				"amount": 4099,
-				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
-				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31072060",
-				"hash": "0x4c7e6c43e3d325e3f6a165666ba08007dd971524a51ec8d8ddc9ea151d450b15",
-				"ignore": true,
-				"note": "Butler got credit for these assets elsewhere"
-			},
-			{
-				"timeStamp": "1692698753",
-				"action": "mint",
-				"amount": 4099,
-				"to": "0xa7F05f1ad0Bd0339E0154451b2e9580Dc0EB8393",
-				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
-				"blockNumber": "31072315",
-				"hash": "0x87b644a8bfa8efd2115e7596a6165f8d7974cfcc563ae6a39cbf0c6d6c37fb9d",
-				"ignore": true,
-				"note": "Butler got credit for these assets elsewhere"
-			},
-			{
-				"timeStamp": "1693737174",
-				"action": "return",
-				"amount": 4099,
-				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
-				"from": "0xa7f05f1ad0bd0339e0154451b2e9580dc0eb8393",
-				"blockNumber": "31417071",
-				"hash": "0x8d0824fce6aacb211bae7b48ef2d99fdaf9f6a470b29f29e0adb3590bc5bb99a",
-				"ignore": true,
-				"note":"Butler got credit for these assets elsewhere"
-			}
-		]
-	},
-	{
 		"name": "Georgia R-REC",
 		"abbreviation": "RREC-GA",
 		"superclass": "REC",
