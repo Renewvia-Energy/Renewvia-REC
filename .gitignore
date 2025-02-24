@@ -1,3 +1,9 @@
-steamaco/*.csv
+# Contracts
+contracts/.env
+
+# Scripts
+scripts/steamaco/*.csv
+scripts/contracts_new.json
+
+# Web
 *.css.map
-contracts_new.json
