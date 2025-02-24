@@ -8,9 +8,10 @@ import {ERC20PermitUpgradeable} from "@openzeppelin/contracts-upgradeable/token/
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import "./BlacklistableUpgradeable.sol";
 
 /// @custom:security-contact recs@renewvia.com
-contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeable, OwnableUpgradeable, ERC20PermitUpgradeable, UUPSUpgradeable {
+contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeable, OwnableUpgradeable, ERC20PermitUpgradeable, UUPSUpgradeable, BlacklistableUpgradeable {
 	event MintWithInfo(address indexed to, uint256 amount, string additionalInfo);
 
 	/// @custom:oz-upgrades-unsafe-allow constructor
@@ -35,16 +36,16 @@ contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeabl
 		_unpause();
 	}
 
-	function mint(address to, uint256 amount, string calldata additionalInfo) public onlyOwner {
-        require(to != address(0), "Cannot mint to zero address");
-        require(amount > 0, "Amount must be positive");
-        
-        uint256 amountWithDecimals = amount * (10 ** decimals());
-        require(amountWithDecimals / (10 ** decimals()) == amount, "Amount overflow");
-        
-        _mint(to, amountWithDecimals);
-        emit MintWithInfo(to, amount, additionalInfo);
-    }
+	function mint(address to, uint256 amount, string calldata additionalInfo) public onlyOwner notBlacklisted(to) {
+		require(to != address(0), "Cannot mint to zero address");
+		require(amount > 0, "Amount must be positive");
+		
+		uint256 amountWithDecimals = amount * (10 ** decimals());
+		require(amountWithDecimals / (10 ** decimals()) == amount, "Amount overflow");
+		
+		_mint(to, amountWithDecimals);
+		emit MintWithInfo(to, amount, additionalInfo);
+	}
 
 	function _authorizeUpgrade(address newImplementation)
 		internal
@@ -58,6 +59,11 @@ contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeabl
 		internal
 		override(ERC20Upgradeable, ERC20PausableUpgradeable)
 	{
+		// Check blacklist status before executing transfer
+		if (from != address(0) && to != address(0)) {
+			_checkBlacklist(from, to);
+		}
+		
 		super._update(from, to, value);
 	}
 }
