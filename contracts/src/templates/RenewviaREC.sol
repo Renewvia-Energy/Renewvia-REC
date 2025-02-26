@@ -40,8 +40,12 @@ contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeabl
 		require(to != address(0), "Cannot mint to zero address");
 		require(amount > 0, "Amount must be positive");
 		
+		// Check for potential overflow before performing multiplication
+		// Max amount possible without overflow = (2^256 - 1) / 10^18
+		uint256 maxAmount = type(uint256).max / (10 ** decimals());
+		require(amount <= maxAmount, "Amount too large, would overflow");
+		
 		uint256 amountWithDecimals = amount * (10 ** decimals());
-		require(amountWithDecimals / (10 ** decimals()) == amount, "Amount overflow");
 		
 		_mint(to, amountWithDecimals);
 		emit MintWithInfo(to, amount, additionalInfo);
@@ -52,8 +56,6 @@ contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeabl
 		override
 		onlyOwner
 	{}
-
-	// The following functions are overrides required by Solidity.
 
 	function _update(address from, address to, uint256 value)
 		internal
