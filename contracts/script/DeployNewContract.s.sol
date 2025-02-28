@@ -6,7 +6,7 @@ import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import "../src/templates/RenewviaREC.sol";                             // REPLACE THIS WITH YOUR CONTRACT PATH
 
 contract DeployNewContract is Script {
-	address public constant OWNER             = 0xF9C289f1C0341fb336224958a885163F5017BC16;  // Don't change this
+	address public constant OWNER = 0xF9C289f1C0341fb336224958a885163F5017BC16;  // Don't change this
 	
 	function run() public {
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));

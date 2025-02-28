@@ -1,15 +1,16 @@
 import requests, json, argparse, web3.exceptions
 from web3 import Web3
-w3 = Web3(Web3.HTTPProvider('https://bsc-dataseed.binance.org/'))
+w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com/'))
 
 RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07'
 RETIREMENT_WALLET = '0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f'
 MAX_TRIES = 2
+SCAN_DOMAIN = 'polygonscan'
 
 if __name__ == '__main__':
 	# Argparse
 	parser = argparse.ArgumentParser(prog='Update Data', description='Update contracts.json from blockchain')
-	parser.add_argument('api_key', help='Your BSC API key')
+	parser.add_argument('api_key', help='Your API key')
 	parser.add_argument('contracts_fn', help='Path to contracts.json')
 	parser.add_argument('abi_fn', help='Path to abi.json')
 	parser.add_argument('-c', '--contract', help='Only update the specified contract')
@@ -36,7 +37,7 @@ if __name__ == '__main__':
 				w3Contract = w3.eth.contract(address=contract['address'], abi=abi)
 			except web3.exceptions.InvalidAddress as e:
 				if 'web3.py only accepts checksum addresses' in str(e):
-					print('The {name} contract has a non-checksum address, {address}. Please replace this using the address from BSCScan: https://bscscan.com/address/{address}'.format(name=contract['name'], address=contract['address']))
+					print('The {name} contract has a non-checksum address, {address}. Please replace this using the address from chain explorer: https://{scanDomain}.com/address/{address}'.format(name=contract['name'], scanDomain=SCAN_DOMAIN, address=contract['address']))
 				else:
 					print(str(e))
 				exit(0)
@@ -52,7 +53,7 @@ if __name__ == '__main__':
 			# Get Contract Transactions from API
 			for i in range(MAX_TRIES):
 				try:
-					response = requests.get('https://api.bscscan.com/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={api_key}'.format(address=contract['address'], api_key=args.api_key))
+					response = requests.get('https://api.{scanDomain}.com/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={api_key}'.format(scanDomain=SCAN_DOMAIN, address=contract['address'], api_key=args.api_key))
 					break
 				except OSError as e:
 					print('\t{}. Retrying...'.format(e.strerror))
