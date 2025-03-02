@@ -3,18 +3,18 @@ pragma solidity ^0.8.25;
 
 import "forge-std/Script.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
-import "../src/templates/RenewviaREC.sol";                             // REPLACE THIS WITH YOUR CONTRACT PATH
+import "../src/implementations/RREC-ACM.sol";                                       // REPLACE THIS WITH YOUR CONTRACT PATH
 
 contract DeployNewContract is Script {
-	address public constant OWNER = 0xF9C289f1C0341fb336224958a885163F5017BC16;  // Don't change this
+	string  public constant FILENAME = "RREC-ACM.sol";                              // REPLACE THIS WITH YOUR CONTRACT FILENAME
 	
 	function run() public {
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
 		// Deploy the upgradeable contract
 		address proxy = Upgrades.deployUUPSProxy(
-			"RenewviaREC.sol",                                         // REPLACE THIS WITH YOUR CONTRACT FILENAME
-			abi.encodeCall(RenewviaREC.initialize, OWNER)       // REPLACE "RenewviaREC" WITH YOUR CONTRACT CLASS NAME
+			string.concat(FILENAME, ":RenewviaREC"),
+			abi.encodeCall(RenewviaREC.initialize, vm.envAddress("OWNER"))
 		);
 
 		RenewviaREC token = RenewviaREC(proxy);

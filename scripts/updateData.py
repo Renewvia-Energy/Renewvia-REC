@@ -1,4 +1,4 @@
-import requests, json, argparse, web3.exceptions
+import requests, json, argparse, web3.exceptions, os
 from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com/'))
 
@@ -6,6 +6,17 @@ RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07'
 RETIREMENT_WALLET = '0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f'
 MAX_TRIES = 2
 SCAN_DOMAIN = 'polygonscan'
+
+def addNewToFilename(filename):
+	# Get the directory and filename
+	directory = os.path.dirname(filename)
+	filename = os.path.basename(filename)
+
+	# Split the filename from its extension
+	filename_without_ext, extension = os.path.splitext(filename)
+
+	# Create the new path (preserving the original extension)
+	return os.path.join(directory, filename_without_ext + '_new' + extension)
 
 if __name__ == '__main__':
 	# Argparse
@@ -116,5 +127,5 @@ if __name__ == '__main__':
 			else:
 				raise Exception(f"Error fetching data: {response.status_code}")
 
-	with open(args.contracts_fn[:args.contracts_fn.find('.')]+'_new.json', 'w', encoding='utf-8') as f:
+	with open(addNewToFilename(args.contracts_fn), 'w', encoding='utf-8') as f:
 		json.dump(contracts, f, ensure_ascii=False, indent='\t')
