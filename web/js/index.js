@@ -44,9 +44,9 @@ function showContent(contentId) {
 // js for the carousel hero section
 
 const images = [
-    "images/background1.jpg", 
-    "images/background2.jpg", 
-    "images/background3.jpg", 
+    "web/images/background1.jpg", 
+    "web/images/background2.jpg", 
+    "web/images/background3.jpg", 
   ];
   
   const texts = [
@@ -96,22 +96,22 @@ const boardMembers = [
     {
         name: "John Doe",
         text: "Head of Engineering",
-        imageSrc: "images/board/Mask-group1.png",
+        imageSrc: "web/images/board/Mask-group1.png",
     },
     {
         name: "Jane Smith",
         text: "Head of Engineering",
-        imageSrc: "images/board/Mask-group.png",
+        imageSrc: "web/images/board/Mask-group.png",
     },
     {
         name: "Bob Johnson",
         text: "Head of Engineering",
-        imageSrc: "images/board/Mask-group2.png",
+        imageSrc: "web/images/board/Mask-group2.png",
     },
     {
         name: "Sarah Adams",
         text: "Head of Engineering",
-        imageSrc: "images/board/Mask-group3.png",
+        imageSrc: "web/images/board/Mask-group3.png",
     },
     // Add more board members as needed
 ];

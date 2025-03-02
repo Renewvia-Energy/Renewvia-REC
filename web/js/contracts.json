@@ -3,7 +3,7 @@
 		"name": "Cameroon R-RECs",
 		"abbreviation": "RREC-ACM",
 		"superclass": "REC",
-		"img": "images/asset-images/Generic.jpg",
+		"img": "../images/asset-images/Generic.jpg",
 		"description": "Cameroon R-RECs draw on the country's diverse renewable resources, reflecting a harmonious blend of tradition and sustainable innovation.",
 		"address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1",
 		"implementation": ["0x8E0cCeCB9744379ef3bb71d2Ed43841B6b5bd901"],
@@ -54,7 +54,7 @@
 		"name": "Alabama R-REC",
 		"abbreviation": "RREC-AL",
 		"superclass": "REC",
-		"img": "images/asset-images/RREC-AL.jpg",
+		"img": "../images/asset-images/RREC-AL.jpg",
 		"description": "Alabama R-RECs channel the energy of the Southern sun, supporting renewable initiatives that contribute to the state's robust and sustainable energy transformation.",
 		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
 		"transactions": [

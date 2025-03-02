@@ -220,7 +220,6 @@ const app = Vue.createApp({
 
 											// If that date already exists, just add the amount. Otherwise, create a new element for that date.
 											if (this.assetDates.length > timeIndex && this.assetDates[timeIndex].getTime() === date.getTime()) {
-												console.log(this.assetDates[timeIndex].getTime(), date.getTime())
 												this.assetTimeSeries[timeIndex]+= parseFloat(data[1])
 											} else {
 												this.assetDates.splice(timeIndex, 0, date)
