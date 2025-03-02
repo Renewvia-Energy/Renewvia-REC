@@ -1,0 +1,73 @@
+[
+	{
+		"name": "Cameroon R-RECs",
+		"abbreviation": "RREC-ACM",
+		"superclass": "REC",
+		"img": "../images/asset-images/Generic.jpg",
+		"description": "Cameroon R-RECs draw on the country's diverse renewable resources, reflecting a harmonious blend of tradition and sustainable innovation.",
+		"address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1",
+		"implementation": ["0x8E0cCeCB9744379ef3bb71d2Ed43841B6b5bd901"],
+		"transactions": [
+			{
+				"timeStamp": "1740955859",
+				"action": "mint",
+				"amount": 5,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarly_2021-01-01T000000-0000_2021-12-31T235959-0000.csv",
+				"to": "0x0400A72F71fec3a3060F2046d4fB103B345c0161",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68573513",
+				"hash": "0xbdcbbc83e12efd892b912b27a571b689a787467cd7b668b135fe9da4cee12cf1"
+			},
+			{
+				"timeStamp": "1740955955",
+				"action": "mint",
+				"amount": 30,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarly_2022-01-01T000000-0000_2022-12-31T235959-0000.csv",
+				"to": "0x0400A72F71fec3a3060F2046d4fB103B345c0161",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68573558",
+				"hash": "0x4739c09a3a49b27e27022854bc631ef193b5105173c6e1e571f2df3f3498c3af"
+			},
+			{
+				"timeStamp": "1740956021",
+				"action": "mint",
+				"amount": 38,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarly_2023-01-01T000000-0000_2023-12-31T235959-0000.csv",
+				"to": "0x0400A72F71fec3a3060F2046d4fB103B345c0161",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68573589",
+				"hash": "0x40abe96e2701f3b4e339c54ed688d9fc36f0f9cfa0ac3a3b1eb470b159e8071c"
+			},
+			{
+				"timeStamp": "1740956117",
+				"action": "mint",
+				"amount": 18,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarly_2024-01-01T000000-0000_2024-12-31T235959-0000.csv",
+				"to": "0x0400A72F71fec3a3060F2046d4fB103B345c0161",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68573634",
+				"hash": "0xbcaa0de3b787fecabc61bf198f91f660cd3872ad209aa8b685323ddde82e8a1a"
+			}
+		]
+	},
+	{
+		"name": "Alabama R-REC",
+		"abbreviation": "RREC-AL",
+		"superclass": "REC",
+		"img": "../images/asset-images/RREC-AL.jpg",
+		"description": "Alabama R-RECs channel the energy of the Southern sun, supporting renewable initiatives that contribute to the state's robust and sustainable energy transformation.",
+		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
+		"transactions": [
+			{
+				"timeStamp": "1738737629",
+				"action": "mint",
+				"amount": 576,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfAL_2023-01-01T000000-0000_2023-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "46385427",
+				"hash": "0xdbf9c4888976f3fd9451dd05cac631ed327aab1fae89075021b398ad49c0c622"
+			}
+		]
+	}
+]
