@@ -1,5 +1,8 @@
-# Contracts
+# Foundry
 contracts/.env
+contracts/cache/
+contracts/out/
+contracts/broadcast/
 
 # Scripts
 scripts/steamaco/*.csv

@@ -49,5 +49,25 @@
 				"hash": "0xbcaa0de3b787fecabc61bf198f91f660cd3872ad209aa8b685323ddde82e8a1a"
 			}
 		]
+	},
+	{
+		"name": "Alabama R-REC",
+		"abbreviation": "RREC-AL",
+		"superclass": "REC",
+		"img": "images/asset-images/RREC-AL.jpg",
+		"description": "Alabama R-RECs channel the energy of the Southern sun, supporting renewable initiatives that contribute to the state's robust and sustainable energy transformation.",
+		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
+		"transactions": [
+			{
+				"timeStamp": "1738737629",
+				"action": "mint",
+				"amount": 576,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfAL_2023-01-01T000000-0000_2023-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "46385427",
+				"hash": "0xdbf9c4888976f3fd9451dd05cac631ed327aab1fae89075021b398ad49c0c622"
+			}
+		]
 	}
 ]

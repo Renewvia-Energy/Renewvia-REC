@@ -3,10 +3,10 @@ pragma solidity ^0.8.25;
 
 import "forge-std/Script.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
-import "../src/implementations/RREC-ACM.sol";                                       // REPLACE THIS WITH YOUR CONTRACT PATH
+import "../src/implementations/RREC-AL.sol";                                       // REPLACE THIS WITH YOUR CONTRACT PATH
 
 contract DeployNewContract is Script {
-	string  public constant FILENAME = "RREC-ACM.sol";                              // REPLACE THIS WITH YOUR CONTRACT FILENAME
+	string  public constant FILENAME = "RREC-AL.sol";                              // REPLACE THIS WITH YOUR CONTRACT FILENAME
 	
 	function run() public {
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
