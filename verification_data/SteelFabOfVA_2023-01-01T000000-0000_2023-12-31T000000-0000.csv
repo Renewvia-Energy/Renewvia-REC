@@ -20,7 +20,7 @@ Diesel Consumption (L),
 Diesel Production (MWh),
 Type of Installation,Distributed PV
 ,
-date,Measured kWh
+Datetime,Measured kWh
 2023-01-01,1083.797417
 2023-01-02,1103.620583
 2023-01-03,664.4751667
