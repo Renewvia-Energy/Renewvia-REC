@@ -91,5 +91,27 @@
 				"hash": "0xbb9c179f421a2bfa7ba8f57ce8f70bed1299c304d3472e6bd13b6981ef07fcf8"
 			}
 		]
+	},
+	{
+		"name": "North Carolina R-REC",
+		"abbreviation": "RREC-NC",
+		"superclass": "REC",
+		"img": "images/asset-images/RREC-NC.jpg",
+		"description": "North Carolina R-RECs weave renewable energy into the state's tapestry, from its coastal plains to its mountainous ridges, supporting a green and prosperous future.",
+		"address": "0x8480e85664461471B8fCf058e1C2d31dd2568855",
+		"implementation": ["0x233B3396Fa43e887da944BC42c1711962e7A0597"],
+		"transactions": [
+		]
+	},
+	{
+		"name": "Virginia R-REC",
+		"abbreviation": "RREC-VA",
+		"superclass": "REC",
+		"img": "images/asset-images/RREC-VA.jpg",
+		"description": "Virginia R-RECs represent the Old Dominion's modern approach to clean energy, capturing solar power to brighten its future and preserve its natural heritage.",
+		"address": "0xE523Ef4D2e13EF85dD8048DB7182BA674aE01a08",
+		"implementation": ["0x9913D46510151707C0974e38657AE65395DB3746"],
+		"transactions": [
+		]
 	}
 ]
