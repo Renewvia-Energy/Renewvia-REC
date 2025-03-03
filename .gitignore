@@ -6,7 +6,8 @@ contracts/broadcast/
 
 # Scripts
 scripts/steamaco/*.csv
-scripts/contracts_new.json
+web/js/contracts_new.json
+scripts/myenv/
 
 # Web
 *.css.map
