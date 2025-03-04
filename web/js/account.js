@@ -218,12 +218,14 @@ const app = Vue.createApp({
 											let date = new Date(data[0])
 											let timeIndex = findInsertionIndex(this.assetDates, date)
 
+											let energy = isNaN(parseFloat(data[1])) ? 0 : parseFloat(data[1])
+
 											// If that date already exists, just add the amount. Otherwise, create a new element for that date.
 											if (this.assetDates.length > timeIndex && this.assetDates[timeIndex].getTime() === date.getTime()) {
-												this.assetTimeSeries[timeIndex]+= parseFloat(data[1])
+												this.assetTimeSeries[timeIndex]+= energy
 											} else {
 												this.assetDates.splice(timeIndex, 0, date)
-												this.assetTimeSeries.splice(timeIndex, 0, parseFloat(data[1]))
+												this.assetTimeSeries.splice(timeIndex, 0, energy)
 											}
 										}
 									}
