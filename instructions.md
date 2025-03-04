@@ -1,52 +1,83 @@
-# Renewvia-REC
-Blockchain-Based Renewable Energy Credits
+# Instructions
+This guide assumes you are running Ubuntu. Ensure you have cloned this repository onto your computer and are in the parent directory before you begin.
 
 ## Start
-To interact with R-RECs, you will need to sign up for a MetaMask cryptocurrency wallet, add the Binance Smart Chain (BSC) network to your wallet, and purchase some Binance Coin (BNB) to pay for gas fees.
+To interact with R-RECs, you will need to sign up for a MetaMask cryptocurrency wallet, add a Polygon network to your wallet, and purchase some Polygon MATIC to pay for gas fees.
 
 ### Get a MetaMask wallet
 Visit [MetaMask.io](https://metamask.io/). Download and install the browser extension and sign up for an account.
 
-### Add the Binance Smart Chain (BSC) network to your wallet
-Follow the instructions in this [BSC News](https://www.bsc.news/post/connecting-metamask-wallet-to-the-binance-smart-chain) article to connect your MetaMask wallet to the Binance Smart Chain.
+### Add a Polygon network to your wallet
+Follow the instructions in this [Polygon Knowledge Layer](https://docs.polygon.technology/tools/wallets/metamask/add-polygon-network/) article to connect your MetaMask wallet to a Polygon network.
+
+When adding a Polygon network, you can choose between a testnet or mainnet. Testnets (like Amoy) are free to use with test tokens that have no real value, making them perfect for development and testing. Mainnets require real POL (Polygon's native token) for transactions and are used for actual deployments. For initial testing and learning, start with a testnet; when you're ready to deploy your production application, you'll need to purchase POL and connect to the mainnet.
 
 ### Purchase Binance Coin (BNB) to pay gas fees
-Download the Crypto.com app on your smartphone. Sign up for an account. Buy enough BNB to pay for gas fees for the transactions. I would recommend purchasing about 0.1 BNB, which is about $40 USD at the time of writing.
+#### For Mainnet (Real Deployments)
+Download the Crypto.com app on your smartphone and sign up for an account. Purchase enough POL to pay for gas fees for your transactions. I recommend starting with approximately 20 POL, which costs around $5 USD at the time of writing. After purchasing POL, transfer it to your MetaMask wallet by following the withdrawal instructions in [this DC post](https://decentralizedcreator.com/transfer-crypto-from-crypto-com-to-metamask/).
 
-After purchasing BNB, you will need to transfer it to your MetaMask wallet. Follow the instructions in [this DC post](https://decentralizedcreator.com/transfer-crypto-from-crypto-com-to-metamask/) to transfer BNB from your Crypto.com account to your MetaMask wallet.
+#### For Testnet (Development and Testing)
+To get free test POL for the Amoy testnet, use a [Polygon faucet](https://faucet.polygon.technology/). Connect your MetaMask wallet, select Amoy as the network, and request test tokens. These tokens have no real value but allow you to test your application without spending actual money.
+
+### Install Foundry
+Follow the [installation instruction in Foundry Book](https://book.getfoundry.sh/getting-started/installation) to install Foundry.
 
 ### And that's it!
 You're ready to trade R-RECs!
 
-## Minting New R-RECs
+## Deploy R-REC Using Foundry
+1. Navigate to the `contracts` folder of the repository.
 
-### Deploy R-REC from Remix Ethereum IDE from an Official R-REC Contract
-1. Navigate to the [Remix Ethereum IDE](https://remix.ethereum.org/).
-2. Upload [RenewviaREC.sol](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/RenewviaREC.sol) or one of the deployed contracts from this repository into the default workspace. This can be done either by clicking the "Load a local file into the current workspace" icon and selecting `RenewviaREC.sol` from your local machine or by clicking the "Create New File" icon and copy-pasting the contents of `RenewviaREC.sol` into the Remix file editor. Both icons are located on the left side of the screen underneath the `default_workspace` selector.
-3. Upload the [openzeppelin directory](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/openzeppelin) into the default workspace. `RenewviaREC.sol` references these files in its imports, so make sure you upload the openzeppelin folder as a folder in the same directory as `RenewviaREC.sol` or else you'll have to change the import paths.
-4. Click the "Solidity compiler" option in the left sidebar. Select the compiler with the name `0.8.20+commit...`. Then, click the "Compile RenewviaREC.sol" button. Wait for the compiler to finish and a green checkmark to appear on the "Solidity compiler" icon.
-5. Once the compiler has finished running, click the "Deploy and run transactions" icon in the left sidebar. Change the environment to "Injected Provider (MetaMask)" and click the "Next" button on the resulting MetaMask pop-up. Then, click the "Connect" button on the MetaMask pop-up.
-6. Confirm that your MetaMask account number has now appeared in the "ACCOUNT" selector.
-7. Select the contract you uploaded from the "CONTRACT" selector.
+2. Run `cp .env.example .env` to create a new environment file.
 
-#### If the contract has not already been deployed
-8. Enter your wallet address in the input box to the right of the "Deploy" button with preview text `address initialOwner`. This will ensure your wallet has the right to mint tokens to the blockchain.
-9. Click the "Deploy" button and pay the gas fees using via the MetaMask pop-up.
-10. Click the green checkmark at the bottom of the window, scroll to the bottom of the Remix terminal, and copy the transaction `hash`. Save this for later.
+2. Add your information to the `.env` file you just created:
+    1. [Create a Polygonscan account](https://docs.polygonscan.com/getting-started/creating-an-account) and [copy your Polygonscan API key](https://docs.polygonscan.com/getting-started/viewing-api-usage-statistics) into `ETHERSCAN_API_KEY`.
+    2. [Copy your MetaMask account private key](https://support.metamask.io/configure/accounts/how-to-export-an-accounts-private-key/) into `PRIVATE_KEY`.
+    3. [Copy your MetaMask account public address](https://support.metamask.io/start/how-to-copy-your-metamask-account-public-address-/) into `ONWER`.
 
-#### If the contract has already been deployed
-8. Enter the the contract address in the input box to the right of the "At Address" label with preview text "Load contract from address." The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json).
-9. Scroll down to the "Deployed Contracts" section. You should see a contract titled "RENEWVIAREC AT" followed by the contract address. Expand that contract by clicking the `>` icon to the left of the contract name.
-10. Mint the desired number of R-RECs to the desired wallet. Click the wedge `∨` to the right of the orange "mint" button. Type the address of the wallet to which you want to mint the R-RECs in the `to` field, the whole number of R-RECs you want to mint in the `amount` field, and the URL containing the verification information into the `additionalInfo` field.
-11. Click the orange "transact" button and pay the gas fees using via the MetaMask pop-up.
-12. Click the green checkmark at the bottom of the window, scroll to the bottom of the Remix terminal, and copy the transaction `hash`. Save this for later.
+3. Run the installation script to set up Foundry and required dependencies: `bash install.sh`
 
-### Verify the transaction on BSC Scan
-1. Navigate to [BSCScan.com](https://bscscan.com/) and enter the transaction hash from Remix into the search bar at the top of the page. Press the "Enter" button on your keyboard.
-2. Confirm that the Status of the transaction is "Success."
+4. Edit the `DeployNewContract.s.sol` script in the `script` folder according to its comments, updating the import path to point to your desired contract and updating the `FILENAME` constant to match your contract filename.
 
-## Add R-RECs to your MetaMask wallet
-1. If you created your own R-REC contract, copy the contract address from the "Interacted With (To):" field from BSCScan. The contract address should be a hexadecimal hyperlink, and you can copy it by clicking the "Copy" icon to the right of the address. The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json).
+5. Deploy your contract:
+   ```bash
+   forge clean
+   forge script script/DeployNewContract.s.sol --rpc-url polygon -vvvv
+   ```
+
+   **Options:**
+   - To use the Amoy testnet instead of the Polygon mainnet, replace `polygon` with `amoy`
+   - To actually broadcast the transaction and deploy to the blockchain, add the `--broadcast --sender $OWNER --verify` flags (this will use your tokens)
+
+6. Save the output addresses displayed after successful deployment:
+   - Proxy address
+   - Implementation address
+
+7. Verify the transaction on Polygonscan. Navigate to [PolygonScan](https://polygonscan.com/) if you deployed on the mainnet or [Amoy Polygonscan](https://amoy.polygonscan.com/) if you used the testnet and enter the proxy contract address you saved from the previous step into the search bar at the top of the page. Press the "Enter" button on your keyboard. Confirm that the contract exists on the blockchain.
+
+## Minting New R-RECs Using Foundry
+1. Navigate to the `contracts` folder of the repository and confirm the `.env` variables from the previous section are correct.
+
+2. Open the script file `script/Mint.s.sol` in your preferred code editor and modify the following variables according to your needs:
+   - `PROXY`: Replace with the contract address you want to mint from. While testing, use the contract proxy address from the previous section. Existing R-REC contract addresses can be found in `web/js/contracts.json`, but you have to have the owner's private key to mint new tokens to them.
+   - `RECIPIENT`: Replace with the wallet address that should receive the newly minted R-RECs.
+   - `AMOUNT`: Replace with the number of tokens you want to mint.
+   - `V_DATA`: Replace with the URL to the verification data for these R-RECs.
+
+3. Run the minting script:
+   ```bash
+   forge clean
+   forge script script/Mint.s.sol --rpc-url polygon -vvvv
+   ```
+   
+   **Options:**
+   - To use the Amoy testnet instead of the Polygon mainnet, replace `polygon` with `amoy`
+   - To actually broadcast the transaction and deploy to the blockchain, add the `--broadcast --sender $OWNER --verify` flags (this will use your tokens)
+
+4. Once the transaction is confirmed, you can verify it by refreshing the PolygonScan or Amoy PolygonScan contract page from the previous section.
+
+## View R-RECs in your MetaMask wallet
+1. If you created your own R-REC contract, copy the proxy contract address you saved previously. The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/web/js/contracts.json).
 2. Open your MetaMask wallet by clicking the MetaMask extension icon in your browser. Scroll to the bottom of the extension pop-up and click "Import tokens."
 3. Paste the contract address into the "Token Contract Address" field.
 4. Confirm that the remaining fields have been autofilled and click "Next."
@@ -62,16 +93,6 @@ Once you have R-RECs in your MetaMask wallet, you can send them to other MetaMas
 4. Enter the account address of the recipient. Your account address can be found at the top of the front page of the MetaMask extension pop-up.
 5. Enter the amount of tokens you would like to send to the recipient.
 6. Click "Next."
-7. Confirm the payment of BNB for gas fees for the transaction.
+7. Confirm the payment for gas fees for the transaction.
 
 You have successfully sent R-RECs. Your recipient will now be able to view them in their MetaMask wallet.
-
-## To receive R-RECs
-These instructions allow you to view any R-RECs you have in your MetaMask wallet. You only need to follow these instructions when you receive your first R-RECs. After you complete these steps once, you only need to open your MetaMask wallet to view your R-RECs.
-
-1. Open your MetaMask wallet by clicking the MetaMask extension icon in your browser. Scroll to the bottom of the extension pop-up and click "Import tokens."
-2. Paste the contract address into the "Token Contract Address" field. The official R-REC contract addresses are located in [contracts.json](https://github.com/Renewvia-Energy/Renewvia-REC/blob/main/contracts.json). Note that, if you created your own R-REC contract, that address will be different.
-3. Confirm that the remaining fields have been autofilled and click "Next."
-4. Click "Add Token."
-
-You should now see your R-RECs in your MetaMask wallet.
