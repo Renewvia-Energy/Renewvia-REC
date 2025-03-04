@@ -68,6 +68,16 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "68575423",
 				"hash": "0xc72ecb7a2c2d60a11ab1097fe6855b1d128f99f73b3227b45809cbec978f10d0"
+			},
+			{
+				"timeStamp": "1741029496",
+				"action": "mint",
+				"amount": 562,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofAL_2024-01-01T000000-0000_2025-01-01T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68607493",
+				"hash": "0x8711619d145440edfcfb8f1f30dfe2a893994035a9b603fa3147072c644b108b"
 			}
 		]
 	},
@@ -75,7 +85,7 @@
 		"name": "Georgia R-REC",
 		"abbreviation": "RREC-GA",
 		"superclass": "REC",
-		"img": "images/asset-images/RREC-GA.jpg",
+		"img": "../images/asset-images/RREC-GA.jpg",
 		"description": "Georgia R-RECs are a beacon of progress in the Peach State, fueling its journey towards a clean and renewable energy future.",
 		"address": "0x8480e85664461471B8fCf058e1C2d31dd2568855",
 		"implementation": ["0x233B3396Fa43e887da944BC42c1711962e7A0597"],
@@ -89,6 +99,16 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "68575628",
 				"hash": "0xbb9c179f421a2bfa7ba8f57ce8f70bed1299c304d3472e6bd13b6981ef07fcf8"
+			},
+			{
+				"timeStamp": "1741030126",
+				"action": "mint",
+				"amount": 286,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofGA_2024-01-01T000000-0000_2025-01-01T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68607773",
+				"hash": "0xe105a01d709a2957744ae2181c809a8b539b0cfb99438598f496907047fc2d05"
 			}
 		]
 	},
@@ -96,10 +116,10 @@
 		"name": "North Carolina R-REC",
 		"abbreviation": "RREC-NC",
 		"superclass": "REC",
-		"img": "images/asset-images/RREC-NC.jpg",
+		"img": "../images/asset-images/RREC-NC.jpg",
 		"description": "North Carolina R-RECs weave renewable energy into the state's tapestry, from its coastal plains to its mountainous ridges, supporting a green and prosperous future.",
-		"address": "0x8480e85664461471B8fCf058e1C2d31dd2568855",
-		"implementation": ["0x233B3396Fa43e887da944BC42c1711962e7A0597"],
+		"address": "0x41B14e35602d8660e38401DEF096fD7e689ED5eD",
+		"implementation": ["0xae4B0E083988c7369669E95fbdaf57687c2DF8F5"],
 		"transactions": [
 		]
 	},
@@ -107,11 +127,51 @@
 		"name": "Virginia R-REC",
 		"abbreviation": "RREC-VA",
 		"superclass": "REC",
-		"img": "images/asset-images/RREC-VA.jpg",
+		"img": "../images/asset-images/RREC-VA.jpg",
 		"description": "Virginia R-RECs represent the Old Dominion's modern approach to clean energy, capturing solar power to brighten its future and preserve its natural heritage.",
 		"address": "0xE523Ef4D2e13EF85dD8048DB7182BA674aE01a08",
 		"implementation": ["0x9913D46510151707C0974e38657AE65395DB3746"],
 		"transactions": [
+			{
+				"timeStamp": "1741020214",
+				"action": "mint",
+				"amount": 457,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfVA_2023-01-01T000000-0000_2023-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68603219",
+				"hash": "0xe464966b827dc316699e8b7bb13e563ebeab7979ef9604a9b1ef5aeef2793660"
+			},
+			{
+				"timeStamp": "1741102131",
+				"action": "mint",
+				"amount": 370,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofVA_2024-01-01T000000-0000_2025-01-01T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "68641165",
+				"hash": "0xa1c6252a84d7882f89e1f96a00a200918be6495bce35e6dabb3155d31c10b524"
+			}
+		]
+	},
+	{
+		"name": "South Carolina Solar Tax Credit REC",
+		"abbreviation": "SC-REC",
+		"superclass": "REC",
+		"img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Flag_of_South_Carolina.svg/2560px-Flag_of_South_Carolina.svg.png",
+		"description": "RECs verified and tracked by South Carolina",
+		"address": null,
+		"transactions": [
+			{
+				"timeStamp": "1741102132",
+				"action": "mint",
+				"amount": 125,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofSC_2024-01-01T000000-0000_2025-01-01T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "0",
+				"note": "Manual addition on 2025-03-04"
+			}
 		]
 	}
 ]
