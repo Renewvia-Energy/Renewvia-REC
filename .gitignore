@@ -5,6 +5,7 @@ contracts/.env
 scripts/steamaco/*.csv
 web/js/contracts_new.json
 scripts/myenv/
+scripts/.env
 
 # Web
 *.css.map

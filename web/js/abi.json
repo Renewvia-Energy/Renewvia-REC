@@ -607,6 +607,16 @@
 				"internalType": "address",
 				"name": "initialOwner",
 				"type": "address"
+			},
+			{
+				"internalType": "string",
+				"name": "name",
+				"type": "string"
+			},
+			{
+				"internalType": "string",
+				"name": "symbol",
+				"type": "string"
 			}
 		],
 		"name": "initialize",

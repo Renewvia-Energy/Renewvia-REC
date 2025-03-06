@@ -6,8 +6,8 @@ import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import "../src/RenewviaREC.sol";
 
 contract DeployNewContract is Script {
-	string public constant NAME   = "Cameroon R-RECs";
-	string public constant SYMBOL = "RREC-ACM";
+	string public constant NAME   = "Virginia R-REC";                   // Replace with token name
+	string public constant SYMBOL = "RREC-VA";                          // Replace with token symbol
 	
 	function run() public {
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
