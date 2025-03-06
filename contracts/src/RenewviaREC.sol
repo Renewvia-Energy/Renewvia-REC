@@ -31,12 +31,12 @@ contract RenewviaREC is Initializable, ERC20Upgradeable, ERC20PausableUpgradeabl
 	/// @notice Initializes the contract with required parameters
 	/// @dev Sets up the token name, symbol, and initial owner while initializing all inherited contracts
 	/// @param initialOwner Address of the initial owner of the contract
-	function initialize(address initialOwner) public initializer {
+	function initialize(address initialOwner, string calldata name, string calldata symbol) public initializer {
 		require(initialOwner != address(0), "Invalid owner address");
-		__ERC20_init("RenewviaREC", "RREC");
+		__ERC20_init(name, symbol);
 		__ERC20Pausable_init();
 		__Ownable_init(initialOwner);
-		__ERC20Permit_init("RenewviaREC");
+		__ERC20Permit_init(name);
 		__UUPSUpgradeable_init();
 	}
 

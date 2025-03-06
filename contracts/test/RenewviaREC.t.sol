@@ -2,16 +2,83 @@
 pragma solidity ^0.8.22;
 
 import {Test, console} from "forge-std/Test.sol";
-import {RenewviaREC} from "../src/templates/RenewviaREC.sol";
-import {RenewviaRECUpgradeTest} from "../src/templates/RenewviaRECUpgradeTest.sol";
-import {BlacklistableUpgradeable} from "../src/templates/BlacklistableUpgradeable.sol";
+import {RenewviaREC} from "../src/RenewviaREC.sol";
+import {BlacklistableUpgradeable} from "../src/BlacklistableUpgradeable.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
+import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import {OwnableUpgradeable} from "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/ERC20Upgradeable.sol";
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
+import {ERC20PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PausableUpgradeable.sol";
 import {ERC20PermitUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol";
 import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import {Options} from "openzeppelin-foundry-upgrades/Options.sol";
+
+contract RenewviaRECUpgradeTest is Initializable, ERC20Upgradeable, ERC20PausableUpgradeable, OwnableUpgradeable, ERC20PermitUpgradeable, UUPSUpgradeable, BlacklistableUpgradeable {
+	event MintWithInfo(address indexed to, uint256 amount, string additionalInfo);
+	event NewUpgradedEvent(string msg);
+
+	/// @custom:oz-upgrades-unsafe-allow constructor
+	constructor() {
+		_disableInitializers();
+	}
+
+	function initialize(address initialOwner, string calldata name, string calldata symbol) public initializer {
+		require(initialOwner != address(0), "Invalid owner address");
+		__ERC20_init(name, symbol);
+		__ERC20Pausable_init();
+		__Ownable_init(initialOwner);
+		__ERC20Permit_init(name);
+		__UUPSUpgradeable_init();
+	}
+
+	function pause() public onlyOwner {
+		_pause();
+	}
+
+	function unpause() public onlyOwner {
+		_unpause();
+	}
+
+	function mint(address to, uint256 amount, string calldata additionalInfo) public onlyOwner notBlacklisted(to) {
+		require(to != address(0), "Cannot mint to zero address");
+		require(amount > 0, "Amount must be positive");
+		
+		// Check for potential overflow before performing multiplication
+		// Max amount possible without overflow = (2^256 - 1) / 10^18
+		uint256 maxAmount = type(uint256).max / (10 ** decimals());
+		require(amount <= maxAmount, "Amount too large, would overflow");
+		
+		uint256 amountWithDecimals = amount * (10 ** decimals());
+		
+		_mint(to, amountWithDecimals);
+		emit MintWithInfo(to, amount, additionalInfo);
+	}
+
+	function newUpgradedFunction() public {
+		emit NewUpgradedEvent("yay!");
+	}
+
+	function _authorizeUpgrade(address newImplementation)
+		internal
+		override
+		onlyOwner
+	{}
+
+	function _update(address from, address to, uint256 value)
+		internal
+		override(ERC20Upgradeable, ERC20PausableUpgradeable)
+	{
+		// Check blacklist status before executing transfer
+		if (from != address(0) && to != address(0)) {
+			_checkBlacklist(from, to);
+		}
+		
+		super._update(from, to, value);
+	}
+}
 
 contract RenewviaRECTest is Test {
 	// Constants
@@ -41,7 +108,7 @@ contract RenewviaRECTest is Test {
 		vm.startPrank(owner);
 		proxy = Upgrades.deployUUPSProxy(
 			"RenewviaREC.sol",
-			abi.encodeCall(RenewviaREC.initialize, (owner))
+			abi.encodeCall(RenewviaREC.initialize, (owner, "Test Contract", "TEST"))
 		);
 		vm.stopPrank();
 		
@@ -58,8 +125,8 @@ contract RenewviaRECTest is Test {
 	}
 
 	function testInitialState() public view {
-		assertEq(token.name(), "RenewviaREC");
-		assertEq(token.symbol(), "RREC");
+		assertEq(token.name(), "Test Contract");
+		assertEq(token.symbol(), "TEST");
 		assertEq(token.owner(), owner);
 		assertEq(token.decimals(), DECIMALS);
 		assertEq(token.totalSupply(), 0);
@@ -68,7 +135,7 @@ contract RenewviaRECTest is Test {
 
 	function testCannotInitializeTwice() public {
 		vm.expectRevert();
-		token.initialize(owner);
+		token.initialize(owner, "Test Contract Reinitialized", "FTEST");
 	}
 
 	function testMint() public {
@@ -309,7 +376,7 @@ contract RenewviaRECTest is Test {
 		
 		Upgrades.upgradeProxy(
 			proxy,
-			"RenewviaRECUpgradeTest.sol",
+			"RenewviaREC.t.sol:RenewviaRECUpgradeTest",
 			"",
 			opts
 		);

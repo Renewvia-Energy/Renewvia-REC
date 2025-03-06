@@ -6,13 +6,11 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 
 /**
  * @title BlacklistableUpgradeable
+ * @author [Nicholas S. Selby](https://github.com/rupumped/NicksAPPS/blob/main/Solidity/src/BlacklistableUpgradeable.sol)
  * @dev Allows addresses to be blacklisted by a contract owner
- *
- * Please note that, in order for this to work like an actual blacklist, you need to add the following to your _update function in the implementation contract before super._update:
+ * @dev In order for this to work like an actual blacklist, you need to add the following to your _update function in the implementation contract before super._update:
  * // Check blacklist status before executing transfer
- * if (from != address(0) && to != address(0)) {
- * 	_checkBlacklist(from, to);
- * }
+ * _checkBlacklist(from, to);
  */
 abstract contract BlacklistableUpgradeable is OwnableUpgradeable {
 	mapping(address => bool) private _blacklisted;
