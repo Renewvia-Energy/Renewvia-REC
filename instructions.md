@@ -33,7 +33,7 @@ You're ready to trade R-RECs!
 2. Add your information to the `.env` file you just created:
     1. [Create a Polygonscan account](https://docs.polygonscan.com/getting-started/creating-an-account) and [copy your Polygonscan API key](https://docs.polygonscan.com/getting-started/viewing-api-usage-statistics) into `ETHERSCAN_API_KEY`.
     2. [Copy your MetaMask account private key](https://support.metamask.io/configure/accounts/how-to-export-an-accounts-private-key/) into `PRIVATE_KEY`.
-    3. [Copy your MetaMask account public address](https://support.metamask.io/start/how-to-copy-your-metamask-account-public-address-/) into `ONWER`.
+    3. [Copy your MetaMask account public address](https://support.metamask.io/start/how-to-copy-your-metamask-account-public-address-/) into `OWNER`.
 
 3. Run the installation script to set up Foundry and required dependencies: `bash install.sh`
 
