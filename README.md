@@ -9,9 +9,15 @@ For more information, please visit [our website](https://www.r-recs.com/).
 |
 +-- contracts
 |   +-- lib/                                Foundry and OpenZeppelin dependencies in blockchain contracts
-|   +-- script
-|       +-- DeployNewContract.s.sol         Foundry script to deploy a new class of R-RECs to the blockchain
-|       +-- Mint.s.sol                      Foundry script to mint tokens from an already-deployed contract on the blockchain
+|   +-- script                              Foundry scripts to...
+|       +-- AddPermitPermissions.s.sol      ...give permission to one wallet to transact on behalf of another
+|       +-- AddToBlacklist.s.sol            ...add a wallet to the blacklist
+|       +-- DeployNewContract.s.sol         ...deploy a new class of R-RECs to the blockchain
+|       +-- Mint.s.sol                      ...mint tokens from an already-deployed contract on the blockchain
+|       +-- Pause.s.sol                     ...pause all transactions related to a given contract
+|       +-- RemoveFromBlacklist.s.sol       ...remove a wallet from the blacklist
+|       +-- Unpause.s.sol                   ...unpause all transactions related to a given contract
+|       +-- Upgrade.s.sol                   ...upgrade a contract with new features
 |   +-- src
 |       +-- BlacklistableUpgradeable.sol    Abstract class from NicksAPPS enabling blacklist functionality
 |       +-- RenewviaREC.sol                 Main R-REC contract
@@ -39,16 +45,13 @@ For more information, please visit [our website](https://www.r-recs.com/).
 |       +-- companies.json                  Database of account information
 |       +-- contracts.json                  Local copy of blockchain transactions
 |       +-- index.js                        Basic JS animations for homepage
-|       +-- marketplace.js                  Client-side-rendering Vue.JS for marketplace page (WIP)
-|   +-- pages
-|       +-- account.html                    Account page with Vue.JS components
-|       +-- marketplace.html                Marketplace page with Vue.JS components
 |   +-- scss/                               SCSS to be compiled into CSS
 |
 +-- .gitattributes
 +-- .gitignore
 +-- .gitmodules
 +-- 404.html                                Default 404 error page
++-- account.html                            Client account page with Vue.JS components
 +-- CNAME                                   Canonical URL for homepage, used by GitHub Pages
 +-- index.html                              Homepage
 +-- instructions.md                         Guide for deploying R-REC contracts
