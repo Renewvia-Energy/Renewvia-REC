@@ -12,6 +12,7 @@ import {ERC20Upgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/
 import {PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/utils/PausableUpgradeable.sol";
 import {ERC20PausableUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PausableUpgradeable.sol";
 import {ERC20PermitUpgradeable} from "@openzeppelin/contracts-upgradeable/token/ERC20/extensions/ERC20PermitUpgradeable.sol";
+import {IERC20Errors} from "@openzeppelin/contracts/interfaces/draft-IERC6093.sol";
 import {MessageHashUtils} from "@openzeppelin/contracts/utils/cryptography/MessageHashUtils.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import {Options} from "openzeppelin-foundry-upgrades/Options.sol";
@@ -366,6 +367,11 @@ contract RenewviaRECTest is Test {
 		
 		assertEq(token.balanceOf(user1WithPk), 900 * 10**DECIMALS);
 		assertEq(token.balanceOf(user2), value);
+
+		// Test trying to transfer more than the allowance
+		vm.prank(user2);
+		vm.expectRevert(abi.encodeWithSelector(IERC20Errors.ERC20InsufficientAllowance.selector, user2, 0, value));
+		token.transferFrom(user1WithPk, user2, value); // Attempt to transfer again with no remaining allowance
 	}
 
 	function testUpgrade() public {
