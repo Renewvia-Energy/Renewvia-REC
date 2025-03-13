@@ -51,3 +51,56 @@ header ul li a {
 	color: var(--orange);
 	text-decoration: none;
 }
+
+.footer-container {
+	width: 90%;
+	margin: 0 auto;
+}
+.footer-main {
+	display: flex;
+	justify-content: space-between;
+}
+.footer-logo {
+	display: flex;
+	align-items: center;
+}
+.footer-logo img {
+	max-width: 8cm;
+	height: auto;
+}
+.footer-contact {
+	text-align: right;
+}
+.footer-contact a {
+	text-decoration: none;
+}
+.footer-contact a:hover {
+	text-decoration: underline;
+}
+.footer-bottom {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-top: 1rem;
+}
+.footer-copyright {
+	font-size: 0.9rem;
+	color: rgba(0, 0, 0, 0.7);
+}
+.footer-social {
+	display: flex;
+	gap: 1rem;
+}
+.social-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 0.6cm;
+	height: 0.6cm;
+	border-radius: 50%;
+	text-decoration: none;
+	fill-opacity: 0.7;
+}
+.social-icon:hover {
+	fill-opacity: 0.9;
+}
