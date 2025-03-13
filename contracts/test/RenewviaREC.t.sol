@@ -343,16 +343,16 @@ contract RenewviaRECTest is Test {
 		uint256 value = 100 * 10**DECIMALS;
 
 		bytes32 structHash = keccak256(abi.encode(
-            _PERMIT_TYPEHASH,
-            user1WithPk,
-            user2,
-            value,
-            token.nonces(user1WithPk),
-            deadline
-        ));
+			_PERMIT_TYPEHASH,
+			user1WithPk,
+			user2,
+			value,
+			token.nonces(user1WithPk),
+			deadline
+		));
 
-        bytes32 digest = MessageHashUtils.toTypedDataHash(token.DOMAIN_SEPARATOR(), structHash);
-        (uint8 v, bytes32 r, bytes32 s) = vm.sign(user1PrivateKey, digest);
+		bytes32 digest = MessageHashUtils.toTypedDataHash(token.DOMAIN_SEPARATOR(), structHash);
+		(uint8 v, bytes32 r, bytes32 s) = vm.sign(user1PrivateKey, digest);
 		
 		// Execute permit
 		token.permit(user1WithPk, user2, value, deadline, v, r, s);
@@ -407,32 +407,4 @@ contract RenewviaRECTest is Test {
 	// 	);
 	// 	vm.stopPrank();
 	// }
-
-	// Helper function to get ERC20 permit hash for signature
-	function _getPermitHash(
-		address anOwner,
-		address spender,
-		uint256 value,
-		uint256 nonce,
-		uint256 deadline
-	) internal view returns (bytes32) {
-		bytes32 DOMAIN_SEPARATOR = token.DOMAIN_SEPARATOR();
-		
-		return keccak256(
-			abi.encodePacked(
-				"\x19\x01",
-				DOMAIN_SEPARATOR,
-				keccak256(
-					abi.encode(
-						keccak256("Permit(address anOwner,address spender,uint256 value,uint256 nonce,uint256 deadline)"),
-						anOwner,
-						spender,
-						value,
-						nonce,
-						deadline
-					)
-				)
-			)
-		);
-	}
 }

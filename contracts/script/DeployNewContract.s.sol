@@ -5,7 +5,7 @@ import "forge-std/Script.sol";
 import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import "../src/RenewviaREC.sol";
 
-contract DeployNewContract is Script {
+contract RRECScript is Script {
 	string public constant NAME   = "Virginia R-REC";                   // Replace with token name
 	string public constant SYMBOL = "RREC-VA";                          // Replace with token symbol
 	
