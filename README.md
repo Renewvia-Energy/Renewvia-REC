@@ -26,7 +26,6 @@ For more information, please visit [our website](https://www.r-recs.com/).
 |   +-- .env.example                        Example environment file to be copied into .env and edited with user information
 |   +-- .gitignore                          Foundry-specific gitignore
 |   +-- foundry.toml                        Foundry configuration file
-|   +-- install.sh                          Installs Foundry and OpenZeppelin dependencies
 |   +-- reee.sh                             Runs deploy or mint scripts with optional broadcast mechanism
 |
 +-- scripts
