@@ -19,6 +19,17 @@ Download the Crypto.com app on your smartphone and sign up for an account. Purch
 #### For Testnet (Development and Testing)
 To get free test POL for the Amoy testnet, use a [Polygon faucet](https://faucet.polygon.technology/). Connect your MetaMask wallet, select Amoy as the network, and request test tokens. These tokens have no real value but allow you to test your application without spending actual money.
 
+### Install NPX
+We recommend using the [Node Version Manager (NVM)](https://github.com/nvm-sh/nvm) to install and manage Node. At the time of writing, you can run a fresh install using:
+```bash
+cd
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+source .bashrc
+nvm install node
+```
+
+Confirm the installation using `npx -v`. The expected output should be a version number, e.g., `10.5.0`.
+
 ### Install Foundry
 Follow the [installation instruction in Foundry Book](https://book.getfoundry.sh/getting-started/installation) to install Foundry.
 
@@ -32,10 +43,10 @@ You're ready to trade R-RECs!
 
 2. Add your information to the `.env` file you just created:
     1. [Create a Polygonscan account](https://docs.polygonscan.com/getting-started/creating-an-account) and [copy your Polygonscan API key](https://docs.polygonscan.com/getting-started/viewing-api-usage-statistics) into `ETHERSCAN_API_KEY`.
-    2. [Copy your MetaMask account private key](https://support.metamask.io/configure/accounts/how-to-export-an-accounts-private-key/) into `PRIVATE_KEY`.
-    3. [Copy your MetaMask account public address](https://support.metamask.io/start/how-to-copy-your-metamask-account-public-address-/) into `OWNER`.
+    2. [Copy your MetaMask account private key](https://support.metamask.io/configure/accounts/how-to-export-an-accounts-private-key/) into `PRIVATE_KEY`. Ensure the private key starts with `0x`.
+    3. [Copy your MetaMask account public address](https://support.metamask.io/start/how-to-copy-your-metamask-account-public-address-/) into `OWNER`. Ensure the address starts with `0x`.
 
-3. Run the installation script to set up Foundry and required dependencies: `bash install.sh`
+3. Run the following command in the terminal install the required Foundry dependencies: `forge install`
 
 4. Edit the `DeployNewContract.s.sol` script in the `script` folder according to its comments, updating the import path to point to your desired contract and updating the `FILENAME` constant to match your contract filename.
 
@@ -47,7 +58,7 @@ You're ready to trade R-RECs!
 
    **Options:**
    - To use the Amoy testnet instead of the Polygon mainnet, replace `polygon` with `amoy`
-   - To actually broadcast the transaction and deploy to the blockchain, add the `--broadcast --sender $OWNER --verify` flags (this will use your tokens)
+   - To actually broadcast the transaction and deploy to the blockchain, add the `--broadcast --sender $OWNER --verify` flags (this will use your tokens). Run `source .env` before running the script or replace `$OWNER` with the owner's account address.
 
 6. Save the output addresses displayed after successful deployment:
    - Proxy address
