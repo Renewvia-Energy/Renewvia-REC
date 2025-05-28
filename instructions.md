@@ -12,7 +12,7 @@ Follow the instructions in this [Polygon Knowledge Layer](https://docs.polygon.t
 
 When adding a Polygon network, you can choose between a testnet or mainnet. Testnets (like Amoy) are free to use with test tokens that have no real value, making them perfect for development and testing. Mainnets require real POL (Polygon's native token) for transactions and are used for actual deployments. For initial testing and learning, start with a testnet; when you're ready to deploy your production application, you'll need to purchase POL and connect to the mainnet.
 
-### Purchase Binance Coin (BNB) to pay gas fees
+### Purchase MATIC (POL) to pay gas fees
 #### For Mainnet (Real Deployments)
 Download the Crypto.com app on your smartphone and sign up for an account. Purchase enough POL to pay for gas fees for your transactions. I recommend starting with approximately 20 POL, which costs around $5 USD at the time of writing. After purchasing POL, transfer it to your MetaMask wallet by following the withdrawal instructions in [this DC post](https://decentralizedcreator.com/transfer-crypto-from-crypto-com-to-metamask/).
 
