@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>REEE Platform - Enterprise Carbon Asset Management</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Arial', sans-serif;
+			line-height: 1.4;
+			color: #333;
+			background: linear-gradient(135deg, #d2691e 0%, #ff8c00 100%);
+			min-height: 100vh;
+		}
+		
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 40px 20px;
+			background: white;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border-radius: 12px;
+			box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+		}
+		
+		.header {
+			text-align: center;
+			margin-bottom: 40px;
+			padding-bottom: 30px;
+			border-bottom: 3px solid #fff3e6;
+		}
+		
+		.logo {
+			font-size: 48px;
+			font-weight: bold;
+			background: linear-gradient(135deg, #ff6b35, #f7931e);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			margin-bottom: 10px;
+		}
+		.logo img {
+			width: 15rem;
+		}
+		
+		.tagline {
+			font-size: 24px;
+			color: #666;
+			font-weight: 300;
+			margin-bottom: 15px;
+		}
+		
+		.subtitle {
+			font-size: 16px;
+			color: #888;
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 30px;
+			margin-bottom: 50px;
+		}
+		
+		.feature-card {
+			background: #fff8f3;
+			padding: 30px;
+			border-radius: 12px;
+			border-left: 5px solid #ff6b35;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.feature-card img {
+			width: 100%;
+		}
+		
+		.feature-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100px;
+			height: 100px;
+			background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(247,147,30,0.05));
+			border-radius: 50%;
+			transform: translate(30%, -30%);
+		}
+		
+		.feature-number {
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			background: linear-gradient(135deg, #ff6b35, #f7931e);
+			color: white;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		
+		.feature-title {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 15px;
+		}
+		
+		.feature-description {
+			color: #666;
+			margin-bottom: 20px;
+			line-height: 1.6;
+		}
+		
+		.tech-highlight {
+			background: #fff3e6;
+			padding: 15px;
+			border-radius: 8px;
+			font-size: 14px;
+			color: #e65100;
+			font-weight: 500;
+		}
+		
+		.image-placeholder {
+			width: 100%;
+			height: 200px;
+			background: linear-gradient(135deg, #fff8f3, #fff3e6);
+			border: 2px dashed #ff6b35;
+			border-radius: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #ff6b35;
+			font-weight: 500;
+			margin-top: 15px;
+		}
+		
+		.traction-section {
+			background: linear-gradient(135deg, #d2691e, #ff8c00);
+			color: white;
+			padding: 40px;
+			border-radius: 12px;
+			margin-bottom: 30px;
+		}
+		
+		.traction-title {
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		
+		.traction-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+		}
+		
+		.traction-item {
+			background: rgba(255,255,255,0.1);
+			padding: 25px;
+			border-radius: 10px;
+			backdrop-filter: blur(10px);
+		}
+		
+		.traction-stat {
+			font-size: 36px;
+			font-weight: bold;
+			color: #ffe0b3;
+			margin-bottom: 10px;
+		}
+		
+		.traction-desc {
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		
+		.cta-section {
+			text-align: center;
+			padding: 30px;
+			background: #fff8f3;
+			border-radius: 12px;
+		}
+		
+		.cta-title {
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 15px;
+		}
+		
+		.cta-button {
+			display: inline-block;
+			background: linear-gradient(135deg, #ff6b35, #f7931e);
+			color: white;
+			padding: 15px 40px;
+			border-radius: 50px;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 16px;
+			transition: transform 0.3s ease;
+			margin-top: 15px;
+		}
+		
+		.cta-button:hover {
+			transform: translateY(-2px);
+		}
+		
+		.contact-info {
+			text-align: center;
+			margin-top: 20px;
+			color: #666;
+			font-size: 14px;
+		}
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo"><img src="web/images/logo-titled.png"></div>
+			<div class="tagline">Enterprise Carbon Asset Management Platform</div>
+			<div class="subtitle">Blockchain-verified renewable energy credits and carbon credits with full transparency and regulatory compliance</div>
+		</div>
+		
+		<div class="features-grid">
+			<div class="feature-card">
+				<div class="feature-number">1</div>
+				<div class="feature-title">Blockchain-Native Carbon Assets</div>
+				<div class="feature-description">
+					Our custom, in-house R-REC tokens are deployed on the Polygon Mainnet with enterprise-grade security and transparency.
+				</div>
+				<div class="tech-highlight">
+					✓ ERC20-compliant smart contracts with upgradeable architecture<br>
+					✓ On-chain verification of underlying renewable energy generation data<br>
+					✓ Built-in blacklisting and pause capabilities for compliance<br>
+					✓ Every MWh transparently tracked from generation to retirement
+				</div>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-number">2</div>
+				<div class="feature-title">Asset Management Hub</div>
+				<div class="feature-description">
+					Comprehensive dashboard tracking your carbon asset portfolio, environmental impact metrics, and real-time market valuations.
+				</div>
+				<img src="web/images/landing_page_mockup_nb_1.png">
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-number">3</div>
+				<div class="feature-title">Full Compliance</div>
+				<div class="feature-description">
+					Triple-certified compliance framework ensuring regulatory adherence and market credibility through B Corp certification, Deloitte-verified RE100 compliance, and full alignment with ICVCM Core Carbon Principles.
+				</div>
+				<img src="web/images/certifications.png">
+			</div>
+		</div>
+		
+		<div class="traction-section">
+			<div class="traction-title">Proven Market Traction</div>
+			<div class="traction-grid">
+				<div class="traction-item">
+					<div class="traction-stat">#1</div>
+					<div class="traction-desc">
+						<strong>Largest US Steel Fabricator</strong><br>
+						Partnered to achieve 50% net-zero by 2030 through our verified carbon asset portfolio
+					</div>
+				</div>
+				<div class="traction-item">
+					<div class="traction-stat">500K+</div>
+					<div class="traction-desc">
+						<strong>RECs Under Contract</strong><br>
+						Three signed LOIs with multinational corporations across Africa, Latin America, and Middle East
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="cta-section">
+			<div class="cta-title">Ready to Scale Your Carbon Strategy?</div>
+			<div style="color: #666; margin-bottom: 20px;">
+				Join enterprise leaders leveraging blockchain-verified carbon assets for transparent, compliant net-zero achievement.
+			</div>
+			<a href="mailto:recs@renewvia.com" class="cta-button">Schedule Call</a>
+			<div class="contact-info">
+				recs@renewvia.com • Certified RE100 Compliant • ICVCM Standards Aligned
+			</div>
+		</div>
+	</div>
+</body>
+</html>
