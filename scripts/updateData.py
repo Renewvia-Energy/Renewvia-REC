@@ -90,6 +90,7 @@ if __name__ == '__main__':
 							print(e)
 							exit(0)
 						except Exception as e:
+							print('\tUnknown Error:')
 							print(e)
 							exit(0)
 						func = str(decoded_data[0])[10:]
@@ -106,9 +107,18 @@ if __name__ == '__main__':
 							else:
 								action = 'transfer'
 							try:
-								amount = round(decoded_data[1]['amount']/1e18)
+								if 'amount' in decoded_data[1]:
+									amount = round(decoded_data[1]['amount']/1e18)
+								elif 'value' in decoded_data[1]:
+									amount = round(decoded_data[1]['value']/1e18)
+								else:
+									print('\tError reading the amount from the decoded data. There is no amount or value in the decoded data. Decoded data:')
+									print(decoded_data)
+									exit(0)
 							except Exception as e:
+								print('\tError reading the amount from the decoded data. The decoded data:')
 								print(decoded_data)
+								print('\tError:')
 								print(str(e))
 								exit(0)
 						else:

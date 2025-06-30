@@ -51,6 +51,61 @@
 		]
 	},
 	{
+		"name": "Cote d'Ivoire R-RECs",
+		"abbreviation": "RREC-ACI",
+		"superclass": "REC",
+		"img": "../images/asset-images/Generic.jpg",
+		"description": "Côte d'Ivoire R-RECs capture the golden essence of the nation's abundant tropical sunshine, weaving renewable energy into the fabric of its cocoa-rich landscapes and vibrant economic transformation.",
+		"address": "0x1E9c609Cc4F1801996eAe2E2b1171EdBefa2D871",
+		"implementation": ["0x8a71fdf7268537650e6C3e85Ba9D18b457448f0a"],
+		"transactions": [
+			{
+				"timeStamp": "1751278586",
+				"action": "mint",
+				"amount": 18,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICP_2024-07-09T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "73402139",
+				"hash": "0x92ec1a655d3f6e33eef7f3dc586c5cdd44a4bfd9e6706805546bf765886a1293",
+				"ignore": true,
+				"note": "mistake"
+			},
+			{
+				"timeStamp": "1751278884",
+				"action": "return",
+				"amount": 18,
+				"verification_data": null,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0x3c546be0e8069088f5a28e1afde26f1fe3cd54d1",
+				"blockNumber": "73402279",
+				"hash": "0x0935d93a5819587ce86bfa976b06e0f54d8b8a07e592c59fef11984ff16aa006",
+				"ignore": true,
+				"note": "correcting mistake"
+			},
+			{
+				"timeStamp": "1751313492",
+				"action": "mint",
+				"amount": 1716,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICP_2024-07-09T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "73418541",
+				"hash": "0xe060f06ad19c9ec06a6c7e93a3ad2577ca78cddcbce3cc3b6fb7f9c5da74d9a9"
+			},
+			{
+				"timeStamp": "1751313642",
+				"action": "mint",
+				"amount": 1787,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICP_2025-01-01T000000-0000_2025-06-26T000000-0000.csv",
+				"to": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "73418611",
+				"hash": "0x40017b8966771c1ff4b0165d6f9de30577df4c214fb4b314fc08c3d2cd58c721"
+			}
+		]
+	},
+	{
 		"name": "Alabama R-REC",
 		"abbreviation": "RREC-AL",
 		"superclass": "REC",
