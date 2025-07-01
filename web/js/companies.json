@@ -67,8 +67,14 @@
 	},
 	{
 		"name": "Ivory Cocoa Products",
-		"logo": "https://www.ivorycocoaproducts.ci/images/icons/logo.svg",
+		"logo": "web/images/account-logos/ICP.png",
 		"join_date": "2025-04-15",
 		"address": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1"
+	},
+	{
+		"name": "SIVOP Group",
+		"logo": "https://www.sivop.com/sv-includes/images/logo.png",
+		"join_date": "2025-06-12",
+		"address": "0xF9643Ce85c0ae1dBe2b6B2C0C7c511F12aE66c80"
 	}
 ]
