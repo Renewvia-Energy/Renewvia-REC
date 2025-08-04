@@ -48,7 +48,7 @@ if __name__ == '__main__':
 				w3Contract = w3.eth.contract(address=contract['address'], abi=abi)
 			except web3.exceptions.InvalidAddress as e:
 				if 'web3.py only accepts checksum addresses' in str(e):
-					print('The {name} contract has a non-checksum address, {address}. Please replace this using the address from chain explorer: https://{scanDomain}.com/address/{address}'.format(name=contract['name'], scanDomain=SCAN_DOMAIN, address=contract['address']))
+					print(f'The {contract["name"]} contract has a non-checksum address, {contract["address"]}. Please replace this using the address from chain explorer: https://{SCAN_DOMAIN}.com/address/{contract["address"]}')
 				else:
 					print(str(e))
 				exit(0)
@@ -64,10 +64,10 @@ if __name__ == '__main__':
 			# Get Contract Transactions from API
 			for i in range(MAX_TRIES):
 				try:
-					response = requests.get('https://api.{scanDomain}.com/api?module=account&action=txlist&address={address}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={api_key}'.format(scanDomain=SCAN_DOMAIN, address=contract['address'], api_key=args.api_key))
+					response = requests.get(f'https://api.etherscan.io/v2/api?chainid=137&module=account&action=txlist&address={contract['address']}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={args.api_key}')
 					break
 				except OSError as e:
-					print('\t{}. Retrying...'.format(e.strerror))
+					print(f'\t{e.strerror}. Retrying...')
 			if i==MAX_TRIES-1:
 				print('Failed to establish network connection')
 				exit(0)
@@ -122,7 +122,7 @@ if __name__ == '__main__':
 								print(str(e))
 								exit(0)
 						else:
-							raise Exception('Unknown function error: {func} in block {block} on contract {name} at {address}'.format(func=func, block=block['blockNumber'], name=contract['name'], address=contract['address']))
+							raise Exception(f'Unknown function error: {func} in block {block['blockNumber']} on contract {contract['name']} at {contract['address']}')
 						contract['transactions'].append({
 							'timeStamp': block['timeStamp'],
 							'action': action,
@@ -133,7 +133,7 @@ if __name__ == '__main__':
 							'blockNumber': block['blockNumber'],
 							'hash': block['hash']
 						})
-						print('\tAdded transaction {}'.format(block['hash']))
+						print(f'\tAdded transaction {block["hash"]}')
 			else:
 				raise Exception(f"Error fetching data: {response.status_code}")
 
