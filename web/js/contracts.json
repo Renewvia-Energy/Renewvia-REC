@@ -247,6 +247,27 @@
 		"description": "Democratic Republic of Congo R-RECs harness the immense power of the Congo River and equatorial sun, channeling the heart of Africa's renewable potential to illuminate its vast forests and communities.",
 		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
 		"implementation": ["0x26aC1b6DcDEa1389520Cd48A92e78e1966A78308"],
-		"transactions": []
+		"transactions": [
+			{
+				"timeStamp": "1757339888",
+				"action": "mint",
+				"amount": 354,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2024-01-01T000000-0000_2024-12-31T235959-0000.csv",
+				"to": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "76207934",
+				"hash": "0xd6239e3b6afde668cb811fffb183e063adb6186be8493c34e8142c4e8b64ea52"
+			},
+			{
+				"timeStamp": "1757340166",
+				"action": "mint",
+				"amount": 674,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2025-01-01T000000-0000_2025-06-30T235959-0000.csv",
+				"to": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "76208064",
+				"hash": "0x1774fb1aa53d80d3e1af77e124a646b3e9a5da316d740932f160cf99a751bd7a"
+			}
+		]
 	}
 ]

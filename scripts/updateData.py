@@ -75,8 +75,11 @@ if __name__ == '__main__':
 			if response.status_code == 200:
 				blocks = response.json()['result']
 				
-				if (blocks == 'Missing/Invalid API Key'):
+				if (blocks == 'Missing/Invalid API Key' or 'Invalid API Key' in blocks):
 					print('Missing/Invalid API Key')
+					exit(0)
+				elif (isinstance(blocks, str)):
+					print(f'Unknown Error: {blocks}')
 					exit(0)
 
 				for block in blocks:

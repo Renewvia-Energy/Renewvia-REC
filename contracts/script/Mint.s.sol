@@ -5,10 +5,10 @@ import "forge-std/Script.sol";
 import "../src/RenewviaREC.sol";
 
 contract RRECScript is Script {
-	address public constant PROXY     = 0x1E9c609Cc4F1801996eAe2E2b1171EdBefa2D871;  // Replace with contract address
-	address public constant RECIPIENT = 0xF9643Ce85c0ae1dBe2b6B2C0C7c511F12aE66c80;  // Replace with recipient's wallet address
-	uint256 public constant AMOUNT    = 375;                                          // Replace with amount of tokens to mint
-	string  public constant V_DATA    = "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SIVOP_2025-04-13T000000-0000_2025-06-26T000000-0000.csv";                               // Replace with URL of verification data
+	address public constant PROXY     = 0x6667Af8559315309d07a9e603d2CbA361646fb4a;  // Replace with contract address
+	address public constant RECIPIENT = 0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F;  // Replace with recipient's wallet address
+	uint256 public constant AMOUNT    = 674;                                          // Replace with amount of tokens to mint
+	string  public constant V_DATA    = "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2025-01-01T000000-0000_2025-06-30T235959-0000.csv";                               // Replace with URL of verification data
 
 	function run() public {
 		RenewviaREC token = RenewviaREC(PROXY);
