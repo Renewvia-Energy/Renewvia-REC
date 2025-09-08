@@ -238,5 +238,15 @@
 				"note": "Manual addition on 2025-03-04"
 			}
 		]
+	},
+	{
+		"name": "Democratic Republic of the Congo R-REC",
+		"abbreviation": "RREC-ACD",
+		"superclass": "REC",
+		"img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/2560px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+		"description": "Democratic Republic of Congo R-RECs harness the immense power of the Congo River and equatorial sun, channeling the heart of Africa's renewable potential to illuminate its vast forests and communities.",
+		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
+		"implementation": ["0x26aC1b6DcDEa1389520Cd48A92e78e1966A78308"],
+		"transactions": []
 	}
 ]
