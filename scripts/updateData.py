@@ -64,7 +64,7 @@ if __name__ == '__main__':
 			# Get Contract Transactions from API
 			for i in range(MAX_TRIES):
 				try:
-					response = requests.get(f'https://api.etherscan.io/v2/api?chainid=137&module=account&action=txlist&address={contract['address']}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={args.api_key}')
+					response = requests.get(f'https://api.etherscan.io/v2/api?chainid=137&module=account&action=txlist&address={contract["address"]}&startblock=0&endblock=99999999&page=1&offset=10&sort=asc&apikey={args.api_key}')
 					break
 				except OSError as e:
 					print(f'\t{e.strerror}. Retrying...')
@@ -125,7 +125,7 @@ if __name__ == '__main__':
 								print(str(e))
 								exit(0)
 						else:
-							raise Exception(f'Unknown function error: {func} in block {block['blockNumber']} on contract {contract['name']} at {contract['address']}')
+							raise Exception(f'Unknown function error: {func} in block {block["blockNumber"]} on contract {contract["name"]} at {contract["address"]}')
 						contract['transactions'].append({
 							'timeStamp': block['timeStamp'],
 							'action': action,
