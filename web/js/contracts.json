@@ -112,6 +112,46 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "73446186",
 				"hash": "0x968378dbab6fbae32d09601348eabc8fd0a9002d159ac124780800f78574190f"
+			},
+			{
+				"timeStamp": "1758027454",
+				"action": "mint",
+				"amount": 844,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICP_2025-06-27T000000-0000_2025-09-14T000000-0000.csv",
+				"to": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "76520600",
+				"hash": "0x9dec9096bc29ff69e893f732eeb546bf22624ffd9d1c5ff80a76cdfcf3bc78ea"
+			},
+			{
+				"timeStamp": "1758027628",
+				"action": "mint",
+				"amount": 292,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SIVOP_2025-06-27T000000-0000_2025-09-14T000000-0000.csv",
+				"to": "0xF9643Ce85c0ae1dBe2b6B2C0C7c511F12aE66c80",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "76520682",
+				"hash": "0x6c3329e189506fc114a641125e1132ae123b72c818b75844939bbcb232eed664"
+			},
+			{
+				"timeStamp": "1758032406",
+				"action": "transfer",
+				"amount": 4347,
+				"verification_data": null,
+				"to": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300",
+				"from": "0x3c546be0e8069088f5a28e1afde26f1fe3cd54d1",
+				"blockNumber": "76522930",
+				"hash": "0xb0d7fd12cc5956cf2c76e4bc24cec45b810459cde25802202fae67d798d65faa"
+			},
+			{
+				"timeStamp": "1758032444",
+				"action": "transfer",
+				"amount": 667,
+				"verification_data": null,
+				"to": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300",
+				"from": "0xf9643ce85c0ae1dbe2b6b2c0c7c511f12ae66c80",
+				"blockNumber": "76522948",
+				"hash": "0xa8d8faf1aaa3ad68f6c4be755d74bd7881a384370eda344bcec47dc2c3936fa3"
 			}
 		]
 	},
@@ -236,6 +276,37 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "0",
 				"note": "Manual addition on 2025-03-04"
+			}
+		]
+	},
+	{
+		"name": "Democratic Republic of the Congo R-REC",
+		"abbreviation": "RREC-ACD",
+		"superclass": "REC",
+		"img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/2560px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
+		"description": "Democratic Republic of Congo R-RECs harness the immense power of the Congo River and equatorial sun, channeling the heart of Africa's renewable potential to illuminate its vast forests and communities.",
+		"address": "0x6667Af8559315309d07a9e603d2CbA361646fb4a",
+		"implementation": ["0x26aC1b6DcDEa1389520Cd48A92e78e1966A78308"],
+		"transactions": [
+			{
+				"timeStamp": "1757339888",
+				"action": "mint",
+				"amount": 354,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2024-01-01T000000-0000_2024-12-31T235959-0000.csv",
+				"to": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "76207934",
+				"hash": "0xd6239e3b6afde668cb811fffb183e063adb6186be8493c34e8142c4e8b64ea52"
+			},
+			{
+				"timeStamp": "1757340166",
+				"action": "mint",
+				"amount": 674,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2025-01-01T000000-0000_2025-06-30T235959-0000.csv",
+				"to": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "76208064",
+				"hash": "0x1774fb1aa53d80d3e1af77e124a646b3e9a5da316d740932f160cf99a751bd7a"
 			}
 		]
 	}

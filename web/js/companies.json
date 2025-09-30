@@ -76,5 +76,17 @@
 		"logo": "https://www.sivop.com/sv-includes/images/logo.png",
 		"join_date": "2025-06-12",
 		"address": "0xF9643Ce85c0ae1dBe2b6B2C0C7c511F12aE66c80"
+	},
+	{
+		"name": "Nuru",
+		"logo": "https://nuru.cd/wp-content/uploads/2021/07/cropped-cropped-Nuru_Logo_082219_originalcolors_horizontal-768x256.png",
+		"join_date": "2025-09-08",
+		"address": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F"
+	},
+	{
+		"name": "Nestle CEWA",
+		"logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Nestl%C3%A9.svg/1024px-Nestl%C3%A9.svg.png",
+		"join_date": "2024-06-20",
+		"address": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300"
 	}
 ]
