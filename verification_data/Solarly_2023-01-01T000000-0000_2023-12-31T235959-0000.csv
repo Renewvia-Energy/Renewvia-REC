@@ -5,8 +5,8 @@ US Region (if applicable),
 Latitude,3.8
 Longitude,13.7
 DC Capacity (kWp),220.05
-Begin Timestamp,1/1/2023 0:00
-End Timestamp,12/31/2023 23:59
+Begin Timestamp,2023-01-23T03:00:00
+End Timestamp,2023-12-19T03:00:00
 Total Energy Production (MWh),38.71563719
 Total Carbon Reduction (tCO2e),
 AVERT Emissions Factor,
