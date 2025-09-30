@@ -309,5 +309,46 @@
 				"hash": "0x1774fb1aa53d80d3e1af77e124a646b3e9a5da316d740932f160cf99a751bd7a"
 			}
 		]
+	},
+	{
+		"name": "Senegal R-REC",
+		"abbreviation": "RREC-ASN",
+		"superclass": "REC",
+		"img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/1920px-Flag_of_Senegal.svg.png",
+		"description": "Senegal R-RECs are charged with the vibrancy of the Senegalese sun, illuminating the path to renewable energy adoption in West Africa.",
+		"address": "0x551F7E94E6b7a0CE7B42aAee66e69c6297520d96",
+		"implementation": ["0xCA242C8207ED479D28E59E30BD5db5e447A36B93"],
+		"transactions": [
+			{
+				"timeStamp": "1759265485",
+				"action": "mint",
+				"amount": 3506,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Minersol_2023-10-10T000000-0000_2023-12-31T000000-0000.csv",
+				"to": "0xb9e1EB63DbAB98b8Ce1A4456e1ec7B72DF0F9160",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "77100708",
+				"hash": "0x03756d28de20a80523f03458c9590b857ad0557cd2623745c54adfa25aa1da7b"
+			},
+			{
+				"timeStamp": "1759265567",
+				"action": "mint",
+				"amount": 21247,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Minersol_2024-01-01T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0xb9e1EB63DbAB98b8Ce1A4456e1ec7B72DF0F9160",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "77100747",
+				"hash": "0x14f5da71b71f84d70e358075cef83c9ed2c5844f3fc43afe3e3dbd3ac51565bd"
+			},
+			{
+				"timeStamp": "1759265621",
+				"action": "mint",
+				"amount": 17701,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Minersol_2025-01-01T000000-0000_2025-09-28T000000-0000.csv",
+				"to": "0xb9e1EB63DbAB98b8Ce1A4456e1ec7B72DF0F9160",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "77100772",
+				"hash": "0x5a488bce144541a4abdc987af43c7e4ca5ba4a7af8359de760e3841b2c037cc1"
+			}
+		]
 	}
 ]

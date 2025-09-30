@@ -20,7 +20,7 @@ if [ $# -gt 1 ] && [ "$2" == "--broadcast" ]; then
 			echo "Error: OWNER environment variable not found in .env file."
 			exit 1
 		fi
-		broadcast_flag="--broadcast --sender $OWNER --verify"
+		broadcast_flag="--broadcast --sender $OWNER --verify --verifier etherscan"
 	else
 		echo "Error: .env file not found."
 		exit 1

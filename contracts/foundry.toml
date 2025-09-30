@@ -11,6 +11,9 @@ remappings = [
 	"@openzeppelin/contracts-upgradeable/=lib/openzeppelin-contracts-upgradeable/contracts/",
 ]
 
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
+
 [rpc_endpoints]
 bsctest = "https://bsc-testnet-dataseed.bnbchain.org/"
 amoy = "https://rpc-amoy.polygon.technology/"
