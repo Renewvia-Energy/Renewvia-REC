@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Steel Production Dashboard - REX Platform</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Arial', sans-serif;
+			background: #f5f5f5;
+			padding: 20px;
+		}
+		
+		.dashboard {
+			max-width: 1200px;
+			margin: 0 auto;
+			background: white;
+			border-radius: 12px;
+			padding: 30px;
+			box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+		}
+		
+		.dashboard-header {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 30px;
+			padding-bottom: 20px;
+			border-bottom: 2px solid #f0f0f0;
+		}
+		
+		.dashboard-title {
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+		}
+		
+		.date-range {
+			color: #666;
+			font-size: 14px;
+		}
+		
+		.metrics-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+			margin-bottom: 30px;
+		}
+		
+		.metric-card {
+			background: linear-gradient(135deg, #fff8f3, #fff3e6);
+			padding: 20px;
+			border-radius: 10px;
+			border-left: 4px solid #ff6b35;
+		}
+		
+		.metric-label {
+			font-size: 12px;
+			color: #666;
+			text-transform: uppercase;
+			letter-spacing: 0.5px;
+			margin-bottom: 8px;
+		}
+		
+		.metric-value {
+			font-size: 32px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 5px;
+		}
+		
+		.metric-unit {
+			font-size: 14px;
+			color: #888;
+		}
+		
+		.metric-change {
+			font-size: 12px;
+			color: #27ae60;
+			margin-top: 8px;
+		}
+		
+		.metric-change.negative {
+			color: #e74c3c;
+		}
+		
+		.chart-container {
+			background: #fafafa;
+			padding: 25px;
+			border-radius: 10px;
+			margin-bottom: 30px;
+		}
+		
+		.chart-title {
+			font-size: 18px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 20px;
+		}
+		
+		.chart-canvas {
+			width: 100%;
+			height: 300px;
+			position: relative;
+		}
+		
+		.bar-chart {
+			display: flex;
+			align-items: flex-end;
+			justify-content: space-around;
+			height: 300px;
+			padding: 20px 0;
+			position: relative;
+		}
+		
+		.bar-group {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			flex: 1;
+			max-width: 100px;
+		}
+		
+		.bars {
+			display: flex;
+			gap: 8px;
+			align-items: flex-end;
+			height: 250px;
+			margin-bottom: 10px;
+		}
+		
+		.bar {
+			width: 35px;
+			border-radius: 4px 4px 0 0;
+			position: relative;
+			transition: all 0.3s ease;
+		}
+		
+		.bar:hover {
+			opacity: 0.8;
+		}
+		
+		.bar-steel {
+			background: linear-gradient(180deg, #5a6268, #343a40);
+		}
+		
+		.bar-credits {
+			background: linear-gradient(180deg, #ff6b35, #d2691e);
+		}
+		
+		.bar-label {
+			position: absolute;
+			top: -25px;
+			left: 50%;
+			transform: translateX(-50%);
+			font-size: 11px;
+			font-weight: bold;
+			color: #333;
+			white-space: nowrap;
+		}
+		
+		.month-label {
+			font-size: 12px;
+			color: #666;
+			text-align: center;
+			font-weight: 500;
+		}
+		
+		.legend {
+			display: flex;
+			justify-content: center;
+			gap: 30px;
+			margin-top: 20px;
+		}
+		
+		.legend-item {
+			display: flex;
+			align-items: center;
+			gap: 8px;
+			font-size: 14px;
+			color: #666;
+		}
+		
+		.legend-color {
+			width: 20px;
+			height: 20px;
+			border-radius: 4px;
+		}
+		
+		.legend-steel {
+			background: linear-gradient(135deg, #5a6268, #343a40);
+		}
+		
+		.legend-credits {
+			background: linear-gradient(135deg, #ff6b35, #d2691e);
+		}
+		
+		.impact-section {
+			background: linear-gradient(135deg, #d2691e, #ff8c00);
+			color: white;
+			padding: 25px;
+			border-radius: 10px;
+		}
+		
+		.impact-title {
+			font-size: 18px;
+			font-weight: bold;
+			margin-bottom: 15px;
+		}
+		
+		.impact-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+			gap: 15px;
+		}
+		
+		.impact-item {
+			background: rgba(255,255,255,0.15);
+			padding: 15px;
+			border-radius: 8px;
+			backdrop-filter: blur(10px);
+		}
+		
+		.impact-value {
+			font-size: 24px;
+			font-weight: bold;
+			margin-bottom: 5px;
+		}
+		
+		.impact-label {
+			font-size: 13px;
+			opacity: 0.9;
+		}
+		
+		.y-axis {
+			position: absolute;
+			left: 0;
+			top: 0;
+			height: 250px;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			font-size: 11px;
+			color: #999;
+			padding-right: 10px;
+		}
+		
+		.grid-line {
+			position: absolute;
+			left: 40px;
+			right: 0;
+			height: 1px;
+			background: #e0e0e0;
+		}
+	</style>
+</head>
+<body>
+	<div class="dashboard">
+		<div class="dashboard-header">
+			<div class="dashboard-title">Carbon Asset Performance Dashboard</div>
+			<div class="date-range">January - June 2025</div>
+		</div>
+		
+		<div class="metrics-grid">
+			<div class="metric-card">
+				<div class="metric-label">Total Steel Produced</div>
+				<div class="metric-value">145,800</div>
+				<div class="metric-unit">metric tons</div>
+				<div class="metric-change">↑ 8% vs. previous period</div>
+			</div>
+			
+			<div class="metric-card">
+				<div class="metric-label">Carbon Credits Retired</div>
+				<div class="metric-value">72,900</div>
+				<div class="metric-unit">MWh equivalent</div>
+				<div class="metric-change">↑ 12% vs. previous period</div>
+			</div>
+			
+			<div class="metric-card">
+				<div class="metric-label">Emissions Offset</div>
+				<div class="metric-value">50%</div>
+				<div class="metric-unit">of production footprint</div>
+				<div class="metric-change">On track for 2030 target</div>
+			</div>
+			
+			<div class="metric-card">
+				<div class="metric-label">Cost per Ton</div>
+				<div class="metric-value">$15.50</div>
+				<div class="metric-unit">avg. R-REC cost</div>
+				<div class="metric-change negative">↓ 3% vs. market rate</div>
+			</div>
+		</div>
+		
+		<div class="chart-container">
+			<div class="chart-title">Monthly Production vs. Carbon Credits Retired</div>
+			<div class="chart-canvas">
+				<div class="bar-chart" id="barChart">
+					<!-- Bars will be generated by JavaScript -->
+				</div>
+			</div>
+			<div class="legend">
+				<div class="legend-item">
+					<div class="legend-color legend-steel"></div>
+					<span>Steel Production (1,000 tons)</span>
+				</div>
+				<div class="legend-item">
+					<div class="legend-color legend-credits"></div>
+					<span>Carbon Credits Retired (MWh equivalent / 1,000)</span>
+				</div>
+			</div>
+		</div>
+		
+		<div class="impact-section">
+			<div class="impact-title">Environmental Impact Summary</div>
+			<div class="impact-grid">
+				<div class="impact-item">
+					<div class="impact-value">54,675</div>
+					<div class="impact-label">Tons CO₂ Offset YTD</div>
+				</div>
+				<div class="impact-item">
+					<div class="impact-value">11,920</div>
+					<div class="impact-label">Households Powered (equivalent)</div>
+				</div>
+				<div class="impact-item">
+					<div class="impact-value">2.3M</div>
+					<div class="impact-label">Trees Planted (equivalent)</div>
+				</div>
+				<div class="impact-item">
+					<div class="impact-value">100%</div>
+					<div class="impact-label">Blockchain Verified</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script>
+		// Data for the chart
+		const data = [
+			{ month: 'Jan', steel: 23.5, credits: 11.8 },
+			{ month: 'Feb', steel: 22.1, credits: 11.0 },
+			{ month: 'Mar', steel: 25.8, credits: 12.9 },
+			{ month: 'Apr', steel: 24.2, credits: 12.1 },
+			{ month: 'May', steel: 26.4, credits: 13.2 },
+			{ month: 'Jun', steel: 23.8, credits: 11.9 }
+		];
+		
+		// Find max value for scaling
+		const maxValue = Math.max(...data.map(d => Math.max(d.steel, d.credits)));
+		const chartHeight = 250;
+		
+		// Generate bars
+		const barChart = document.getElementById('barChart');
+		
+		data.forEach(item => {
+			const barGroup = document.createElement('div');
+			barGroup.className = 'bar-group';
+			
+			const bars = document.createElement('div');
+			bars.className = 'bars';
+			
+			// Steel bar
+			const steelBar = document.createElement('div');
+			steelBar.className = 'bar bar-steel';
+			const steelHeight = (item.steel / maxValue) * chartHeight;
+			steelBar.style.height = steelHeight + 'px';
+			
+			const steelLabel = document.createElement('div');
+			steelLabel.className = 'bar-label';
+			steelLabel.textContent = item.steel + 'K';
+			steelBar.appendChild(steelLabel);
+			
+			// Credits bar
+			const creditsBar = document.createElement('div');
+			creditsBar.className = 'bar bar-credits';
+			const creditsHeight = (item.credits / maxValue) * chartHeight;
+			creditsBar.style.height = creditsHeight + 'px';
+			
+			const creditsLabel = document.createElement('div');
+			creditsLabel.className = 'bar-label';
+			creditsLabel.textContent = item.credits + 'K';
+			creditsBar.appendChild(creditsLabel);
+			
+			bars.appendChild(steelBar);
+			bars.appendChild(creditsBar);
+			
+			const monthLabel = document.createElement('div');
+			monthLabel.className = 'month-label';
+			monthLabel.textContent = item.month;
+			
+			barGroup.appendChild(bars);
+			barGroup.appendChild(monthLabel);
+			barChart.appendChild(barGroup);
+		});
+	</script>
+</body>
+</html>

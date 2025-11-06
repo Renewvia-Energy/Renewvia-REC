@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>REX Platform - Decarbonization Solutions for American Steel</title>
+	<style>
+		* {
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;
+		}
+		
+		body {
+			font-family: 'Arial', sans-serif;
+			line-height: 1.4;
+			color: #333;
+			background: linear-gradient(135deg, #d2691e 0%, #ff8c00 100%);
+			min-height: 100vh;
+		}
+		
+		.container {
+			max-width: 1200px;
+			margin: 0 auto;
+			padding: 40px 20px;
+			background: white;
+			margin-top: 20px;
+			margin-bottom: 20px;
+			border-radius: 12px;
+			box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+		}
+		
+		.header {
+			text-align: center;
+			margin-bottom: 40px;
+			padding-bottom: 30px;
+			border-bottom: 3px solid #fff3e6;
+		}
+		
+		.logo {
+			font-size: 48px;
+			font-weight: bold;
+			background: linear-gradient(135deg, #ff6b35, #f7931e);
+			-webkit-background-clip: text;
+			-webkit-text-fill-color: transparent;
+			margin-bottom: 10px;
+		}
+		.logo img {
+			width: 15rem;
+		}
+		
+		.tagline {
+			font-size: 24px;
+			color: #666;
+			font-weight: 300;
+			margin-bottom: 15px;
+		}
+		
+		.subtitle {
+			font-size: 16px;
+			color: #888;
+			max-width: 700px;
+			margin: 0 auto;
+		}
+		
+		.pain-points {
+			background: #fff8f3;
+			padding: 30px;
+			border-radius: 12px;
+			margin-bottom: 40px;
+			border-left: 5px solid #ff6b35;
+		}
+		
+		.pain-points-title {
+			font-size: 22px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		
+		.pain-points-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+			gap: 20px;
+		}
+		
+		.pain-point {
+			background: white;
+			padding: 20px;
+			border-radius: 8px;
+			border-left: 3px solid #ff6b35;
+		}
+		
+		.pain-point-icon {
+			font-size: 24px;
+			margin-bottom: 10px;
+		}
+		
+		.pain-point-text {
+			font-size: 14px;
+			color: #666;
+			line-height: 1.5;
+		}
+		
+		.features-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+			gap: 30px;
+			margin-bottom: 50px;
+		}
+		
+		.feature-card {
+			background: #fff8f3;
+			padding: 30px;
+			border-radius: 12px;
+			border-left: 5px solid #ff6b35;
+			position: relative;
+			overflow: hidden;
+		}
+
+		.feature-card img {
+			width: 100%;
+		}
+		
+		.feature-card::before {
+			content: '';
+			position: absolute;
+			top: 0;
+			right: 0;
+			width: 100px;
+			height: 100px;
+			background: linear-gradient(135deg, rgba(255,107,53,0.1), rgba(247,147,30,0.05));
+			border-radius: 50%;
+			transform: translate(30%, -30%);
+		}
+		
+		.feature-number {
+			display: inline-block;
+			width: 40px;
+			height: 40px;
+			background: linear-gradient(135deg, #ff6b35, #f7931e);
+			color: white;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 40px;
+			font-weight: bold;
+			margin-bottom: 20px;
+		}
+		
+		.feature-title {
+			font-size: 20px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 15px;
+		}
+		
+		.feature-description {
+			color: #666;
+			margin-bottom: 20px;
+			line-height: 1.6;
+		}
+		
+		.tech-highlight {
+			background: #fff3e6;
+			padding: 15px;
+			border-radius: 8px;
+			font-size: 14px;
+			color: #e65100;
+			font-weight: 500;
+			line-height: 1.8;
+		}
+		
+		.image-placeholder {
+			width: 100%;
+			height: 200px;
+			background: linear-gradient(135deg, #fff8f3, #fff3e6);
+			border: 2px dashed #ff6b35;
+			border-radius: 8px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			color: #ff6b35;
+			font-weight: 500;
+			margin-top: 15px;
+		}
+		
+		.traction-section {
+			background: linear-gradient(135deg, #d2691e, #ff8c00);
+			color: white;
+			padding: 40px;
+			border-radius: 12px;
+			margin-bottom: 30px;
+		}
+		
+		.traction-title {
+			font-size: 28px;
+			font-weight: bold;
+			text-align: center;
+			margin-bottom: 30px;
+		}
+		
+		.traction-grid {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+			gap: 30px;
+		}
+		
+		.traction-item {
+			background: rgba(255,255,255,0.1);
+			padding: 25px;
+			border-radius: 10px;
+			backdrop-filter: blur(10px);
+		}
+		
+		.traction-stat {
+			font-size: 36px;
+			font-weight: bold;
+			color: #ffe0b3;
+			margin-bottom: 10px;
+		}
+		
+		.traction-desc {
+			font-size: 16px;
+			line-height: 1.5;
+		}
+		
+		.cta-section {
+			text-align: center;
+			padding: 30px;
+			background: #fff8f3;
+			border-radius: 12px;
+		}
+		
+		.cta-title {
+			font-size: 24px;
+			font-weight: bold;
+			color: #333;
+			margin-bottom: 15px;
+		}
+		
+		.cta-button {
+			display: inline-block;
+			background: linear-gradient(135deg, #ff6b35, #f7931e);
+			color: white;
+			padding: 15px 40px;
+			border-radius: 50px;
+			text-decoration: none;
+			font-weight: bold;
+			font-size: 16px;
+			transition: transform 0.3s ease;
+			margin-top: 15px;
+		}
+		
+		.cta-button:hover {
+			transform: translateY(-2px);
+		}
+		
+		.contact-info {
+			text-align: center;
+			margin-top: 20px;
+			color: #666;
+			font-size: 14px;
+		}
+		
+		.market-stat {
+			font-weight: bold;
+			color: #ff6b35;
+		}
+
+        /* The device with borders */
+        .tablet {
+        position: relative;
+        width: 100%;
+        margin: auto;
+        border: 16px black solid;
+        border-top-width: 35px;
+        border-bottom-width: 35px;
+        border-radius: 36px;
+        }
+
+        /* The horizontal line on the top of the device */
+        .tablet:before {
+        content: '';
+        display: block;
+        width: 60px;
+        height: 5px;
+        position: absolute;
+        top: -19px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #333;
+        border-radius: 10px;
+        }
+
+        /* The circle on the bottom of the device */
+        .tablet:after {
+        content: '';
+        display: block;
+        width: 15px;
+        height: 15px;
+        position: absolute;
+        left: 50%;
+        bottom: -33px;
+        transform: translate(-50%, -50%);
+        background: #333;
+        border-radius: 50%;
+        }
+	</style>
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<div class="logo"><img src="web/images/logo-titled.png"></div>
+			<div class="tagline">Decarbonization Solutions for American Steel Manufacturing</div>
+			<div class="subtitle">Blockchain-verified carbon assets helping US steel producers meet customer demands, capture green steel premiums, and position for the low-carbon transition</div>
+		</div>
+		
+		<div class="pain-points">
+			<div class="pain-points-title">The Steel Industry's Decarbonization Challenge</div>
+			<div class="pain-points-grid">
+				<div class="pain-point">
+					<div class="pain-point-icon">🏭</div>
+					<div class="pain-point-text">
+						<strong>Customer Pressure Intensifying:</strong> Automotive, construction, and tech sectors demanding Scope 3 emissions reductions from steel suppliers
+					</div>
+				</div>
+				<div class="pain-point">
+					<div class="pain-point-icon">💰</div>
+					<div class="pain-point-text">
+						<strong>Green Steel Premium Opportunity:</strong> Early movers capturing price premiums while late adopters risk market share loss
+					</div>
+				</div>
+				<div class="pain-point">
+					<div class="pain-point-icon">⚡</div>
+					<div class="pain-point-text">
+						<strong>Energy Cost Volatility:</strong> Steel production's 15-20% energy cost exposure to fossil fuel price swings
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="features-grid">
+			<div class="feature-card">
+				<div class="feature-number">1</div>
+				<div class="feature-title">Meet Growing Market Demands for Low-Carbon Steel</div>
+				<div class="feature-description">
+					Major buyers now require Scope 3 emissions reductions from suppliers. R-RECs enable credible "green steel" or "low-carbon steel" marketing claims with transparent, blockchain-verified credentials that satisfy customer due diligence.
+				</div>
+				<div class="tech-highlight">
+					✓ Third-party verified carbon credits<br>
+					✓ Auditable chain of custody from generation to retirement<br>
+					✓ Meet customer RFP requirements for sustainable sourcing<br>
+					✓ Voluntary carbon accounting that prepares you for future regulations
+				</div>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-number">2</div>
+				<div class="feature-title">Capture the Green Steel Premium</div>
+				<div class="feature-description">
+					The market is shifting fast. <span class="market-stat">CRU Group (London) projects a $100/ton green premium by 2030</span>, and <span class="market-stat">McKinsey forecasts 4.5x demand increase</span> for green steel by then. R-RECs provide a cost-effective pathway to "green steel" positioning.
+				</div>
+                <div class="tablet">
+                    <div class="content">
+				        <img src="web/images/steel-interactive.png" alt="tablet showing steel dashboard">
+                    </div>
+                </div>
+			</div>
+			
+			<div class="feature-card">
+				<div class="feature-number">3</div>
+				<div class="feature-title">Enterprise-Grade Transparency & Credibility</div>
+				<div class="feature-description">
+					Our platform combines blockchain verification with certified compliance: B Corp certification, Deloitte-verified RE100 compliance, and full alignment with ICVCM Core Carbon Principles. Every credit is transparently tracked on the Polygon Mainnet with ERC20-compliant smart contracts.
+				</div>
+				<img src="web/images/certifications.png" alt="RE100, B-corp, and ICVCM logos" >
+			</div>
+		</div>
+		
+		<div class="traction-section">
+			<div class="traction-title">Proven Results in American Steel</div>
+			<div class="traction-grid">
+				<div class="traction-item">
+					<div class="traction-stat">50%</div>
+					<div class="traction-desc">
+						<strong>Emissions Reduction Achieved</strong><br>
+						Partnered with the largest US steel fabricator to offset 50% of their carbon footprint, positioning them as an early leader in the low-carbon steel transition
+					</div>
+				</div>
+				<div class="traction-item">
+					<div class="traction-stat">500K+</div>
+					<div class="traction-desc">
+						<strong>Credits Under Contract</strong><br>
+						Three signed LOIs with multinational corporations across Africa, Latin America, and Middle East—proving scalability and global market demand
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="cta-section">
+			<div class="cta-title">Ready to Position Your Steel for the Low-Carbon Economy?</div>
+			<div style="color: #666; margin-bottom: 20px;">
+				Join the US steel leaders using blockchain-verified R-RECs to meet customer demands, capture green premiums, and future-proof their market position. <strong>30-day implementation, immediate emissions reporting benefits.</strong>
+			</div>
+			<a href="mailto:recs@renewvia.com" class="cta-button">Get Your Steel Decarbonization Assessment</a>
+			<div class="contact-info">
+				recs@renewvia.com • B Corp Certified • RE100 Compliant • ICVCM Standards Aligned
+			</div>
+		</div>
+	</div>
+</body>
+</html>
