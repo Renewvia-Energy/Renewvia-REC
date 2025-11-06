@@ -6,8 +6,8 @@ import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import "../src/RenewviaREC.sol";
 
 contract RRECScript is Script {
-	string public constant NAME   = "Senegal R-REC";                   // Replace with token name
-	string public constant SYMBOL = "RREC-ASN";                          // Replace with token symbol
+	string public constant NAME   = "South Africa R-REC";                   // Replace with token name
+	string public constant SYMBOL = "RREC-AZA";                          // Replace with token symbol
 	
 	function run() public {
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));

@@ -94,5 +94,11 @@
 		"logo": "https://www.axian-group.com/favicon.ico",
 		"join_date": "2025-08-12",
 		"address": "0xb9e1EB63DbAB98b8Ce1A4456e1ec7B72DF0F9160"
+	},
+	{
+		"name": "Rocklands Primary School",
+		"logo": "https://www.r-recs.com/web/images/account-logos/rocklands.jpg",
+		"join_date": "2025-10-10",
+		"address": "0x045B425Ab130fC3c1d73ab0D8DEe907e42761fD2"
 	}
 ]

@@ -350,5 +350,26 @@
 				"hash": "0x5a488bce144541a4abdc987af43c7e4ca5ba4a7af8359de760e3841b2c037cc1"
 			}
 		]
+	},
+	{
+		"name": "South Africa R-REC",
+		"abbreviation": "RREC-AZA",
+		"superclass": "REC",
+		"img": "../images/asset-images/RREC-AZA.jpg",
+		"description": "South Africa R-RECs radiate with the potential of the Rainbow Nation's renewable resources, from its sunny coasts to its wind-swept plateaus.",
+		"address": "0x9601c04671B51f5920344339B475B4E835B1B538",
+		"implementation": ["0xF1C1ef7b368ec4dedD0453f5b37866b3D6ee3d88"],
+		"transactions": [
+			{
+				"timeStamp": "1762426611",
+				"action": "mint",
+				"amount": 5,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Rocklands_2025-05-10T000000-0000_2025-10-28T000000-0000.csv",
+				"to": "0x045B425Ab130fC3c1d73ab0D8DEe907e42761fD2",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "78660874",
+				"hash": "0x36b42fad415b53c870954a48c684655417d299401ec49ec3139683be298da216"
+			}
+		]
 	}
 ]
