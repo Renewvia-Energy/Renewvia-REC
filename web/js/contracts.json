@@ -348,6 +348,36 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "77100772",
 				"hash": "0x5a488bce144541a4abdc987af43c7e4ca5ba4a7af8359de760e3841b2c037cc1"
+			},
+			{
+				"timeStamp": "1764171521",
+				"action": "mint",
+				"amount": 1,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarbox1_2025-07-18T000000-0000_2025-10-31T000000-0000.csv",
+				"to": "0xDE923409C7321E4d8f34dbAdD02824F3cadC3B19",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "79533243",
+				"hash": "0xf4cc10ab8308e3bcc2d8556edecb612cddf7e023d7a0376851741868a9b5c9b6"
+			},
+			{
+				"timeStamp": "1764238247",
+				"action": "mint",
+				"amount": 2,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarbox2_2025-05-09T000000-0000_2025-10-31T000000-0000.csv",
+				"to": "0xDE923409C7321E4d8f34dbAdD02824F3cadC3B19",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "79566606",
+				"hash": "0xef658c19382395e7510f6bfc012da0f546276a18d52aea1172e25c5a8c975217"
+			},
+			{
+				"timeStamp": "1764238351",
+				"action": "mint",
+				"amount": 1,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarbox3_2025-09-22T000000-0000_2025-11-25T000000-0000.csv",
+				"to": "0xDE923409C7321E4d8f34dbAdD02824F3cadC3B19",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "79566658",
+				"hash": "0xe6582dedf28faea68ae2c690919eae9aee05c67710b2ced4059997ef19267d5e"
 			}
 		]
 	},
