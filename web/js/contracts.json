@@ -430,6 +430,17 @@
 		"description": "Nigeria R-RECs represent a giant leap towards a sustainable future, converting the country's abundant sunlight into a cornerstone of its energy matrix.",
 		"address": "0xFC5437DD98B723F5977c6851ED75Aa0072B4ef88",
 		"implementation": ["0xE1e2f18968fd3ac8d9B94d7fC27D1C03eDa04431"],
-		"transactions": []
+		"transactions": [
+			{
+				"timeStamp": "1764930049",
+				"action": "mint",
+				"amount": 660,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Uniabuja_2024-10-07T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0x1274233CE22757D6A772340F211eff442A85936B",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "79912504",
+				"hash": "0xb97e2ce0369483b959c5ed338e66f10396d48ff5cfeec231a3b91a28030dabcb"
+			}
+		]
 	}
 ]
