@@ -421,5 +421,15 @@
 				"hash": "0x36b42fad415b53c870954a48c684655417d299401ec49ec3139683be298da216"
 			}
 		]
+	},
+	{
+		"name": "Nigeria R-REC",
+		"abbreviation": "RREC-ANG",
+		"superclass": "REC",
+		"img": "https://upload.wikimedia.org/wikipedia/commons/8/85/Mini-Grid_Bayelsa.jpg",
+		"description": "Nigeria R-RECs represent a giant leap towards a sustainable future, converting the country's abundant sunlight into a cornerstone of its energy matrix.",
+		"address": "0xFC5437DD98B723F5977c6851ED75Aa0072B4ef88",
+		"implementation": ["0xE1e2f18968fd3ac8d9B94d7fC27D1C03eDa04431"],
+		"transactions": []
 	}
 ]

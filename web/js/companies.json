@@ -106,5 +106,11 @@
 		"logo": "https://www.solarbox.energy/images/solarbox.png",
 		"join_date": "2024-07-26",
 		"address": "0xDE923409C7321E4d8f34dbAdD02824F3cadC3B19"
+	},
+	{
+		"name": "Nigeria REA",
+		"logo": "https://www.r-recs.com/web/images/account-logos/REA.jpg",
+		"join_date": "2025-12-05",
+		"address": "0x1274233ce22757d6a772340f211eff442a85936b"
 	}
 ]
