@@ -440,6 +440,26 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "79912504",
 				"hash": "0xb97e2ce0369483b959c5ed338e66f10396d48ff5cfeec231a3b91a28030dabcb"
+			},
+			{
+				"timeStamp": "1765804289",
+				"action": "mint",
+				"amount": 1238,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Funaab_2025-04-22T000000-0000_2025-11-10T000000-0000.csv",
+				"to": "0x1274233CE22757D6A772340F211eff442A85936B",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "80349433",
+				"hash": "0x806bb31e0979eeb084dd34764104147331bc8729dd2486430f3c82e45456776c"
+			},
+			{
+				"timeStamp": "1765804379",
+				"action": "mint",
+				"amount": 6247,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Uniabuja_2025-01-01T000000-0000_2025-11-17T000000-0000.csv",
+				"to": "0x1274233CE22757D6A772340F211eff442A85936B",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "80349478",
+				"hash": "0x4b660f46a18bcc0bb3154fcd6413b1c9197ca4f49d2d211a50667d0754187c3e"
 			}
 		]
 	}
