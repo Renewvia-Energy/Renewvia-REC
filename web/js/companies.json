@@ -84,7 +84,7 @@
 		"address": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F"
 	},
 	{
-		"name": "Nestle CEWA",
+		"name": "Nestle CWAR",
 		"logo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/d8/Nestl%C3%A9.svg/1024px-Nestl%C3%A9.svg.png",
 		"join_date": "2024-06-20",
 		"address": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300"
@@ -100,5 +100,17 @@
 		"logo": "https://www.r-recs.com/web/images/account-logos/rocklands.jpg",
 		"join_date": "2025-10-10",
 		"address": "0x045B425Ab130fC3c1d73ab0D8DEe907e42761fD2"
+	},
+	{
+		"name": "Wuri Ventures",
+		"logo": "https://www.solarbox.energy/images/solarbox.png",
+		"join_date": "2024-07-26",
+		"address": "0xDE923409C7321E4d8f34dbAdD02824F3cadC3B19"
+	},
+	{
+		"name": "Nigeria REA",
+		"logo": "https://www.r-recs.com/web/images/account-logos/REA.jpg",
+		"join_date": "2025-12-05",
+		"address": "0x1274233CE22757D6A772340F211eff442A85936B"
 	}
 ]

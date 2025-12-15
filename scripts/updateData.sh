@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # sudo apt install python3-full python3-venv
-# python3 -m venv myenv
+python3 -m venv myenv
 
 source ../contracts/.env
 source myenv/bin/activate
