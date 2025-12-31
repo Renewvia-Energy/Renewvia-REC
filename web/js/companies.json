@@ -112,5 +112,11 @@
 		"logo": "https://www.r-recs.com/web/images/account-logos/REA.jpg",
 		"join_date": "2025-12-05",
 		"address": "0x1274233CE22757D6A772340F211eff442A85936B"
+	},
+	{
+		"name": "Africa Energy CMBT",
+		"logo": "https://www.r-recs.com/web/images/account-logos/africa-energy-cmbt.jpg",
+		"join_date": "2025-11-07",
+		"address": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4"
 	}
 ]
