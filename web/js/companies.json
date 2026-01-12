@@ -118,5 +118,11 @@
 		"logo": "https://www.r-recs.com/web/images/account-logos/africa-energy-cmbt.jpg",
 		"join_date": "2025-11-07",
 		"address": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4"
+	},
+	{
+		"name": "Lynays Enterprises",
+		"logo": "https://www.r-recs.com/web/images/account-logos/lynays_enterprises.jpg",
+		"join_date": "2024-12-06",
+		"address": "0x11fD11fD78240e7CcB5D67DFe5496a0625Bd5Ecb"
 	}
 ]
