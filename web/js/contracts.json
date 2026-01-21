@@ -448,6 +448,66 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "81010981",
 				"hash": "0xc3156747e3248cf5e6fc55b01e0113fa59fdb37a7bb87d4c7e10db1024b920ad"
+			},
+			{
+				"timeStamp": "1768995626",
+				"action": "mint",
+				"amount": 14431,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Diass_2019-04-26T000000-0000_2019-12-31T000000-0000.csv",
+				"to": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "81937827",
+				"hash": "0x2d0333ca6be938c40d27353f545e0c300d51fe7164147371049c5703a7612802"
+			},
+			{
+				"timeStamp": "1768995738",
+				"action": "mint",
+				"amount": 37329,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Diass_2020-01-01T000000-0000_2020-12-31T000000-0000.csv",
+				"to": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "81937883",
+				"hash": "0xd9d2dc7c2e7af4a2e6242f475ade3564e89308c806332af9ab9659962c9991f7"
+			},
+			{
+				"timeStamp": "1768995800",
+				"action": "mint",
+				"amount": 35194,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Diass_2021-01-01T000000-0000_2021-12-31T000000-0000.csv",
+				"to": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "81937914",
+				"hash": "0x3ab8875f753f00da8f6bdb7e2941f204a17e551f60b54230604f3f73cc84a4f9"
+			},
+			{
+				"timeStamp": "1768995862",
+				"action": "mint",
+				"amount": 33045,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Diass_2022-01-01T000000-0000_2022-12-31T000000-0000.csv",
+				"to": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "81937945",
+				"hash": "0x87e0f1ce599eecff2a19a771b82f3cdfe3c81ba37e4f534d88960664a1425bc7"
+			},
+			{
+				"timeStamp": "1768995932",
+				"action": "mint",
+				"amount": 30320,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Diass_2023-01-01T000000-0000_2023-12-31T230000-0000.csv",
+				"to": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "81937980",
+				"hash": "0x6a071c9b6163ffec59cd61edd19c60ce0b2b7ce9122ef08aba26513fe5725d81"
+			},
+			{
+				"timeStamp": "1768996002",
+				"action": "mint",
+				"amount": 35300,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Diass_2024-01-01T000000-0000_2024-12-31T230000-0000.csv",
+				"to": "0x50BA962d6C8C3f423aca06Db52B59948A0e27Ad4",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "81938015",
+				"hash": "0xc89d983d271c3c3d180b024a86207b3e0b10fbccb4e5abdfb3dd1a8e6c981087"
 			}
 		]
 	},
