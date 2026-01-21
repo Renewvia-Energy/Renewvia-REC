@@ -9,6 +9,44 @@ function strcmpi(str1, str2) {
 	return str1.localeCompare(str2, undefined, {sensitivity: 'base'}) === 0
 }
 
+function downsampleData(dates, values, maxPoints = 100) {
+	if (dates.length <= maxPoints) {
+		return { dates, values }; // No downsampling needed
+	}
+
+	const firstDate = dates[0].getTime();
+	const lastDate = dates[dates.length - 1].getTime();
+	const timeStep = (lastDate - firstDate) / (maxPoints - 1);
+
+	const downsampledDates = [];
+	const downsampledValues = [];
+
+	for (let i = 0; i < maxPoints; i++) {
+		const targetTime = firstDate + (i * timeStep);
+		const targetDate = new Date(targetTime);
+
+		// Find the closest date in the original array
+		let closestIndex = 0;
+		let minDiff = Math.abs(dates[0].getTime() - targetTime);
+
+		for (let j = 1; j < dates.length; j++) {
+			const diff = Math.abs(dates[j].getTime() - targetTime);
+			if (diff < minDiff) {
+				minDiff = diff;
+				closestIndex = j;
+			} else {
+				// Since dates are sorted, we can break early
+				break;
+			}
+		}
+
+		downsampledDates.push(targetDate);
+		downsampledValues.push(values[closestIndex]);
+	}
+
+	return { dates: downsampledDates, values: downsampledValues };
+}
+
 const app = Vue.createApp({
 	data() {	
 		return {
@@ -255,7 +293,7 @@ const app = Vue.createApp({
 			if (this.$refs.myChart && this.assets && this.assets.length > 0) {
 				const ctx = this.$refs.myChart.getContext("2d");
 				if (ctx) {
-        			// Destroy the existing chart if it exists
+					// Destroy the existing chart if it exists
 					if (this.chart) {
 						this.chart.destroy();
 					}
@@ -289,21 +327,28 @@ const app = Vue.createApp({
 			if (this.$refs.generationGraph && this.assetDates && this.assetDates.length > 0 && this.assetTimeSeries && this.assetTimeSeries.length > 0) {
 				const ctx = this.$refs.generationGraph.getContext("2d");
 				if (ctx) {
-        			// Destroy the existing chart if it exists
+					// Destroy the existing chart if it exists
 					if (this.generationChart) {
 						this.generationChart.destroy();
 					}
+
+					// Downsample the data
+					const { dates: sampledDates, values: sampledValues } = downsampleData(
+						this.assetDates, 
+						this.cumulativeAssetTimeSeriesMWh, 
+						50
+					);
 					
 					// Create a new chart
 					this.generationChart = new Chart(ctx, {
 						type: 'line', // Use a line chart
 						data: {
-							labels: this.assetDates, // Dates on the x-axis
+							labels: sampledDates, // Dates on the x-axis
 							datasets: [
 								{
 									label: 'Energy Generated', // Label for the dataset
-									data: this.cumulativeAssetTimeSeriesMWh.map((value, index) => ({
-										x: this.assetDates[index],
+									data: sampledValues.map((value, index) => ({
+										x: sampledDates[index],
 										y: value
 									})), // Energy values on the y-axis
 									borderColor: 'rgba(240, 99, 00, 1)', // Line color
