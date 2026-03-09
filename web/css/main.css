@@ -31,6 +31,89 @@ header .menu-btn {
 header .menu-icon {
 	display: none;
 }
+
+@media screen and (max-width: 649px) {
+	/* Show hamburger icon */
+	header .menu-icon {
+		display: inline-flex;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	/* Three-bar hamburger using a single span + ::before/::after */
+	.menu-icon .navicon {
+		display: block;
+		background: var(--orange);
+		height: 2px;
+		width: 1.5rem;
+		position: relative;
+		transition: background 0.2s ease-out;
+	}
+	.menu-icon .navicon::before,
+	.menu-icon .navicon::after {
+		content: '';
+		display: block;
+		background: var(--orange);
+		height: 2px;
+		width: 1.5rem;
+		position: absolute;
+		transition: all 0.2s ease-out;
+	}
+	.menu-icon .navicon::before { top:  0.45rem; }
+	.menu-icon .navicon::after  { top: -0.45rem; }
+
+	/* Collapse nav list by default */
+	header ul.menu {
+		display: none;
+		position: absolute;
+		top: calc(var(--header-logo-height) + var(--header-logo-margin) * 2);
+		left: 0;
+		right: 0;
+		background: white;
+		box-shadow: 0 0.2rem 0.5rem rgba(0, 0, 0, 0.15);
+		z-index: 100;
+	}
+	header ul.menu li {
+		display: block;
+		border-top: 1px solid rgba(0, 0, 0, 0.08);
+	}
+	header ul.menu li a {
+		display: block;
+		padding: 0.8rem 1rem;
+	}
+
+	/* Open menu when checkbox is checked */
+	header .menu-btn:checked ~ ul.menu {
+		display: block;
+	}
+
+	/* Animate to X when open */
+	header .menu-btn:checked ~ .menu-icon .navicon {
+		background: transparent;
+	}
+	header .menu-btn:checked ~ .menu-icon .navicon::before {
+		transform: rotate(-45deg);
+		top: 0;
+	}
+	header .menu-btn:checked ~ .menu-icon .navicon::after {
+		transform: rotate(45deg);
+		top: 0;
+	}
+
+	/* Stack footer on small screens */
+	.footer-main {
+		flex-direction: column;
+		gap: 1rem;
+	}
+	.footer-contact {
+		text-align: left;
+	}
+	.footer-bottom {
+		flex-direction: column;
+		align-items: flex-start;
+		gap: 0.5rem;
+	}
+}
 header nav {
 	display: flex;
 	align-items: center;
@@ -67,7 +150,7 @@ header ul li a {
 	align-items: center;
 }
 .footer-logo img {
-	max-width: 8cm;
+	max-width: 5cm;
 	height: auto;
 }
 .footer-contact {
