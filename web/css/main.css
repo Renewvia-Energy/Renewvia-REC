@@ -2,6 +2,8 @@
 	--left-padding: 1rem;
 	--orange: #F06300;
 	--green: #0F9D58;
+	--header-logo-height: 3.2rem;
+	--header-logo-margin: 0.5rem;
 }
 * {
 	font-family: 'Roboto', sans-serif;
@@ -18,9 +20,9 @@ header {
 	justify-content: space-between;
 }
 header img {
-	height: 3.2rem;
+	height: var(--header-logo-height);
 	width: auto;
-	padding: 0.5rem 0;
+	padding: var(--header-logo-margin) 0;
 }
 
 header .menu-btn {
