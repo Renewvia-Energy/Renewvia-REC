@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Certificate of Verified Carbon Asset Sale – REX</title>
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Josefin+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="certificate.css">
+</head>
+<body>
+<div class="certificate">
+
+	<div class="bg-pattern"></div>
+
+	<!-- Corner ornaments -->
+	<div class="corner corner-tl">
+		<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M4 4 L30 4 M4 4 L4 30" stroke="#b8963e" stroke-width="2"/>
+			<path d="M4 4 L20 4 M4 4 L4 20" stroke="#b8963e" stroke-width="0.8" opacity="0.5"/>
+			<circle cx="4" cy="4" r="2.5" fill="#b8963e"/>
+			<path d="M12 4 Q4 12 4 20" stroke="#b8963e" stroke-width="0.8" fill="none" opacity="0.4"/>
+			<path d="M20 4 Q4 20 4 36" stroke="#b8963e" stroke-width="0.5" fill="none" opacity="0.25"/>
+		</svg>
+	</div>
+	<div class="corner corner-tr">
+		<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M4 4 L30 4 M4 4 L4 30" stroke="#b8963e" stroke-width="2"/>
+			<path d="M4 4 L20 4 M4 4 L4 20" stroke="#b8963e" stroke-width="0.8" opacity="0.5"/>
+			<circle cx="4" cy="4" r="2.5" fill="#b8963e"/>
+			<path d="M12 4 Q4 12 4 20" stroke="#b8963e" stroke-width="0.8" fill="none" opacity="0.4"/>
+			<path d="M20 4 Q4 20 4 36" stroke="#b8963e" stroke-width="0.5" fill="none" opacity="0.25"/>
+		</svg>
+	</div>
+	<div class="corner corner-bl">
+		<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M4 4 L30 4 M4 4 L4 30" stroke="#b8963e" stroke-width="2"/>
+			<path d="M4 4 L20 4 M4 4 L4 20" stroke="#b8963e" stroke-width="0.8" opacity="0.5"/>
+			<circle cx="4" cy="4" r="2.5" fill="#b8963e"/>
+			<path d="M12 4 Q4 12 4 20" stroke="#b8963e" stroke-width="0.8" fill="none" opacity="0.4"/>
+		</svg>
+	</div>
+	<div class="corner corner-br">
+		<svg viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<path d="M4 4 L30 4 M4 4 L4 30" stroke="#b8963e" stroke-width="2"/>
+			<path d="M4 4 L20 4 M4 4 L4 20" stroke="#b8963e" stroke-width="0.8" opacity="0.5"/>
+			<circle cx="4" cy="4" r="2.5" fill="#b8963e"/>
+			<path d="M12 4 Q4 12 4 20" stroke="#b8963e" stroke-width="0.8" fill="none" opacity="0.4"/>
+		</svg>
+	</div>
+
+	<div class="content">
+
+		<!-- Security band -->
+		<div class="security-band">
+			<span class="security-text">Renewvia Environmental Exchange · Verified Registry</span>
+			<span class="security-text">Carbon Market Compliance Document</span>
+		</div>
+
+		<!-- Logo -->
+		<div class="logo-wrap">
+			<img src="../../../web/images/favicon.ico" alt="logo">
+		</div>
+
+		<div class="issuer">Renewvia Environmental Exchange</div>
+
+		<!-- Rule -->
+		<div class="rule-wrap">
+			<div class="rule-line"></div>
+			<div class="rule-diamond"></div>
+			<div class="rule-line"></div>
+		</div>
+
+		<!-- Title -->
+		<div class="title">Certificate of Verified<br>Carbon Asset {{EVENT}}</div>
+		<div class="title-sub">Official Registry Document &nbsp;·&nbsp; Tamper-Evident Record</div>
+
+		<div class="rule-wrap-2">
+			<div class="rule-line"></div>
+			<div class="rule-diamond"></div>
+			<div class="rule-line"></div>
+		</div>
+
+		<!-- Body text -->
+		<div class="body-text">
+			<p>
+				Renewvia, in its technical capacity as Owner of the Renewvia Environmental Exchange, hereby certifies that, on {{DATE}}, {{USER}} {{ACTION}} {{QUANTITY}} {{ASSET}}, corresponding to {{QUANTITY}} {{UNIT}} of {{COMMODITY}}.
+			</p>
+		</div>
+
+		<!-- Ornament divider -->
+		<div class="ornament-row">
+			<div class="ornament-line"></div>
+			<div class="ornament-icon">✦</div>
+			<div class="ornament-line"></div>
+			<div class="ornament-icon">✦</div>
+			<div class="ornament-line"></div>
+		</div>
+
+		<!-- Signature + QR row -->
+		<div class="bottom-row">
+
+			<!-- Signature -->
+			<div class="signature-block">
+				<div class="signature-name">&nbsp;</div>
+				<div class="signature-label">Authorised Signatory</div>
+				<div class="signature-role">Registry Verification Officer · REX</div>
+			</div>
+
+			<!-- QR Code placeholder -->
+			<div class="qr-block">
+				<div id="qr-placeholder">
+					{{QR}}
+				</div>
+				<div class="qr-label">Technical Details<br>Verification block information<br>available by scanning the QR code</div>
+			</div>
+
+		</div>
+
+	</div>
+
+	<!-- Certificate ID – absolute bottom left -->
+	<div class="cert-id-block">
+		<div class="cert-id-label">Certificate ID</div>
+		<div class="cert-id-value">{{BLOCK}}</div>
+	</div>
+
+	<!-- Background seal watermark -->
+	<div class="seal">
+		<svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="50" cy="50" r="46" stroke="#0f2230" stroke-width="1.5"/>
+			<circle cx="50" cy="50" r="40" stroke="#0f2230" stroke-width="0.75"/>
+			<circle cx="50" cy="50" r="34" stroke="#0f2230" stroke-width="1.5"/>
+			<text x="50" y="46" text-anchor="middle" font-family="serif" font-size="6" fill="#0f2230" letter-spacing="2">VERIFIED</text>
+			<text x="50" y="56" text-anchor="middle" font-family="serif" font-size="4.5" fill="#0f2230" letter-spacing="1.5">REX</text>
+		</svg>
+	</div>
+
+</div>
+</body>
+</html>

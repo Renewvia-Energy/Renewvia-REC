@@ -1,0 +1,379 @@
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+	--navy: #0f2230;
+	--gold: #b8963e;
+	--gold-light: #d4af6a;
+	--green: #3a6b47;
+	--green-light: #5a8c61;
+	--cream: #f9f6ef;
+	--cream-dark: #ede8dc;
+	--ink: #1a1a1a;
+	--rule: #c8b98a;
+	--a4-width: 297mm;
+	--a4-height: 210mm;
+}
+
+html, body {
+	width: var(--a4-width);
+	height: var(--a4-height);
+	background: #ddd;
+	margin: 0;
+	padding: 0;
+}
+
+/* @media screen {
+	body { display: flex; justify-content: center; align-items: flex-start; padding: 20px; background: #c8c0b0; }
+}
+
+@media print {
+	html, body { width: var(--a4-width); height: var(--a4-height); background: white; margin: 0; padding: 0; }
+	.certificate { box-shadow: none !important; }
+} */
+
+.certificate {
+	width: 100%;
+	min-height: 100%;
+	background: var(--cream);
+	position: relative;
+	padding: 16mm 14mm 16mm 14mm;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* box-shadow: 0 8px 48px rgba(0,0,0,0.3); */
+	overflow: hidden;
+}
+
+/* Outer border frame */
+.certificate::before {
+	content: '';
+	position: absolute;
+	inset: 7mm;
+	border: 1.5px solid var(--gold);
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* Inner decorative border */
+.certificate::after {
+	content: '';
+	position: absolute;
+	inset: 9mm;
+	border: 0.5px solid var(--gold-light);
+	pointer-events: none;
+	z-index: 2;
+}
+
+/* Background watermark pattern */
+.bg-pattern {
+	position: absolute;
+	inset: 0;
+	background-image:
+		radial-gradient(ellipse at 50% 0%, rgba(184,150,62,0.07) 0%, transparent 65%),
+		radial-gradient(ellipse at 50% 100%, rgba(58,107,71,0.06) 0%, transparent 60%);
+	z-index: 0;
+}
+
+/* Guilloche-style corner ornaments */
+.corner {
+	position: absolute;
+	width: 22mm;
+	height: 22mm;
+	z-index: 3;
+}
+.corner svg { width: 100%; height: 100%; }
+.corner-tl { top: 7mm; left: 7mm; }
+.corner-tr { top: 7mm; right: 7mm; transform: scaleX(-1); }
+.corner-bl { bottom: 7mm; left: 7mm; transform: scaleY(-1); }
+.corner-br { bottom: 7mm; right: 7mm; transform: scale(-1,-1); }
+
+.content {
+	position: relative;
+	z-index: 4;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	flex: 1;
+}
+
+/* Security band at top */
+.security-band {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 6mm;
+	padding: 0 6mm;
+}
+
+.security-text {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 5.5pt;
+	letter-spacing: 0.25em;
+	color: var(--gold);
+	text-transform: uppercase;
+	opacity: 0.7;
+}
+
+/* Logo */
+.logo-wrap {
+	margin-bottom: 4mm;
+}
+
+.logo-wrap img {
+	width: 28mm;
+	height: 28mm;
+	object-fit: contain;
+	display: block;
+}
+
+/* Issuer line */
+.issuer {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 7pt;
+	letter-spacing: 0.4em;
+	color: var(--navy);
+	text-transform: uppercase;
+	margin-bottom: 3mm;
+	opacity: 0.6;
+}
+
+/* Decorative rule with diamond */
+.rule-wrap {
+	display: flex;
+	align-items: center;
+	gap: 3mm;
+	width: 80%;
+	margin-bottom: 4mm;
+}
+.rule-line {
+	flex: 1;
+	height: 1px;
+	background: linear-gradient(90deg, transparent, var(--rule) 30%, var(--rule) 70%, transparent);
+}
+.rule-diamond {
+	width: 5px;
+	height: 5px;
+	background: var(--gold);
+	transform: rotate(45deg);
+	flex-shrink: 0;
+}
+
+/* Title */
+.title {
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 22pt;
+	font-weight: 600;
+	color: var(--navy);
+	text-align: center;
+	letter-spacing: 0.04em;
+	line-height: 1.2;
+	margin-bottom: 3mm;
+	max-width: 160mm;
+}
+
+.title-sub {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 6.5pt;
+	letter-spacing: 0.35em;
+	color: var(--green);
+	text-transform: uppercase;
+	margin-bottom: 5mm;
+}
+
+/* Second rule */
+.rule-wrap-2 {
+	display: flex;
+	align-items: center;
+	gap: 3mm;
+	width: 70%;
+	margin-bottom: 6mm;
+}
+
+/* Body text area */
+.body-text {
+	width: 85%;
+	text-align: center;
+	margin-bottom: 7mm;
+}
+
+.body-text p {
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 14pt;
+	font-weight: 400;
+	color: var(--ink);
+	line-height: 1.75;
+	font-style: italic;
+}
+
+.body-text .placeholder {
+	display: inline-block;
+	border-bottom: 1px solid var(--navy);
+	min-width: 50mm;
+	color: var(--navy);
+	font-style: normal;
+	font-weight: 600;
+	padding: 0 1mm;
+	margin: 0 1mm;
+}
+
+/* Divider ornament */
+.ornament-row {
+	display: flex;
+	align-items: center;
+	gap: 4mm;
+	width: 60%;
+	margin-bottom: 8mm;
+}
+.ornament-line { flex: 1; height: 1px; background: var(--cream-dark); }
+.ornament-icon {
+	font-size: 10pt;
+	color: var(--gold);
+	opacity: 0.8;
+}
+
+/* Bottom section: signature + QR */
+.bottom-row {
+	position: absolute;
+	bottom: 7mm;
+	width: 90%;
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	flex: 1;
+	align-items: flex-end;
+}
+
+/* Signature block */
+.signature-block {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	width: 55mm;
+}
+
+.signature-name {
+	font-family: 'Cormorant Garamond', serif;
+	font-size: 16pt;
+	font-style: italic;
+	font-weight: 300;
+	color: var(--navy);
+	border-bottom: 1px solid var(--navy);
+	width: 55mm;
+	padding-bottom: 1mm;
+	margin-bottom: 1.5mm;
+	letter-spacing: 0.02em;
+}
+
+.signature-label {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 6pt;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: var(--navy);
+	opacity: 0.6;
+}
+
+.signature-role {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 6pt;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--green);
+	margin-top: 0.5mm;
+	opacity: 0.8;
+}
+
+/* QR block */
+.qr-block {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 38mm;
+}
+
+#qr-placeholder {
+	width: 28mm;
+	height: 28mm;
+	border: 1.5px solid var(--navy);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: white;
+	position: relative;
+	margin-bottom: 2mm;
+}
+
+/* QR corner ticks */
+#qr-placeholder::before,
+#qr-placeholder::after {
+	content: '';
+	position: absolute;
+	width: 5mm;
+	height: 5mm;
+}
+
+.qr-inner {
+	display: grid;
+	grid-template-columns: repeat(7, 3.2px);
+	grid-template-rows: repeat(7, 3.2px);
+	gap: 0.8px;
+	opacity: 0.15;
+}
+
+.qr-cell { background: var(--navy); }
+.qr-cell.light { background: transparent; }
+
+.qr-label {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 5pt;
+	letter-spacing: 0.1em;
+	color: var(--navy);
+	text-align: center;
+	line-height: 1.5;
+	opacity: 0.65;
+	max-width: 38mm;
+}
+
+/* Certificate ID – bottom left */
+.cert-id-block {
+	position: absolute;
+	bottom: 12mm;
+	left: 14mm;
+	z-index: 5;
+}
+
+.cert-id-label {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 5pt;
+	letter-spacing: 0.3em;
+	text-transform: uppercase;
+	color: var(--navy);
+	opacity: 0.5;
+	margin-bottom: 0.5mm;
+}
+
+.cert-id-value {
+	font-family: 'Josefin Sans', sans-serif;
+	font-size: 7pt;
+	letter-spacing: 0.15em;
+	color: var(--navy);
+	opacity: 0.75;
+	font-weight: 600;
+}
+
+/* Seal */
+.seal {
+	position: absolute;
+	bottom: 52mm;
+	right: 18mm;
+	z-index: 5;
+	opacity: 0.12;
+}
+
+.seal svg {
+	width: 22mm;
+	height: 22mm;
+}

@@ -7,6 +7,8 @@ web/js/contracts_new.json
 scripts/myenv/
 scripts/.env
 scripts/*.txt
+scripts/certificates/out
+scripts/certificates/node_modules
 
 # Web
 *.css.map
