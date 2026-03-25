@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REX Platform — Investor Teaser 2026</title>
+<style>
+	@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+	:root {
+		--amber: #E8730A;
+		--amber-light: #F99436;
+		--amber-pale: #FFF3E0;
+		--charcoal: #1C1A17;
+		--mid: #4A4540;
+		--stone: #8C8179;
+		--cream: #FAF7F2;
+		--white: #FFFFFF;
+		--green: #2E7D32;
+		--green-light: #E8F5E9;
+	}
+
+	* { margin: 0; padding: 0; box-sizing: border-box; }
+
+	body {
+		font-family: 'DM Sans', sans-serif;
+		background: var(--cream);
+		color: var(--charcoal);
+		font-size: 13.5px;
+		line-height: 1.55;
+	}
+
+	/* ─── PAGE WRAPPER ──────────────────────────────── */
+	.page {
+		max-width: 960px;
+		margin: 0 auto;
+		background: var(--white);
+		box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+	}
+
+	/* ─── HEADER ────────────────────────────────────── */
+	.header {
+		background: var(--charcoal);
+		padding: 36px 48px 32px;
+		display: grid;
+		grid-template-columns: 1fr auto;
+		align-items: end;
+		gap: 24px;
+	}
+
+	.brand-lockup { }
+
+	.brand-label {
+		font-family: 'DM Sans', sans-serif;
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+		color: var(--amber-light);
+		margin-bottom: 6px;
+	}
+
+	.brand-name {
+		font-family: 'DM Serif Display', serif;
+		font-size: 42px;
+		color: var(--white);
+		line-height: 1;
+		letter-spacing: -0.01em;
+	}
+
+	.brand-name span { color: var(--amber-light); }
+
+	.brand-tagline {
+		margin-top: 8px;
+		font-size: 13px;
+		color: rgba(255,255,255,0.55);
+		font-weight: 300;
+		letter-spacing: 0.02em;
+	}
+
+	.raise-badge {
+		text-align: right;
+	}
+
+	.raise-label {
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
+		color: var(--amber-light);
+		margin-bottom: 4px;
+	}
+
+	.raise-amount {
+		font-family: 'DM Serif Display', serif;
+		font-size: 36px;
+		color: var(--white);
+		line-height: 1;
+	}
+
+	.raise-sub {
+		font-size: 11px;
+		color: rgba(255,255,255,0.45);
+		margin-top: 4px;
+	}
+
+	/* ─── ORANGE RULE ───────────────────────────────── */
+	.rule {
+		height: 4px;
+		background: linear-gradient(90deg, var(--amber) 0%, var(--amber-light) 60%, rgba(249,148,54,0) 100%);
+	}
+
+	/* ─── BODY ──────────────────────────────────────── */
+	.body {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0;
+	}
+
+	.col-left {
+		padding: 32px 36px 32px 48px;
+		border-right: 1px solid #EDE8E0;
+	}
+
+	.col-right {
+		padding: 32px 48px 32px 36px;
+	}
+
+	/* ─── SECTION ───────────────────────────────────── */
+	.section { margin-bottom: 28px; }
+	.section:last-child { margin-bottom: 0; }
+
+	.section-label {
+		font-size: 9px;
+		font-weight: 600;
+		letter-spacing: 0.20em;
+		text-transform: uppercase;
+		color: var(--amber);
+		margin-bottom: 10px;
+		display: flex;
+		align-items: center;
+		gap: 8px;
+	}
+
+	.section-label::after {
+		content: '';
+		flex: 1;
+		height: 1px;
+		background: #EDE8E0;
+	}
+
+	.section-title {
+		font-family: 'DM Serif Display', serif;
+		font-size: 18px;
+		color: var(--charcoal);
+		margin-bottom: 8px;
+		line-height: 1.25;
+	}
+
+	.section-body {
+		font-size: 12.5px;
+		color: var(--mid);
+		line-height: 1.6;
+	}
+
+	/* ─── STATS ROW ─────────────────────────────────── */
+	.stats-row {
+		display: grid;
+		grid-template-columns: 1fr 1fr 1fr;
+		gap: 12px;
+		margin-bottom: 28px;
+	}
+
+	.stat-card {
+		background: var(--amber-pale);
+		border-radius: 6px;
+		padding: 14px 12px;
+		text-align: center;
+	}
+
+	.stat-number {
+		font-family: 'DM Serif Display', serif;
+		font-size: 26px;
+		color: var(--amber);
+		line-height: 1;
+		margin-bottom: 4px;
+	}
+
+	.stat-label {
+		font-size: 10px;
+		color: var(--stone);
+		font-weight: 500;
+		line-height: 1.3;
+	}
+
+	/* ─── TRACTION TABLE ────────────────────────────── */
+	.traction-table {
+		width: 100%;
+		border-collapse: collapse;
+		font-size: 11.5px;
+	}
+
+	.traction-table thead tr {
+		background: var(--charcoal);
+		color: var(--white);
+	}
+
+	.traction-table thead th {
+		padding: 7px 10px;
+		text-align: left;
+		font-weight: 500;
+		font-size: 10px;
+		letter-spacing: 0.06em;
+	}
+
+	.traction-table tbody tr:nth-child(even) {
+		background: var(--cream);
+	}
+
+	.traction-table tbody tr:nth-child(odd) {
+		background: var(--white);
+	}
+
+	.traction-table td {
+		padding: 7px 10px;
+		color: var(--mid);
+		vertical-align: top;
+	}
+
+	.traction-table td:first-child {
+		font-weight: 600;
+		color: var(--charcoal);
+		white-space: nowrap;
+	}
+
+	.tag {
+		display: inline-block;
+		padding: 2px 7px;
+		border-radius: 20px;
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.04em;
+		text-align: center;
+	}
+
+	.tag-loi { background: #FFF3E0; color: var(--amber); }
+	.tag-close { background: #E8F5E9; color: var(--green); }
+
+	/* ─── BULLET LIST ───────────────────────────────── */
+	.bullet-list {
+		list-style: none;
+		display: flex;
+		flex-direction: column;
+		gap: 7px;
+	}
+
+	.bullet-list li {
+		display: flex;
+		gap: 9px;
+		font-size: 12.5px;
+		color: var(--mid);
+		line-height: 1.5;
+		align-items: flex-start;
+	}
+
+	.bullet-list li::before {
+		content: '◆';
+		color: var(--amber);
+		font-size: 7px;
+		flex-shrink: 0;
+		position: relative;
+		top: calc((12.5px * 1.5 - 7px) / 2);
+	}
+
+	.bullet-list li strong {
+		color: var(--charcoal);
+	}
+
+	/* ─── USE OF PROCEEDS ───────────────────────────── */
+	.proceeds-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 8px;
+	}
+
+	.proceed-item {
+		background: var(--cream);
+		border-radius: 6px;
+		padding: 11px 13px;
+		border-left: 3px solid var(--amber);
+	}
+
+	.proceed-pct {
+		font-family: 'DM Serif Display', serif;
+		font-size: 20px;
+		color: var(--amber);
+		line-height: 1;
+		margin-bottom: 3px;
+	}
+
+	.proceed-title {
+		font-size: 11.5px;
+		font-weight: 600;
+		color: var(--charcoal);
+		margin-bottom: 2px;
+	}
+
+	.proceed-desc {
+		font-size: 10.5px;
+		color: var(--stone);
+		line-height: 1.4;
+	}
+
+	/* ─── COMPLIANCE BADGES ─────────────────────────── */
+	.badge-row {
+		display: flex;
+		gap: 8px;
+		flex-wrap: wrap;
+		margin-top: 10px;
+	}
+
+	.badge {
+		background: var(--charcoal);
+		color: var(--amber-light);
+		border-radius: 4px;
+		padding: 4px 10px;
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		text-transform: uppercase;
+	}
+
+	/* ─── PROJECTIONS ───────────────────────────────── */
+	.proj-row {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 8px;
+		margin-top: 10px;
+	}
+
+	.proj-card {
+		text-align: center;
+		background: var(--cream);
+		border-radius: 6px;
+		padding: 10px 6px;
+	}
+
+	.proj-year {
+		font-size: 10px;
+		font-weight: 600;
+		letter-spacing: 0.06em;
+		color: var(--stone);
+		margin-bottom: 4px;
+	}
+
+	.proj-rev {
+		font-family: 'DM Serif Display', serif;
+		font-size: 17px;
+		color: var(--charcoal);
+		line-height: 1;
+		margin-bottom: 2px;
+	}
+
+	.proj-ebit {
+		font-size: 10px;
+		color: var(--green);
+		font-weight: 500;
+	}
+
+	.proj-note {
+		font-size: 10px;
+		color: var(--stone);
+		margin-top: 8px;
+		font-style: italic;
+		line-height: 1.45;
+	}
+
+	/* ─── FOOTER ────────────────────────────────────── */
+	.footer {
+		background: var(--charcoal);
+		padding: 18px 48px;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.footer-left {
+		font-size: 11px;
+		color: rgba(255,255,255,0.45);
+	}
+
+	.footer-left strong {
+		color: rgba(255,255,255,0.75);
+		font-weight: 500;
+	}
+
+	.footer-cta {
+		font-size: 12px;
+		font-weight: 600;
+		color: var(--amber-light);
+		letter-spacing: 0.04em;
+	}
+
+	.footer-cta a {
+		color: var(--amber-light);
+		text-decoration: none;
+		border-bottom: 1px solid rgba(249,148,54,0.4);
+	}
+
+	/* ─── DIVIDER ───────────────────────────────────── */
+	.divider {
+		height: 1px;
+		background: #EDE8E0;
+		margin: 20px 0;
+	}
+</style>
+</head>
+<body>
+<div class="page">
+
+	<!-- HEADER -->
+	<div class="header">
+		<div class="brand-lockup">
+			<div class="brand-label">Renewvia Environmental Exchange · Carbon Platform</div>
+			<div class="brand-name">RE<span>X</span></div>
+			<div class="brand-tagline">Blockchain-Verified Carbon &amp; Renewable Energy Credit Marketplace</div>
+		</div>
+		<div class="raise-badge">
+			<div class="raise-label">Equity Raise</div>
+			<div class="raise-amount">$1.1M</div>
+			<div class="raise-sub">Seed · FY-26</div>
+		</div>
+	</div>
+	<div class="rule"></div>
+
+	<!-- STATS -->
+	<div style="padding: 24px 48px 0;">
+		<div class="stats-row">
+			<div class="stat-card">
+				<div class="stat-number">500K+</div>
+				<div class="stat-label">RECs Under<br>Contract</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-number">156%</div>
+				<div class="stat-label">Revenue<br>CAGR (Proj.)</div>
+			</div>
+			<div class="stat-card">
+				<div class="stat-number">$1T+</div>
+				<div class="stat-label">Global Carbon<br>Market (2025)</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- BODY -->
+	<div class="body">
+		<!-- LEFT COLUMN -->
+		<div class="col-left">
+
+			<!-- OPPORTUNITY -->
+			<div class="section">
+				<div class="section-label">The Opportunity</div>
+				<div class="section-title">A $10B+ Market With a Verification Crisis</div>
+				<div class="section-body">
+					The Voluntary Carbon Market is projected to exceed $10B by 2030, with demand expected to outstrip supply (23% vs. 31% CAGR). Yet 44% of buyers now require higher verification standards, and current platforms fail to deliver. African credits alone are forecast to grow 4× by 2030, yet remain chronically underserved.
+				</div>
+			</div>
+
+			<!-- SOLUTION -->
+			<div class="section">
+				<div class="section-label">The Solution</div>
+				<div class="section-title">Blockchain-Native Carbon Asset Management</div>
+				<ul class="bullet-list">
+					<li><span><strong>On-chain verification:</strong> proprietary R-REC tokens on Polygon Mainnet; every MWh tracked from generation to retirement</span></li>
+					<li><span><strong>ERC-20 smart contracts:</strong> with upgradeable architecture, built-in compliance controls, and transparent audit trail</span></li>
+					<li><span><strong>Marketplace + Asset Hub:</strong> fully operational web platform for buying, selling, retiring, and valuing carbon assets</span></li>
+					<li><span><strong>Triple-certified:</strong> B Corp, Deloitte-verified RE100, and SBTi-compliant</span></li>
+				</ul>
+				<div class="badge-row">
+					<span class="badge">RE100 Compliant</span>
+					<span class="badge">SBTi Compliant</span>
+					<span class="badge">ICVCM CCP</span>
+					<span class="badge">B Corp</span>
+					<span class="badge">Polygon Mainnet</span>
+				</div>
+			</div>
+
+			<!-- COMPETITIVE EDGE -->
+			<div class="section">
+				<div class="section-label">Why Renewvia</div>
+				<div class="section-title">10+ Years Operating the Assets We Now Monetize</div>
+				<ul class="bullet-list">
+					<li><span><strong>140,000+ people</strong> benefitting from off-grid power across 24 communities</span></li>
+					<li><span><strong>7,500 active customers</strong> across 6 countries (Kenya, Nigeria, US + 3 more)</span></li>
+					<li><span>Peer-reviewed, published impact-tracking methodology monetizable as "super-offsets" and carbon derivatives</span></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- RIGHT COLUMN -->
+		<div class="col-right">
+
+			<!-- TRACTION -->
+			<div class="section">
+				<div class="section-label">Commercial Traction</div>
+				<div class="section-title">Signed Pipeline + Proven Transactions</div>
+
+				<table class="traction-table" style="margin-bottom:10px;">
+					<thead>
+						<tr>
+							<th>Customer</th>
+							<th>Volume</th>
+							<th>Rev. to REX</th>
+							<th>Status</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>SteelFab (US)</td>
+							<td>13,219 MWh / 8,699 tCO₂e</td>
+							<td>$38,765</td>
+							<td><span class="tag tag-close">Closed</span></td>
+						</tr>
+						<tr>
+							<td>Multnat'l F&amp;B</td>
+							<td>104,000 R-RECs · Latin America</td>
+							<td>$218,400</td>
+							<td><span class="tag tag-loi">LOI Signed</span></td>
+						</tr>
+						<tr>
+							<td>Consumer Goods</td>
+							<td>72,670 R-RECs · W. Africa</td>
+							<td>$152,607</td>
+							<td><span class="tag tag-close">Near Close</span></td>
+						</tr>
+						<tr>
+							<td>Nutrition Co.</td>
+							<td>17,900 R-RECs · MENA</td>
+							<td>$37,590</td>
+							<td><span class="tag tag-loi">LOI Signed</span></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="section-body">Pipeline customers include Fortune 500-scale multinationals across Africa, Latin America, and the Middle East.</div>
+			</div>
+
+			<!-- FINANCIALS -->
+			<div class="section">
+				<div class="section-label">Financial Projections</div>
+				<div class="section-title">156% Revenue CAGR Through Scale</div>
+				<div class="proj-row">
+					<div class="proj-card">
+						<div class="proj-year">FY-26</div>
+						<div class="proj-rev">Base</div>
+						<div class="proj-ebit">Underway</div>
+					</div>
+					<div class="proj-card">
+						<div class="proj-year">FY-27</div>
+						<div class="proj-rev">↑ 2×</div>
+						<div class="proj-ebit">EBIT positive</div>
+					</div>
+					<div class="proj-card">
+						<div class="proj-year">FY-28</div>
+						<div class="proj-rev">↑ 5×</div>
+						<div class="proj-ebit">Expanding</div>
+					</div>
+					<div class="proj-card">
+						<div class="proj-year">FY-29</div>
+						<div class="proj-rev">↑ 10×</div>
+						<div class="proj-ebit">Scale</div>
+					</div>
+				</div>
+				<div class="proj-note">Pro forma projections (CAGR: 156%). EBIT used as cash flow proxy; capex and NWC changes negligible. FY begins June. Full model available upon request.</div>
+			</div>
+
+			<!-- USE OF PROCEEDS -->
+			<div class="section">
+				<div class="section-label">Use of Proceeds · $1.1M Raise</div>
+				<div class="section-title">Fuel Sales &amp; Leadership to Reach Scale</div>
+				<div class="proceeds-grid">
+					<div class="proceed-item">
+						<div class="proceed-pct">~55%</div>
+						<div class="proceed-title">Sales Force</div>
+						<div class="proceed-desc">30+ US-based reps over 3 yrs, both buy- &amp; sell-side</div>
+					</div>
+					<div class="proceed-item">
+						<div class="proceed-pct">~40%</div>
+						<div class="proceed-title">Executive Hires</div>
+						<div class="proceed-desc">CEO, CTO, Product Mgr, HR, Legal Counsel</div>
+					</div>
+					<div class="proceed-item" style="grid-column: 1 / -1;">
+						<div class="proceed-pct">~5%</div>
+						<div class="proceed-title">R&amp;D</div>
+						<div class="proceed-desc">Data scientist for ongoing platform improvements; core R&amp;D already deployed</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+
+	<!-- FOOTER -->
+	<div class="rule"></div>
+	<div class="footer">
+		<div class="footer-left">
+			<strong>Environmental Exchange</strong> &nbsp;·&nbsp; CONFIDENTIAL — FOR QUALIFIED INVESTORS ONLY &nbsp;·&nbsp; © 2026
+		</div>
+		<div class="footer-cta">
+			Schedule a call &nbsp;→&nbsp; <a href="mailto:recs@renewvia.com">recs@renewvia.com</a>
+		</div>
+	</div>
+
+</div>
+</body>
+</html>
