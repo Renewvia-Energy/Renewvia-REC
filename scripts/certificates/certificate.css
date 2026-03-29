@@ -254,6 +254,13 @@ html, body {
 	width: 55mm;
 }
 
+.signature-image {
+	position: absolute;
+	bottom: -9mm;
+	left: -5mm;
+	width: 8cm;
+}
+
 .signature-name {
 	font-family: 'Cormorant Garamond', serif;
 	font-size: 16pt;

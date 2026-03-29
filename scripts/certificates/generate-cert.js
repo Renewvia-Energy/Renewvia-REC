@@ -39,7 +39,9 @@ async function generateCertificate(data) {
 }
 
 async function generatePDF(htmlFile, outputFile) {
-	const browser = await puppeteer.launch();
+	const browser = await puppeteer.launch({
+		args: ['--no-sandbox', '--disable-setuid-sandbox']
+	});
 	const page = await browser.newPage();
 
 	// Load the local HTML file
@@ -72,7 +74,7 @@ async function generateAllCertificates() {
 	};
 
 	const actionMap = {
-		mint: 'minted',
+		mint: 'generated',
 		transfer: 'sold',
 		retire: 'retired',
 		return: 'exchanged'
@@ -97,26 +99,68 @@ async function generateAllCertificates() {
 	}
 
 	for (const contract of contracts) {
+		// Skip untracked tokens, like South Carolina Solar Tax Credits
+		if (!contract.address) {
+			continue
+		}
+
 		for (const tx of contract.transactions) {
 			if (tx.ignore === true) {
 				continue;
 			}
 
-			const data = {
+			let data = {
 				EVENT: eventMap[tx.action] || tx.action,
 				DATE: formatDate(tx.timeStamp),
-				USER: findCompanyName(tx.to),
 				ACTION: actionMap[tx.action] || tx.action,
 				QUANTITY: String(tx.amount),
-				ASSET: contract.name,
+				ASSET: contract.name + (tx.amount>1 ? 's' : ''),
 				UNIT: unitMap[contract.superclass] || contract.superclass,
 				COMMODITY: contract.commodity,
 				BLOCK: tx.blockNumber,
 				HASH: tx.hash
 			};
 
-			filename = await generateCertificate(data);
-			await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
+			switch (tx.action) {
+				case 'mint':
+					data['USER'] = findCompanyName(tx.to)
+					filename = await generateCertificate(data);
+					await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
+					break
+
+				case 'transfer':
+					data['USER'] = findCompanyName(tx.from)
+					filename = await generateCertificate(data);
+					await generatePDF(filename, `out/certificate_sale_${tx.blockNumber}.pdf`);
+
+					data['EVENT'] = 'Purchase'
+					data['USER'] = findCompanyName(tx.to)
+					data['ACTION'] = 'purchased'
+					filename = await generateCertificate(data);
+					await generatePDF(filename, `out/certificate_purchase_${tx.blockNumber}.pdf`);
+					break
+
+				case 'retire':
+					data['USER'] = findCompanyName(tx.from)
+					filename = await generateCertificate(data);
+					await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
+					break
+
+				case 'return':
+					// TODO: Returns/exchanges always happen in pairs. Need to decide what to do.
+					break
+			}
+
+			
+
+			if (tx.action === 'transfer') {
+				var data2 = data
+				data2['EVENT'] = 'Purchase'
+				data2['USER'] = findCompanyName(tx.to)
+				data2['ACTION'] = 'purchased'
+				filename = await generateCertificate(data2);
+				await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
+			}
 		}
 	}
 }
