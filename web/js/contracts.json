@@ -613,6 +613,46 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "84875329",
 				"hash": "0x73f5377d74169cbbd2bc31ba321c40dcbfdf6ebf03df368883544cbf8c38cda1"
+			},
+			{
+				"timeStamp": "1774871062",
+				"action": "mint",
+				"amount": 13,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ARKMbita_2025-05-10T160000%2B0300_2025-12-31T230000%2B0300.csv",
+				"to": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "84875513",
+				"hash": "0x43965fbc31b48032d6063357692f4b8aef0f5213b8650b66e6a4ea44673a9497"
+			},
+			{
+				"timeStamp": "1774871112",
+				"action": "mint",
+				"amount": 5,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ARKMbita_2026-01-01T000000%2B0300_2026-03-25T160000%2B0300.csv",
+				"to": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "84875538",
+				"hash": "0xa723b97d97b6b7bac97fcc35b78ecc4d7d0c0ccacd1d365291244fcb8eb695e9"
+			},
+			{
+				"timeStamp": "1774871162",
+				"action": "mint",
+				"amount": 30,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ARKMuhuruBay_2025-06-09T120000%2B0300_2025-12-31T230000%2B0300.csv",
+				"to": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "84875563",
+				"hash": "0x97ed1ad068b42d42ccffd9bc52b4ea8323ca84540132008a21eec85574b22946"
+			},
+			{
+				"timeStamp": "1774871248",
+				"action": "mint",
+				"amount": 2,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ARKMuhuruBay_2026-01-01T000000%2B0300_2026-03-24T000000%2B0300.csv",
+				"to": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "84875606",
+				"hash": "0x12c7bf2b3522cc82bf8360842c2560d5c150eddd1bc3703cc6634917982cfe92"
 			}
 		]
 	}
