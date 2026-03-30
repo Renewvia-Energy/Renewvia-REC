@@ -114,7 +114,7 @@ async function generateAllCertificates() {
 				DATE: formatDate(tx.timeStamp),
 				ACTION: actionMap[tx.action] || tx.action,
 				QUANTITY: String(tx.amount),
-				ASSET: contract.name + (tx.amount>1 ? 's' : ''),
+				ASSET: contract.name,
 				UNIT: unitMap[contract.superclass] || contract.superclass,
 				COMMODITY: contract.commodity,
 				BLOCK: tx.blockNumber,
