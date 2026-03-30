@@ -6,16 +6,17 @@ import {Upgrades} from "openzeppelin-foundry-upgrades/Upgrades.sol";
 import "../src/RenewviaREC.sol";
 
 contract RRECScript is Script {
-	string public constant NAME   = "Nigeria R-REC";                   // Replace with token name
-	string public constant SYMBOL = "RREC-ANG";                          // Replace with token symbol
-	
 	function run() public {
+		// Read deploy-specific values from .env file
+		string memory name = vm.envString("DEPLOY_NAME");
+		string memory symbol = vm.envString("DEPLOY_SYMBOL");
+
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
 		// Deploy the upgradeable contract
 		address proxy = Upgrades.deployUUPSProxy(
 			"RenewviaREC.sol:RenewviaREC",
-			abi.encodeCall(RenewviaREC.initialize, (vm.envAddress("OWNER"), NAME, SYMBOL))
+			abi.encodeCall(RenewviaREC.initialize, (vm.envAddress("OWNER"), name, symbol))
 		);
 
 		RenewviaREC token = RenewviaREC(proxy);

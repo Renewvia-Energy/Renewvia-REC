@@ -593,5 +593,27 @@
 				"hash": "0x4b660f46a18bcc0bb3154fcd6413b1c9197ca4f49d2d211a50667d0754187c3e"
 			}
 		]
+	},
+	{
+		"name": "Kenya R-REC",
+		"abbreviation": "RREC-AKE",
+		"superclass": "REC",
+		"commodity": "renewably generated energy from Kenya",
+		"img": "https://r-recs.com/web/images/asset-images/RREC-AKE.jpg",
+		"description": "Kenya R-RECs are a beacon of innovation, capturing geothermal, wind, and solar energy that powers its vision for a sustainable and resilient future.",
+		"address": "0xeb245c9340711E26e26B06b1F876a0244ABed87C",
+		"implementation": ["0xabBaf7A5d7240fd505C1e3045918BbE2d1E7896B"],
+		"transactions": [
+			{
+				"timeStamp": "1774870694",
+				"action": "mint",
+				"amount": 2,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ARKKisegi_2025-05-30T110000%2B0300_2025-11-11T160000%2B0300.csv",
+				"to": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "84875329",
+				"hash": "0x73f5377d74169cbbd2bc31ba321c40dcbfdf6ebf03df368883544cbf8c38cda1"
+			}
+		]
 	}
 ]

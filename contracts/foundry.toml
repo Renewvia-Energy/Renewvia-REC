@@ -1,6 +1,5 @@
 [profile.default]
 etherscan_api_key = "${ETHERSCAN_API_KEY}"
-ETH_RPC_URL = "https://polygon-rpc.com/"
 ffi = true
 ast = true
 build_info = true
@@ -15,6 +14,4 @@ remappings = [
 mainnet = { key = "${ETHERSCAN_API_KEY}" }
 
 [rpc_endpoints]
-bsctest = "https://bsc-testnet-dataseed.bnbchain.org/"
-amoy = "https://rpc-amoy.polygon.technology/"
-polygon = "https://polygon-rpc.com/"
+polygon = "https://polygon.drpc.org"

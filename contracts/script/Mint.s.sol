@@ -5,18 +5,19 @@ import "forge-std/Script.sol";
 import "../src/RenewviaREC.sol";
 
 contract RRECScript is Script {
-	address public constant PROXY     = 0x551F7E94E6b7a0CE7B42aAee66e69c6297520d96;  // Replace with contract address
-	address public constant RECIPIENT = 0xDE923409C7321E4d8f34dbAdD02824F3cadC3B19;  // Replace with recipient's wallet address
-	uint256 public constant AMOUNT    = 1;                                          // Replace with amount of tokens to mint
-	string  public constant V_DATA    = "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Solarbox3_2025-09-22T000000-0000_2025-11-25T000000-0000.csv";                               // Replace with URL of verification data
-
 	function run() public {
-		RenewviaREC token = RenewviaREC(PROXY);
+		// Read mint-specific values from .env file
+		address proxy = vm.envAddress("MINT_PROXY");
+		address recipient = vm.envAddress("MINT_RECIPIENT");
+		uint256 amount = vm.envUint("MINT_AMOUNT");
+		string memory vData = vm.envString("MINT_V_DATA");
+
+		RenewviaREC token = RenewviaREC(proxy);
 
 		string memory userConfirmation = vm.prompt(string.concat(
 			"=== Deployment Details ===\n",
-			"Will send ", vm.toString(AMOUNT), " tokens of ", token.name(), " to ", vm.toString(RECIPIENT), "\n",
-			"The verification data is located at ", V_DATA, "\n",
+			"Will send ", vm.toString(amount), " tokens of ", token.name(), " to ", vm.toString(recipient), "\n",
+			"The verification data is located at ", vData, "\n",
 			"Do you want to proceed with deployment? (y/n)"));
         if (keccak256(abi.encodePacked(userConfirmation)) != keccak256(abi.encodePacked("y"))) {
             console.log("Deployment cancelled by user");
@@ -25,7 +26,7 @@ contract RRECScript is Script {
 
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
-		token.mint(RECIPIENT, AMOUNT, V_DATA);
+		token.mint(recipient, amount, vData);
 
 		vm.stopBroadcast();
 	}

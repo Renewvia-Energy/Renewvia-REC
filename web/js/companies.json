@@ -124,5 +124,11 @@
 		"logo": "https://www.r-recs.com/web/images/account-logos/lynays_enterprises.jpg",
 		"join_date": "2024-12-06",
 		"address": "0x11fD11fD78240e7CcB5D67DFe5496a0625Bd5Ecb"
+	},
+	{
+		"name": "Africa Renewables Katalyst",
+		"logo": "https://www.africarenewables.energy/arklogodark.svg",
+		"join_date": "2025-11-29",
+		"address": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A"
 	}
 ]
