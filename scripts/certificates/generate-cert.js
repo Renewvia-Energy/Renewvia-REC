@@ -150,17 +150,6 @@ async function generateAllCertificates() {
 					// TODO: Returns/exchanges always happen in pairs. Need to decide what to do.
 					break
 			}
-
-			
-
-			if (tx.action === 'transfer') {
-				var data2 = data
-				data2['EVENT'] = 'Purchase'
-				data2['USER'] = findCompanyName(tx.to)
-				data2['ACTION'] = 'purchased'
-				filename = await generateCertificate(data2);
-				await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
-			}
 		}
 	}
 }
