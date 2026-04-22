@@ -67,7 +67,7 @@
 	},
 	{
 		"name": "Ivory Cocoa Products",
-		"logo": "web/images/account-logos/ICP.png",
+		"logo": "https://manatal-backend-public-assets.s3.amazonaws.com/media/career_portal_logo_direct_upload/95b50fa7-0623-4a36-85ab-9373342552b1_LOGOICP.png",
 		"join_date": "2025-04-15",
 		"address": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1"
 	},
