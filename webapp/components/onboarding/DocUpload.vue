@@ -60,16 +60,6 @@
       </div>
       <div v-if="uploadError" role="alert" aria-live="assertive" class="text-sm text-danger">{{ uploadError }}</div>
 
-      <!-- Upload button -->
-      <button
-        v-if="file && !uploadedUrl"
-        type="button"
-        :disabled="uploading || !documentType"
-        class="rounded bg-brand px-4 py-2 text-sm font-semibold text-white hover:opacity-90 disabled:opacity-50"
-        @click="upload"
-      >
-        Upload file
-      </button>
     </template>
 
     <!-- Reusing indicator -->
@@ -107,7 +97,7 @@ const BASE_DOCUMENT_TYPES = [
   'Insurance documentation',
   'Environmental impact assessments',
   'Technical inspection certificates from certified, third-party bodies',
-  'Project handover certificates from third-party installation contractors',
+  'Project handover/completion certificates from third-party installation contractors',
 ]
 
 const availableTypes = computed(() =>
@@ -184,6 +174,7 @@ function setFile(f: File) {
   file.value        = f
   uploadError.value = ''
   uploadedUrl.value = ''
+  upload()
 }
 
 function clearFile() {
@@ -195,7 +186,7 @@ function clearFile() {
 }
 
 async function upload() {
-  if (!file.value || !props.documentType) return
+  if (!file.value) return
   uploading.value   = true
   uploadError.value = ''
   try {

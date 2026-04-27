@@ -60,7 +60,23 @@ export default defineEventHandler(async (event) => {
   if (body.dateDocUrl               !== undefined) updates.dateDocUrl               = body.dateDocUrl
   if (body.dateDocType              !== undefined) updates.dateDocType              = body.dateDocType
   if (body.photosGen                !== undefined) updates.photosGen                = body.photosGen
+  if (body.photosGenLlmMatch        !== undefined) updates.photosGenLlmMatch        = body.photosGenLlmMatch
+  if (body.photosGenLlmReason       !== undefined) updates.photosGenLlmReason       = body.photosGenLlmReason
   if (body.photosMeter              !== undefined) updates.photosMeter              = body.photosMeter
+  if (body.photosMeterLlmMatch      !== undefined) updates.photosMeterLlmMatch      = body.photosMeterLlmMatch
+  if (body.photosMeterLlmReason     !== undefined) updates.photosMeterLlmReason     = body.photosMeterLlmReason
+  if (body.genLlmDocTypeMatch       !== undefined) updates.genLlmDocTypeMatch       = body.genLlmDocTypeMatch
+  if (body.genLlmContentMatch       !== undefined) updates.genLlmContentMatch       = body.genLlmContentMatch
+  if (body.genLlmReason             !== undefined) updates.genLlmReason             = body.genLlmReason
+  if (body.capLlmDocTypeMatch       !== undefined) updates.capLlmDocTypeMatch       = body.capLlmDocTypeMatch
+  if (body.capLlmContentMatch       !== undefined) updates.capLlmContentMatch       = body.capLlmContentMatch
+  if (body.capLlmReason             !== undefined) updates.capLlmReason             = body.capLlmReason
+  if (body.locLlmDocTypeMatch       !== undefined) updates.locLlmDocTypeMatch       = body.locLlmDocTypeMatch
+  if (body.locLlmContentMatch       !== undefined) updates.locLlmContentMatch       = body.locLlmContentMatch
+  if (body.locLlmReason             !== undefined) updates.locLlmReason             = body.locLlmReason
+  if (body.dateLlmDocTypeMatch      !== undefined) updates.dateLlmDocTypeMatch      = body.dateLlmDocTypeMatch
+  if (body.dateLlmContentMatch      !== undefined) updates.dateLlmContentMatch      = body.dateLlmContentMatch
+  if (body.dateLlmReason            !== undefined) updates.dateLlmReason            = body.dateLlmReason
 
   // Status transition: generator can submit (draft → pending)
   if (body.status === 'pending' && existing.status === 'draft') {

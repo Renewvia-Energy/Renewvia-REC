@@ -99,19 +99,25 @@ export const onboardingSubmissions = pgTable('onboarding_submissions', {
   expectedAnnualGeneration: numeric('expected_annual_generation', { precision: 14, scale: 3 }),
 
   // Step 2 — Generation type
-  genGenerationType: varchar('gen_generation_type', { length: 50 }),
+  genGenerationType:  varchar('gen_generation_type', { length: 50 }),
   // 'solar' | 'wind' | 'hydro' | 'other'
-  genDocUrl:         varchar('gen_doc_url', { length: 500 }),
-  genDocType:        varchar('gen_doc_type', { length: 255 }),
-  genSecondarySrc:   varchar('gen_secondary_src', { length: 100 }),
-  genSecondaryDesc:  varchar('gen_secondary_desc', { length: 500 }),
-  genTertiarySrc:    varchar('gen_tertiary_src', { length: 100 }),
-  genTertiaryDesc:   varchar('gen_tertiary_desc', { length: 500 }),
+  genDocUrl:          varchar('gen_doc_url', { length: 500 }),
+  genDocType:         varchar('gen_doc_type', { length: 255 }),
+  genSecondarySrc:    varchar('gen_secondary_src', { length: 100 }),
+  genSecondaryDesc:   varchar('gen_secondary_desc', { length: 500 }),
+  genTertiarySrc:     varchar('gen_tertiary_src', { length: 100 }),
+  genTertiaryDesc:    varchar('gen_tertiary_desc', { length: 500 }),
+  genLlmDocTypeMatch: boolean('gen_llm_doc_type_match'),
+  genLlmContentMatch: boolean('gen_llm_content_match'),
+  genLlmReason:       text('gen_llm_reason'),
 
   // Step 3 — Capacity
-  capCapacity: numeric('cap_capacity', { precision: 14, scale: 3 }),
-  capDocUrl:   varchar('cap_doc_url', { length: 500 }),
-  capDocType:  varchar('cap_doc_type', { length: 255 }),
+  capCapacity:        numeric('cap_capacity', { precision: 14, scale: 3 }),
+  capDocUrl:          varchar('cap_doc_url', { length: 500 }),
+  capDocType:         varchar('cap_doc_type', { length: 255 }),
+  capLlmDocTypeMatch: boolean('cap_llm_doc_type_match'),
+  capLlmContentMatch: boolean('cap_llm_content_match'),
+  capLlmReason:       text('cap_llm_reason'),
 
   // Step 4 — Location
   locPhysicalAddress: varchar('loc_physical_address', { length: 500 }),
@@ -119,17 +125,27 @@ export const onboardingSubmissions = pgTable('onboarding_submissions', {
   locLon:             doublePrecision('loc_lon'),
   locDocUrl:          varchar('loc_doc_url', { length: 500 }),
   locDocType:         varchar('loc_doc_type', { length: 255 }),
+  locLlmDocTypeMatch: boolean('loc_llm_doc_type_match'),
+  locLlmContentMatch: boolean('loc_llm_content_match'),
+  locLlmReason:       text('loc_llm_reason'),
 
   // Step 5 — Date of first operation
   dateDateOfFirstOperation: varchar('date_date_of_first_operation', { length: 10 }),
   dateDocUrl:               varchar('date_doc_url', { length: 500 }),
   dateDocType:              varchar('date_doc_type', { length: 255 }),
+  dateLlmDocTypeMatch:      boolean('date_llm_doc_type_match'),
+  dateLlmContentMatch:      boolean('date_llm_content_match'),
+  dateLlmReason:            text('date_llm_reason'),
 
   // Step 6 — Generation equipment photos
-  photosGen:   jsonb('photos_gen').$type<Array<{ url: string; caption: string }>>(),
+  photosGen:          jsonb('photos_gen').$type<Array<{ url: string; caption: string }>>(),
+  photosGenLlmMatch:  boolean('photos_gen_llm_match'),
+  photosGenLlmReason: text('photos_gen_llm_reason'),
 
   // Step 7 — Metering photos
-  photosMeter: jsonb('photos_meter').$type<Array<{ url: string; caption: string }>>(),
+  photosMeter:          jsonb('photos_meter').$type<Array<{ url: string; caption: string }>>(),
+  photosMeterLlmMatch:  boolean('photos_meter_llm_match'),
+  photosMeterLlmReason: text('photos_meter_llm_reason'),
 
   // Review
   reviewNotes: text('review_notes'),

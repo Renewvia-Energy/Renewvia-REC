@@ -23,6 +23,7 @@
     "@aws-sdk/client-s3": "^3.758.0",
     "@aws-sdk/s3-request-presigner": "^3.758.0",
     "@axiomhq/pino": "^1.6.0",
+    "@google/genai": "^1.50.1",
     "@neondatabase/serverless": "^0.10.4",
     "@nuxtjs/tailwindcss": "^6.14.0",
     "@pinia/nuxt": "^0.9.0",

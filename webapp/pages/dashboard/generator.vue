@@ -34,7 +34,14 @@
               <td colspan="5" class="text-center text-text-muted py-8">No submissions yet</td>
             </tr>
             <tr v-for="sub in submissions" :key="sub.id">
-              <td class="font-mono">{{ sub.projectName }}</td>
+              <td class="font-mono">
+                <NuxtLink
+                  v-if="sub.status === 'draft'"
+                  :to="`/onboarding?id=${sub.id}`"
+                  class="text-brand hover:underline"
+                >{{ sub.projectName || '(unnamed)' }}</NuxtLink>
+                <span v-else>{{ sub.projectName || '(unnamed)' }}</span>
+              </td>
               <td><span :class="`badge badge-${sub.status}`">{{ sub.status }}</span></td>
               <td>{{ formatDate(sub.createdAt) }}</td>
               <td>{{ sub.reviewedAt ? formatDate(sub.reviewedAt) : '—' }}</td>
