@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-auth-utils',
     '@nuxtjs/tailwindcss',
+    '@vercel/analytics'
   ],
 
   css: ['~/assets/css/main.css'],
