@@ -132,7 +132,7 @@
         <button
           class="px-2 py-1 text-xs text-danger hover:underline mt-1 rounded"
           :aria-label="`Remove ${goal.description || scopeLabel(goal.scope)} goal`"
-          @click="deleteGoal(goal.id)"
+          @click="deleteGoal(goal.uuid)"
         >
           Remove
         </button>
@@ -181,7 +181,7 @@ async function addGoal() {
   }
 }
 
-async function deleteGoal(id: number) {
+async function deleteGoal(id: string) {
   await $fetch(`/api/goals/${id}`, { method: 'DELETE' })
   await refresh()
 }

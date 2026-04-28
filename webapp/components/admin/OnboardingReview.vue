@@ -20,10 +20,10 @@
       No submissions with status: {{ activeFilter }}
     </div>
 
-    <div v-for="sub in filtered" :key="sub.id" class="card">
+    <div v-for="sub in filtered" :key="sub.uuid" class="card">
       <div class="card-header">
         <div>
-          <span class="font-mono text-sm text-text-secondary">#{{ sub.id }}</span>
+          <span class="font-mono text-sm text-text-secondary" :title="sub.uuid">#{{ sub.uuid.slice(0, 8) }}</span>
           <span class="ml-3 font-medium text-text-primary">{{ sub.projectName ?? '(unnamed project)' }}</span>
           <span :class="`badge badge-${sub.status} ml-3`">{{ sub.status }}</span>
         </div>
@@ -64,6 +64,7 @@
             <a v-if="sub.genDocUrl" :href="viewUrl(sub.genDocUrl)" target="_blank" class="text-brand text-xs hover:underline">
               {{ sub.genDocType ?? 'View document' }} ↗
             </a>
+            <AdminLlmStatus :doc-type-match="sub.genLlmDocTypeMatch" :content-match="sub.genLlmContentMatch" :reason="sub.genLlmReason" />
           </div>
 
           <!-- Capacity -->
@@ -73,6 +74,7 @@
             <a v-if="sub.capDocUrl" :href="viewUrl(sub.capDocUrl)" target="_blank" class="text-brand text-xs hover:underline">
               {{ sub.capDocType ?? 'View document' }} ↗
             </a>
+            <AdminLlmStatus :doc-type-match="sub.capLlmDocTypeMatch" :content-match="sub.capLlmContentMatch" :reason="sub.capLlmReason" />
           </div>
 
           <!-- Location -->
@@ -83,6 +85,7 @@
             <a v-if="sub.locDocUrl" :href="viewUrl(sub.locDocUrl)" target="_blank" class="text-brand text-xs hover:underline">
               {{ sub.locDocType ?? 'View document' }} ↗
             </a>
+            <AdminLlmStatus :doc-type-match="sub.locLlmDocTypeMatch" :content-match="sub.locLlmContentMatch" :reason="sub.locLlmReason" />
           </div>
 
           <!-- First operation -->
@@ -92,6 +95,7 @@
             <a v-if="sub.dateDocUrl" :href="viewUrl(sub.dateDocUrl)" target="_blank" class="text-brand text-xs hover:underline">
               {{ sub.dateDocType ?? 'View document' }} ↗
             </a>
+            <AdminLlmStatus :doc-type-match="sub.dateLlmDocTypeMatch" :content-match="sub.dateLlmContentMatch" :reason="sub.dateLlmReason" />
           </div>
         </div>
 
@@ -103,6 +107,7 @@
               <img :src="viewUrl(p.url)" class="h-16 w-16 object-cover rounded border border-border" :alt="p.caption" />
             </a>
           </div>
+          <AdminLlmStatus :doc-type-match="null" :content-match="sub.photosGenLlmMatch" :reason="sub.photosGenLlmReason" />
         </div>
 
         <!-- Metering photos -->
@@ -113,15 +118,16 @@
               <img :src="viewUrl(p.url)" class="h-16 w-16 object-cover rounded border border-border" :alt="p.caption" />
             </a>
           </div>
+          <AdminLlmStatus :doc-type-match="null" :content-match="sub.photosMeterLlmMatch" :reason="sub.photosMeterLlmReason" />
         </div>
 
         <!-- Review action (pending only) -->
         <template v-if="sub.status === 'pending'">
           <div>
-            <label :for="`review-notes-${sub.id}`" class="block text-xs font-medium text-text-secondary mb-1">Review notes</label>
+            <label :for="`review-notes-${sub.uuid}`" class="block text-xs font-medium text-text-secondary mb-1">Review notes</label>
             <textarea
-              :id="`review-notes-${sub.id}`"
-              v-model="reviewNotes[sub.id]"
+              :id="`review-notes-${sub.uuid}`"
+              v-model="reviewNotes[sub.uuid]"
               rows="2"
               class="rex-input w-full"
               placeholder="Add notes for the generator…"
@@ -130,13 +136,13 @@
           <div class="flex gap-2">
             <button
               class="rounded bg-success px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
-              @click="review(sub.id, 'approved')"
+              @click="review(sub.uuid, 'approved')"
             >
               Approve
             </button>
             <button
               class="rounded bg-danger px-4 py-2 text-sm font-semibold text-white hover:opacity-90"
-              @click="review(sub.id, 'rejected')"
+              @click="review(sub.uuid, 'rejected')"
             >
               Reject
             </button>
@@ -150,7 +156,7 @@
           <div class="border-t border-border pt-3">
             <button
               class="rounded border border-border px-3 py-1.5 text-sm font-medium text-text-secondary hover:text-text-primary transition-colors"
-              @click="reopen(sub.id)"
+              @click="reopen(sub.uuid)"
             >
               Re-open for revision
             </button>
@@ -170,8 +176,8 @@ import type { OnboardingSubmission } from '~/server/db/schema'
 const props = defineProps<{ submissions: OnboardingSubmission[] }>()
 const emit  = defineEmits<{ refresh: [] }>()
 
-const activeFilter = ref<string>('pending')
-const reviewNotes  = reactive<Record<number, string>>({})
+const activeFilter = ref('pending')
+const reviewNotes  = reactive<Record<string, string>>({})
 
 const filters = [
   { label: 'Pending',  value: 'pending' },
@@ -192,7 +198,7 @@ function countByStatus(status: string): number {
     : props.submissions.length
 }
 
-async function review(id: number, status: 'approved' | 'rejected') {
+async function review(id: string, status: 'approved' | 'rejected') {
   await $fetch(`/api/onboarding/${id}`, {
     method: 'PATCH',
     body: { status, reviewNotes: reviewNotes[id] ?? '' },
@@ -200,7 +206,7 @@ async function review(id: number, status: 'approved' | 'rejected') {
   emit('refresh')
 }
 
-async function reopen(id: number) {
+async function reopen(id: string) {
   await $fetch(`/api/onboarding/${id}`, { method: 'PATCH', body: { status: 'draft' } })
   emit('refresh')
 }

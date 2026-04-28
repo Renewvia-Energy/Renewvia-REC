@@ -1,6 +1,7 @@
 import {
   pgTable,
   serial,
+  uuid,
   varchar,
   text,
   boolean,
@@ -39,6 +40,7 @@ export const users = pgTable('users', {
 
 export const orders = pgTable('orders', {
   id:              serial('id').primaryKey(),
+  uuid:            uuid('uuid').defaultRandom().notNull().unique(),
   userId:          integer('user_id').notNull().references(() => users.id),
   companyWallet:   varchar('company_wallet', { length: 42 }).notNull(),
 
@@ -70,6 +72,7 @@ export const orders = pgTable('orders', {
 
 export const goals = pgTable('goals', {
   id:            serial('id').primaryKey(),
+  uuid:          uuid('uuid').defaultRandom().notNull().unique(),
   companyWallet: varchar('company_wallet', { length: 42 }).notNull(),
   scope:         integer('scope').notNull(), // 1, 2, or 3
 
@@ -87,6 +90,7 @@ export const goals = pgTable('goals', {
 
 export const onboardingSubmissions = pgTable('onboarding_submissions', {
   id:     serial('id').primaryKey(),
+  uuid:   uuid('uuid').defaultRandom().notNull().unique(),
   userId: integer('user_id').notNull().references(() => users.id),
 
   status: varchar('status', { length: 20 }).default('draft').notNull(),

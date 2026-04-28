@@ -64,13 +64,13 @@
                   <template v-if="order.status === 'pending'">
                     <button
                       class="text-xs text-success hover:underline mr-2"
-                      @click="openAction(order.id, 'executed')"
+                      @click="openAction(order.uuid, 'executed')"
                     >
                       Execute
                     </button>
                     <button
                       class="text-xs text-danger hover:underline"
-                      @click="openAction(order.id, 'cancelled')"
+                      @click="openAction(order.uuid, 'cancelled')"
                     >
                       Cancel
                     </button>
@@ -79,7 +79,7 @@
               </tr>
 
               <!-- Inline processingNotes form when action is triggered -->
-              <tr v-if="pendingAction?.orderId === order.id">
+              <tr v-if="pendingAction?.orderId === order.uuid">
                 <td colspan="12" class="bg-surface-raised px-4 py-3">
                   <div class="flex items-start gap-3">
                     <div class="flex-1">
@@ -147,7 +147,7 @@ const emit  = defineEmits<{ refresh: [] }>()
 
 const activeFilter  = ref('pending')
 const processingNotes = ref('')
-const pendingAction = ref<{ orderId: number; status: 'executed' | 'cancelled' } | null>(null)
+const pendingAction = ref<{ orderId: string; status: 'executed' | 'cancelled' } | null>(null)
 
 const filters = [
   { label: 'Pending',   value: 'pending' },
@@ -166,7 +166,7 @@ function countByStatus(status: string): number {
   return status ? props.orders.filter(o => o.status === status).length : props.orders.length
 }
 
-function openAction(orderId: number, status: 'executed' | 'cancelled') {
+function openAction(orderId: string, status: 'executed' | 'cancelled') {
   processingNotes.value = ''
   pendingAction.value   = { orderId, status }
 }

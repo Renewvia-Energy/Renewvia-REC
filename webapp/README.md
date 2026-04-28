@@ -42,6 +42,9 @@ cp .env.example .env
 | `R2_SECRET_ACCESS_KEY` | R2 API token secret |
 | `R2_BUCKET_NAME` | R2 bucket name |
 | `R2_PUBLIC_URL` | Public base URL for the bucket (e.g. `https://pub-xxx.r2.dev`) |
+| `R2_UPLOAD_URL` | Custom domain connected to R2 bucket for browser presigned PUT uploads (required for CORS) |
+| `GEMINI_API_KEY` | Google AI Studio API key for document verification |
+| `GEMINI_MODEL` | Gemini model ID (e.g. `gemini-2.5-flash-lite`) |
 | `NUXT_PUBLIC_COMPANIES_URL` | URL to `companies.json` |
 | `NUXT_PUBLIC_CONTRACTS_URL` | URL to `contracts.json` |
 | `RETURN_WALLET` | Lowercase address of the REX return/settlement wallet |
@@ -108,6 +111,25 @@ Files are never routed through Vercel — the client receives a presigned PUT UR
 
 ---
 
+## Gemini document verification
+
+Onboarding submissions are analyzed by Google Gemini to check whether each uploaded document matches the claimed generation type, capacity, location, and commissioning date. Results appear as AI verification badges in the admin review UI and inline on each step of the onboarding form.
+
+| Variable | Description |
+|---|---|
+| `GEMINI_API_KEY` | Google AI Studio API key (requires `generativelanguage.googleapis.com` access) |
+| `GEMINI_MODEL` | Model ID to use (e.g. `gemini-2.5-flash-lite`) |
+
+### Local development
+
+Leave both variables unset. Verification calls will error and the form shows "Verification unavailable" — the submission flow is not blocked.
+
+### Production
+
+Add both variables in the Vercel dashboard (**Settings → Environment Variables**). The Gemini API is called server-side only; the key is never exposed to the client.
+
+---
+
 ## Axiom logging
 
 Server-side request and error logs are sent to [Axiom](https://axiom.co) via `@axiomhq/pino`. This is optional — if the env vars are absent, logs fall back to stdout only.
@@ -164,14 +186,14 @@ Vercel is detected automatically by Nuxt 3. No `nuxt.config.ts` changes are need
 After changing `server/db/schema.ts`:
 
 ```bash
-npm run db:generate   # Generate a migration file
-npm run db:migrate    # Apply pending migrations (CI/CD safe)
+npm run db:push       # Diffs schema against live DB and applies changes (prompts before destructive operations)
 ```
 
-For rapid prototyping in development you can skip migration files and use:
+For production or CI/CD where you want an auditable migration trail:
 
 ```bash
-npm run db:push       # Pushes schema directly (destructive changes prompt for confirmation)
+npm run db:generate   # Generate a migration file from schema diff
+npm run db:migrate    # Apply pending migrations
 ```
 
 ---
@@ -201,7 +223,7 @@ NUXT_PUBLIC_CONTRACTS_URL=http://localhost:3000/contracts.json
 webapp/
 ├── assets/css/main.css          # Global styles, OKLCH design tokens
 ├── components/
-│   ├── admin/                   # Admin UI (OnboardingReview, OrdersQueue, CreateUser)
+│   ├── admin/                   # Admin UI (OnboardingReview, OrdersQueue, CreateUser, LlmStatus)
 │   ├── buyer/                   # Buyer UI (GoalsPanel, OrderPanel)
 │   ├── dashboard/               # Shared dashboard (HeaderBar, AssetsTable, ActivityTable…)
 │   ├── generator/               # Generator UI (GenerationChart)
@@ -212,7 +234,9 @@ webapp/
 │   └── auth.vue                 # Centred login layout
 ├── middleware/
 │   ├── auth.global.ts           # Redirect unauthenticated → /login
-│   └── admin.ts                 # Named middleware: redirect non-admin → /dashboard
+│   ├── admin.ts                 # Named: redirect non-admin → /dashboard
+│   ├── buyer.ts                 # Named: redirect non-buyer/non-admin → /dashboard
+│   └── generator.ts             # Named: redirect non-generator/non-admin → /dashboard
 ├── pages/
 │   ├── login.vue
 │   ├── dashboard/
@@ -220,7 +244,7 @@ webapp/
 │   │   ├── generator.vue        # Generation chart + onboarding history
 │   │   ├── buyer.vue            # Goals + order placement
 │   │   └── admin/               # Admin sub-pages
-│   └── onboarding/index.vue     # 6-step generator onboarding form
+│   └── onboarding/index.vue     # 8-step generator onboarding form
 ├── scripts/
 │   └── seed-admin.ts            # First-admin-user seeder (run locally)
 ├── server/
@@ -230,7 +254,8 @@ webapp/
 │   │   └── index.ts             # DB client singleton
 │   └── utils/
 │       ├── auth.ts              # requireAuth / requireAdmin / requireGenerator / requireBuyer
-│       └── r2.ts                # Presigned PUT helper
+│       ├── gemini.ts            # Gemini document analysis client
+│       └── r2.ts                # Presigned PUT/GET helper
 ├── stores/
 │   ├── auth.ts                  # Session state + login/logout
 │   ├── contracts.ts             # Public blockchain data + derived computeds

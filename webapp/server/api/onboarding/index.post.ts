@@ -34,23 +34,8 @@ export default defineEventHandler(async (event) => {
       dateDocUrl:               body.dateDocUrl,
       dateDocType:              body.dateDocType,
       photosGen:                body.photosGen,
-      photosGenLlmMatch:        body.photosGenLlmMatch,
-      photosGenLlmReason:       body.photosGenLlmReason,
       photosMeter:              body.photosMeter,
-      photosMeterLlmMatch:      body.photosMeterLlmMatch,
-      photosMeterLlmReason:     body.photosMeterLlmReason,
-      genLlmDocTypeMatch:       body.genLlmDocTypeMatch,
-      genLlmContentMatch:       body.genLlmContentMatch,
-      genLlmReason:             body.genLlmReason,
-      capLlmDocTypeMatch:       body.capLlmDocTypeMatch,
-      capLlmContentMatch:       body.capLlmContentMatch,
-      capLlmReason:             body.capLlmReason,
-      locLlmDocTypeMatch:       body.locLlmDocTypeMatch,
-      locLlmContentMatch:       body.locLlmContentMatch,
-      locLlmReason:             body.locLlmReason,
-      dateLlmDocTypeMatch:      body.dateLlmDocTypeMatch,
-      dateLlmContentMatch:      body.dateLlmContentMatch,
-      dateLlmReason:            body.dateLlmReason,
+      // LLM result fields are written only by the server-side analyze endpoint; never accepted from the client
     })
     .returning()
 

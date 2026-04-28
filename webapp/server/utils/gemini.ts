@@ -30,6 +30,10 @@ const SYSTEM_INSTRUCTION =
  * @param docTypePrompt  Question about document type, or null for photo sections.
  * @param contentPrompt  Question about the document's content.
  */
+// Status codes worth retrying — all transient capacity/overload responses.
+const RETRYABLE_STATUSES = new Set([429, 500, 503])
+const RETRY_DELAYS_MS    = [1_000, 2_000, 4_000]
+
 export async function analyzeDocument(
   docBytes: ArrayBuffer,
   mimeType: string,
@@ -44,7 +48,7 @@ export async function analyzeDocument(
     ? `Question 1: ${docTypePrompt} Answer as documentTypeMatches.\nQuestion 2: ${contentPrompt} Answer as contentMatches.`
     : `Question: ${contentPrompt} Answer as contentMatches. Set documentTypeMatches to null.`
 
-  const response = await ai.models.generateContent({
+  const request = {
     model,
     contents: [
       {
@@ -60,11 +64,26 @@ export async function analyzeDocument(
       responseMimeType: 'application/json',
       responseJsonSchema: RESPONSE_SCHEMA,
     },
-  })
-
-  try {
-    return JSON.parse(response.text ?? '{}') as LlmResult
-  } catch {
-    return { documentTypeMatches: null, contentMatches: false, reasonForFalse: 'Could not analyze document' }
   }
+
+  for (let attempt = 0; attempt <= RETRY_DELAYS_MS.length; attempt++) {
+    try {
+      const response = await ai.models.generateContent(request)
+      try {
+        return JSON.parse(response.text ?? '{}') as LlmResult
+      } catch {
+        return { documentTypeMatches: null, contentMatches: false, reasonForFalse: 'Could not analyze document' }
+      }
+    } catch (err: unknown) {
+      const status = (err as { status?: number })?.status
+      if (status && RETRYABLE_STATUSES.has(status) && attempt < RETRY_DELAYS_MS.length) {
+        await new Promise(r => setTimeout(r, RETRY_DELAYS_MS[attempt]))
+        continue
+      }
+      throw err
+    }
+  }
+
+  // Unreachable, but satisfies TypeScript.
+  throw new Error('analyzeDocument: exhausted retries')
 }

@@ -32,32 +32,28 @@
           <template v-for="(step, idx) in steps" :key="idx">
             <li class="flex items-center">
               <button
-                class="flex items-center gap-2 px-3 py-2 text-sm transition-colors motion-reduce:transition-none"
-                :class="currentStep === idx
-                  ? 'text-brand font-semibold'
-                  : idx < currentStep
-                    ? 'text-text-secondary'
-                    : 'text-text-muted cursor-default'"
+                class="flex items-center justify-center p-1 transition-colors motion-reduce:transition-none"
                 :disabled="idx > currentStep"
                 :aria-current="currentStep === idx ? 'step' : undefined"
                 :aria-label="`Step ${idx + 1} of ${steps.length}: ${step.label}${idx < currentStep ? ' (completed)' : idx === currentStep ? ' (current)' : ''}`"
                 @click="idx <= currentStep && (currentStep = idx)"
               >
                 <span
-                  class="w-6 h-6 rounded-full text-2xs font-bold flex items-center justify-center border"
+                  class="w-7 h-7 rounded-full text-xs font-bold flex items-center justify-center border-2 transition-colors"
                   :class="idx < currentStep
-                    ? 'bg-brand border-brand text-white'
+                    ? stepComplete[idx]
+                      ? 'bg-brand border-brand text-white'
+                      : 'bg-amber-400 border-amber-400 text-white'
                     : idx === currentStep
-                      ? 'border-brand text-brand'
+                      ? 'border-brand text-brand bg-brand/5'
                       : 'border-border text-text-muted'"
                   aria-hidden="true"
                 >
-                  {{ idx < currentStep ? '✓' : idx + 1 }}
+                  {{ idx < currentStep ? (stepComplete[idx] ? '✓' : '!') : idx + 1 }}
                 </span>
-                {{ step.label }}
               </button>
             </li>
-            <li v-if="idx < steps.length - 1" class="flex-1 h-px bg-border min-w-4" aria-hidden="true" />
+            <li v-if="idx < steps.length - 1" class="flex-1 h-px bg-border min-w-2" aria-hidden="true" />
           </template>
         </ol>
       </nav>
@@ -72,6 +68,7 @@
 
           <!-- Step 1: Project info -->
           <template v-if="currentStep === 0">
+            <p class="text-sm text-text-secondary">Tell us about your project. This basic information helps us classify your submission and estimate your R-REC eligibility.</p>
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-text-secondary mb-1">Project name</label>
@@ -86,6 +83,9 @@
                   <option value="Off-Grid Mini-Grid/Mesh-Grid">Off-Grid Mini-Grid/Mesh-Grid</option>
                   <option value="Home System">Home System</option>
                 </select>
+                <p v-if="form.projectType === 'Home System'" class="mt-2 text-sm text-text-muted">
+                  You can register an entire country-wide fleet of home systems as a single project. You don't need to submit a separate form for each individual unit.
+                </p>
               </div>
               <div>
                 <label class="block text-sm font-medium text-text-secondary mb-1">Expected annual generation (MWh)</label>
@@ -96,6 +96,7 @@
 
           <!-- Step 2: Generation type -->
           <template v-if="currentStep === 1">
+            <p class="text-sm text-text-secondary">Upload a document that confirms your project's energy source: solar, wind, hydro, etc. Any commissioning report, off-taker agreement, equipment purchase contract, operating license, or environmental permit is acceptable.<span v-if="form.projectType === 'Home System'"> For a home system fleet, a sample equipment purchase contract or a representative supplier agreement covering your units is sufficient.</span></p>
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-text-secondary mb-1">Primary energy source</label>
@@ -164,6 +165,7 @@
 
           <!-- Step 3: Capacity -->
           <template v-if="currentStep === 2">
+            <p class="text-sm text-text-secondary">Upload a document that confirms your system's installed generation capacity in kilowatts-peak (kWp). Equipment purchase contracts, technical inspection certificates, or commissioning reports work well here. You may reuse a document uploaded in a previous step if it also specifies your system's capacity.<span v-if="form.projectType === 'Home System'"> For a home system fleet, enter the combined total capacity across all units and upload documentation that reflects the full fleet size, such as a bulk purchase order.</span></p>
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-text-secondary mb-1">Installed capacity (kWp)</label>
@@ -181,6 +183,7 @@
 
           <!-- Step 4: Location -->
           <template v-if="currentStep === 3">
+            <p class="text-sm text-text-secondary">Provide GPS coordinates and a document that confirms your project's physical location. Land lease agreements, grid connection agreements, or any document referencing the site address are all acceptable. Coordinates must include at least 2 decimal places. The document does not need to include the GPS coordinates; a physical address will do just fine.<span v-if="form.projectType === 'Home System'"> For a home system fleet, provide coordinates for your primary operating location or country headquarters, and upload any business registration or deployment agreement that confirms your area of operation.</span></p>
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-text-secondary mb-1">
@@ -229,6 +232,7 @@
 
           <!-- Step 5: Date of first operation -->
           <template v-if="currentStep === 4">
+            <p class="text-sm text-text-secondary">Provide the date your project first generated renewable energy. A project commissioning report is ideal, but any document that establishes when operations began, including an equipment installation contract or grid connection agreement, is acceptable.<span v-if="form.projectType === 'Home System'"> For a home system fleet, use the date the first units in the fleet were deployed and generating energy.</span></p>
             <div class="space-y-4">
               <div>
                 <label class="block text-sm font-medium text-text-secondary mb-1">Date of first operation</label>
@@ -251,10 +255,7 @@
           <!-- Step 6: Generation equipment photos -->
           <template v-if="currentStep === 5">
             <div class="space-y-4">
-              <p class="text-sm text-text-secondary">
-                Upload clear photographs of installed generation equipment (panels, turbines, inverters).
-                At least one photo required.
-              </p>
+              <p class="text-sm text-text-secondary">The R-REC Standard requires clear photographs of all installed generation equipment. Upload photos of your solar panels, wind turbines, inverters, or other primary generation hardware. At least one photo is required.<span v-if="form.projectType === 'Home System'"> For a home system fleet, a representative photo showing typical installed units is sufficient. You do not need to photograph every home.</span></p>
               <OnboardingPhotoUpload
                 v-model="form.photosGen"
                 folder="onboarding/equipment-photos"
@@ -267,23 +268,20 @@
           <!-- Step 7: Metering photos -->
           <template v-if="currentStep === 6">
             <div class="space-y-4">
-              <p class="text-sm text-text-secondary">
-                Upload clear photographs of all metering and monitoring equipment.
-              </p>
+              <p class="text-sm text-text-secondary">Upload clear photographs of your metering and monitoring equipment as it is installed. In the absence of a traditional smart meter, a photo of an inverter or other device with built-in metrology equipment is acceptable. The Standard requires this to confirm the metering system used to record generation data. Include the meter display and any data loggers if visible.<span v-if="form.projectType === 'Home System'"> For a home system fleet, a representative photo of the meters used across your units is sufficient.</span></p>
               <OnboardingPhotoUpload
                 v-model="form.photosMeter"
                 folder="onboarding/metering-photos"
                 label="metering equipment"
               />
+              <OnboardingLlmStatus :status="llmStatus.photosMeter" :result="llmResults.photosMeter" :retryable="llmDirty.photosMeter" @retry="analyzeSection('photosMeter')" />
             </div>
           </template>
 
           <!-- Step 8: Review & Submit -->
           <template v-if="currentStep === 7">
             <div class="space-y-4">
-              <p class="text-sm text-text-secondary">
-                Review the automated document verification results below. If everything looks good, submit your project for review.
-              </p>
+              <p class="text-sm text-text-secondary">We use AI to check each uploaded document against your submitted details. Green checks mean the document appears to match. Warnings mean a reviewer may ask for clarification. AI is not perfect, and it may have made a mistake. You can still submit with warnings; a REX staff member makes the final determination.</p>
 
               <ul class="space-y-2">
                 <li
@@ -295,7 +293,7 @@
                   <span class="mt-0.5 shrink-0 text-sm">
                     <template v-if="llmStatus[section] === 'idle'">–</template>
                     <template v-else-if="llmStatus[section] === 'running'">⋯</template>
-                    <template v-else-if="llmStatus[section] === 'error'">–</template>
+                    <template v-else-if="llmStatus[section] === 'error' || llmStatus[section] === 'unavailable'">–</template>
                     <template v-else-if="llmStatus[section] === 'done' && llmResults[section]?.documentTypeMatches !== false && llmResults[section]?.contentMatches !== false">✓</template>
                     <template v-else>⚠</template>
                   </span>
@@ -304,7 +302,7 @@
                     <p
                       class="text-sm font-medium"
                       :class="{
-                        'text-text-primary': llmStatus[section] === 'idle' || llmStatus[section] === 'error',
+                        'text-text-primary': llmStatus[section] === 'idle' || llmStatus[section] === 'error' || llmStatus[section] === 'unavailable',
                         'text-text-muted':   llmStatus[section] === 'running',
                         'text-success':      llmStatus[section] === 'done' && llmResults[section]?.documentTypeMatches !== false && llmResults[section]?.contentMatches !== false,
                         'text-amber-700':    llmStatus[section] === 'done' && (llmResults[section]?.documentTypeMatches === false || llmResults[section]?.contentMatches === false),
@@ -312,6 +310,10 @@
                     >{{ SECTION_LABELS[section] }}</p>
                     <p v-if="llmStatus[section] === 'running'" class="text-xs text-text-muted">Verifying…</p>
                     <p v-else-if="llmStatus[section] === 'idle'" class="text-xs text-text-muted">Not uploaded</p>
+                    <template v-else-if="llmStatus[section] === 'unavailable'">
+                      <p class="text-xs text-text-muted">Verification service temporarily unavailable</p>
+                      <button type="button" class="text-xs text-brand hover:underline" @click="analyzeSection(section)">Retry</button>
+                    </template>
                     <template v-else-if="llmStatus[section] === 'error'">
                       <p class="text-xs text-text-muted">Verification unavailable</p>
                       <button type="button" class="text-xs text-brand hover:underline" @click="analyzeSection(section)">Retry</button>
@@ -392,7 +394,7 @@ useHead({ title: 'Project Onboarding' })
 // ── Draft resume ──────────────────────────────────────────────────────────────
 
 interface SavedSubmission {
-  id: number; status: string
+  id: number; uuid: string; status: string
   projectName: string | null; projectType: string | null
   expectedAnnualGeneration: string | null
   genGenerationType: string | null
@@ -419,21 +421,22 @@ const route = useRoute()
 
 onMounted(async () => {
   const rawId = route.query.id
-  if (!rawId) return
-  const id = parseInt(rawId as string)
-  if (isNaN(id)) return
+  if (!rawId || typeof rawId !== 'string') return
 
   let sub: SavedSubmission
   try {
-    const res = await $fetch<{ submission: SavedSubmission }>(`/api/onboarding/${id}`)
+    const res = await $fetch<{ submission: SavedSubmission }>(`/api/onboarding/${rawId}`)
     sub = res.submission
   } catch {
     return
   }
 
-  if (sub.status !== 'draft') return
+  if (sub.status !== 'draft') {
+    submitError.value = `This submission is currently ${sub.status} and cannot be edited.`
+    return
+  }
 
-  draftId.value = sub.id
+  draftId.value = sub.uuid
 
   // Form fields
   form.projectName              = sub.projectName ?? ''
@@ -506,10 +509,22 @@ const steps = [
   { label: 'Review & Submit' },
 ]
 
+// Returns true if the step's required fields are filled
+const stepComplete = computed(() => [
+  !!(form.projectName?.trim() && form.projectType && form.expectedAnnualGeneration),
+  !!(form.genGenerationType && form.genDocUrl && form.genDocType),
+  !!(form.capCapacity && form.capDocUrl && form.capDocType),
+  !!(form.locLatStr && form.locLonStr && form.locDocUrl && form.locDocType),
+  !!(form.dateDateOfFirstOperation && form.dateDocUrl && form.dateDocType),
+  form.photosGen.length > 0,
+  form.photosMeter.length > 0,
+  true, // review step
+])
+
 const currentStep = ref(0)
 const saving      = ref(false)
 const submitted   = ref(false)
-const draftId     = ref<number | null>(null)
+const draftId     = ref<string | null>(null)
 
 // UI toggles for secondary/tertiary sources
 const showSecondary = ref(false)
@@ -529,7 +544,7 @@ interface LlmResult {
 }
 
 type Section = 'gen' | 'cap' | 'loc' | 'date' | 'photosGen' | 'photosMeter'
-type LlmStatus = 'idle' | 'running' | 'done' | 'error'
+type LlmStatus = 'idle' | 'running' | 'done' | 'error' | 'unavailable'
 
 const llmStatus = reactive<Record<Section, LlmStatus>>({
   gen: 'idle', cap: 'idle', loc: 'idle', date: 'idle', photosGen: 'idle', photosMeter: 'idle',
@@ -611,7 +626,7 @@ function validateLatLon() {
 
 async function analyzeSection(section: Section) {
   let urls: string[] = []
-  let body: Record<string, unknown> = { section }
+  let body: Record<string, unknown> = { section, submissionId: draftId.value ?? undefined }
 
   switch (section) {
     case 'gen':
@@ -657,8 +672,10 @@ async function analyzeSection(section: Section) {
     const result = await $fetch<LlmResult>('/api/onboarding/analyze', { method: 'POST', body })
     llmResults[section] = result
     llmStatus[section] = 'done'
-  } catch {
-    llmStatus[section] = 'error'
+  } catch (err: unknown) {
+    const statusCode = (err as { statusCode?: number })?.statusCode
+      ?? (err as { status?: number })?.status
+    llmStatus[section] = (statusCode === 503 || statusCode === 429) ? 'unavailable' : 'error'
   }
 }
 
@@ -753,7 +770,6 @@ function previousDocs(forStep: number): Array<{ label: string; docUrl: string; d
 
 /** Build the API payload from form state. */
 function buildPayload(status: 'draft' | 'pending') {
-  validateLatLon()
   return {
     status,
     projectName:              form.projectName || undefined,
@@ -779,23 +795,7 @@ function buildPayload(status: 'draft' | 'pending') {
     dateDocType:              form.dateDocType || undefined,
     photosGen:                form.photosGen.length  ? form.photosGen  : undefined,
     photosMeter:              form.photosMeter.length ? form.photosMeter : undefined,
-    // LLM verification results
-    genLlmDocTypeMatch:       llmResults.gen?.documentTypeMatches  ?? undefined,
-    genLlmContentMatch:       llmResults.gen?.contentMatches       ?? undefined,
-    genLlmReason:             llmResults.gen?.reasonForFalse       ?? undefined,
-    capLlmDocTypeMatch:       llmResults.cap?.documentTypeMatches  ?? undefined,
-    capLlmContentMatch:       llmResults.cap?.contentMatches       ?? undefined,
-    capLlmReason:             llmResults.cap?.reasonForFalse       ?? undefined,
-    locLlmDocTypeMatch:       llmResults.loc?.documentTypeMatches  ?? undefined,
-    locLlmContentMatch:       llmResults.loc?.contentMatches       ?? undefined,
-    locLlmReason:             llmResults.loc?.reasonForFalse       ?? undefined,
-    dateLlmDocTypeMatch:      llmResults.date?.documentTypeMatches ?? undefined,
-    dateLlmContentMatch:      llmResults.date?.contentMatches      ?? undefined,
-    dateLlmReason:            llmResults.date?.reasonForFalse      ?? undefined,
-    photosGenLlmMatch:        llmResults.photosGen?.contentMatches    ?? undefined,
-    photosGenLlmReason:       llmResults.photosGen?.reasonForFalse   ?? undefined,
-    photosMeterLlmMatch:      llmResults.photosMeter?.contentMatches  ?? undefined,
-    photosMeterLlmReason:     llmResults.photosMeter?.reasonForFalse  ?? undefined,
+    // LLM results are written server-side by /api/onboarding/analyze — not included here
   }
 }
 
@@ -807,7 +807,7 @@ async function saveDraft() {
       await $fetch(`/api/onboarding/${draftId.value}`, { method: 'PATCH', body: payload })
     } else {
       const resp = await $fetch('/api/onboarding', { method: 'POST', body: payload })
-      draftId.value = (resp as { submission: { id: number } }).submission.id
+      draftId.value = (resp as { submission: { uuid: string } }).submission.uuid
     }
   } finally {
     saving.value = false
@@ -820,20 +820,20 @@ function validateSubmit(): string {
   if (!form.genGenerationType)         return 'Primary energy source is required (step 2)'
   if (!form.capCapacity)               return 'Installed capacity is required (step 3)'
   if (!form.locLatStr || !form.locLonStr) return 'Latitude and longitude are required (step 4)'
+  validateLatLon()
+  if (latError.value || lonError.value) return 'Coordinates require at least 2 decimal places (step 4)'
   if (!form.dateDateOfFirstOperation)  return 'Date of first operation is required (step 5)'
   if (form.photosGen.length === 0)     return 'At least one equipment photo is required (step 6)'
   return ''
 }
 
 async function submitForm() {
-  validateLatLon()
   submitError.value = ''
   const validationMsg = validateSubmit()
   if (validationMsg) {
     submitError.value = validationMsg
     return
   }
-  if (latError.value || lonError.value) return
   if (hasLlmWarnings.value && !llmOverrideAcknowledged.value) {
     submitError.value = 'Please review the document verification warnings above and check the acknowledgement box to proceed.'
     return

@@ -90,7 +90,7 @@ const emit = defineEmits<{
 const BASE_DOCUMENT_TYPES = [
   'Project commissioning report approved by the local government',
   'Countersigned off-taker agreement',
-  'Land lease agreements',
+  'Land lease/ownership agreements',
   'Official license to operate',
   'Equipment purchase and installation contracts',
   'Grid connection agreements',

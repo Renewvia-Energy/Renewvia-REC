@@ -4,14 +4,14 @@ import { useDb, schema } from '~/server/db'
 
 export default defineEventHandler(async (event) => {
   const user = await requireAuth(event)
-  const id = parseInt(getRouterParam(event, 'id') ?? '')
-  if (isNaN(id)) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
+  const id = getRouterParam(event, 'id') ?? ''
+  if (!id) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
 
   const db = useDb()
   const [submission] = await db
     .select()
     .from(schema.onboardingSubmissions)
-    .where(eq(schema.onboardingSubmissions.id, id))
+    .where(eq(schema.onboardingSubmissions.uuid, id))
     .limit(1)
 
   if (!submission) throw createError({ statusCode: 404, statusMessage: 'Submission not found' })

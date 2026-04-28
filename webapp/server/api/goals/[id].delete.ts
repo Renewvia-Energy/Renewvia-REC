@@ -4,8 +4,8 @@ import { useDb, schema } from '~/server/db'
 
 export default defineEventHandler(async (event) => {
   const user = await requireAuth(event)
-  const id = parseInt(getRouterParam(event, 'id') ?? '')
-  if (isNaN(id)) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
+  const id = getRouterParam(event, 'id') ?? ''
+  if (!id) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
 
   if (!user.companyWallet) throw createError({ statusCode: 400, statusMessage: 'No company wallet' })
 
@@ -13,8 +13,8 @@ export default defineEventHandler(async (event) => {
 
   // Non-admin can only delete their own company's goals
   const condition = user.isAdmin
-    ? eq(schema.goals.id, id)
-    : and(eq(schema.goals.id, id), eq(schema.goals.companyWallet, user.companyWallet))
+    ? eq(schema.goals.uuid, id)
+    : and(eq(schema.goals.uuid, id), eq(schema.goals.companyWallet, user.companyWallet))
 
   const [deleted] = await db
     .delete(schema.goals)

@@ -97,9 +97,9 @@ beforeEach(() => {
 // ID validation
 // ---------------------------------------------------------------------------
 describe('PATCH /api/orders/[id] — id validation', () => {
-  it('throws 400 for a non-numeric id', async () => {
+  it('throws 400 for a missing id', async () => {
     vi.mocked(requireAuth).mockResolvedValue(makeUser())
-    mockGetRouterParam.mockReturnValue('abc')
+    mockGetRouterParam.mockReturnValue('')
     await expect(handler(mockEvent)).rejects.toMatchObject({ statusCode: 400 })
   })
 })

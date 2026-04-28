@@ -27,17 +27,18 @@
               <th>Submitted</th>
               <th>Reviewed</th>
               <th>Notes</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr v-if="submissions.length === 0">
-              <td colspan="5" class="text-center text-text-muted py-8">No submissions yet</td>
+              <td colspan="6" class="text-center text-text-muted py-8">No submissions yet</td>
             </tr>
             <tr v-for="sub in submissions" :key="sub.id">
               <td class="font-mono">
                 <NuxtLink
                   v-if="sub.status === 'draft'"
-                  :to="`/onboarding?id=${sub.id}`"
+                  :to="`/onboarding?id=${sub.uuid}`"
                   class="text-brand hover:underline"
                 >{{ sub.projectName || '(unnamed)' }}</NuxtLink>
                 <span v-else>{{ sub.projectName || '(unnamed)' }}</span>
@@ -46,6 +47,14 @@
               <td>{{ formatDate(sub.createdAt) }}</td>
               <td>{{ sub.reviewedAt ? formatDate(sub.reviewedAt) : '—' }}</td>
               <td class="text-text-secondary max-w-xs truncate">{{ sub.reviewNotes ?? '—' }}</td>
+              <td>
+                <button
+                  v-if="sub.status === 'rejected'"
+                  class="text-xs text-brand hover:underline disabled:opacity-50"
+                  :disabled="reopening === sub.uuid"
+                  @click="reopenSubmission(sub)"
+                >{{ reopening === sub.uuid ? 'Reopening…' : 'Reopen' }}</button>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -64,4 +73,16 @@ const submissions = computed(() => data.value?.submissions ?? [])
 onMounted(() => refresh())
 
 const { formatDate } = useFormatters()
+
+const reopening = ref<string | null>(null)
+
+async function reopenSubmission(sub: { uuid: string }) {
+  reopening.value = sub.uuid
+  try {
+    await $fetch(`/api/onboarding/${sub.uuid}`, { method: 'PATCH', body: { status: 'draft' } })
+    await navigateTo(`/onboarding?id=${sub.uuid}`)
+  } finally {
+    reopening.value = null
+  }
+}
 </script>

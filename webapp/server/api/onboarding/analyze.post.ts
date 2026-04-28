@@ -1,12 +1,15 @@
+import { eq } from 'drizzle-orm'
 import { requireGenerator } from '~/server/utils/auth'
 import { createPresignedView } from '~/server/utils/r2'
 import { analyzeDocument, type LlmResult } from '~/server/utils/gemini'
+import { useDb, schema } from '~/server/db'
 
 type Section = 'gen' | 'cap' | 'loc' | 'date' | 'photosGen' | 'photosMeter'
 
 interface AnalyzeBody {
   section: Section
   urls: string[]
+  submissionId?: string
   // Document-type sections only:
   docType?: string
   // Section-specific context:
@@ -74,23 +77,38 @@ function buildPrompts(body: AnalyzeBody): { docTypePrompt: string | null; conten
         contentPrompt: `True or false: this indicates that the project was installed on ${body.date}. If the document only gives a month and year, at least those two match ${body.date}.`,
       }
     case 'photosGen':
+      return {
+        docTypePrompt: null,
+        contentPrompt: 'True or false: this is a photo of renewable energy generation equipment, e.g., solar panels or wind turbines',
+      }
     case 'photosMeter':
       return {
         docTypePrompt: null,
-        contentPrompt: 'True or false: this is a photo of renewable energy generation equipment',
+        contentPrompt: 'True or false: this is a photo of electricity metering or monitoring equipment, e.g., a smart meter, inverter display, or data logger',
       }
   }
 }
 
-/** Aggregate multiple photo results: pass only if all pass. */
-function aggregateResults(results: LlmResult[]): LlmResult {
-  const failing = results.find(r => !r.contentMatches)
-  if (failing) return failing
-  return { documentTypeMatches: null, contentMatches: true, reasonForFalse: null }
+/** Build the DB update fields for a given section and LLM result. */
+function buildLlmUpdate(section: Section, result: LlmResult): Partial<typeof schema.onboardingSubmissions.$inferInsert> {
+  switch (section) {
+    case 'gen':
+      return { genLlmDocTypeMatch: result.documentTypeMatches, genLlmContentMatch: result.contentMatches, genLlmReason: result.reasonForFalse }
+    case 'cap':
+      return { capLlmDocTypeMatch: result.documentTypeMatches, capLlmContentMatch: result.contentMatches, capLlmReason: result.reasonForFalse }
+    case 'loc':
+      return { locLlmDocTypeMatch: result.documentTypeMatches, locLlmContentMatch: result.contentMatches, locLlmReason: result.reasonForFalse }
+    case 'date':
+      return { dateLlmDocTypeMatch: result.documentTypeMatches, dateLlmContentMatch: result.contentMatches, dateLlmReason: result.reasonForFalse }
+    case 'photosGen':
+      return { photosGenLlmMatch: result.contentMatches, photosGenLlmReason: result.reasonForFalse }
+    case 'photosMeter':
+      return { photosMeterLlmMatch: result.contentMatches, photosMeterLlmReason: result.reasonForFalse }
+  }
 }
 
 export default defineEventHandler(async (event) => {
-  await requireGenerator(event)
+  const user = await requireGenerator(event)
 
   const body = await readBody<AnalyzeBody>(event)
 
@@ -98,19 +116,54 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'section and urls are required' })
   }
 
-  const r2PublicUrl = useRuntimeConfig().public.r2PublicUrl as string
+  if (body.urls.length > 1) {
+    throw createError({ statusCode: 400, statusMessage: 'Only one URL may be analyzed at a time' })
+  }
+
+  const r2PublicUrl = (useRuntimeConfig().public.r2PublicUrl as string).replace(/\/$/, '')
+
+  if (!r2PublicUrl) {
+    throw createError({ statusCode: 500, statusMessage: 'R2 public URL not configured' })
+  }
+
+  for (const url of body.urls) {
+    if (!url.startsWith(r2PublicUrl + '/')) {
+      throw createError({ statusCode: 400, statusMessage: 'Invalid document URL' })
+    }
+  }
+
   const { docTypePrompt, contentPrompt } = buildPrompts(body)
 
-  // For photos: analyze all in parallel and aggregate. For docs: just one URL.
-  const results = await Promise.all(
-    body.urls.map(async (url) => {
-      const bytes    = await fetchDocBytes(url, r2PublicUrl)
-      const mimeType = mimeFromUrl(url)
-      return analyzeDocument(bytes, mimeType, docTypePrompt, contentPrompt)
-    }),
-  )
+  const bytes    = await fetchDocBytes(body.urls[0], r2PublicUrl)
+  const mimeType = mimeFromUrl(body.urls[0])
 
-  const result: LlmResult = results.length === 1 ? results[0] : aggregateResults(results)
+  let result: Awaited<ReturnType<typeof analyzeDocument>>
+  try {
+    result = await analyzeDocument(bytes, mimeType, docTypePrompt, contentPrompt)
+  } catch (err: unknown) {
+    const status = (err as { status?: number })?.status ?? 500
+    throw createError({ statusCode: status, statusMessage: status === 503 || status === 429
+      ? 'Verification service temporarily unavailable. Please try again.'
+      : 'Document verification failed',
+    })
+  }
+
+  // Persist the result to the submission so the admin review reflects server-verified data
+  if (body.submissionId) {
+    const db = useDb()
+    const [existing] = await db
+      .select({ id: schema.onboardingSubmissions.id, userId: schema.onboardingSubmissions.userId })
+      .from(schema.onboardingSubmissions)
+      .where(eq(schema.onboardingSubmissions.uuid, body.submissionId))
+      .limit(1)
+
+    if (existing && existing.userId === user.id) {
+      await db
+        .update(schema.onboardingSubmissions)
+        .set(buildLlmUpdate(body.section, result))
+        .where(eq(schema.onboardingSubmissions.uuid, body.submissionId))
+    }
+  }
 
   return result
 })
