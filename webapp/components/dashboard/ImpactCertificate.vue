@@ -1,13 +1,13 @@
 <template>
-  <div class="impact-cert bg-white text-gray-900" style="font-family: 'Barlow', sans-serif;">
+  <div class="impact-cert bg-white text-gray-900" style="font-family: 'Barlow', sans-serif; --cert-brand: oklch(38% 0.09 195);">
 
     <!-- Header bar -->
-    <div class="flex items-center justify-between pb-5 mb-6 border-b-2" style="border-color: oklch(38% 0.09 195);">
+    <div class="flex items-center justify-between pb-5 mb-6 border-b-2" style="border-color: var(--cert-brand);">
       <div class="flex items-center gap-3">
         <img src="/images/logo-titled.png" alt="REX" class="h-8 object-contain" />
       </div>
       <div class="text-right">
-        <p class="text-xs font-semibold uppercase tracking-widest" style="color: oklch(38% 0.09 195);">Impact Certificate</p>
+        <p class="text-xs font-semibold uppercase tracking-widest" style="color: var(--cert-brand);">Impact Certificate</p>
         <p class="text-xs text-gray-500 mt-0.5">{{ generatedDate }}</p>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div
         v-else
         class="h-14 w-14 rounded flex items-center justify-center shrink-0 text-white font-bold text-lg"
-        style="background-color: oklch(38% 0.09 195);"
+        style="background-color: var(--cert-brand);"
       >
         {{ initials }}
       </div>
@@ -37,14 +37,14 @@
 
     <!-- Hero stats -->
     <div class="grid grid-cols-2 gap-4 mb-8">
-      <div class="rounded-lg p-5" style="background-color: oklch(38% 0.09 195);">
+      <div class="rounded-lg p-5" style="background-color: var(--cert-brand);">
         <p class="text-2xs font-semibold uppercase tracking-widest text-white/70 mb-1">MWh held</p>
         <p class="font-bold text-white tabular-nums leading-none" style="font-size: 2.5rem; font-family: 'Bricolage Grotesque', sans-serif;">
           {{ formatNumber(totalMwh) }}
         </p>
         <p class="text-xs text-white/60 mt-1.5">megawatt-hours</p>
       </div>
-      <div class="rounded-lg p-5 border-2" style="border-color: oklch(38% 0.09 195);">
+      <div class="rounded-lg p-5 border-2" style="border-color: var(--cert-brand);">
         <p class="text-2xs font-semibold uppercase tracking-widest text-gray-400 mb-1">
           Carbon reduction
           <span class="text-gray-400">(est.)</span>
@@ -74,7 +74,7 @@
       <p class="text-2xs font-semibold uppercase tracking-widest text-gray-400 mb-3">Holdings breakdown</p>
       <table class="w-full text-sm border-collapse">
         <thead>
-          <tr class="border-b-2" style="border-color: oklch(38% 0.09 195);">
+          <tr class="border-b-2" style="border-color: var(--cert-brand);">
             <th class="text-left py-2 text-xs font-semibold uppercase tracking-wider text-gray-500">Asset</th>
             <th class="text-right py-2 text-xs font-semibold uppercase tracking-wider text-gray-500">Balance (MWh)</th>
             <th class="text-right py-2 text-xs font-semibold uppercase tracking-wider text-gray-500">Est. tCO₂e</th>
@@ -120,7 +120,7 @@
         <p class="text-2xs text-gray-400 mt-1">Polygon blockchain · Publicly verifiable</p>
       </div>
       <div class="text-right shrink-0">
-        <p class="text-xs font-semibold" style="color: oklch(38% 0.09 195);">REX</p>
+        <p class="text-xs font-semibold" style="color: var(--cert-brand);">REX</p>
         <p class="text-2xs text-gray-400">Renewable Energy Certificates</p>
       </div>
     </div>

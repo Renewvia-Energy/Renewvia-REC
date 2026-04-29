@@ -3,8 +3,8 @@
 
     <!-- Reuse a previously uploaded document -->
     <div v-if="uniquePreviousDocs.length">
-      <label class="block text-xs font-medium text-text-secondary mb-1">Reuse a previously uploaded document</label>
-      <select class="rex-select w-full" :value="selectedPrevKey" @change="onPrevSelect">
+      <label :for="`${uid}-reuse`" class="block text-xs font-medium text-text-secondary mb-1">Reuse a previously uploaded document</label>
+      <select :id="`${uid}-reuse`" class="rex-select w-full" :value="selectedPrevKey" @change="onPrevSelect">
         <option value="">— Upload a new document —</option>
         <option v-for="d in uniquePreviousDocs" :key="d.docUrl" :value="d.docUrl">{{ d.label }}</option>
       </select>
@@ -12,8 +12,8 @@
 
     <!-- Document type dropdown (hidden when reusing a previous doc) -->
     <div v-if="!selectedPrevKey">
-      <label class="block text-xs font-medium text-text-secondary mb-1">Document type</label>
-      <select :value="documentType" class="rex-select w-full" @change="onTypeChange">
+      <label :for="`${uid}-type`" class="block text-xs font-medium text-text-secondary mb-1">Document type</label>
+      <select :id="`${uid}-type`" :value="documentType" class="rex-select w-full" @change="onTypeChange">
         <option value="">— Select type —</option>
         <option v-for="t in availableTypes" :key="t" :value="t">{{ t }}</option>
       </select>
@@ -22,7 +22,7 @@
     <!-- File picker (hidden when reusing a previous doc) -->
     <template v-if="!selectedPrevKey">
       <div
-        class="relative flex flex-col items-center justify-center rounded border-2 border-dashed border-border bg-surface p-6 text-center transition-colors"
+        class="relative flex flex-col items-center justify-center rounded border-2 border-dashed border-border bg-surface p-6 text-center transition-colors focus-within:ring-2 focus-within:ring-brand focus-within:ring-offset-1"
         :class="dragging ? 'border-brand bg-brand/5' : ''"
         @dragover.prevent="dragging = true"
         @dragleave.prevent="dragging = false"
@@ -74,6 +74,8 @@
 </template>
 
 <script setup lang="ts">
+const uid = useId()
+
 const props = defineProps<{
   folder:               string
   documentType:         string

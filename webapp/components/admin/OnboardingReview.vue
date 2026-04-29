@@ -1,14 +1,15 @@
 <template>
   <div class="space-y-4">
     <!-- Filter -->
-    <div class="flex gap-2">
+    <div class="flex gap-2" role="group" aria-label="Filter submissions by status">
       <button
         v-for="f in filters"
         :key="f.value"
-        class="px-3 py-1 rounded text-sm border transition-colors"
+        class="px-3 py-2 rounded text-sm border transition-colors"
         :class="activeFilter === f.value
           ? 'bg-brand border-brand text-white'
           : 'border-border text-text-secondary hover:text-text-primary'"
+        :aria-pressed="activeFilter === f.value"
         @click="activeFilter = f.value"
       >
         {{ f.label }}
@@ -104,7 +105,7 @@
           <p class="text-2xs font-semibold uppercase tracking-wider text-text-muted">Equipment photos</p>
           <div class="flex gap-2 flex-wrap">
             <a v-for="(p, i) in sub.photosGen" :key="i" :href="viewUrl(p.url)" target="_blank">
-              <img :src="viewUrl(p.url)" class="h-16 w-16 object-cover rounded border border-border" :alt="p.caption" />
+              <img :src="viewUrl(p.url)" loading="lazy" class="h-16 w-16 object-cover rounded border border-border" :alt="p.caption" />
             </a>
           </div>
           <AdminLlmStatus :doc-type-match="null" :content-match="sub.photosGenLlmMatch" :reason="sub.photosGenLlmReason" />
@@ -115,7 +116,7 @@
           <p class="text-2xs font-semibold uppercase tracking-wider text-text-muted">Metering photos</p>
           <div class="flex gap-2 flex-wrap">
             <a v-for="(p, i) in sub.photosMeter" :key="i" :href="viewUrl(p.url)" target="_blank">
-              <img :src="viewUrl(p.url)" class="h-16 w-16 object-cover rounded border border-border" :alt="p.caption" />
+              <img :src="viewUrl(p.url)" loading="lazy" class="h-16 w-16 object-cover rounded border border-border" :alt="p.caption" />
             </a>
           </div>
           <AdminLlmStatus :doc-type-match="null" :content-match="sub.photosMeterLlmMatch" :reason="sub.photosMeterLlmReason" />

@@ -22,9 +22,9 @@
     <!-- Done -->
     <template v-else-if="status === 'done'">
       <p v-if="passing" class="text-xs text-success">Document verified ✓</p>
-      <div v-else class="rounded border border-amber-300 bg-amber-50 px-3 py-2 space-y-1">
-        <p class="text-xs font-medium text-amber-900">Document may not match your submission</p>
-        <p v-if="result?.reasonForFalse" class="text-xs text-amber-800">{{ result.reasonForFalse }}</p>
+      <div v-else class="rounded border border-warning-subtle bg-warning-subtle px-3 py-2 space-y-1">
+        <p class="text-xs font-medium text-warning-text">Document may not match your submission</p>
+        <p v-if="result?.reasonForFalse" class="text-xs text-warning-text opacity-80">{{ result.reasonForFalse }}</p>
         <button v-if="retryable" type="button" class="text-xs text-brand hover:underline" @click="emit('retry')">Retry verification</button>
         <p v-else class="text-xs text-text-muted italic">Update your document or inputs to retry. If you believe the AI verifier made an error, click "Continue" and submit for admin approval.</p>
       </div>

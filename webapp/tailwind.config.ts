@@ -47,6 +47,9 @@ export default {
         },
         warning: {
           DEFAULT: 'var(--color-warning)',
+          subtle:  'var(--color-warning-subtle-bg)',
+          border:  'var(--color-warning-subtle-border)',
+          text:    'var(--color-warning-subtle-text)',
         },
         danger: {
           DEFAULT: 'var(--color-danger)',

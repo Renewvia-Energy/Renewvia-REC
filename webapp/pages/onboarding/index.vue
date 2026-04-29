@@ -32,7 +32,7 @@
           <template v-for="(step, idx) in steps" :key="idx">
             <li class="flex items-center">
               <button
-                class="flex items-center justify-center p-1 transition-colors motion-reduce:transition-none"
+                class="flex items-center justify-center p-2 transition-colors motion-reduce:transition-none"
                 :disabled="idx > currentStep"
                 :aria-current="currentStep === idx ? 'step' : undefined"
                 :aria-label="`Step ${idx + 1} of ${steps.length}: ${step.label}${idx < currentStep ? ' (completed)' : idx === currentStep ? ' (current)' : ''}`"
@@ -43,7 +43,7 @@
                   :class="idx < currentStep
                     ? stepComplete[idx]
                       ? 'bg-brand border-brand text-white'
-                      : 'bg-amber-400 border-amber-400 text-white'
+                      : 'bg-warning border-warning text-white'
                     : idx === currentStep
                       ? 'border-brand text-brand bg-brand/5'
                       : 'border-border text-text-muted'"
@@ -71,12 +71,12 @@
             <p class="text-sm text-text-secondary">Tell us about your project. This basic information helps us classify your submission and estimate your R-REC eligibility.</p>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">Project name</label>
-                <input v-model="form.projectName" type="text" class="rex-input w-full" placeholder="e.g. Kisegi Solar Farm" />
+                <label for="ob-project-name" class="block text-sm font-medium text-text-secondary mb-1">Project name</label>
+                <input id="ob-project-name" v-model="form.projectName" type="text" class="rex-input w-full" placeholder="e.g. Kisegi Solar Farm" />
               </div>
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">Project type</label>
-                <select v-model="form.projectType" class="rex-select w-full">
+                <label for="ob-project-type" class="block text-sm font-medium text-text-secondary mb-1">Project type</label>
+                <select id="ob-project-type" v-model="form.projectType" class="rex-select w-full">
                   <option value="">Select type</option>
                   <option value="Utility">Utility</option>
                   <option value="Grid-Connected C&I">Grid-Connected C&amp;I</option>
@@ -88,8 +88,8 @@
                 </p>
               </div>
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">Expected annual generation (MWh)</label>
-                <input v-model.number="form.expectedAnnualGeneration" type="number" min="0" step="0.001" class="rex-input w-full" />
+                <label for="ob-annual-gen" class="block text-sm font-medium text-text-secondary mb-1">Expected annual generation (MWh)</label>
+                <input id="ob-annual-gen" v-model.number="form.expectedAnnualGeneration" type="number" min="0" step="0.001" class="rex-input w-full" />
               </div>
             </div>
           </template>
@@ -99,8 +99,8 @@
             <p class="text-sm text-text-secondary">Upload a document that confirms your project's energy source: solar, wind, hydro, etc. Any commissioning report, off-taker agreement, equipment purchase contract, operating license, or environmental permit is acceptable.<span v-if="form.projectType === 'Home System'"> For a home system fleet, a sample equipment purchase contract or a representative supplier agreement covering your units is sufficient.</span></p>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">Primary energy source</label>
-                <select v-model="form.genGenerationType" class="rex-select w-full">
+                <label for="ob-gen-type" class="block text-sm font-medium text-text-secondary mb-1">Primary energy source</label>
+                <select id="ob-gen-type" v-model="form.genGenerationType" class="rex-select w-full">
                   <option value="">Select source</option>
                   <option value="solar">Solar</option>
                   <option value="wind">Wind</option>
@@ -122,12 +122,12 @@
                     <button type="button" class="text-xs text-danger hover:underline" @click="removeSecondary">Remove</button>
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-text-secondary mb-1">Source type</label>
-                    <input v-model="form.genSecondarySrc" type="text" class="rex-input w-full" placeholder="e.g. Diesel, Grid, Wind" />
+                    <label for="ob-secondary-src" class="block text-xs font-medium text-text-secondary mb-1">Source type</label>
+                    <input id="ob-secondary-src" v-model="form.genSecondarySrc" type="text" class="rex-input w-full" placeholder="e.g. Diesel, Grid, Wind" />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-text-secondary mb-1">Short description</label>
-                    <input v-model="form.genSecondaryDesc" type="text" class="rex-input w-full" placeholder="Brief description" />
+                    <label for="ob-secondary-desc" class="block text-xs font-medium text-text-secondary mb-1">Short description</label>
+                    <input id="ob-secondary-desc" v-model="form.genSecondaryDesc" type="text" class="rex-input w-full" placeholder="Brief description" />
                   </div>
                 </div>
 
@@ -143,12 +143,12 @@
                     <button type="button" class="text-xs text-danger hover:underline" @click="removeTertiary">Remove</button>
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-text-secondary mb-1">Source type</label>
-                    <input v-model="form.genTertiarySrc" type="text" class="rex-input w-full" placeholder="e.g. Diesel, Grid, Wind" />
+                    <label for="ob-tertiary-src" class="block text-xs font-medium text-text-secondary mb-1">Source type</label>
+                    <input id="ob-tertiary-src" v-model="form.genTertiarySrc" type="text" class="rex-input w-full" placeholder="e.g. Diesel, Grid, Wind" />
                   </div>
                   <div>
-                    <label class="block text-xs font-medium text-text-secondary mb-1">Short description</label>
-                    <input v-model="form.genTertiaryDesc" type="text" class="rex-input w-full" placeholder="Brief description" />
+                    <label for="ob-tertiary-desc" class="block text-xs font-medium text-text-secondary mb-1">Short description</label>
+                    <input id="ob-tertiary-desc" v-model="form.genTertiaryDesc" type="text" class="rex-input w-full" placeholder="Brief description" />
                   </div>
                 </div>
               </template>
@@ -168,8 +168,8 @@
             <p class="text-sm text-text-secondary">Upload a document that confirms your system's installed generation capacity in kilowatts-peak (kWp). Equipment purchase contracts, technical inspection certificates, or commissioning reports work well here. You may reuse a document uploaded in a previous step if it also specifies your system's capacity.<span v-if="form.projectType === 'Home System'"> For a home system fleet, enter the combined total capacity across all units and upload documentation that reflects the full fleet size, such as a bulk purchase order.</span></p>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">Installed capacity (kWp)</label>
-                <input v-model.number="form.capCapacity" type="number" min="0" step="0.001" class="rex-input w-full" />
+                <label for="ob-capacity" class="block text-sm font-medium text-text-secondary mb-1">Installed capacity (kWp)</label>
+                <input id="ob-capacity" v-model.number="form.capCapacity" type="number" min="0" step="0.001" class="rex-input w-full" />
               </div>
               <OnboardingDocUpload
                 v-model:document-type="form.capDocType"
@@ -186,16 +186,17 @@
             <p class="text-sm text-text-secondary">Provide GPS coordinates and a document that confirms your project's physical location. Land lease agreements, grid connection agreements, or any document referencing the site address are all acceptable. Coordinates must include at least 2 decimal places. The document does not need to include the GPS coordinates; a physical address will do just fine.<span v-if="form.projectType === 'Home System'"> For a home system fleet, provide coordinates for your primary operating location or country headquarters, and upload any business registration or deployment agreement that confirms your area of operation.</span></p>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">
+                <label for="ob-address" class="block text-sm font-medium text-text-secondary mb-1">
                   Physical address
                   <span class="ml-1 font-normal text-text-muted">(optional)</span>
                 </label>
-                <input v-model="form.locPhysicalAddress" type="text" class="rex-input w-full" />
+                <input id="ob-address" v-model="form.locPhysicalAddress" type="text" class="rex-input w-full" />
               </div>
               <div class="grid grid-cols-2 gap-4">
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-1">Latitude</label>
+                  <label for="ob-lat" class="block text-sm font-medium text-text-secondary mb-1">Latitude</label>
                   <input
+                    id="ob-lat"
                     v-model="form.locLatStr"
                     type="text"
                     inputmode="decimal"
@@ -207,8 +208,9 @@
                   <p v-if="latError" class="mt-1 text-xs text-danger">{{ latError }}</p>
                 </div>
                 <div>
-                  <label class="block text-sm font-medium text-text-secondary mb-1">Longitude</label>
+                  <label for="ob-lon" class="block text-sm font-medium text-text-secondary mb-1">Longitude</label>
                   <input
+                    id="ob-lon"
                     v-model="form.locLonStr"
                     type="text"
                     inputmode="decimal"
@@ -235,8 +237,8 @@
             <p class="text-sm text-text-secondary">Provide the date your project first generated renewable energy. A project commissioning report is ideal, but any document that establishes when operations began, including an equipment installation contract or grid connection agreement, is acceptable.<span v-if="form.projectType === 'Home System'"> For a home system fleet, use the date the first units in the fleet were deployed and generating energy.</span></p>
             <div class="space-y-4">
               <div>
-                <label class="block text-sm font-medium text-text-secondary mb-1">Date of first operation</label>
-                <input v-model="form.dateDateOfFirstOperation" type="date" class="rex-input w-60" />
+                <label for="ob-first-op-date" class="block text-sm font-medium text-text-secondary mb-1">Date of first operation</label>
+                <input id="ob-first-op-date" v-model="form.dateDateOfFirstOperation" type="date" class="rex-input w-60" />
               </div>
               <p class="text-sm text-text-muted">
                 If commissioning documentation is unavailable, an owner declaration with metering data showing initial generation is acceptable per the R-REC Standard.
@@ -305,7 +307,7 @@
                         'text-text-primary': llmStatus[section] === 'idle' || llmStatus[section] === 'error' || llmStatus[section] === 'unavailable',
                         'text-text-muted':   llmStatus[section] === 'running',
                         'text-success':      llmStatus[section] === 'done' && llmResults[section]?.documentTypeMatches !== false && llmResults[section]?.contentMatches !== false,
-                        'text-amber-700':    llmStatus[section] === 'done' && (llmResults[section]?.documentTypeMatches === false || llmResults[section]?.contentMatches === false),
+                        'text-warning-text': llmStatus[section] === 'done' && (llmResults[section]?.documentTypeMatches === false || llmResults[section]?.contentMatches === false),
                       }"
                     >{{ SECTION_LABELS[section] }}</p>
                     <p v-if="llmStatus[section] === 'running'" class="text-xs text-text-muted">Verifying…</p>
@@ -319,7 +321,7 @@
                       <button type="button" class="text-xs text-brand hover:underline" @click="analyzeSection(section)">Retry</button>
                     </template>
                     <template v-else-if="llmResults[section]?.documentTypeMatches === false || llmResults[section]?.contentMatches === false">
-                      <p class="text-xs text-amber-700">{{ llmResults[section]?.reasonForFalse ?? 'Does not match submission' }}</p>
+                      <p class="text-xs text-warning-text opacity-80">{{ llmResults[section]?.reasonForFalse ?? 'Does not match submission' }}</p>
                       <button v-if="llmDirty[section]" type="button" class="text-xs text-brand hover:underline" @click="analyzeSection(section)">Retry verification</button>
                       <p v-else class="text-xs text-text-muted italic">Update your document or inputs to retry</p>
                     </template>
@@ -328,13 +330,13 @@
               </ul>
 
               <!-- Override acknowledgement — only shown when there are warnings -->
-              <div v-if="llmWarningItems.length" class="rounded border border-amber-300 bg-amber-50 px-4 py-3 space-y-2">
-                <p class="text-xs text-amber-800">
+              <div v-if="llmWarningItems.length" class="rounded border border-warning-subtle bg-warning-subtle px-4 py-3 space-y-2">
+                <p class="text-xs text-warning-text opacity-80">
                   The reviewer will make the final determination. You may still submit, but flagged documents may delay approval.
                 </p>
                 <label class="flex items-start gap-2 cursor-pointer select-none">
                   <input v-model="llmOverrideAcknowledged" type="checkbox" class="mt-0.5 shrink-0" />
-                  <span class="text-sm text-amber-900">I understand and want to submit anyway</span>
+                  <span class="text-sm text-warning-text">I understand and want to submit anyway</span>
                 </label>
               </div>
             </div>

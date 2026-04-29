@@ -2,11 +2,11 @@
   <!-- Nothing to show if no result was recorded -->
   <template v-if="contentMatch !== null">
     <p v-if="passing" class="text-2xs text-success mt-1">AI verified ✓</p>
-    <div v-else class="mt-1 rounded border border-amber-300 bg-amber-50 px-2 py-1.5 space-y-0.5">
-      <p class="text-2xs font-medium text-amber-900">
+    <div v-else class="mt-1 rounded border border-warning-subtle bg-warning-subtle px-2 py-1.5 space-y-0.5">
+      <p class="text-2xs font-medium text-warning-text">
         AI flagged: {{ flagLabel }}
       </p>
-      <p v-if="reason" class="text-2xs text-amber-800 italic">{{ reason }}</p>
+      <p v-if="reason" class="text-2xs text-warning-text opacity-80 italic">{{ reason }}</p>
     </div>
   </template>
 </template>

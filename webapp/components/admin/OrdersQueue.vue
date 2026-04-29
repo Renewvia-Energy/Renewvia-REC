@@ -1,13 +1,14 @@
 <template>
   <div class="space-y-4">
-    <div class="flex gap-2">
+    <div class="flex gap-2" role="group" aria-label="Filter orders by status">
       <button
         v-for="f in filters"
         :key="f.value"
-        class="px-3 py-1 rounded text-sm border transition-colors"
+        class="px-3 py-2 rounded text-sm border transition-colors"
         :class="activeFilter === f.value
           ? 'bg-brand border-brand text-white'
           : 'border-border text-text-secondary hover:text-text-primary'"
+        :aria-pressed="activeFilter === f.value"
         @click="activeFilter = f.value"
       >
         {{ f.label }}

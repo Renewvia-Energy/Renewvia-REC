@@ -8,18 +8,18 @@
       <form class="space-y-4" @submit.prevent="create">
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-medium text-text-secondary mb-1">Username</label>
-            <input v-model="form.username" type="text" required class="rex-input w-full" placeholder="jane-doe" />
+            <label for="cu-username" class="block text-xs font-medium text-text-secondary mb-1">Username</label>
+            <input id="cu-username" v-model="form.username" type="text" required autocomplete="username" class="rex-input w-full" placeholder="jane-doe" />
           </div>
           <div>
-            <label class="block text-xs font-medium text-text-secondary mb-1">Email address</label>
-            <input v-model="form.email" type="email" required class="rex-input w-full" />
+            <label for="cu-email" class="block text-xs font-medium text-text-secondary mb-1">Email address</label>
+            <input id="cu-email" v-model="form.email" type="email" required autocomplete="email" class="rex-input w-full" />
           </div>
         </div>
 
         <div>
-          <label class="block text-xs font-medium text-text-secondary mb-1">Initial password (≥12 chars)</label>
-          <input v-model="form.password" type="password" required minlength="12" class="rex-input w-full" />
+          <label for="cu-password" class="block text-xs font-medium text-text-secondary mb-1">Initial password (≥12 chars)</label>
+          <input id="cu-password" v-model="form.password" type="password" required minlength="12" autocomplete="new-password" class="rex-input w-full" />
         </div>
 
         <!-- Roles -->
@@ -32,8 +32,8 @@
 
         <!-- Company wallet -->
         <div>
-          <label class="block text-xs font-medium text-text-secondary mb-1">Link to company wallet</label>
-          <select v-model="form.companyWallet" class="rex-select w-full">
+          <label for="cu-wallet" class="block text-xs font-medium text-text-secondary mb-1">Link to company wallet</label>
+          <select id="cu-wallet" v-model="form.companyWallet" class="rex-select w-full">
             <option value="">— No company link —</option>
             <option
               v-for="c in companies.toSorted((a, b) => {
