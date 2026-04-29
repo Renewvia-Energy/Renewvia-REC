@@ -1,6 +1,6 @@
 <template>
   <div class="py-5 border-y border-border">
-    <div class="flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-12">
+    <div class="flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-12 sm:justify-between">
 
       <!-- Primary stat: MWh held — brand color signals this is the real, verified figure -->
       <div>
@@ -15,7 +15,7 @@
       <div class="hidden sm:block w-px self-stretch bg-border my-1" aria-hidden="true" />
 
       <!-- Secondary stat: tCO₂e — text-primary since it's a calculated estimate -->
-      <div class="flex-1">
+      <div>
         <div class="flex items-center gap-2 mb-1.5">
           <p class="text-2xs font-semibold uppercase tracking-widest text-text-muted">Carbon reduction</p>
           <span class="text-2xs font-semibold text-accent tracking-wide">(est.)</span>
@@ -28,6 +28,11 @@
           Rough estimate based on regional grid emission factors.
           Exact values require AVERT / Ember / AMS-III.BB calculation.
         </p>
+      </div>
+
+      <!-- Slot for actions (e.g. Share button) — aligned to bottom-right -->
+      <div v-if="$slots.action" class="sm:self-end">
+        <slot name="action" />
       </div>
 
     </div>

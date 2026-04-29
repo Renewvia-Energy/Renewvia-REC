@@ -1,6 +1,14 @@
 <template>
   <div class="min-h-screen bg-surface flex">
 
+    <!-- Skip navigation — visible on focus for keyboard users -->
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:rounded focus:bg-brand focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-white focus:shadow-card-md"
+    >
+      Skip to main content
+    </a>
+
     <!-- Mobile backdrop -->
     <Transition
       enter-active-class="transition-opacity duration-200 ease-out"
@@ -54,7 +62,7 @@
         </NuxtLink>
 
         <template v-if="roles.isGenerator || roles.isAdmin">
-          <div class="pt-3 pb-1 px-3 text-2xs font-semibold uppercase tracking-wider text-text-muted" role="separator">
+          <div class="pt-3 pb-1 px-3 text-2xs font-semibold uppercase tracking-wider text-text-muted" aria-hidden="true">
             Generator
           </div>
           <NuxtLink
@@ -78,7 +86,7 @@
         </template>
 
         <template v-if="roles.isBuyer || roles.isAdmin">
-          <div class="pt-3 pb-1 px-3 text-2xs font-semibold uppercase tracking-wider text-text-muted" role="separator">
+          <div class="pt-3 pb-1 px-3 text-2xs font-semibold uppercase tracking-wider text-text-muted" aria-hidden="true">
             Buyer
           </div>
           <NuxtLink
@@ -93,7 +101,7 @@
         </template>
 
         <template v-if="roles.isAdmin">
-          <div class="pt-3 pb-1 px-3 text-2xs font-semibold uppercase tracking-wider text-text-muted" role="separator">
+          <div class="pt-3 pb-1 px-3 text-2xs font-semibold uppercase tracking-wider text-text-muted" aria-hidden="true">
             Admin
           </div>
           <NuxtLink
@@ -142,7 +150,7 @@
           <p class="text-2xs text-text-muted">{{ roleLabel }}</p>
         </div>
         <button
-          class="nav-link w-full text-left text-danger hover:text-danger"
+          class="nav-link w-full text-left"
           @click="authStore.logout()"
         >
           <IconLogout class="w-4 h-4 shrink-0" aria-hidden="true" />
@@ -171,7 +179,7 @@
       </header>
 
       <!-- Main content -->
-      <main class="flex-1 min-w-0 overflow-y-auto">
+      <main id="main-content" class="flex-1 min-w-0 overflow-y-auto">
         <slot />
       </main>
     </div>

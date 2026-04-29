@@ -26,6 +26,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     'nuxt-auth-utils',
     '@nuxtjs/tailwindcss',
+    '@vercel/analytics'
   ],
 
   css: ['~/assets/css/main.css'],
@@ -39,6 +40,8 @@ export default defineNuxtConfig({
     r2BucketName: process.env.R2_BUCKET_NAME,
     r2AccountId: process.env.R2_ACCOUNT_ID,
     r2UploadUrl: process.env.R2_UPLOAD_URL,
+    geminiApiKey: process.env.GEMINI_API_KEY,
+    geminiModel: process.env.GEMINI_MODEL,
     // Public (exposed to client)
     public: {
       companiesUrl:  process.env.NUXT_PUBLIC_COMPANIES_URL,

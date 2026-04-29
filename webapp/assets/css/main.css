@@ -40,6 +40,11 @@
   --color-success-subtle-bg:     oklch(96% 0.04 145);
   --color-success-subtle-border: oklch(84% 0.08 145);
 
+  /* ── Semantic status: warning subtle (for warning/flag boxes) ── */
+  --color-warning-subtle-bg:     oklch(96% 0.04 65);
+  --color-warning-subtle-border: oklch(84% 0.08 65);
+  --color-warning-subtle-text:   oklch(32% 0.10 65);
+
   /* ── Badge semantic colors ── */
   --color-badge-pending-bg:    oklch(94% 0.06 65);
   --color-badge-pending-text:  oklch(34% 0.11 65);
@@ -94,6 +99,11 @@
   /* ── Semantic status: success subtle ── */
   --color-success-subtle-bg:     oklch(18% 0.05 145);
   --color-success-subtle-border: oklch(30% 0.09 145);
+
+  /* ── Semantic status: warning subtle ── */
+  --color-warning-subtle-bg:     oklch(20% 0.05 65);
+  --color-warning-subtle-border: oklch(32% 0.09 65);
+  --color-warning-subtle-text:   oklch(80% 0.12 65);
 
   /* ── Badge semantic colors ── */
   --color-badge-pending-bg:    oklch(28% 0.06 65);
@@ -229,4 +239,7 @@
   .border-danger-subtle { border-color: var(--color-danger-subtle-border); }
   .bg-success-subtle     { background-color: var(--color-success-subtle-bg); }
   .border-success-subtle { border-color: var(--color-success-subtle-border); }
+  .bg-warning-subtle     { background-color: var(--color-warning-subtle-bg); }
+  .border-warning-subtle { border-color: var(--color-warning-subtle-border); }
+  .text-warning-subtle   { color: var(--color-warning-subtle-text); }
 }

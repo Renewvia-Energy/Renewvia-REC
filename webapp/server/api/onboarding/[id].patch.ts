@@ -5,8 +5,8 @@ import type { NewOnboardingSubmission } from '~/server/db/schema'
 
 export default defineEventHandler(async (event) => {
   const user = await requireAuth(event)
-  const id = parseInt(getRouterParam(event, 'id') ?? '')
-  if (isNaN(id)) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
+  const id = getRouterParam(event, 'id') ?? ''
+  if (!id) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
 
   const body = await readBody<Partial<NewOnboardingSubmission> & {
     status?: string
@@ -18,17 +18,19 @@ export default defineEventHandler(async (event) => {
   const [existing] = await db
     .select()
     .from(schema.onboardingSubmissions)
-    .where(eq(schema.onboardingSubmissions.id, id))
+    .where(eq(schema.onboardingSubmissions.uuid, id))
     .limit(1)
 
   if (!existing) throw createError({ statusCode: 404, statusMessage: 'Submission not found' })
 
-  // Non-admin can only update their own draft submissions
+  // Non-admin can only update their own submissions
   if (!user.isAdmin) {
     if (existing.userId !== user.id) {
       throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
     }
-    if (existing.status !== 'draft') {
+    // Allow reopen (rejected → draft); otherwise require draft status to edit
+    const isReopening = body.status === 'draft' && existing.status === 'rejected'
+    if (!isReopening && existing.status !== 'draft') {
       throw createError({ statusCode: 400, statusMessage: 'Only draft submissions can be edited' })
     }
   }
@@ -61,10 +63,14 @@ export default defineEventHandler(async (event) => {
   if (body.dateDocType              !== undefined) updates.dateDocType              = body.dateDocType
   if (body.photosGen                !== undefined) updates.photosGen                = body.photosGen
   if (body.photosMeter              !== undefined) updates.photosMeter              = body.photosMeter
+  // LLM result fields are written only by the server-side analyze endpoint; never accepted from the client
 
-  // Status transition: generator can submit (draft → pending)
+  // Status transition: generator can submit (draft → pending) or reopen (rejected → draft)
   if (body.status === 'pending' && existing.status === 'draft') {
     updates.status = 'pending'
+  }
+  if (!user.isAdmin && body.status === 'draft' && existing.status === 'rejected') {
+    updates.status = 'draft'
   }
 
   // Admin can approve/reject (pending only) or re-open a rejected submission
@@ -79,7 +85,9 @@ export default defineEventHandler(async (event) => {
     }
     if (body.status === 'draft' && existing.status === 'rejected') {
       // Re-open a rejected submission so the generator can revise and resubmit
-      updates.status = 'draft'
+      updates.status     = 'draft'
+      updates.reviewedAt = null
+      updates.reviewedBy = null
     }
     if (body.reviewNotes !== undefined) {
       updates.reviewNotes = body.reviewNotes
@@ -89,7 +97,7 @@ export default defineEventHandler(async (event) => {
   const [submission] = await db
     .update(schema.onboardingSubmissions)
     .set(updates)
-    .where(eq(schema.onboardingSubmissions.id, id))
+    .where(eq(schema.onboardingSubmissions.uuid, id))
     .returning()
 
   return { submission }

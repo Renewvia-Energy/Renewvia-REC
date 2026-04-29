@@ -58,7 +58,7 @@
     </div>
 
     <p class="mt-4 text-center text-2xs text-text-muted">
-      Accounts are provisioned by REX staff. Version 0.0.0.
+      Accounts are provisioned by REX staff.
     </p>
   </div>
 </template>

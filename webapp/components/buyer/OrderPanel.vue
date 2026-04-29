@@ -29,8 +29,8 @@
 
         <!-- Order type -->
         <div>
-          <label class="block text-xs font-medium text-text-secondary mb-1">Order type</label>
-          <select v-model="form.orderType" class="rex-select w-full">
+          <label for="op-order-type" class="block text-xs font-medium text-text-secondary mb-1">Order type</label>
+          <select id="op-order-type" v-model="form.orderType" class="rex-select w-full">
             <option value="market">Market</option>
             <option value="limit">Limit</option>
             <option value="stop">Stop</option>
@@ -40,8 +40,9 @@
 
         <!-- Limit price — shown for limit and stop-limit -->
         <div v-if="form.orderType === 'limit' || form.orderType === 'stop-limit'">
-          <label class="block text-xs font-medium text-text-secondary mb-1">Limit price (USD/MWh)</label>
+          <label for="op-limit-price" class="block text-xs font-medium text-text-secondary mb-1">Limit price (USD/MWh)</label>
           <input
+            id="op-limit-price"
             v-model.number="form.limitPrice"
             type="number"
             min="0"
@@ -54,8 +55,9 @@
 
         <!-- Stop price — shown for stop and stop-limit -->
         <div v-if="form.orderType === 'stop' || form.orderType === 'stop-limit'">
-          <label class="block text-xs font-medium text-text-secondary mb-1">Stop price (USD/MWh)</label>
+          <label for="op-stop-price" class="block text-xs font-medium text-text-secondary mb-1">Stop price (USD/MWh)</label>
           <input
+            id="op-stop-price"
             v-model.number="form.stopPrice"
             type="number"
             min="0"
@@ -68,13 +70,13 @@
 
         <!-- Asset -->
         <div>
-          <label class="block text-xs font-medium text-text-secondary mb-1">
+          <label for="op-asset" class="block text-xs font-medium text-text-secondary mb-1">
             Asset
             <span class="text-text-muted font-normal">
               {{ form.side === 'buy' ? '(optional — leave blank for any)' : '(required for sell)' }}
             </span>
           </label>
-          <select v-model="form.contractAddress" class="rex-select w-full">
+          <select id="op-asset" v-model="form.contractAddress" class="rex-select w-full">
             <option v-if="form.side === 'buy'" value="">Any available asset</option>
             <option
               v-for="contract in availableContracts"
@@ -91,8 +93,9 @@
 
         <!-- Amount -->
         <div>
-          <label class="block text-xs font-medium text-text-secondary mb-1">Amount (MWh)</label>
+          <label for="op-amount" class="block text-xs font-medium text-text-secondary mb-1">Amount (MWh)</label>
           <input
+            id="op-amount"
             v-model.number="form.amount"
             type="number"
             min="1"

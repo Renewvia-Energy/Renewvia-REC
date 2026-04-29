@@ -5,8 +5,8 @@ import { useDb, schema } from '~/server/db'
 
 export default defineEventHandler(async (event) => {
   const user = await requireAuth(event)
-  const id = parseInt(getRouterParam(event, 'id') ?? '')
-  if (isNaN(id)) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
+  const id = getRouterParam(event, 'id') ?? ''
+  if (!id) throw createError({ statusCode: 400, statusMessage: 'Invalid id' })
 
   const body = await readBody<{
     status?: 'cancelled' | 'executed'
@@ -19,7 +19,7 @@ export default defineEventHandler(async (event) => {
   const [existing] = await db
     .select()
     .from(schema.orders)
-    .where(eq(schema.orders.id, id))
+    .where(eq(schema.orders.uuid, id))
     .limit(1)
 
   if (!existing) throw createError({ statusCode: 404, statusMessage: 'Order not found' })
@@ -56,7 +56,7 @@ export default defineEventHandler(async (event) => {
   const [order] = await db
     .update(schema.orders)
     .set(updates)
-    .where(eq(schema.orders.id, id))
+    .where(eq(schema.orders.uuid, id))
     .returning()
 
   if (body.status) {

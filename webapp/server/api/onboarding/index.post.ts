@@ -35,6 +35,7 @@ export default defineEventHandler(async (event) => {
       dateDocType:              body.dateDocType,
       photosGen:                body.photosGen,
       photosMeter:              body.photosMeter,
+      // LLM result fields are written only by the server-side analyze endpoint; never accepted from the client
     })
     .returning()
 

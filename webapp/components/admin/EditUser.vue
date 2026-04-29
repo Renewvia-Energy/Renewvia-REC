@@ -8,12 +8,12 @@
       <form class="space-y-4" @submit.prevent="save">
         <div class="grid grid-cols-2 gap-4">
           <div>
-            <label class="block text-xs font-medium text-text-secondary mb-1">Username</label>
-            <input v-model="form.username" type="text" required class="rex-input w-full" />
+            <label for="eu-username" class="block text-xs font-medium text-text-secondary mb-1">Username</label>
+            <input id="eu-username" v-model="form.username" type="text" required autocomplete="username" class="rex-input w-full" />
           </div>
           <div>
-            <label class="block text-xs font-medium text-text-secondary mb-1">New password</label>
-            <input v-model="form.password" type="password" minlength="12" class="rex-input w-full" placeholder="Leave blank to keep current" />
+            <label for="eu-password" class="block text-xs font-medium text-text-secondary mb-1">New password</label>
+            <input id="eu-password" v-model="form.password" type="password" minlength="12" autocomplete="new-password" class="rex-input w-full" placeholder="Leave blank to keep current" />
           </div>
         </div>
 
@@ -27,8 +27,8 @@
 
         <!-- Company wallet -->
         <div>
-          <label class="block text-xs font-medium text-text-secondary mb-1">Link to company wallet</label>
-          <select v-model="form.companyWallet" class="rex-select w-full">
+          <label for="eu-wallet" class="block text-xs font-medium text-text-secondary mb-1">Link to company wallet</label>
+          <select id="eu-wallet" v-model="form.companyWallet" class="rex-select w-full">
             <option value="">— No company link —</option>
             <option
               v-for="c in companies.toSorted((a, b) => {
