@@ -6,8 +6,8 @@ interface CreateOrderBody {
   contractAddress?: string
   contractName?: string
   abbreviation?: string
-  side: 'buy' | 'sell'
-  orderType: 'market' | 'limit' | 'stop' | 'stop-limit'
+  side: 'buy' | 'sell' | 'retire'
+  orderType?: 'market' | 'limit' | 'stop' | 'stop-limit'
   amount: number
   limitPrice?: number
   stopPrice?: number
@@ -18,16 +18,25 @@ export default defineEventHandler(async (event) => {
   const user = await requireBuyer(event)
   const body = await readBody<CreateOrderBody>(event)
 
-  if (!body?.side || !body?.orderType || !body?.amount) {
-    throw createError({ statusCode: 400, statusMessage: 'side, orderType, and amount are required' })
+  if (!body?.side || !body?.amount) {
+    throw createError({ statusCode: 400, statusMessage: 'side and amount are required' })
   }
 
-  if (!['buy', 'sell'].includes(body.side)) {
+  if (!['buy', 'sell', 'retire'].includes(body.side)) {
     throw createError({ statusCode: 400, statusMessage: 'Invalid side' })
   }
 
-  if (!['market', 'limit', 'stop', 'stop-limit'].includes(body.orderType)) {
-    throw createError({ statusCode: 400, statusMessage: 'Invalid orderType' })
+  if (body.side === 'retire') {
+    if (!body.contractAddress) {
+      throw createError({ statusCode: 400, statusMessage: 'contractAddress is required for retire orders' })
+    }
+  } else {
+    if (!body.orderType) {
+      throw createError({ statusCode: 400, statusMessage: 'orderType is required for buy and sell orders' })
+    }
+    if (!['market', 'limit', 'stop', 'stop-limit'].includes(body.orderType)) {
+      throw createError({ statusCode: 400, statusMessage: 'Invalid orderType' })
+    }
   }
 
   if (!Number.isInteger(body.amount) || body.amount <= 0) {
@@ -48,7 +57,7 @@ export default defineEventHandler(async (event) => {
       contractName:    body.contractName,
       abbreviation:    body.abbreviation,
       side:            body.side,
-      orderType:       body.orderType,
+      orderType:       body.side === 'retire' ? 'n/a' : body.orderType!,
       amount:          body.amount,
       limitPrice:      body.limitPrice?.toString(),
       stopPrice:       body.stopPrice?.toString(),

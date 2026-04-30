@@ -48,7 +48,8 @@ export default defineNuxtConfig({
       contractsUrl:  process.env.NUXT_PUBLIC_CONTRACTS_URL,
       r2PublicUrl:   process.env.R2_PUBLIC_URL ?? '',
       polygonscanBase: process.env.NUXT_PUBLIC_POLYGONSCAN_BASE ?? 'https://polygonscan.com',
-      returnWallet:  process.env.RETURN_WALLET ?? '0x6e61b86d97ebe007e09770e6c76271645201fd07',
+      returnWallet:     process.env.RETURN_WALLET     ?? '0x6e61b86d97ebe007e09770e6c76271645201fd07',
+      retirementWallet: process.env.RETIREMENT_WALLET ?? '0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f',
     },
   },
 

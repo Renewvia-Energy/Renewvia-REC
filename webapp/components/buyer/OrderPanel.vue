@@ -12,23 +12,25 @@
         <!-- Side -->
         <div class="flex gap-2">
           <button
-            v-for="s in ['buy', 'sell']"
+            v-for="s in ['buy', 'sell', 'retire']"
             :key="s"
             type="button"
             class="flex-1 py-2.5 min-h-[44px] rounded text-sm font-semibold border transition-colors"
             :class="form.side === s
               ? s === 'buy'
                 ? 'bg-success border-success text-white'
-                : 'bg-danger border-danger text-white'
+                : s === 'sell'
+                  ? 'bg-danger border-danger text-white'
+                  : 'bg-brand border-brand text-white'
               : 'border-border text-text-secondary hover:text-text-primary'"
-            @click="form.side = s as 'buy' | 'sell'"
+            @click="form.side = s as 'buy' | 'sell' | 'retire'"
           >
             {{ s.toUpperCase() }}
           </button>
         </div>
 
-        <!-- Order type -->
-        <div>
+        <!-- Order type — hidden for retire -->
+        <div v-if="form.side !== 'retire'">
           <label for="op-order-type" class="block text-xs font-medium text-text-secondary mb-1">Order type</label>
           <select id="op-order-type" v-model="form.orderType" class="rex-select w-full">
             <option value="market">Market</option>
@@ -39,7 +41,7 @@
         </div>
 
         <!-- Limit price — shown for limit and stop-limit -->
-        <div v-if="form.orderType === 'limit' || form.orderType === 'stop-limit'">
+        <div v-if="form.side !== 'retire' && (form.orderType === 'limit' || form.orderType === 'stop-limit')">
           <label for="op-limit-price" class="block text-xs font-medium text-text-secondary mb-1">Limit price (USD/MWh)</label>
           <input
             id="op-limit-price"
@@ -54,7 +56,7 @@
         </div>
 
         <!-- Stop price — shown for stop and stop-limit -->
-        <div v-if="form.orderType === 'stop' || form.orderType === 'stop-limit'">
+        <div v-if="form.side !== 'retire' && (form.orderType === 'stop' || form.orderType === 'stop-limit')">
           <label for="op-stop-price" class="block text-xs font-medium text-text-secondary mb-1">Stop price (USD/MWh)</label>
           <input
             id="op-stop-price"
@@ -73,10 +75,10 @@
           <label for="op-asset" class="block text-xs font-medium text-text-secondary mb-1">
             Asset
             <span class="text-text-muted font-normal">
-              {{ form.side === 'buy' ? '(optional — leave blank for any)' : '(required for sell)' }}
+              {{ form.side === 'buy' ? '(optional — leave blank for any)' : '(required)' }}
             </span>
           </label>
-          <select id="op-asset" v-model="form.contractAddress" class="rex-select w-full">
+          <select id="op-asset" v-model="form.contractAddress" class="rex-select w-full" :required="form.side !== 'buy'">
             <option v-if="form.side === 'buy'" value="">Any available asset</option>
             <option
               v-for="contract in availableContracts"
@@ -86,7 +88,7 @@
               {{ contract.abbreviation }} — {{ contract.name }}
             </option>
           </select>
-          <p v-if="form.side === 'sell' && heldAssets.length === 0" class="mt-1 text-2xs text-text-muted">
+          <p v-if="(form.side === 'sell' || form.side === 'retire') && heldAssets.length === 0" class="mt-1 text-2xs text-text-muted">
             No held assets found. Visit the dashboard first to load your portfolio.
           </p>
         </div>
@@ -135,7 +137,7 @@ const contractsStore = useContractsStore()
 const heldAssets = computed(() => contractsStore.assets ?? [])
 
 const availableContracts = computed(() => {
-  if (form.side === 'sell') {
+  if (form.side === 'sell' || form.side === 'retire') {
     return contractsStore.contractsRaw.filter(c =>
       c.address && heldAssets.value.some(a => a.address?.toLowerCase() === c.address?.toLowerCase()),
     )
@@ -148,7 +150,7 @@ const successMsg = ref('')
 const errorMsg   = ref('')
 
 const form = reactive({
-  side:            'buy' as 'buy' | 'sell',
+  side:            'buy' as 'buy' | 'sell' | 'retire',
   orderType:       'market' as 'market' | 'limit' | 'stop' | 'stop-limit',
   contractAddress: '',
   amount:          null as number | null,
@@ -181,13 +183,13 @@ async function submitOrder() {
       method: 'POST',
       body: {
         side:            form.side,
-        orderType:       form.orderType,
+        orderType:       form.side !== 'retire' ? form.orderType : undefined,
         amount:          form.amount,
         contractAddress: form.contractAddress || undefined,
         contractName:    selectedContract.value?.name,
         abbreviation:    selectedContract.value?.abbreviation,
-        limitPrice:      form.limitPrice ?? undefined,
-        stopPrice:       form.stopPrice ?? undefined,
+        limitPrice:      form.side !== 'retire' ? (form.limitPrice ?? undefined) : undefined,
+        stopPrice:       form.side !== 'retire' ? (form.stopPrice ?? undefined) : undefined,
       },
     })
     successMsg.value    = 'Order placed and queued for REX staff review.'

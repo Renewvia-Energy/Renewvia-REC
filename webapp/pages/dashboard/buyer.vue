@@ -33,11 +33,11 @@
             <tr v-for="order in orders" :key="order.id">
               <td>{{ order.contractName ?? 'Any' }}</td>
               <td>
-                <span :class="order.side === 'buy' ? 'text-success font-semibold' : 'text-danger font-semibold'">
+                <span :class="order.side === 'buy' ? 'text-success font-semibold' : order.side === 'sell' ? 'text-danger font-semibold' : 'text-brand font-semibold'">
                   {{ order.side.toUpperCase() }}
                 </span>
               </td>
-              <td class="capitalize">{{ order.orderType }}</td>
+              <td class="capitalize">{{ order.orderType === 'n/a' ? '—' : order.orderType }}</td>
               <td class="numeric">{{ order.amount.toLocaleString() }}</td>
               <td class="numeric text-text-secondary">{{ order.limitPrice ? `$${Number(order.limitPrice).toFixed(2)}` : '—' }}</td>
               <td class="numeric text-text-secondary">{{ order.stopPrice  ? `$${Number(order.stopPrice).toFixed(2)}`  : '—' }}</td>

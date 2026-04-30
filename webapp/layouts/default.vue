@@ -98,6 +98,15 @@
             <IconTarget class="w-4 h-4 shrink-0" aria-hidden="true" />
             Goals & Orders
           </NuxtLink>
+          <NuxtLink
+            to="/dashboard/retirement"
+            class="nav-link"
+            active-class="active"
+            :aria-current="isActive('/dashboard/retirement') ? 'page' : undefined"
+          >
+            <IconLeaf class="w-4 h-4 shrink-0" aria-hidden="true" />
+            Retirement Center
+          </NuxtLink>
         </template>
 
         <template v-if="roles.isAdmin">

@@ -50,11 +50,11 @@
                   <p class="text-2xs text-text-muted">{{ order.contractName ?? 'Any' }}</p>
                 </td>
                 <td>
-                  <span :class="order.side === 'buy' ? 'text-success font-semibold' : 'text-danger font-semibold'">
+                  <span :class="order.side === 'buy' ? 'text-success font-semibold' : order.side === 'sell' ? 'text-danger font-semibold' : 'text-brand font-semibold'">
                     {{ order.side.toUpperCase() }}
                   </span>
                 </td>
-                <td class="capitalize">{{ order.orderType }}</td>
+                <td class="capitalize">{{ order.orderType === 'n/a' ? '—' : order.orderType }}</td>
                 <td class="numeric">{{ order.amount.toLocaleString() }}</td>
                 <td class="numeric text-text-secondary">{{ order.limitPrice ?? '—' }}</td>
                 <td class="numeric text-text-secondary">{{ order.stopPrice ?? '—' }}</td>

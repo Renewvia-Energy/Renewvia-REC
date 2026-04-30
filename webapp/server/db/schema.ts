@@ -49,7 +49,7 @@ export const orders = pgTable('orders', {
   contractName:    varchar('contract_name', { length: 100 }),
   abbreviation:    varchar('abbreviation', { length: 20 }),
 
-  side:            varchar('side', { length: 4 }).notNull(),        // 'buy' | 'sell'
+  side:            varchar('side', { length: 6 }).notNull(),        // 'buy' | 'sell' | 'retire'
   orderType:       varchar('order_type', { length: 20 }).notNull(), // 'market' | 'limit' | 'stop' | 'stop-limit'
   amount:          integer('amount').notNull(),
 
