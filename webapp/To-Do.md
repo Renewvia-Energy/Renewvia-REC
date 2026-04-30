@@ -14,11 +14,6 @@
 - Checklist to gate listing behind the required docs (development license, land rights, equipment procurement, project timeline, engineering specs, funding commitment, offtake agreement)
 - Status tracker: "under development → commissioned → verified → minting"
 
-## Retirement Center
-- Dedicated UI to retire R-RECs (initiate transfer to retirement wallet)
-- Retirement history with timestamps and amounts
-- Exportable retirement certificate (for corporate sustainability reports)
-
 ## Digitized Site Verification Report
 - Web form matching Appendix A exactly (REX staff can fill it in during site visits on mobile)
 - Attach photos inline; generates a PDF that matches the appendix format
