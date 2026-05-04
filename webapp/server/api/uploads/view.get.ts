@@ -23,19 +23,34 @@ export default defineEventHandler(async (event) => {
   // Non-admins may only view documents belonging to their own submissions
   if (!user.isAdmin) {
     const db = useDb()
-    const submissions = await db
-      .select({
-        genDocUrl:   schema.onboardingSubmissions.genDocUrl,
-        capDocUrl:   schema.onboardingSubmissions.capDocUrl,
-        locDocUrl:   schema.onboardingSubmissions.locDocUrl,
-        dateDocUrl:  schema.onboardingSubmissions.dateDocUrl,
-        photosGen:   schema.onboardingSubmissions.photosGen,
-        photosMeter: schema.onboardingSubmissions.photosMeter,
-      })
-      .from(schema.onboardingSubmissions)
-      .where(eq(schema.onboardingSubmissions.userId, user.id))
 
-    const allowed = submissions.some(sub =>
+    const [onboardingSubs, futuresSubs] = await Promise.all([
+      db
+        .select({
+          genDocUrl:   schema.onboardingSubmissions.genDocUrl,
+          capDocUrl:   schema.onboardingSubmissions.capDocUrl,
+          locDocUrl:   schema.onboardingSubmissions.locDocUrl,
+          dateDocUrl:  schema.onboardingSubmissions.dateDocUrl,
+          photosGen:   schema.onboardingSubmissions.photosGen,
+          photosMeter: schema.onboardingSubmissions.photosMeter,
+        })
+        .from(schema.onboardingSubmissions)
+        .where(eq(schema.onboardingSubmissions.userId, user.id)),
+      db
+        .select({
+          devLicenseDocUrl:       schema.futuresSubmissions.devLicenseDocUrl,
+          landRightsDocUrl:       schema.futuresSubmissions.landRightsDocUrl,
+          equipProcurementDocUrl: schema.futuresSubmissions.equipProcurementDocUrl,
+          projTimelineDocUrl:     schema.futuresSubmissions.projTimelineDocUrl,
+          engSpecsDocUrl:         schema.futuresSubmissions.engSpecsDocUrl,
+          fundingCommitmentDocUrl:schema.futuresSubmissions.fundingCommitmentDocUrl,
+          gridConnectionDocUrl:   schema.futuresSubmissions.gridConnectionDocUrl,
+        })
+        .from(schema.futuresSubmissions)
+        .where(eq(schema.futuresSubmissions.userId, user.id)),
+    ])
+
+    const allowedFromOnboarding = onboardingSubs.some(sub =>
       sub.genDocUrl  === url ||
       sub.capDocUrl  === url ||
       sub.locDocUrl  === url ||
@@ -43,8 +58,17 @@ export default defineEventHandler(async (event) => {
       sub.photosGen?.some(p => p.url === url) ||
       sub.photosMeter?.some(p => p.url === url),
     )
+    const allowedFromFutures = futuresSubs.some(sub =>
+      sub.devLicenseDocUrl        === url ||
+      sub.landRightsDocUrl        === url ||
+      sub.equipProcurementDocUrl  === url ||
+      sub.projTimelineDocUrl      === url ||
+      sub.engSpecsDocUrl          === url ||
+      sub.fundingCommitmentDocUrl === url ||
+      sub.gridConnectionDocUrl    === url,
+    )
 
-    if (!allowed) {
+    if (!allowedFromOnboarding && !allowedFromFutures) {
       throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
     }
   }

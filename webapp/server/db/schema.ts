@@ -160,11 +160,83 @@ export const onboardingSubmissions = pgTable('onboarding_submissions', {
   updatedAt: timestamp('updated_at').defaultNow().notNull(),
 })
 
+// ── Futures Submissions ──────────────────────────────────────────────────────
+// Pre-commissioning onboarding for projects under development.
+// Documents follow the Sale of Future Generation chapter of the R-REC Standard.
+
+export const futuresSubmissions = pgTable('futures_submissions', {
+  id:     serial('id').primaryKey(),
+  uuid:   uuid('uuid').defaultRandom().notNull().unique(),
+  userId: integer('user_id').notNull().references(() => users.id),
+
+  status: varchar('status', { length: 20 }).default('draft').notNull(),
+  // 'draft' | 'pending' | 'approved' | 'rejected'
+
+  // Step 1 — Project info
+  projectName:              varchar('project_name', { length: 255 }),
+  projectType:              varchar('project_type', { length: 100 }),
+  // 'Utility' | 'Grid-Connected C&I' | 'Off-Grid Mini-Grid/Mesh-Grid' | 'Home System'
+  expectedAnnualGeneration: numeric('expected_annual_generation', { precision: 14, scale: 3 }),
+  expectedCompletionDate:   varchar('expected_completion_date', { length: 10 }),
+
+  // Step 2 — Development License and Permissions
+  devLicenseDocUrl:    varchar('dev_license_doc_url', { length: 500 }),
+  devLicenseDocType:   varchar('dev_license_doc_type', { length: 255 }),
+  devLicenseLlmMatch:  boolean('dev_license_llm_match'),
+  devLicenseLlmReason: text('dev_license_llm_reason'),
+
+  // Step 3 — Land Rights
+  landRightsDocUrl:    varchar('land_rights_doc_url', { length: 500 }),
+  landRightsDocType:   varchar('land_rights_doc_type', { length: 255 }),
+  landRightsLlmMatch:  boolean('land_rights_llm_match'),
+  landRightsLlmReason: text('land_rights_llm_reason'),
+
+  // Step 4 — Equipment Procurement
+  equipProcurementDocUrl:    varchar('equip_procurement_doc_url', { length: 500 }),
+  equipProcurementDocType:   varchar('equip_procurement_doc_type', { length: 255 }),
+  equipProcurementLlmMatch:  boolean('equip_procurement_llm_match'),
+  equipProcurementLlmReason: text('equip_procurement_llm_reason'),
+
+  // Step 5 — Project Timeline
+  projTimelineDocUrl:    varchar('proj_timeline_doc_url', { length: 500 }),
+  projTimelineDocType:   varchar('proj_timeline_doc_type', { length: 255 }),
+  projTimelineLlmMatch:  boolean('proj_timeline_llm_match'),
+  projTimelineLlmReason: text('proj_timeline_llm_reason'),
+
+  // Step 6 — Engineering Specifications
+  engSpecsDocUrl:    varchar('eng_specs_doc_url', { length: 500 }),
+  engSpecsDocType:   varchar('eng_specs_doc_type', { length: 255 }),
+  engSpecsLlmMatch:  boolean('eng_specs_llm_match'),
+  engSpecsLlmReason: text('eng_specs_llm_reason'),
+
+  // Step 7 — Funding Commitment
+  fundingCommitmentDocUrl:    varchar('funding_commitment_doc_url', { length: 500 }),
+  fundingCommitmentDocType:   varchar('funding_commitment_doc_type', { length: 255 }),
+  fundingCommitmentLlmMatch:  boolean('funding_commitment_llm_match'),
+  fundingCommitmentLlmReason: text('funding_commitment_llm_reason'),
+
+  // Step 8 — Grid Connection Documentation or Offtake Agreement
+  // Only required for Utility or Grid-Connected C&I project types
+  gridConnectionDocUrl:    varchar('grid_connection_doc_url', { length: 500 }),
+  gridConnectionDocType:   varchar('grid_connection_doc_type', { length: 255 }),
+  gridConnectionLlmMatch:  boolean('grid_connection_llm_match'),
+  gridConnectionLlmReason: text('grid_connection_llm_reason'),
+
+  // Review
+  reviewNotes: text('review_notes'),
+  reviewedAt:  timestamp('reviewed_at'),
+  reviewedBy:  integer('reviewed_by').references(() => users.id),
+
+  createdAt: timestamp('created_at').defaultNow().notNull(),
+  updatedAt: timestamp('updated_at').defaultNow().notNull(),
+})
+
 // ── Relations ────────────────────────────────────────────────────────────────
 
 export const usersRelations = relations(users, ({ many }) => ({
   orders:               many(orders),
   onboardingSubmissions:many(onboardingSubmissions),
+  futuresSubmissions:   many(futuresSubmissions),
 }))
 
 export const ordersRelations = relations(orders, ({ one }) => ({
@@ -175,6 +247,11 @@ export const ordersRelations = relations(orders, ({ one }) => ({
 export const onboardingRelations = relations(onboardingSubmissions, ({ one }) => ({
   user:     one(users, { fields: [onboardingSubmissions.userId],   references: [users.id] }),
   reviewer: one(users, { fields: [onboardingSubmissions.reviewedBy], references: [users.id] }),
+}))
+
+export const futuresRelations = relations(futuresSubmissions, ({ one }) => ({
+  user:     one(users, { fields: [futuresSubmissions.userId],   references: [users.id] }),
+  reviewer: one(users, { fields: [futuresSubmissions.reviewedBy], references: [users.id] }),
 }))
 
 // ── TypeScript helpers ────────────────────────────────────────────────────────
@@ -190,3 +267,6 @@ export type NewGoal = typeof goals.$inferInsert
 
 export type OnboardingSubmission = typeof onboardingSubmissions.$inferSelect
 export type NewOnboardingSubmission = typeof onboardingSubmissions.$inferInsert
+
+export type FuturesSubmission = typeof futuresSubmissions.$inferSelect
+export type NewFuturesSubmission = typeof futuresSubmissions.$inferInsert

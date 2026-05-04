@@ -10,8 +10,8 @@
       </select>
     </div>
 
-    <!-- Document type dropdown (hidden when reusing a previous doc) -->
-    <div v-if="!selectedPrevKey">
+    <!-- Document type dropdown (hidden when reusing a previous doc, or when type is fixed by caller) -->
+    <div v-if="!selectedPrevKey && !hideDocumentType">
       <label :for="`${uid}-type`" class="block text-xs font-medium text-text-secondary mb-1">Document type</label>
       <select :id="`${uid}-type`" :value="documentType" class="rex-select w-full" @change="onTypeChange">
         <option value="">— Select type —</option>
@@ -81,6 +81,7 @@ const props = defineProps<{
   documentType:         string
   documentUrl:          string
   allowOwnerDeclaration?: boolean
+  hideDocumentType?:    boolean
   previousDocs?:        Array<{ label: string; docUrl: string; docType: string }>
 }>()
 

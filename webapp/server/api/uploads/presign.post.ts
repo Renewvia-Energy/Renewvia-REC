@@ -16,6 +16,13 @@ const ALLOWED_FOLDERS = new Set([
   'onboarding/date-of-first-operation',
   'onboarding/equipment-photos',
   'onboarding/metering-photos',
+  'futures/dev-license',
+  'futures/land-rights',
+  'futures/equip-procurement',
+  'futures/proj-timeline',
+  'futures/eng-specs',
+  'futures/funding-commitment',
+  'futures/grid-connection',
 ])
 
 export default defineEventHandler(async (event) => {
