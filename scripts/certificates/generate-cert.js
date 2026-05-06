@@ -62,7 +62,7 @@ async function generatePDF(htmlFile, outputFile) {
 	console.log(`PDF saved: ${outputFile}`);
 }
 
-async function generateAllCertificates() {
+async function generateAllCertificates(filterHash = null) {
 	const contracts = JSON.parse(fs.readFileSync('../../web/js/contracts.json', 'utf8'));
 	const companies = JSON.parse(fs.readFileSync('../../web/js/companies.json', 'utf8'));
 
@@ -106,6 +106,9 @@ async function generateAllCertificates() {
 
 		for (const tx of contract.transactions) {
 			if (tx.ignore === true) {
+				continue;
+			}
+			if (filterHash && tx.hash.toLowerCase() !== filterHash.toLowerCase()) {
 				continue;
 			}
 
@@ -154,4 +157,5 @@ async function generateAllCertificates() {
 	}
 }
 
-generateAllCertificates();
+const filterHash = process.argv[2] || null;
+generateAllCertificates(filterHash);
