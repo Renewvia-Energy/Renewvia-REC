@@ -130,5 +130,11 @@
 		"logo": "https://www.africarenewables.energy/arklogodark.svg",
 		"join_date": "2025-11-29",
 		"address": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A"
+	},
+	{
+		"name": "StellarIX",
+		"logo": "https://static.datacentermap.com/company/stellarix/logo.png",
+		"join_date": "2026-03-11",
+		"address": "0xE94f96bb476F9D83bf37178dFc2699f57abEb7C2"
 	}
 ]
