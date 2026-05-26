@@ -15,6 +15,7 @@ interface AnalyzeBody {
   // Section-specific context:
   genGenerationType?: string
   capCapacity?: number
+  capUnit?: string
   locAddress?: string
   locLat?: number
   locLon?: number
@@ -60,7 +61,7 @@ function buildPrompts(body: AnalyzeBody): { docTypePrompt: string | null; conten
     case 'cap':
       return {
         docTypePrompt: `True or false: this is a ${body.docType}`,
-        contentPrompt: `True or false: this indicates that the installed capacity is ${body.capCapacity} kWp`,
+        contentPrompt: `True or false: this indicates that the installed capacity is ${body.capCapacity} ${body.capUnit ?? 'kWp'}`,
       }
     case 'loc': {
       const locationClause = body.locAddress
