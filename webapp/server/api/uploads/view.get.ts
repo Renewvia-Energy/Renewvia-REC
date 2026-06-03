@@ -20,12 +20,19 @@ export default defineEventHandler(async (event) => {
 
   const key = url.slice(publicBase.length + 1)
 
-  // Non-admins may only view documents belonging to their own submissions
+  // Non-admins may only view their own uploads.
   if (!user.isAdmin) {
-    const db = useDb()
+    // New-format keys embed the user id: onboarding/<section>/<userId>/<timestamp>-<filename>
+    const parts = key.split('/')
+    const isOwnUpload =
+      parts.length === 4 &&
+      parts[0] === 'onboarding' &&
+      parts[2] === String(user.id)
 
-    const [onboardingSubs, futuresSubs] = await Promise.all([
-      db
+    if (!isOwnUpload) {
+      // Old-format uploads (no user id in path): fall back to DB ownership check
+      const db = useDb()
+      const submissions = await db
         .select({
           genDocUrl:   schema.onboardingSubmissions.genDocUrl,
           capDocUrl:   schema.onboardingSubmissions.capDocUrl,
@@ -35,41 +42,20 @@ export default defineEventHandler(async (event) => {
           photosMeter: schema.onboardingSubmissions.photosMeter,
         })
         .from(schema.onboardingSubmissions)
-        .where(eq(schema.onboardingSubmissions.userId, user.id)),
-      db
-        .select({
-          devLicenseDocUrl:       schema.futuresSubmissions.devLicenseDocUrl,
-          landRightsDocUrl:       schema.futuresSubmissions.landRightsDocUrl,
-          equipProcurementDocUrl: schema.futuresSubmissions.equipProcurementDocUrl,
-          projTimelineDocUrl:     schema.futuresSubmissions.projTimelineDocUrl,
-          engSpecsDocUrl:         schema.futuresSubmissions.engSpecsDocUrl,
-          fundingCommitmentDocUrl:schema.futuresSubmissions.fundingCommitmentDocUrl,
-          gridConnectionDocUrl:   schema.futuresSubmissions.gridConnectionDocUrl,
-        })
-        .from(schema.futuresSubmissions)
-        .where(eq(schema.futuresSubmissions.userId, user.id)),
-    ])
+        .where(eq(schema.onboardingSubmissions.userId, user.id))
 
-    const allowedFromOnboarding = onboardingSubs.some(sub =>
-      sub.genDocUrl  === url ||
-      sub.capDocUrl  === url ||
-      sub.locDocUrl  === url ||
-      sub.dateDocUrl === url ||
-      sub.photosGen?.some(p => p.url === url) ||
-      sub.photosMeter?.some(p => p.url === url),
-    )
-    const allowedFromFutures = futuresSubs.some(sub =>
-      sub.devLicenseDocUrl        === url ||
-      sub.landRightsDocUrl        === url ||
-      sub.equipProcurementDocUrl  === url ||
-      sub.projTimelineDocUrl      === url ||
-      sub.engSpecsDocUrl          === url ||
-      sub.fundingCommitmentDocUrl === url ||
-      sub.gridConnectionDocUrl    === url,
-    )
+      const allowed = submissions.some(sub =>
+        sub.genDocUrl  === url ||
+        sub.capDocUrl  === url ||
+        sub.locDocUrl  === url ||
+        sub.dateDocUrl === url ||
+        sub.photosGen?.some(p => p.url === url) ||
+        sub.photosMeter?.some(p => p.url === url),
+      )
 
-    if (!allowedFromOnboarding && !allowedFromFutures) {
-      throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
+      if (!allowed) {
+        throw createError({ statusCode: 403, statusMessage: 'Forbidden' })
+      }
     }
   }
 

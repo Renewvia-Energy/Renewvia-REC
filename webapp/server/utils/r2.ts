@@ -57,17 +57,19 @@ export async function createPresignedView(key: string): Promise<string> {
 
 /**
  * Generate a presigned PUT URL. Browser uploads directly; function never touches the file.
+ * Embedding userId in the key allows ownership verification without a DB lookup.
  */
 export async function createPresignedUpload(
   folder: string,
   filename: string,
   contentType: string,
+  userId: number,
 ): Promise<PresignedUploadResult> {
   const config = useRuntimeConfig()
 
   // Sanitize filename to avoid path traversal
   const safe = filename.replace(/[^a-zA-Z0-9._-]/g, '_')
-  const key = `${folder}/${Date.now()}-${safe}`
+  const key = `${folder}/${userId}/${Date.now()}-${safe}`
 
   const command = new PutObjectCommand({
     Bucket: config.r2BucketName,

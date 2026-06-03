@@ -165,11 +165,18 @@
 
           <!-- Step 3: Capacity -->
           <template v-if="currentStep === 2">
-            <p class="text-sm text-text-secondary">Upload a document that confirms your system's installed generation capacity in kilowatts-peak (kWp). Equipment purchase contracts, technical inspection certificates, or commissioning reports work well here. You may reuse a document uploaded in a previous step if it also specifies your system's capacity.<span v-if="form.projectType === 'Home System'"> For a home system fleet, enter the combined total capacity across all units and upload documentation that reflects the full fleet size, such as a bulk purchase order.</span></p>
+            <p class="text-sm text-text-secondary">Upload a document that confirms your system's installed generation capacity. Equipment purchase contracts, technical inspection certificates, or commissioning reports work well here. You may reuse a document uploaded in a previous step if it also specifies your system's capacity.<span v-if="form.projectType === 'Home System'"> For a home system fleet, enter the combined total capacity across all units and upload documentation that reflects the full fleet size, such as a bulk purchase order.</span></p>
             <div class="space-y-4">
               <div>
-                <label for="ob-capacity" class="block text-sm font-medium text-text-secondary mb-1">Installed capacity (kWp)</label>
-                <input id="ob-capacity" v-model.number="form.capCapacity" type="number" min="0" step="0.001" class="rex-input w-full" />
+                <label for="ob-capacity" class="block text-sm font-medium text-text-secondary mb-1">Installed capacity</label>
+                <div class="flex gap-2">
+                  <input id="ob-capacity" v-model.number="form.capCapacity" type="number" min="0" step="any" class="rex-input flex-1" />
+                  <select v-model="form.capUnit" class="rex-select w-24">
+                    <option value="Wp">Wp</option>
+                    <option value="kWp">kWp</option>
+                    <option value="MWp">MWp</option>
+                  </select>
+                </div>
               </div>
               <OnboardingDocUpload
                 v-model:document-type="form.capDocType"
@@ -575,6 +582,7 @@ const form = reactive({
 
   // Step 3 — Capacity
   capCapacity: null as number | null,
+  capUnit:     'kWp',
   capDocUrl:   '',
   capDocType:  '',
 
@@ -594,6 +602,12 @@ const form = reactive({
   photosGen:   [] as Array<{ url: string; caption: string }>,
   photosMeter: [] as Array<{ url: string; caption: string }>,
 })
+
+function capToKwp(value: number, unit: string): number {
+  if (unit === 'Wp')  return value / 1000
+  if (unit === 'MWp') return value * 1000
+  return value
+}
 
 function removeSecondary() {
   showSecondary.value    = false
@@ -639,7 +653,7 @@ async function analyzeSection(section: Section) {
     case 'cap':
       if (!form.capDocUrl) return
       urls = [form.capDocUrl]
-      body = { ...body, urls, docType: form.capDocType, capCapacity: form.capCapacity }
+      body = { ...body, urls, docType: form.capDocType, capCapacity: form.capCapacity, capUnit: form.capUnit }
       break
     case 'loc':
       if (!form.locDocUrl) return
@@ -718,7 +732,7 @@ watch(() => form.photosMeter, () => {
 // Excludes 'running' so a URL change that auto-triggers analysis doesn't mark dirty.
 const sectionInputs: Record<Section, () => unknown> = {
   gen:         () => [form.genDocUrl, form.genDocType, form.genGenerationType],
-  cap:         () => [form.capDocUrl, form.capDocType, form.capCapacity],
+  cap:         () => [form.capDocUrl, form.capDocType, form.capCapacity, form.capUnit],
   loc:         () => [form.locDocUrl, form.locDocType, form.locPhysicalAddress, form.locLatStr, form.locLonStr],
   date:        () => [form.dateDocUrl, form.dateDocType, form.dateDateOfFirstOperation],
   photosGen:   () => form.photosGen.map(p => p.url).join(','),
@@ -784,7 +798,7 @@ function buildPayload(status: 'draft' | 'pending') {
     genSecondaryDesc:         form.genSecondaryDesc || undefined,
     genTertiarySrc:           form.genTertiarySrc || undefined,
     genTertiaryDesc:          form.genTertiaryDesc || undefined,
-    capCapacity:              form.capCapacity ?? undefined,
+    capCapacity:              form.capCapacity != null ? capToKwp(form.capCapacity, form.capUnit) : undefined,
     capDocUrl:                form.capDocUrl || undefined,
     capDocType:               form.capDocType || undefined,
     locPhysicalAddress:       form.locPhysicalAddress || undefined,

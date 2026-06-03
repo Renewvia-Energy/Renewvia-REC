@@ -26,7 +26,7 @@ const ALLOWED_FOLDERS = new Set([
 ])
 
 export default defineEventHandler(async (event) => {
-  await requireAuth(event)
+  const user = await requireAuth(event)
 
   const body = await readBody<{
     filename: string
@@ -46,6 +46,6 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Invalid upload folder' })
   }
 
-  const result = await createPresignedUpload(body.folder, body.filename, body.contentType)
+  const result = await createPresignedUpload(body.folder, body.filename, body.contentType, user.id)
   return result
 })
