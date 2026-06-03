@@ -5,7 +5,7 @@
  * Source data comes from two public JSON files (companies.json, contracts.json).
  * All wallet address comparisons are case-insensitive (lowercased before compare).
  */
-import { defineStore } from 'pinia'
+import { defineStore, skipHydrate } from 'pinia'
 
 // ── Types ────────────────────────────────────────────────────────────────────
 
@@ -108,11 +108,13 @@ export const useContractsStore = defineStore('contracts', () => {
   const config = useRuntimeConfig()
 
   // ── State ──────────────────────────────────────────────────────────────────
-  const companies = ref<CompanyRecord[]>([])
-  const contractsRaw = ref<ContractRecord[]>([])
-
-  const assets = ref<AssetHolding[]>([])
-  const activity = ref<ActivityItem[]>([])
+  // skipHydrate: these are always populated client-side (onMounted), so they
+  // must never be included in the SSR payload — avoids Pinia's shouldHydrate
+  // crash on null-prototype objects that can appear in raw JSON fetch results.
+  const companies    = ref<CompanyRecord[]>(skipHydrate([]))
+  const contractsRaw = ref<ContractRecord[]>(skipHydrate([]))
+  const assets       = ref<AssetHolding[]>(skipHydrate([]))
+  const activity     = ref<ActivityItem[]>(skipHydrate([]))
 
   const loading = ref(false)
   const loaded = ref(false)

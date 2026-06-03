@@ -50,11 +50,11 @@
                   <p class="text-2xs text-text-muted">{{ order.contractName ?? 'Any' }}</p>
                 </td>
                 <td>
-                  <span :class="order.side === 'buy' ? 'text-success font-semibold' : 'text-danger font-semibold'">
+                  <span :class="order.side === 'buy' ? 'text-success font-semibold' : order.side === 'sell' ? 'text-danger font-semibold' : 'text-brand font-semibold'">
                     {{ order.side.toUpperCase() }}
                   </span>
                 </td>
-                <td class="capitalize">{{ order.orderType }}</td>
+                <td class="capitalize">{{ order.orderType === 'n/a' ? '—' : order.orderType }}</td>
                 <td class="numeric">{{ order.amount.toLocaleString() }}</td>
                 <td class="numeric text-text-secondary">{{ order.limitPrice ?? '—' }}</td>
                 <td class="numeric text-text-secondary">{{ order.stopPrice ?? '—' }}</td>
@@ -92,7 +92,7 @@
                         v-model="processingNotes"
                         type="text"
                         class="rex-input w-full"
-                        :placeholder="pendingAction.status === 'executed' ? 'e.g. Executed at market price…' : 'e.g. Insufficient holdings…'"
+                        :placeholder="pendingAction?.status === 'executed' ? 'e.g. Executed at market price…' : 'e.g. Insufficient holdings…'"
                         @keydown.enter="confirmAction"
                         @keydown.escape="cancelAction"
                       />
@@ -100,10 +100,10 @@
                     <div class="flex gap-2 mt-5">
                       <button
                         class="rounded px-3 py-1.5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-                        :class="pendingAction.status === 'executed' ? 'bg-success' : 'bg-danger'"
+                        :class="pendingAction?.status === 'executed' ? 'bg-success' : 'bg-danger'"
                         @click="confirmAction"
                       >
-                        Confirm {{ pendingAction.status === 'executed' ? 'execute' : 'cancel' }}
+                        Confirm {{ pendingAction?.status === 'executed' ? 'execute' : 'cancel' }}
                       </button>
                       <button
                         class="rounded border border-border px-3 py-1.5 text-sm text-text-secondary hover:text-text-primary transition-colors"

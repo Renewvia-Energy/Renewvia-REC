@@ -83,6 +83,15 @@
             <IconUpload class="w-4 h-4 shrink-0" aria-hidden="true" />
             Onboarding
           </NuxtLink>
+          <NuxtLink
+            to="/onboarding/futures"
+            class="nav-link"
+            active-class="active"
+            :aria-current="isActive('/onboarding/futures') ? 'page' : undefined"
+          >
+            <IconUpload class="w-4 h-4 shrink-0" aria-hidden="true" />
+            Futures
+          </NuxtLink>
         </template>
 
         <template v-if="roles.isBuyer || roles.isAdmin">
@@ -97,6 +106,15 @@
           >
             <IconTarget class="w-4 h-4 shrink-0" aria-hidden="true" />
             Goals & Orders
+          </NuxtLink>
+          <NuxtLink
+            to="/dashboard/retirement"
+            class="nav-link"
+            active-class="active"
+            :aria-current="isActive('/dashboard/retirement') ? 'page' : undefined"
+          >
+            <IconLeaf class="w-4 h-4 shrink-0" aria-hidden="true" />
+            Retirement Center
           </NuxtLink>
         </template>
 
@@ -121,6 +139,15 @@
           >
             <IconClipboard class="w-4 h-4 shrink-0" aria-hidden="true" />
             Onboarding Queue
+          </NuxtLink>
+          <NuxtLink
+            to="/dashboard/admin/futures"
+            class="nav-link"
+            active-class="active"
+            :aria-current="isActive('/dashboard/admin/futures') ? 'page' : undefined"
+          >
+            <IconClipboard class="w-4 h-4 shrink-0" aria-hidden="true" />
+            Futures Queue
           </NuxtLink>
           <NuxtLink
             to="/dashboard/admin/orders"

@@ -67,7 +67,7 @@
 	},
 	{
 		"name": "Ivory Cocoa Products",
-		"logo": "web/images/account-logos/ICP.png",
+		"logo": "https://manatal-backend-public-assets.s3.amazonaws.com/media/career_portal_logo_direct_upload/95b50fa7-0623-4a36-85ab-9373342552b1_LOGOICP.png",
 		"join_date": "2025-04-15",
 		"address": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1"
 	},
@@ -90,7 +90,7 @@
 		"address": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300"
 	},
 	{
-		"name": "Axian Group",
+		"name": "Axian Minersol",
 		"logo": "https://www.axian-group.com/favicon.ico",
 		"join_date": "2025-08-12",
 		"address": "0xb9e1EB63DbAB98b8Ce1A4456e1ec7B72DF0F9160"
@@ -130,5 +130,11 @@
 		"logo": "https://www.africarenewables.energy/arklogodark.svg",
 		"join_date": "2025-11-29",
 		"address": "0x8f9DDd701C38FD6f1c67d6a6F24015B168BFa50A"
+	},
+	{
+		"name": "StellarIX",
+		"logo": "https://static.datacentermap.com/company/stellarix/logo.png",
+		"join_date": "2026-03-11",
+		"address": "0xE94f96bb476F9D83bf37178dFc2699f57abEb7C2"
 	}
 ]
