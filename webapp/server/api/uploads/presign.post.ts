@@ -46,6 +46,9 @@ export default defineEventHandler(async (event) => {
     throw createError({ statusCode: 400, statusMessage: 'Invalid upload folder' })
   }
 
-  const result = await createPresignedUpload(body.folder, body.filename, body.contentType, user.id)
+  const folder = process.env.PLAYWRIGHT_TEST === 'true'
+    ? `_playwright-tests/${body.folder}`
+    : body.folder
+  const result = await createPresignedUpload(folder, body.filename, body.contentType, user.id)
   return result
 })

@@ -23,7 +23,9 @@ export default defineEventHandler(async (event) => {
   // Non-admins may only view their own uploads.
   if (!user.isAdmin) {
     // New-format keys embed the user id: onboarding/<section>/<userId>/<timestamp>-<filename>
-    const parts = key.split('/')
+    // Playwright test uploads carry a leading _playwright-tests/ prefix — strip it before checking.
+    const keyToCheck = key.replace(/^_playwright-tests\//, '')
+    const parts = keyToCheck.split('/')
     const isOwnUpload =
       parts.length === 4 &&
       parts[0] === 'onboarding' &&
