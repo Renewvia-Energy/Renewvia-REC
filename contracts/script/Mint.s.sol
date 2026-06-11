@@ -19,10 +19,10 @@ contract RRECScript is Script {
 			"Will send ", vm.toString(amount), " tokens of ", token.name(), " to ", vm.toString(recipient), "\n",
 			"The verification data is located at ", vData, "\n",
 			"Do you want to proceed with deployment? (y/n)"));
-        if (keccak256(abi.encodePacked(userConfirmation)) != keccak256(abi.encodePacked("y"))) {
-            console.log("Deployment cancelled by user");
-            return;
-        }
+		if (keccak256(abi.encodePacked(userConfirmation)) != keccak256(abi.encodePacked("y"))) {
+			console.log("Deployment cancelled by user");
+			return;
+		}
 
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 

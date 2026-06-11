@@ -11,6 +11,15 @@ contract RRECScript is Script {
 		string memory name = vm.envString("DEPLOY_NAME");
 		string memory symbol = vm.envString("DEPLOY_SYMBOL");
 
+		string memory userConfirmation = vm.prompt(string.concat(
+			"=== Deployment Details ===\n",
+			"Will deploy contract ", name, " (", symbol, ")\n",
+			"Do you want to proceed with deployment? (y/n)"));
+		if (keccak256(abi.encodePacked(userConfirmation)) != keccak256(abi.encodePacked("y"))) {
+			console.log("Deployment cancelled by user");
+			return;
+		}
+
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));
 
 		// Deploy the upgradeable contract

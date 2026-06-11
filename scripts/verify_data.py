@@ -341,6 +341,17 @@ def check_date_of_first_operation(meta):
 
 _FILENAME_TS_RE = re.compile(r"(\d{4}-\d{2}-\d{2})T(\d{6})([-+]\d{4})")
 
+_ISO_DATE_RE = re.compile(
+    r'^\d{4}-\d{2}-\d{2}'
+    r'(?:T\d{2}:\d{2}(?::\d{2}(?:\.\d+)?)?(?:Z|[+-]\d{2}:?\d{2})?)?$'
+)
+
+
+def _is_iso_date(val):
+    """Return True if val is a non-empty ISO-formatted date string."""
+    s = str(val).strip()
+    return bool(s and _ISO_DATE_RE.match(s))
+
 
 def _parse_filename_timestamps(filename):
 	"""Return (start_dt, end_dt) parsed from a filename like Name_YYYY-MM-DDTHHMMSS±HHMM_…csv."""
@@ -353,6 +364,29 @@ def _parse_filename_timestamps(filename):
 		return _parse_ts(f"{date_s}T{h}:{m}:{s}{tz_s[0]}{tz_s[1:3]}:{tz_s[3:5]}")
 
 	return _build(*matches[0]), _build(*matches[1])
+
+
+def check_date_formats(meta, ts):
+	"""Check that all date/timestamp fields and timeseries Datetime values use ISO format."""
+	results = []
+	for field in ("Date of First Operation", "Begin Timestamp", "End Timestamp"):
+		val = _meta_get(meta, field)
+		if not val:
+			continue
+		if not _is_iso_date(val):
+			results.append(("FAIL", f"{field} not in ISO format: {val!r}"))
+		else:
+			results.append(("PASS", f"{field} is ISO formatted"))
+
+	non_iso_mask = ts["Datetime"].notna() & ~ts["Datetime"].astype(str).str.strip().apply(_is_iso_date)
+	non_iso = ts[non_iso_mask]
+	if not non_iso.empty:
+		samples = non_iso["Datetime"].head(3).tolist()
+		results.append(("FAIL", f"{len(non_iso)} timeseries rows with non-ISO Datetime; first: {samples}"))
+	else:
+		results.append(("PASS", "All timeseries Datetime values are ISO formatted"))
+
+	return results
 
 
 def check_filename_timestamps(filepath, meta):
@@ -689,6 +723,10 @@ def main():
 		# 10. Date range spans at most one year
 		lvl, msg = check_date_range_within_year(meta)
 		emit(lvl, msg, "Date range within year")
+
+		# 11. ISO date formatting
+		for lvl, msg in check_date_formats(meta, ts):
+			emit(lvl, msg, "ISO date format")
 
 		summary[fname] = counters
 
