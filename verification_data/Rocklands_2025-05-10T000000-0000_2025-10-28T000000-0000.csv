@@ -6,8 +6,8 @@ Latitude,-34.060385
 Longitude,18.604833
 DC Capacity (kWp),20.2
 Date of First Operation,2022-09-09
-Begin Timestamp,2025-05-10T23:48:03
-End Timestamp,2025-10-28T23:59:51
+Begin Timestamp,2025-05-10T00:00:00
+End Timestamp,2025-10-28T00:00:00
 Total Energy Production (MWh),5.9552
 Total Carbon Reduction (tCO2e),4.2520128
 AVERT Emissions Factor,
@@ -22,6 +22,7 @@ Diesel Production (MWh),
 Type of Installation,Distributed PV
 ,
 Datetime,Measured kWh
+2025-05-10T00:00:00,0
 2025-05-10T23:48:03,35.5
 2025-05-11T23:58:57,36.7
 2025-05-12T23:57:51,58.1
@@ -116,4 +117,4 @@ Datetime,Measured kWh
 2025-10-25T23:59:51,67.9
 2025-10-26T23:59:50,64.5
 2025-10-27T23:59:57,115.6
-2025-10-28T23:59:51,124.3
+2025-10-28T00:00:00,124.3

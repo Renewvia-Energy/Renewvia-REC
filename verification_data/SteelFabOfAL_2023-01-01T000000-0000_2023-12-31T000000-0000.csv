@@ -5,6 +5,7 @@ US Region (if applicable),Southeast
 Latitude,33.1295245
 Longitude,-85.3532716
 DC Capacity (kWp),746.2
+Date of First Operation,2017-03-28
 Begin Timestamp,2023-01-01
 End Timestamp,2023-12-31
 Total Energy Production (MWh),576.6752469
@@ -385,3 +386,4 @@ Datetime,Measured kWh
 2023-12-28,1123.952
 2023-12-29,551.688
 2023-12-30,994.456
+2023-12-31,0

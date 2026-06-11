@@ -1,0 +1,77 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: webapp/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: webapp
+
+      - name: Security audit
+        run: npm audit --production --audit-level=high
+        working-directory: webapp
+
+      - name: Unit tests
+        run: npm test
+        working-directory: webapp
+
+      - name: Install Playwright browsers
+        run: npx playwright install chromium --with-deps
+        working-directory: webapp
+
+      - name: E2E tests
+        run: npm run test:e2e
+        working-directory: webapp
+        env:
+          # Nuxt dev server needs these to start; no real DB is used during E2E tests
+          # Note: GitHub Actions sets CI=true automatically; playwright.config.ts reads it.
+          DATABASE_URL: postgresql://placeholder:placeholder@placeholder/placeholder
+          NUXT_SESSION_PASSWORD: 00000000000000000000000000000000
+          R2_ACCOUNT_ID: placeholder
+          R2_ACCESS_KEY_ID: placeholder
+          R2_SECRET_ACCESS_KEY: placeholder
+          R2_BUCKET_NAME: placeholder
+          R2_PUBLIC_URL: https://placeholder.r2.dev
+          R2_UPLOAD_URL: https://placeholder.r2.dev
+          NUXT_PUBLIC_COMPANIES_URL: https://placeholder/companies.json
+          NUXT_PUBLIC_CONTRACTS_URL: https://placeholder/contracts.json
+          RETURN_WALLET: "0x0000000000000000000000000000000000000000"
+
+      - name: Upload Playwright traces on failure
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-traces
+          path: webapp/test-results/
+
+      - name: Build
+        run: npm run build
+        working-directory: webapp
+        env:
+          # Nuxt build requires these to be set; use placeholders for CI
+          DATABASE_URL: postgresql://placeholder:placeholder@placeholder/placeholder
+          NUXT_SESSION_PASSWORD: 00000000000000000000000000000000
+          R2_ACCOUNT_ID: placeholder
+          R2_ACCESS_KEY_ID: placeholder
+          R2_SECRET_ACCESS_KEY: placeholder
+          R2_BUCKET_NAME: placeholder
+          R2_PUBLIC_URL: https://placeholder.r2.dev
+          R2_UPLOAD_URL: https://placeholder.r2.dev
+          NUXT_PUBLIC_COMPANIES_URL: https://placeholder/companies.json
+          NUXT_PUBLIC_CONTRACTS_URL: https://placeholder/contracts.json
+          RETURN_WALLET: "0x0000000000000000000000000000000000000000"

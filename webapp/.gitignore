@@ -1,0 +1,34 @@
+# Nuxt
+.nuxt/
+.output/
+dist/
+.cache/
+
+# Node
+node_modules/
+
+# Env
+.env
+.env.local
+.env.*.local
+
+# Drizzle
+server/db/migrations/meta/
+
+# Editor
+.vscode/settings.json
+.idea/
+*.sw[po]
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Impeccable
+skills-lock.json
+.agents
+.claude
