@@ -30,7 +30,7 @@ fi
 # Execute different commands based on the argument
 case $action in
 	deploy)
-		cmd="forge clean; forge script script/DeployNewContract.s.sol --rpc-url polygon -vvvv"
+		cmd="forge clean; forge script script/DeployNewContract.s.sol --rpc-url polygon"
 		
 		# Add broadcast flag if specified
 		if [ -n "$broadcast_flag" ]; then
