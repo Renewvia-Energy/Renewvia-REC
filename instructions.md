@@ -48,9 +48,11 @@ You're ready to trade R-RECs!
 
 3. Run the following command in the terminal install the required Foundry dependencies: `forge install`
 
-4. Edit the `DeployNewContract.s.sol` script in the `script` folder according to its comments, updating the import path to point to your desired contract and updating the `FILENAME` constant to match your contract filename.
+4. (Optional) Run `npm install` from within `contracts/` to install `@openzeppelin/upgrades-core@1.46.0`. This will make the scripts faster.
 
-5. Deploy your contract:
+5. Edit the `DeployNewContract.s.sol` script in the `script` folder according to its comments, updating the import path to point to your desired contract and updating the `FILENAME` constant to match your contract filename.
+
+6. Deploy your contract:
    ```bash
    forge clean
    forge script script/DeployNewContract.s.sol --rpc-url polygon -vvvv
@@ -60,11 +62,11 @@ You're ready to trade R-RECs!
    - To use the Amoy testnet instead of the Polygon mainnet, replace `polygon` with `amoy`
    - To actually broadcast the transaction and deploy to the blockchain, add the `--broadcast --sender $OWNER --verify` flags (this will use your tokens). Run `source .env` before running the script or replace `$OWNER` with the owner's account address.
 
-6. Save the output addresses displayed after successful deployment:
+7. Save the output addresses displayed after successful deployment:
    - Proxy address
    - Implementation address
 
-7. Verify the transaction on Polygonscan. Navigate to [PolygonScan](https://polygonscan.com/) if you deployed on the mainnet or [Amoy Polygonscan](https://amoy.polygonscan.com/) if you used the testnet and enter the proxy contract address you saved from the previous step into the search bar at the top of the page. Press the "Enter" button on your keyboard. Confirm that the contract exists on the blockchain.
+8. Verify the transaction on Polygonscan. Navigate to [PolygonScan](https://polygonscan.com/) if you deployed on the mainnet or [Amoy Polygonscan](https://amoy.polygonscan.com/) if you used the testnet and enter the proxy contract address you saved from the previous step into the search bar at the top of the page. Press the "Enter" button on your keyboard. Confirm that the contract exists on the blockchain.
 
 ## Minting New R-RECs Using Foundry
 1. Navigate to the `contracts` folder of the repository and confirm the `.env` variables from the previous section are correct.
