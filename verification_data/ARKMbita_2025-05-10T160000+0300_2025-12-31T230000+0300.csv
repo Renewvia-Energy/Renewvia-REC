@@ -6,7 +6,7 @@ Latitude,-0.42
 Longitude,34.2
 DC Capacity (kWp),34.24
 Date of First Operation,2014-01-01
-Begin Timestamp,2025-05-10T12:00
+Begin Timestamp,2025-05-10T16:00
 End Timestamp,2025-12-31T23:00
 Total Energy Production (MWh),13.7371
 Total Carbon Reduction (tCO2e),
@@ -22,10 +22,6 @@ Diesel Production (MWh),
 Type of Installation,Mini-Grid
 ,
 Datetime,Measured kWh
-2025-05-10T12:00,0
-2025-05-10T13:00,0
-2025-05-10T14:00,0
-2025-05-10T15:00,0
 2025-05-10T16:00,0
 2025-05-10T17:00,0
 2025-05-10T18:00,0

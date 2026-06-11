@@ -10,6 +10,7 @@ scripts/*.txt
 scripts/certificates/out/*
 scripts/certificates/node_modules
 scripts/certificates/signature.png
+scripts/__pycache__
 
 # Web
 *.css.map

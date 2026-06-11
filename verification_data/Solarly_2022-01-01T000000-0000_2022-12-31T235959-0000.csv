@@ -5,8 +5,9 @@ US Region (if applicable),
 Latitude,3.8
 Longitude,13.7
 DC Capacity (kWp),220.05
-Begin Timestamp,2022-01-28T03:00:00
-End Timestamp,2022-12-24T03:00:00
+Date of First Operation,2021-01-01
+Begin Timestamp,2022-01-01T00:00:00
+End Timestamp,2022-12-31T23:59:59
 Total Energy Production (MWh),30.47773087
 Total Carbon Reduction (tCO2e),
 AVERT Emissions Factor,
@@ -21,6 +22,7 @@ Diesel Production (MWh),
 Type of Installation,Solar Home Systems
 ,
 Datetime,Measured kWh
+2022-01-01T00:00:00,0
 2022-01-28T03:00:00,1623.763035
 2022-02-27T03:00:00,2279.105878
 2022-03-29T03:00:00,2526.310231
@@ -33,3 +35,4 @@ Datetime,Measured kWh
 2022-10-25T03:00:00,3506.770503
 2022-11-24T03:00:00,3501.04105
 2022-12-24T03:00:00,1021.312209
+2022-12-31T23:59:59,0
