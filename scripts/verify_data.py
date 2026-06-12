@@ -190,7 +190,7 @@ def _meta_get(meta, prefix):
 def check_energy_sum(meta, ts, tol):
 	stated = _meta_get(meta, "Total Energy Production")
 	if not stated:
-		return "SKIP", "Total Energy Production missing"
+		return "FAIL", "Total Energy Production missing"
 	try:
 		stated_val = float(stated)
 	except ValueError:
@@ -211,7 +211,7 @@ def check_lat_lon_in_country(meta):
 	lat_s = _meta_get(meta, "Latitude")
 	lon_s = _meta_get(meta, "Longitude")
 	if not lat_s or not lon_s:
-		return "SKIP", "Latitude/Longitude missing"
+		return "FAIL", "Latitude/Longitude missing"
 	try:
 		lat, lon = float(lat_s), float(lon_s)
 	except ValueError:
@@ -219,7 +219,7 @@ def check_lat_lon_in_country(meta):
 
 	bbox = _get_country_bbox(country)
 	if bbox is None:
-		return "WARN", f"Could not retrieve bbox for {country!r} from Nominatim"
+		return "FAIL", f"Could not retrieve bbox for {country!r} from Nominatim"
 
 	min_lat, max_lat, min_lon, max_lon = bbox
 	if min_lat <= lat <= max_lat and min_lon <= lon <= max_lon:
@@ -296,7 +296,7 @@ def check_carbon_reduction(meta):
 	expected = energy * avert
 	rd = _rel_diff(carbon, expected)
 	if rd > CARBON_TOL:
-		return "WARN", (
+		return "FAIL", (
 			f"Carbon: stated={carbon:.6f}  computed={expected:.6f}  rel_diff={rd:.4%}"
 		)
 	return "PASS", f"Carbon reduction consistent ({carbon:.4f} tCO2e)"
@@ -446,7 +446,7 @@ def _load_contracts(contracts_path):
 def check_contracts_amount(filepath, meta, contracts_lookup):
 	"""Check that the sum of non-ignored mint amounts in contracts.json matches Total Energy Production."""
 	if contracts_lookup is None:
-		return [("SKIP", "contracts.json not loaded")]
+		return [("FAIL", "contracts.json not loaded")]
 
 	basename = os.path.basename(filepath)
 	entries = contracts_lookup.get(basename)
@@ -463,7 +463,7 @@ def check_contracts_amount(filepath, meta, contracts_lookup):
 
 	energy_s = _meta_get(meta, "Total Energy Production")
 	if not energy_s:
-		return [("SKIP", "Total Energy Production missing from metadata")]
+		return [("FAIL", "Total Energy Production missing from metadata")]
 	try:
 		energy_mwh = float(energy_s)
 	except ValueError:
@@ -480,7 +480,7 @@ def check_contracts_amount(filepath, meta, contracts_lookup):
 def check_contracts_coverage(file_records, contracts_lookup, contracts_path):
 	"""Cross-file: every local CSV is in contracts.json and vice-versa; no double-mints."""
 	if contracts_lookup is None:
-		return [("SKIP", f"contracts.json not loaded from {contracts_path}")]
+		return [("FAIL", f"contracts.json not loaded from {contracts_path}")]
 
 	results = []
 	local_basenames = {os.path.basename(r["filename"]) for r in file_records}
@@ -494,10 +494,10 @@ def check_contracts_coverage(file_records, contracts_lookup, contracts_path):
 		if not mints:
 			continue
 		if bn not in local_basenames:
-			results.append(("WARN", f"contracts.json references missing local file: {bn}"))
+			results.append(("FAIL", f"contracts.json references missing local file: {bn}"))
 		if len(mints) > 1:
 			total = sum(e["amount"] for e in mints if e["amount"] is not None)
-			results.append(("WARN", f"Multiple mint transactions for same file ({len(mints)} mints, {total} MWh total): {bn}"))
+			results.append(("FAIL", f"Multiple mint transactions for same file ({len(mints)} mints, {total} MWh total): {bn}"))
 
 	if not results:
 		results.append(("PASS", "All local CSVs referenced in contracts.json and no double-mints detected"))
@@ -549,7 +549,7 @@ def check_all_temporal_overlaps(file_records):
 			if dist <= SPATIAL_THRESHOLD_DEG and _ranges_overlap(
 				a["begin_dt"], a["end_dt"], b["begin_dt"], b["end_dt"]
 			):
-				issues.append(("WARN", (
+				issues.append(("FAIL", (
 					f"Spatial+temporal overlap (different projects, dist≈{dist:.4f}°): "
 					f"{os.path.basename(a['filename'])} "
 					f"[{a['begin_dt'].date()}–{a['end_dt'].date()}] "
@@ -653,7 +653,7 @@ def main():
 
 	contracts_lookup, contracts_err = _load_contracts(args.contracts)
 	if contracts_err:
-		print(f"[WARN] Could not load contracts.json from {args.contracts!r}: {contracts_err}")
+		print(f"[FAIL] Could not load contracts.json from {args.contracts!r}: {contracts_err}")
 
 	files = sorted(glob.glob(os.path.join(args.dir, "*.csv")))
 	if not files:
