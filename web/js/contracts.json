@@ -207,7 +207,26 @@
 		"address": "0xbB0459Ae15fF77F7C7673DD0611bc98Dc3457B3c",
 		"implementation": ["0x0D6a0982CC903960aC15A0Ffc847dE304D972899"],
 		"transactions": [
-			
+			{
+				"timeStamp": "1781383524",
+				"action": "mint",
+				"amount": 576,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfAL_2023-01-01T000000-0000_2023-12-30T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88452359",
+				"hash": "0x0f26514b289ca09de5a88685f9a7c0eba393cf80673b558502a4fbd9d3123a76"
+			},
+			{
+				"timeStamp": "1781383570",
+				"action": "mint",
+				"amount": 562,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofAL_2024-01-01T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88452390",
+				"hash": "0x097f34fedb938fb9ccf7f0235cade505eb01823075f0e2819ea49d30cd4dfbba"
+			}
 		]
 	},
 	{
@@ -220,6 +239,156 @@
 		"address": "0xb611D4C3Ed9bcf5CfafaEa42E77DEfae3610fF9C",
 		"implementation": ["0x84c02487C9F4Ab9Fd25d26942fe59c7f017F8BF6"],
 		"transactions": [
+			{
+				"timeStamp": "1781376952",
+				"action": "mint",
+				"amount": 33,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerAudi_2018-04-23T150000-0400_2018-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88447978",
+				"hash": "0x7af1c4b91943439eadcffd870f50fbbf3e330d5faaaf7977622fa273a7959158"
+			},
+			{
+				"timeStamp": "1781377054",
+				"action": "mint",
+				"amount": 47,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerAudi_2019-01-01T000000-0500_2019-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88448046",
+				"hash": "0xb79362439581eadd12372c4427ad41b9a25763967b69bae9c8c984c1d8cb5a35"
+			},
+			{
+				"timeStamp": "1781377108",
+				"action": "mint",
+				"amount": 41,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerAudi_2020-01-01T000000-0500_2020-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88448082",
+				"hash": "0xa0771e34b4be4fac1bc2412ae2bdfd379e678888c5a669c4efa9afcc1d94acfa"
+			},
+			{
+				"timeStamp": "1781377173",
+				"action": "mint",
+				"amount": 53,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerAudi_2021-01-01T000000-0500_2021-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88448125",
+				"hash": "0x5130079b6d3773623b8ae6629b938a48b2218337e65785b42b3d6a60ad3fd623"
+			},
+			{
+				"timeStamp": "1781381383",
+				"action": "mint",
+				"amount": 60,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerAudi_2022-01-01T000000-0500_2022-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88450932",
+				"hash": "0x19b63d3a23d1b98a2ea12335ed615275dae582f467d766a97de825b3eb2471c1"
+			},
+			{
+				"timeStamp": "1781381451",
+				"action": "mint",
+				"amount": 50,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerAudi_2024-01-01T000000-0500_2024-10-31T230000-0400.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88450977",
+				"hash": "0x9634c0e41104b961224e76fe65f7c44bacf114edac865582277baa71a46c3032"
+			},
+			{
+				"timeStamp": "1781381692",
+				"action": "mint",
+				"amount": 2,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerCollision_2021-12-15T080000-0500_2021-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451138",
+				"hash": "0x8cceae549921d3ed86f68b29709f626b2ec43764c8548b810a45ab5df9a46c07"
+			},
+			{
+				"timeStamp": "1781381751",
+				"action": "mint",
+				"amount": 108,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerCollision_2022-01-01T000000-0500_2022-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451177",
+				"hash": "0xc704a3669752971b33992035e9651bc8f2de180c8a98c064b93f875704b13ffc"
+			},
+			{
+				"timeStamp": "1781381800",
+				"action": "mint",
+				"amount": 113,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerCollision_2023-01-01T000000-0500_2023-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451210",
+				"hash": "0x1439e48252894346db6aecba3b38a710629708e99ac0ccc267a79a1ab258f1a1"
+			},
+			{
+				"timeStamp": "1781381854",
+				"action": "mint",
+				"amount": 95,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerCollision_2024-01-01T000000-0500_2024-10-31T230000-0400.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451246",
+				"hash": "0xa53b3e5784de83e19dd39dbb47462036ae48e057700cebdffd6b63f52090ef01"
+			},
+			{
+				"timeStamp": "1781381914",
+				"action": "mint",
+				"amount": 1,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerNissan_2021-12-15T120000-0500_2021-12-31T230000-0500.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451286",
+				"hash": "0x4f36fcd3092a936e6365cc2db676c08b43d6290e0aba0339a6b2d0f9be6cf01a"
+			},
+			{
+				"timeStamp": "1781382187",
+				"action": "mint",
+				"amount": 317,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerToyotaOfMacon_2024-02-19T090000-0500_2024-10-31T230000-0400.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451468",
+				"hash": "0xa4cb9e069395d123885a16c8f0789c58b9f9f19cbf3ac3c658cae085f46405a4"
+			},
+			{
+				"timeStamp": "1781382268",
+				"action": "mint",
+				"amount": 151,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ButlerToyotaOfValdosta_2024-02-13T120000-0500_2024-10-31T230000-0400.csv",
+				"to": "0x38281b14a73E56c59463cE5dB50248ACbf62b45b",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451522",
+				"hash": "0x5f9e11ae251c4173048da333e3e4b1df745b53714170233e403d9ee11bf08adb"
+			},
+			{
+				"timeStamp": "1781382393",
+				"action": "mint",
+				"amount": 288,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfGA_2023-01-01T000000-0000_2023-12-30T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451605",
+				"hash": "0x24576dffa0de08235e93d30a7ad2f07e9ad8ab61facb853b46c5074c25630c73"
+			},
+			{
+				"timeStamp": "1781382462",
+				"action": "mint",
+				"amount": 286,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofGA_2024-01-01T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88451651",
+				"hash": "0xf64595c7a1c15cdaff1b70128e7ca54f71114034fbc98cfe80288a8621049828"
+			}
 		]
 	},
 	{
@@ -244,7 +413,26 @@
 		"address": "0x5E07a763fF6328751afB8b54A9c7c9fc0BbD4096",
 		"implementation": ["0xbE8d26A719d5d5bf2c71058261d2551025dA627b"],
 		"transactions": [
-			
+			{
+				"timeStamp": "1781383632",
+				"action": "mint",
+				"amount": 457,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabOfVA_2023-01-01T000000-0000_2023-12-30T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88452431",
+				"hash": "0xce618c63dbbd833b2805e9630acf2d6bb5d65703937e410b26e7dedf5576fce1"
+			},
+			{
+				"timeStamp": "1781383674",
+				"action": "mint",
+				"amount": 370,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SteelFabofVA_2024-01-01T000000-0000_2024-12-31T000000-0000.csv",
+				"to": "0x9Db94E89DB9798544494a71C01E3552D6adE79bE",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88452459",
+				"hash": "0x94f0ed8a762d6c44359acf6a2e2faf7982d6516d5a5ceea6e1a10aa45d955e57"
+			}
 		]
 	},
 	{
@@ -277,6 +465,26 @@
 		"address": "0x252EcF3f1d28badc5924438d346Cd57ebB3F293b",
 		"implementation": ["0x95Ea4DF349897Fb7816417Ed4C9135eD0876Ed4B"],
 		"transactions": [
+			{
+				"timeStamp": "1781383395",
+				"action": "mint",
+				"amount": 354,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2024-10-04T180000+0200_2024-12-31T230000+0200.csv",
+				"to": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88452273",
+				"hash": "0x06c4f62e2fd000449e955f57dab451a1b0aad1bafc723650b34430aff2f1d41d"
+			},
+			{
+				"timeStamp": "1781383438",
+				"action": "mint",
+				"amount": 674,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Nuru_2025-01-01T000000+0200_2025-06-30T230000+0200.csv",
+				"to": "0xA1c53CEBFc8bC174F8d1bB75460d18ABced7455F",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88452302",
+				"hash": "0x2344c4b0b830649e19759eaea1d2fdae05c7a64212e1fb883906233e65430fe1"
+			}
 		]
 	},
 	{

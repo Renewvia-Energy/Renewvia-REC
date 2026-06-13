@@ -73,7 +73,7 @@ case $action in
 		fi
 		;;
 	mint)
-		cmd="forge clean; forge script script/Mint.s.sol --rpc-url polygon -vvvv"
+		cmd="forge clean; forge script script/Mint.s.sol --rpc-url polygon"
 		
 		# Add broadcast flag if specified
 		if [ -n "$broadcast_flag" ]; then

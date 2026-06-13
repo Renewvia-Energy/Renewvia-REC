@@ -1,4 +1,5 @@
 import requests, json, argparse, web3.exceptions, os
+from dotenv import load_dotenv
 from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com/'))
 
@@ -19,11 +20,13 @@ def addNewToFilename(filename):
 	return os.path.join(directory, filename_without_ext + '_new' + extension)
 
 if __name__ == '__main__':
+	load_dotenv()
+
 	# Argparse
 	parser = argparse.ArgumentParser(prog='Update Data', description='Update contracts.json from blockchain')
-	parser.add_argument('api_key', help='Your API key')
-	parser.add_argument('contracts_fn', help='Path to contracts.json')
-	parser.add_argument('abi_fn', help='Path to abi.json')
+	parser.add_argument('-k', '--api-key', default=os.getenv('ETHERSCAN_API_KEY'), help='Your API key (default: ETHERSCAN_API_KEY from .env)')
+	parser.add_argument('-f', '--contracts-fn', default='web/js/contracts.json', help='Path to contracts.json')
+	parser.add_argument('-a', '--abi-fn', default='web/js/abi.json', help='Path to abi.json')
 	parser.add_argument('-c', '--contract', help='Only update the specified contract')
 	args = parser.parse_args()
 
