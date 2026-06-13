@@ -39,8 +39,8 @@ def _get_country_bbox(country):
     _bbox_cache[country] = result
     return result
 
-# Approximate degree threshold for ~1 km spatial proximity check
-SPATIAL_THRESHOLD_DEG = 0.009
+# Approximate degree threshold for ~100 m spatial proximity check
+SPATIAL_THRESHOLD_DEG = 0.001
 
 # Relative tolerance for energy sum check (0.01%)
 DEFAULT_ENERGY_TOL = 1e-4
