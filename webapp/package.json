@@ -55,6 +55,7 @@
     "vitest": "^4.1.5"
   },
   "overrides": {
-    "fast-xml-parser": "5.7.1"
+    "fast-xml-parser": "5.7.1",
+    "esbuild": ">=0.28.1"
   }
 }
