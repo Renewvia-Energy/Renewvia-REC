@@ -40,7 +40,7 @@ def _get_country_bbox(country):
     return result
 
 # Approximate degree threshold for ~100 m spatial proximity check
-SPATIAL_THRESHOLD_DEG = 0.001
+SPATIAL_THRESHOLD_DEG = 0.0008
 
 # Relative tolerance for energy sum check (0.01%)
 DEFAULT_ENERGY_TOL = 1e-4
@@ -169,6 +169,7 @@ def parse_file(filepath):
 	ts_df = ts_df.dropna(how="all")
 	ts_df.columns = [c.strip() for c in ts_df.columns]
 	ts_df = ts_df[ts_df["Datetime"].notna()].copy()
+	ts_df["_raw_kwh"] = ts_df["Measured kWh"].astype(str).str.strip()
 	ts_df["Measured kWh"] = pd.to_numeric(ts_df["Measured kWh"], errors="coerce")
 	ts_df["dt"] = ts_df["Datetime"].apply(_parse_ts)
 
@@ -270,6 +271,22 @@ def check_no_gaps(ts):
 		gap_start = valid.loc[idx - 1] if (idx - 1) in valid.index else "?"
 		msgs.append(("WARN", f"Gap of {deltas.loc[idx]} after {gap_start} (expected≈{median_delta})"))
 	return msgs
+
+
+def check_parseable_kwh(ts):
+	"""Check that every Measured kWh cell is a parseable number."""
+	bad = ts[
+		ts["Measured kWh"].isna()
+		& ts["_raw_kwh"].notna()
+		& (ts["_raw_kwh"] != "")
+		& (ts["_raw_kwh"].str.lower() != "nan")
+	]
+	if bad.empty:
+		return [("PASS", "All Measured kWh values are numeric")]
+	return [
+		("FAIL", f"Unparseable Measured kWh at {row['Datetime']}: {row['_raw_kwh']!r}")
+		for _, row in bad.iterrows()
+	]
 
 
 def check_non_negative(ts):
@@ -477,15 +494,19 @@ def check_contracts_amount(filepath, meta, contracts_lookup):
 	return [("WARN", f"contracts.json amount={minted_amount} < stated energy={energy_mwh:.4f} MWh  diff={diff:.4f}")]
 
 
-def check_contracts_coverage(file_records, contracts_lookup, contracts_path):
-	"""Cross-file: every local CSV is in contracts.json and vice-versa; no double-mints."""
+def check_contracts_coverage(file_records, all_local_basenames, contracts_lookup, contracts_path):
+	"""Cross-file: every local CSV is in contracts.json and vice-versa; no double-mints.
+
+	file_records: records for the files actually processed this run (may be a subset).
+	all_local_basenames: basenames of every CSV on disk in the verification_data dir.
+	"""
 	if contracts_lookup is None:
 		return [("FAIL", f"contracts.json not loaded from {contracts_path}")]
 
 	results = []
-	local_basenames = {os.path.basename(r["filename"]) for r in file_records}
+	processed_basenames = {os.path.basename(r["filename"]) for r in file_records}
 
-	for bn in sorted(local_basenames):
+	for bn in sorted(processed_basenames):
 		if bn not in contracts_lookup:
 			results.append(("WARN", f"Local file not referenced in contracts.json: {bn}"))
 
@@ -493,7 +514,7 @@ def check_contracts_coverage(file_records, contracts_lookup, contracts_path):
 		mints = [e for e in entries if not e["ignore"] and e["action"] == "mint"]
 		if not mints:
 			continue
-		if bn not in local_basenames:
+		if bn not in all_local_basenames:
 			results.append(("FAIL", f"contracts.json references missing local file: {bn}"))
 		if len(mints) > 1:
 			total = sum(e["amount"] for e in mints if e["amount"] is not None)
@@ -649,16 +670,32 @@ def main():
 		default=_default_contracts,
 		help="Path to contracts.json (default: web/js/contracts.json relative to this script)",
 	)
+	parser.add_argument(
+		"--file",
+		default=None,
+		metavar="FILENAME",
+		help="Check only this CSV file (basename or full path; searched within --dir)",
+	)
 	args = parser.parse_args()
 
 	contracts_lookup, contracts_err = _load_contracts(args.contracts)
 	if contracts_err:
 		print(f"[FAIL] Could not load contracts.json from {args.contracts!r}: {contracts_err}")
 
-	files = sorted(glob.glob(os.path.join(args.dir, "*.csv")))
-	if not files:
+	all_files = sorted(glob.glob(os.path.join(args.dir, "*.csv")))
+	if not all_files:
 		print(f"No CSV files found in {args.dir!r}.")
 		sys.exit(1)
+	all_local_basenames = {os.path.basename(f) for f in all_files}
+
+	if args.file:
+		target = os.path.basename(args.file)
+		files = [f for f in all_files if os.path.basename(f) == target]
+		if not files:
+			print(f"No file named {target!r} found in {args.dir!r}.")
+			sys.exit(1)
+	else:
+		files = all_files
 
 	# Summary counters per file
 	summary = {}  # filename -> {"PASS":n, "FAIL":n, "WARN":n, "SKIP":n}
@@ -700,31 +737,35 @@ def main():
 		for lvl, msg in check_no_gaps(ts):
 			emit(lvl, msg, "Time series gaps")
 
-		# 5. Non-negative energy
+		# 5. Parseable kWh values
+		for lvl, msg in check_parseable_kwh(ts):
+			emit(lvl, msg, "Parseable kWh")
+
+		# 6. Non-negative energy
 		lvl, msg = check_non_negative(ts)
 		emit(lvl, msg, "Non-negative kWh")
 
-		# 6. Carbon reduction
+		# 7. Carbon reduction
 		lvl, msg = check_carbon_reduction(meta)
 		emit(lvl, msg, "Carbon reduction")
 
-		# 7. Filename timestamps match metadata
+		# 8. Filename timestamps match metadata
 		for lvl, msg in check_filename_timestamps(filepath, meta):
 			emit(lvl, msg, "Filename timestamp")
 
-		# 8. Contracts.json amount matches stated energy
+		# 9. Contracts.json amount matches stated energy
 		for lvl, msg in check_contracts_amount(filepath, meta, contracts_lookup):
 			emit(lvl, msg, "Contracts amount")
 
-		# 9. Date of First Operation ≤ Begin Timestamp
+		# 10. Date of First Operation ≤ Begin Timestamp
 		lvl, msg = check_date_of_first_operation(meta)
 		emit(lvl, msg, "Date of first operation")
 
-		# 10. Date range spans at most one year
+		# 11. Date range spans at most one year
 		lvl, msg = check_date_range_within_year(meta)
 		emit(lvl, msg, "Date range within year")
 
-		# 11. ISO date formatting
+		# 12. ISO date formatting
 		for lvl, msg in check_date_formats(meta, ts):
 			emit(lvl, msg, "ISO date format")
 
@@ -771,7 +812,7 @@ def main():
 			cross_counters[lvl] += 1
 			print(f"  [{lvl}] {msg}")
 
-	for lvl, msg in check_contracts_coverage(file_records, contracts_lookup, args.contracts):
+	for lvl, msg in check_contracts_coverage(file_records, all_local_basenames, contracts_lookup, args.contracts):
 		cross_counters[lvl] += 1
 		print(f"  [{lvl}] {msg}")
 
