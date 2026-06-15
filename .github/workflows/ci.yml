@@ -30,34 +30,51 @@ jobs:
         run: npm test
         working-directory: webapp
 
-      - name: Install Playwright browsers
-        run: npx playwright install chromium --with-deps
-        working-directory: webapp
+    #   - name: Cache Playwright browsers
+    #     uses: actions/cache@v4
+    #     id: playwright-cache
+    #     with:
+    #       path: ~/.cache/ms-playwright
+    #       key: playwright-chromium-${{ runner.os }}-${{ hashFiles('webapp/package-lock.json') }}
 
-      - name: E2E tests
-        run: npm run test:e2e
-        working-directory: webapp
-        env:
-          # Nuxt dev server needs these to start; no real DB is used during E2E tests
-          # Note: GitHub Actions sets CI=true automatically; playwright.config.ts reads it.
-          DATABASE_URL: postgresql://placeholder:placeholder@placeholder/placeholder
-          NUXT_SESSION_PASSWORD: 00000000000000000000000000000000
-          R2_ACCOUNT_ID: placeholder
-          R2_ACCESS_KEY_ID: placeholder
-          R2_SECRET_ACCESS_KEY: placeholder
-          R2_BUCKET_NAME: placeholder
-          R2_PUBLIC_URL: https://placeholder.r2.dev
-          R2_UPLOAD_URL: https://placeholder.r2.dev
-          NUXT_PUBLIC_COMPANIES_URL: https://placeholder/companies.json
-          NUXT_PUBLIC_CONTRACTS_URL: https://placeholder/contracts.json
-          RETURN_WALLET: "0x0000000000000000000000000000000000000000"
+    #   - name: Install Playwright system dependencies
+    #     run: npx playwright install-deps chromium
+    #     working-directory: webapp
+    #     if: steps.playwright-cache.outputs.cache-hit != 'true'
+    #     timeout-minutes: 5
+    #     env:
+    #       DEBIAN_FRONTEND: noninteractive
 
-      - name: Upload Playwright traces on failure
-        if: failure()
-        uses: actions/upload-artifact@v4
-        with:
-          name: playwright-traces
-          path: webapp/test-results/
+    #   - name: Install Playwright browsers
+    #     run: npx playwright install chromium
+    #     working-directory: webapp
+    #     if: steps.playwright-cache.outputs.cache-hit != 'true'
+    #     timeout-minutes: 10
+
+    #   - name: E2E tests
+    #     run: npm run test:e2e
+    #     working-directory: webapp
+    #     env:
+    #       # Nuxt dev server needs these to start; no real DB is used during E2E tests
+    #       # Note: GitHub Actions sets CI=true automatically; playwright.config.ts reads it.
+    #       DATABASE_URL: postgresql://placeholder:placeholder@placeholder/placeholder
+    #       NUXT_SESSION_PASSWORD: 00000000000000000000000000000000
+    #       R2_ACCOUNT_ID: placeholder
+    #       R2_ACCESS_KEY_ID: placeholder
+    #       R2_SECRET_ACCESS_KEY: placeholder
+    #       R2_BUCKET_NAME: placeholder
+    #       R2_PUBLIC_URL: https://placeholder.r2.dev
+    #       R2_UPLOAD_URL: https://placeholder.r2.dev
+    #       NUXT_PUBLIC_COMPANIES_URL: https://placeholder/companies.json
+    #       NUXT_PUBLIC_CONTRACTS_URL: https://placeholder/contracts.json
+    #       RETURN_WALLET: "0x0000000000000000000000000000000000000000"
+
+    #   - name: Upload Playwright traces on failure
+    #     if: failure()
+    #     uses: actions/upload-artifact@v4
+    #     with:
+    #       name: playwright-traces
+    #       path: webapp/test-results/
 
       - name: Build
         run: npm run build

@@ -7,11 +7,11 @@ Longitude,-85.3532716
 DC Capacity (kWp),746.2
 Date of First Operation,2017-03-28
 Begin Timestamp,2023-01-01
-End Timestamp,2023-12-31
+End Timestamp,2023-12-30
 Total Energy Production (MWh),576.6752469
 Total Carbon Reduction (tCO2e),389.2074017
 AVERT Emissions Factor,0.674916088
-Ember Emissions Factor,
+Ember Emissions Factor (gCO2e/kWh),
 No. of Type 1 Customers,
 No. of Type 2 Customers,
 Type 1-MA Consumption (MWh),

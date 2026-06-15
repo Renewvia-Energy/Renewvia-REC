@@ -2,8 +2,8 @@ Project Name,Butler Nissan
 Country,United States of America
 US State (if applicable),GA
 US Region (if applicable),Southeast
-Latitude,32.91
-Longitude,-83.71
+Latitude,32.91432
+Longitude,-83.70683
 DC Capacity (kWp),100
 Date of First Operation,2016-04-12
 Begin Timestamp,2021-12-15T12:00:00-05:00
@@ -11,7 +11,7 @@ End Timestamp,2021-12-31T23:00:00-05:00
 Total Energy Production (MWh),1.80702
 Total Carbon Reduction (tCO2e),1.272131815
 AVERT Emissions Factor,0.70399432
-Ember Emissions Factor,
+Ember Emissions Factor (gCO2e/kWh),
 No. of Type 1 Customers,
 No. of Type 2 Customers,
 Type 1-MA Consumption (MWh),

@@ -2,8 +2,8 @@ Project Name,Butler Collision
 Country,United States of America
 US State (if applicable),GA
 US Region (if applicable),Southeast
-Latitude,32.91
-Longitude,-83.71
+Latitude,32.91231
+Longitude,-83.70778
 DC Capacity (kWp),46.8
 Date of First Operation,2016-01-07
 Begin Timestamp,2024-01-01T00:00:00-05:00
@@ -11,7 +11,7 @@ End Timestamp,2024-10-31T23:00:00-04:00
 Total Energy Production (MWh),95.96064
 Total Carbon Reduction (tCO2e),64.76537975
 AVERT Emissions Factor,0.674916088
-Ember Emissions Factor,
+Ember Emissions Factor (gCO2e/kWh),
 No. of Type 1 Customers,
 No. of Type 2 Customers,
 Type 1-MA Consumption (MWh),

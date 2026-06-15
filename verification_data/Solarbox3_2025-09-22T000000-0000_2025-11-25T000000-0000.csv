@@ -11,7 +11,7 @@ End Timestamp,2025-11-25
 Total Energy Production (MWh),1.4053
 Total Carbon Reduction (tCO2e),
 AVERT Emissions Factor,
-Ember Emissions Factor,
+Ember Emissions Factor (gCO2e/kWh),
 No. of Type 1 Customers,
 No. of Type 2 Customers,
 Type 1-MA Consumption (MWh),
