@@ -506,9 +506,10 @@ def check_contracts_coverage(file_records, all_local_basenames, contracts_lookup
 	results = []
 	processed_basenames = {os.path.basename(r["filename"]) for r in file_records}
 
-	for bn in sorted(processed_basenames):
-		if bn not in contracts_lookup:
-			results.append(("WARN", f"Local file not referenced in contracts.json: {bn}"))
+	# This is already handled in file checks
+	# for bn in sorted(processed_basenames):
+	# 	if bn not in contracts_lookup:
+	# 		results.append(("WARN", f"Local file not referenced in contracts.json: {bn}"))
 
 	for bn, entries in sorted(contracts_lookup.items()):
 		mints = [e for e in entries if not e["ignore"] and e["action"] == "mint"]
