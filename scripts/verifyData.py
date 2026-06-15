@@ -626,6 +626,22 @@ def check_project_metadata_consistency(file_records):
 	return results
 
 
+def check_no_trailing_empty_rows(filepath):
+	"""Fail if the file ends with one or more blank or all-comma rows."""
+	with open(filepath, encoding="utf-8-sig") as f:
+		lines = f.readlines()
+	count = 0
+	for line in reversed(lines):
+		stripped = line.strip().replace(",", "")
+		if stripped == "":
+			count += 1
+		else:
+			break
+	if count:
+		return "FAIL", f"{count} trailing empty row(s) at end of file"
+	return "PASS", "No trailing empty rows"
+
+
 def check_meta_keys_consistency(file_records):
 	"""Cross-file: every file has exactly the expected metadata header fields."""
 	expected = set(EXPECTED_META_KEYS)
@@ -769,6 +785,10 @@ def main():
 		# 12. ISO date formatting
 		for lvl, msg in check_date_formats(meta, ts):
 			emit(lvl, msg, "ISO date format")
+
+		# 13. No trailing empty rows
+		lvl, msg = check_no_trailing_empty_rows(filepath)
+		emit(lvl, msg, "No trailing empty rows")
 
 		summary[fname] = counters
 
