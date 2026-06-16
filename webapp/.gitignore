@@ -28,6 +28,10 @@ Thumbs.db
 *.log
 npm-debug.log*
 
+# Playwright
+tests/e2e/.test-user.json
+test-results/
+
 # Impeccable
 skills-lock.json
 .agents

@@ -3,6 +3,40 @@ Blockchain-Based Carbon Assets
 
 For more information, please visit [our website](https://www.r-recs.com/).
 
+## Testing
+
+### Smart Contract Tests (Foundry)
+From the `contracts/` directory:
+```bash
+forge test
+```
+
+### Webapp Unit Tests (Vitest)
+From the `webapp/` directory:
+```bash
+npm test          # run once
+npm run test:watch  # watch mode
+```
+
+### Webapp E2E Tests (Playwright)
+E2E tests submit real data to the database and real documents to R2 storage.
+A dedicated test user must exist in the database before running them:
+```bash
+npm run seed:test-user   # one-time setup (re-running is safe)
+```
+
+From the `webapp/` directory:
+```bash
+npm run test:e2e       # headless
+npm run test:e2e:ui    # with Playwright UI
+```
+
+Each run automatically deletes any leftover `[Playwright Test]` submissions from
+previous runs before starting.  To purge them manually at any time:
+```bash
+npm run cleanup:test-submissions
+```
+
 ## Repository Overview
 ```
 .

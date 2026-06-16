@@ -682,6 +682,19 @@ async function analyzeSection(section: Section) {
       break
   }
 
+  // All early-return checks passed — a document is ready.  Ensure a draft row
+  // exists so the analyze endpoint can persist LLM results server-side.
+  // Without a submissionId, results are computed but never written to the DB.
+  if (!draftId.value) {
+    try {
+      const resp = await $fetch('/api/onboarding', { method: 'POST', body: buildPayload('draft') })
+      draftId.value = (resp as { submission: { uuid: string } }).submission.uuid
+      body.submissionId = draftId.value
+    } catch {
+      // Best-effort: analyze still runs, results just won't be persisted.
+    }
+  }
+
   llmDirty[section]  = false
   llmStatus[section] = 'running'
   try {
@@ -811,7 +824,8 @@ function buildPayload(status: 'draft' | 'pending') {
     dateDocType:              form.dateDocType || undefined,
     photosGen:                form.photosGen.length  ? form.photosGen  : undefined,
     photosMeter:              form.photosMeter.length ? form.photosMeter : undefined,
-    // LLM results are written server-side by /api/onboarding/analyze — not included here
+    // LLM results are written server-side by /api/onboarding/analyze (which is
+    // called with the draft's submissionId so results are persisted immediately).
   }
 }
 

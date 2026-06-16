@@ -1,7 +1,9 @@
+import 'dotenv/config'
 import { defineConfig, devices } from '@playwright/test'
 
 export default defineConfig({
   testDir: './tests/e2e',
+  globalSetup: './tests/e2e/global-setup.ts',
 
   // Fail the build on CI if you accidentally left test.only in the source code.
   forbidOnly: !!process.env.CI,
@@ -13,6 +15,11 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
 
   reporter: process.env.CI ? 'github' : 'list',
+
+  // Each test makes real Gemini LLM calls that can take 10–30 s each.
+  // Tests 1–3 collectively call Gemini up to 6 times, so 5 minutes is a
+  // safe ceiling while still catching genuine hangs.
+  timeout: 300_000,
 
   use: {
     baseURL: 'http://localhost:3000',

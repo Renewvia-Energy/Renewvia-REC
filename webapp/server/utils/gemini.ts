@@ -41,7 +41,10 @@ export async function analyzeDocument(
   contentPrompt: string,
 ): Promise<LlmResult> {
   const config = useRuntimeConfig()
-  const ai = new GoogleGenAI({ apiKey: config.geminiApiKey as string })
+  const ai = new GoogleGenAI({
+    apiKey: config.geminiApiKey as string,
+    httpOptions: { timeout: 60_000 },
+  })
   const model = config.geminiModel as string
 
   const promptText = docTypePrompt

@@ -14,6 +14,8 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "seed:admin": "npx tsx --env-file=.env scripts/seed-admin.ts",
+    "seed:test-user": "npx tsx --env-file=.env scripts/seed-test-user.ts",
+    "cleanup:test-submissions": "npx tsx --env-file=.env scripts/cleanup-test-submissions.ts",
     "test": "vitest run",
     "test:watch": "vitest",
     "test:e2e": "playwright test",
