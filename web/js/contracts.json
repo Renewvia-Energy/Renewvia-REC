@@ -88,6 +88,102 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "88545018",
 				"hash": "0x7951f784f66b81fec19ea539e0f687f5fb4da7478cb2c33bed636412877c33b0"
+			},
+			{
+				"timeStamp": "1781704073",
+				"action": "mint",
+				"amount": 141,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON1_2024-05-30T000000+0100_2024-12-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88666056",
+				"hash": "0x7093b2e50617051dfa103e98dcc97d2286cd5095695fd91b9547d19da59c4fac"
+			},
+			{
+				"timeStamp": "1781704148",
+				"action": "mint",
+				"amount": 235,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON1_2025-01-01T000000+0100_2025-12-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88666106",
+				"hash": "0x78939ef1a065c40e495912f66130058375a74f9be1ab9d839d798e871435aa03"
+			},
+			{
+				"timeStamp": "1781706745",
+				"action": "mint",
+				"amount": 151,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON1_2026-01-01T000000+0100_2026-05-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88667837",
+				"hash": "0x77dc183d7fb31fd963a91f629c3aedbf83de9639d65dabe5fe890be4e4aba804"
+			},
+			{
+				"timeStamp": "1781708000",
+				"action": "mint",
+				"amount": 71,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON2_2024-06-04T000000+0100_2024-12-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88668674",
+				"hash": "0x2bfaebe57d18d10899ca1fe54bd969710a2e8679dd7e742bc62f80d1ad49dfc1"
+			},
+			{
+				"timeStamp": "1781708243",
+				"action": "mint",
+				"amount": 71,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON2_2024-06-04T000000+0100_2024-12-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88668836",
+				"hash": "0xaeab7e7832c2d626f3d715115c63e551b1213c62b556a32f1bd5207c474bd311",
+				"ignore": true,
+				"note": "mistake"
+			},
+			{
+				"timeStamp": "1781712532",
+				"action": "return",
+				"amount": 0,
+				"verification_data": null,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0x00f86be78a7ae83f0c78342897309e869e9ddf87",
+				"blockNumber": "88671695",
+				"hash": "0x7904b097c4e318a110b6bb53fa164221a1b65907c10383c8a2a92ab85dd6ac22",
+				"ignore": true,
+				"note": "correcting mistake"
+			},
+			{
+				"timeStamp": "1781712743",
+				"action": "return",
+				"amount": 71,
+				"verification_data": null,
+				"to": "0x6E61B86d97EBe007E09770E6C76271645201fd07",
+				"from": "0x00f86be78a7ae83f0c78342897309e869e9ddf87",
+				"blockNumber": "88671836",
+				"hash": "0xa490f1e48a8ff705a0ac563dc2973c083f84b1da1669867c087fadcb5710eb64",
+				"ignore": true,
+				"note": "correcting mistake"
+			},
+			{
+				"timeStamp": "1781712863",
+				"action": "mint",
+				"amount": 118,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON2_2025-01-01T000000+0100_2025-12-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88671916",
+				"hash": "0x256f1e61a0cfbe98ae163107c718af811d3527de73de5d7b5d47a0105c6034b5"
+			},
+			{
+				"timeStamp": "1781712943",
+				"action": "mint",
+				"amount": 85,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICRAFON2_2026-01-01T000000+0100_2026-05-31T000000+0100.csv",
+				"to": "0x00F86Be78a7AE83f0C78342897309E869e9Ddf87",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "88671969",
+				"hash": "0x0aec06b7704d2630319dc8b68a5506e899867df3cf3a205357f4056aa85c621c"
 			}
 		]
 	},
