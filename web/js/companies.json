@@ -148,5 +148,11 @@
 		"logo": "https://www.africamda.org/wp-content/uploads/2024/12/REI-Cameroon.png",
 		"join_date": "2024-10-25",
 		"address": "0x145e93DAB48AAf606b5Ed982B19Df8426B22dB96"
+	},
+	{
+		"name": "AltSolar",
+		"logo": "https://www.r-recs.com/web/images/account-logos/altsolar.jpg",
+		"join_date": "2026-07-21",
+		"address": "0xf88Cd34214356986c741668d4b0D780532Ca311d"
 	}
 ]
