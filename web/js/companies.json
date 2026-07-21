@@ -154,5 +154,11 @@
 		"logo": "https://www.r-recs.com/web/images/account-logos/altsolar.jpg",
 		"join_date": "2026-07-21",
 		"address": "0xf88Cd34214356986c741668d4b0D780532Ca311d"
+	},
+	{
+		"name": "Equator Energy",
+		"logo": "https://equator.energy/assets/images/ee-logo-transparent-949x290.png",
+		"join_date": "2026-07-21",
+		"address": "0x3A047f2E96fE6E540151c9855C6E3c480e419963"
 	}
 ]
