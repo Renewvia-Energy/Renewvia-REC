@@ -160,5 +160,11 @@
 		"logo": "https://equator.energy/assets/images/ee-logo-transparent-949x290.png",
 		"join_date": "2026-07-21",
 		"address": "0x3A047f2E96fE6E540151c9855C6E3c480e419963"
+	},
+	{
+		"name": "MPower Ventures AG",
+		"logo": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6973859ff482b6a4c61262d7/55c57d297_MPowerlogo_white2.png",
+		"join_date": "2026-07-23",
+		"address": "0xE8Bd52c172Fe98b08fA1c7c9279c09d2d751E0A2"
 	}
 ]
