@@ -18,6 +18,13 @@
 		--white: #FFFFFF;
 		--green: #2E7D32;
 		--green-light: #E8F5E9;
+		--border: #EDE8E0;
+		--shadow: rgba(0,0,0,0.10);
+		--white-75: rgba(255,255,255,0.75);
+		--white-55: rgba(255,255,255,0.55);
+		--white-45: rgba(255,255,255,0.45);
+		--amber-light-40: rgba(249,148,54,0.4);
+		--amber-light-00: rgba(249,148,54,0);
 	}
 
 	* { margin: 0; padding: 0; box-sizing: border-box; }
@@ -35,7 +42,7 @@
 		max-width: 960px;
 		margin: 0 auto;
 		background: var(--white);
-		box-shadow: 0 4px 40px rgba(0,0,0,0.10);
+		box-shadow: 0 4px 40px var(--shadow);
 	}
 
 	/* ─── HEADER ────────────────────────────────────── */
@@ -73,7 +80,7 @@
 	.brand-tagline {
 		margin-top: 8px;
 		font-size: 13px;
-		color: rgba(255,255,255,0.55);
+		color: var(--white-55);
 		font-weight: 300;
 		letter-spacing: 0.02em;
 	}
@@ -100,14 +107,14 @@
 
 	.raise-sub {
 		font-size: 11px;
-		color: rgba(255,255,255,0.45);
+		color: var(--white-45);
 		margin-top: 4px;
 	}
 
 	/* ─── ORANGE RULE ───────────────────────────────── */
 	.rule {
 		height: 4px;
-		background: linear-gradient(90deg, var(--amber) 0%, var(--amber-light) 60%, rgba(249,148,54,0) 100%);
+		background: linear-gradient(90deg, var(--amber) 0%, var(--amber-light) 60%, var(--amber-light-00) 100%);
 	}
 
 	/* ─── BODY ──────────────────────────────────────── */
@@ -119,7 +126,7 @@
 
 	.col-left {
 		padding: 32px 36px 32px 48px;
-		border-right: 1px solid #EDE8E0;
+		border-right: 1px solid var(--border);
 	}
 
 	.col-right {
@@ -146,7 +153,7 @@
 		content: '';
 		flex: 1;
 		height: 1px;
-		background: #EDE8E0;
+		background: var(--border);
 	}
 
 	.section-title {
@@ -243,8 +250,8 @@
 		text-align: center;
 	}
 
-	.tag-loi { background: #FFF3E0; color: var(--amber); }
-	.tag-close { background: #E8F5E9; color: var(--green); }
+	.tag-loi { background: var(--amber-pale); color: var(--amber); }
+	.tag-close { background: var(--green-light); color: var(--green); }
 
 	/* ─── BULLET LIST ───────────────────────────────── */
 	.bullet-list {
@@ -386,11 +393,11 @@
 
 	.footer-left {
 		font-size: 11px;
-		color: rgba(255,255,255,0.45);
+		color: var(--white-45);
 	}
 
 	.footer-left strong {
-		color: rgba(255,255,255,0.75);
+		color: var(--white-75);
 		font-weight: 500;
 	}
 
@@ -404,13 +411,13 @@
 	.footer-cta a {
 		color: var(--amber-light);
 		text-decoration: none;
-		border-bottom: 1px solid rgba(249,148,54,0.4);
+		border-bottom: 1px solid var(--amber-light-40);
 	}
 
 	/* ─── DIVIDER ───────────────────────────────────── */
 	.divider {
 		height: 1px;
-		background: #EDE8E0;
+		background: var(--border);
 		margin: 20px 0;
 	}
 </style>
