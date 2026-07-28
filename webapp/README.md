@@ -84,6 +84,43 @@ Navigate to `http://localhost:3000/login` and sign in with the credentials you s
 
 ---
 
+## Testing
+
+### Unit tests (Vitest)
+
+```bash
+npm test          # Run once (this is what CI runs)
+npm run test:watch # Watch mode for local development
+```
+
+Unit tests live in `tests/unit/` and cover validation logic and auth helpers (e.g. `orders-validation.test.ts`, `users-validation.test.ts`, `auth.test.ts`). They don't hit a real database — see `tests/setup.ts` for mocks.
+
+### End-to-end tests (Playwright)
+
+E2E tests live in `tests/e2e/` and drive a real Nuxt dev server with a real browser (Chromium). They are **not currently run in CI** — the relevant steps are commented out in [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) — so run them locally before merging changes that touch auth, onboarding, or navigation guards.
+
+One-time setup:
+
+```bash
+npx playwright install chromium   # Download the browser binary
+npm run seed:test-user            # Create/upsert the E2E test user (needs DATABASE_URL, TEST_USER_USERNAME, TEST_USER_EMAIL in .env)
+```
+
+Run the tests:
+
+```bash
+npm run test:e2e       # Headless run
+npm run test:e2e:ui    # Interactive Playwright UI (recommended while writing/debugging tests)
+```
+
+Notes:
+
+- `playwright.config.ts` boots the app itself (`npm run dev`) with a throwaway `NUXT_SESSION_PASSWORD` and `PLAYWRIGHT_TEST=true`, which activates `server/middleware/test-auth.ts` — never set `PLAYWRIGHT_TEST` outside of local/CI test runs.
+- Most tests mock the session API via `page.route()` rather than hitting the real database, but onboarding tests do write to the DB pointed to by `DATABASE_URL` and cover their tracks via a `[Playwright Test]` project-name prefix that `tests/e2e/global-setup.ts` cleans up before each run. Run `npm run cleanup:test-submissions` if a run is interrupted and leaves stragglers behind.
+- Onboarding tests make real Gemini API calls (`GEMINI_API_KEY` must be set), so a full run can take a few minutes.
+
+---
+
 ## Neon setup
 
 1. Create a project at [console.neon.tech](https://console.neon.tech).
