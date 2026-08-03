@@ -166,5 +166,11 @@
 		"logo": "https://qtrypzzcjebvfcihiynt.supabase.co/storage/v1/object/public/base44-prod/public/6973859ff482b6a4c61262d7/55c57d297_MPowerlogo_white2.png",
 		"join_date": "2026-07-23",
 		"address": "0xE8Bd52c172Fe98b08fA1c7c9279c09d2d751E0A2"
+	},
+	{
+		"name": "SUCAF",
+		"logo": "https://www.jobrapide.org/wp-content/uploads/2025/07/SUCAF-Cote-dIvoire.jpeg",
+		"join_date": "2026-07-28",
+		"address": "0x52414D67FB221815c2653B59174F7E96e194A7e7"
 	}
 ]
