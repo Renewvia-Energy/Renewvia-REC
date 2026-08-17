@@ -6,8 +6,15 @@
       Loading market data…
     </div>
 
-    <div v-else-if="contractsStore.error" role="alert" class="rounded border border-danger-subtle bg-danger-subtle px-4 py-3 text-sm text-danger">
-      {{ contractsStore.error }}
+    <div v-else-if="contractsStore.error" role="alert" class="rounded border border-danger-subtle bg-danger-subtle px-4 py-3 text-sm text-danger flex items-center justify-between gap-4">
+      <span>{{ contractsStore.error }}</span>
+      <button
+        class="shrink-0 rounded border border-danger px-3 py-1 text-xs font-medium hover:bg-danger hover:text-white transition-colors"
+        :disabled="contractsStore.loading"
+        @click="retry"
+      >
+        {{ contractsStore.loading ? 'Retrying…' : 'Retry' }}
+      </button>
     </div>
 
     <template v-else>
@@ -50,6 +57,7 @@ import { useContractsStore } from '~/stores/contracts'
 
 useHead({ title: 'Dashboard' })
 
+const config         = useRuntimeConfig()
 const authStore      = useAuthStore()
 const contractsStore = useContractsStore()
 
@@ -62,4 +70,14 @@ const company = computed(() =>
     ? contractsStore.companyForWallet(sessionUser.value.companyWallet)
     : undefined,
 )
+
+async function retry() {
+  await contractsStore.loadPublicData()
+  if (sessionUser.value?.companyWallet) {
+    contractsStore.processWallet(
+      sessionUser.value.companyWallet,
+      config.public.returnWallet,
+    )
+  }
+}
 </script>

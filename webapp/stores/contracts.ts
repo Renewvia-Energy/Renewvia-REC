@@ -176,7 +176,8 @@ export const useContractsStore = defineStore('contracts', () => {
       contractsRaw.value = Array.isArray(contractsData) ? contractsData : []
       loaded.value = true
     } catch (e: unknown) {
-      error.value = e instanceof Error ? e.message : 'Failed to load market data'
+      console.error('[contracts] loadPublicData failed:', e)
+      error.value = 'Market data could not be loaded — the data source may be temporarily unavailable. Please try again in a few minutes.'
     } finally {
       loading.value = false
     }
