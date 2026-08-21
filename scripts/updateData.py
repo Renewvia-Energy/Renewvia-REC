@@ -1,4 +1,4 @@
-import requests, json, argparse, web3.exceptions, os
+import requests, json, argparse, web3.exceptions, os, time
 from dotenv import load_dotenv
 from web3 import Web3
 w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com/'))
@@ -6,7 +6,31 @@ w3 = Web3(Web3.HTTPProvider('https://polygon-rpc.com/'))
 RETURN_WALLET = '0x6E61B86d97EBe007E09770E6C76271645201fd07'
 RETIREMENT_WALLET = '0x51475BEdAe21624c5AD8F750cDBDc4c15Ca8F93f'
 MAX_TRIES = 2
+RATE_LIMIT_MAX_TRIES = 5
+REQUESTS_PER_SECOND = 3
 SCAN_DOMAIN = 'polygonscan'
+
+_last_request_time = 0.0
+
+def rate_limited_get(url):
+	# Throttles calls to REQUESTS_PER_SECOND and retries if the API reports a rate-limit error
+	global _last_request_time
+	min_interval = 1 / REQUESTS_PER_SECOND
+	response = None
+	for attempt in range(RATE_LIMIT_MAX_TRIES):
+		elapsed = time.monotonic() - _last_request_time
+		if elapsed < min_interval:
+			time.sleep(min_interval - elapsed)
+		response = requests.get(url)
+		_last_request_time = time.monotonic()
+
+		if response.status_code == 200:
+			result = response.json().get('result')
+			if isinstance(result, str) and 'rate limit' in result.lower():
+				print(f'\tRate limited by API ({result}). Retrying...')
+				continue
+		return response
+	return response
 
 def addNewToFilename(filename):
 	# Get the directory and filename
@@ -67,7 +91,7 @@ if __name__ == '__main__':
 			# Get Contract Transactions from API
 			for i in range(MAX_TRIES):
 				try:
-					response = requests.get(f'https://api.etherscan.io/v2/api?chainid=137&module=account&action=txlist&address={contract["address"]}&page=1&offset=10000&sort=asc&apikey={args.api_key}')
+					response = rate_limited_get(f'https://api.etherscan.io/v2/api?chainid=137&module=account&action=txlist&address={contract["address"]}&page=1&offset=10000&sort=asc&apikey={args.api_key}')
 					break
 				except OSError as e:
 					print(f'\t{e.strerror}. Retrying...')

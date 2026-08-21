@@ -330,6 +330,26 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "81546041",
 				"hash": "0x9cf8f87e979b79e3008635abff6a850feb3bf6cc2672d370bfd2a98030a27161"
+			},
+			{
+				"timeStamp": "1787345610",
+				"action": "mint",
+				"amount": 2616,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Ferke_2025-07-02T000000-0000_2025-12-31T000000-0000.csv",
+				"to": "0x52414D67FB221815c2653B59174F7E96e194A7e7",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "92427055",
+				"hash": "0x9e072fb28508b40fcd16773cf4771abd58973623dac0a46b407a2de9cb23d331"
+			},
+			{
+				"timeStamp": "1787345961",
+				"action": "mint",
+				"amount": 3640,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/Ferke_2026-01-01T000000-0000_2026-08-16T000000-0000.csv",
+				"to": "0x52414D67FB221815c2653B59174F7E96e194A7e7",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "92427289",
+				"hash": "0x8e1f3ffe284fc7ce7f1153287e93cafa7fc8350e4227103cafc0d1a3d99d0b22"
 			}
 		]
 	},

@@ -12,6 +12,7 @@ scripts/certificates/node_modules
 scripts/certificates/signature.png
 scripts/__pycache__
 scripts/platform_summary.html
+.env
 
 # Web
 *.css.map
