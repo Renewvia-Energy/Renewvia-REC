@@ -256,7 +256,7 @@ html, body {
 
 .signature-image {
 	position: absolute;
-	bottom: -9mm;
+	bottom: 4mm;
 	left: -5mm;
 	width: 8cm;
 }
