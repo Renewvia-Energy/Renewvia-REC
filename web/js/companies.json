@@ -178,5 +178,11 @@
 		"logo": "https://www.nrecautility.com/nreca_logo1.png",
 		"join_date": "2026-08-22",
 		"address": "0x55F76351CbeB8793E15d5476457ef9BB2CCF7660"
+	},
+	{
+		"name": "ClearSky Power",
+		"logo": "https://www.r-recs.com/web/images/account-logos/clearsky.png",
+		"join_date": "2026-08-24",
+		"address": "0xB9DC408576eAbA1Bf494D9f3e0C95EDEeCb9Ec08"
 	}
 ]
