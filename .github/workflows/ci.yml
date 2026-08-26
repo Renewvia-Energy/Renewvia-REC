@@ -7,6 +7,48 @@ on:
     branches: [main]
 
 jobs:
+  contracts:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: contracts/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+        working-directory: contracts
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Run Forge tests
+        run: forge test -vvv
+        working-directory: contracts
+
+  data-verification:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install pandas geopy requests
+
+      - name: Verify verification_data CSVs
+        run: python3 scripts/verifyData.py
+
+      - name: Verify company logo links
+        run: python3 scripts/verifyLogos.py
+
   build:
     runs-on: ubuntu-latest
     steps:
