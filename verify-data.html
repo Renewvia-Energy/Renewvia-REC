@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<title>Verify Data – Renewvia Environmental Exchange</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<!-- SEO Description -->
+	<meta name="author" content="Renewvia Environmental Exchange">
+	<meta name="description" content="Upload an R-REC verification_data CSV and check it for validity entirely in your browser, before submitting it.">
+	<link rel="canonical" href="https://www.r-recs.com/verify-data.html">
+	<meta name="robots" content="noindex">
+
+	<!-- Favicon -->
+	<link rel="icon" href="./favicon.ico" type="image/x-icon">
+
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700;900&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+	<!-- Custom CSS -->
+	<link rel="stylesheet" href="web/css/main.css">
+	<link rel="stylesheet" href="web/css/verify-data.css">
+</head>
+<body>
+	<header>
+		<img src="web/images/logo-titled.png" alt="REX Logo">
+		<nav>
+			<input class="menu-btn" type="checkbox" id="menu-btn">
+			<label class="menu-icon" for="menu-btn" tabindex="0"><span class="navicon"></span></label>
+			<ul class="menu">
+				<li><a href="index.html">Home</a></li>
+				<li><a rel="external" target="_blank" href="https://www.renewvia.com/">Visit Renewvia</a></li>
+				<li><a href="Standard.pdf" download target="_blank">Read the Standard</a></li>
+				<li><a href="mailto:recs@renewvia.com">Contact</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<main>
+		<div class="verify-hero">
+			<h1>Verify Your Data</h1>
+			<p>Upload a verification_data CSV to check it for validity before it's submitted &mdash; the same checks as our <code>verifyData.py</code> script, run entirely in your browser. Nothing is uploaded to any server except a country-name lookup sent to OpenStreetMap's Nominatim service.</p>
+		</div>
+
+		<div class="verify-body">
+			<label class="dropzone" id="dropzone" for="file-input">
+				<div class="dz-icon"><i class="fas fa-cloud-arrow-up"></i></div>
+				<div class="dz-title">Drop a CSV file here, or click to choose one</div>
+				<div class="dz-hint">Only .csv files are accepted</div>
+				<input type="file" id="file-input" accept=".csv,text/csv">
+			</label>
+
+			<div class="status-line" id="status-line"></div>
+			<button class="reset-btn" id="reset-btn" type="button">Check another file</button>
+
+			<div class="error-box" id="error-box"></div>
+
+			<div class="verdict-banner" id="verdict-banner">
+				<i class="fas" id="verdict-icon"></i>
+				<span id="verdict-text"></span>
+			</div>
+			<div class="summary-counts" id="summary-counts"></div>
+
+			<div class="report-section" id="per-file-section" style="display:none">
+				<h2>File Checks</h2>
+				<div class="report-card" id="per-file-report"></div>
+			</div>
+
+			<div class="report-section" id="cross-file-section" style="display:none">
+				<h2>Cross-File Checks</h2>
+				<div class="report-card" id="cross-file-report"></div>
+			</div>
+
+			<p class="verify-note">
+				<strong>How this works:</strong> your file is parsed and checked entirely on your device &mdash; energy sums, timestamps, and formatting are all validated locally. To run cross-file checks (overlap detection, matching project metadata, and contracts.json coverage), this page also fetches the other CSVs listed in
+				<code>verification_data/files.json</code> and <code>web/js/contracts.json</code> from this site, and sends the "Country" field to <a rel="external" target="_blank" href="https://nominatim.openstreetmap.org/">Nominatim</a> to confirm your coordinates fall within that country. No file content is sent anywhere.
+			</p>
+		</div>
+	</main>
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="footer-container">
+			<div class="footer-main">
+				<div class="footer-logo">
+					<img src="web/images/logo-titled.png" alt="REX Logo">
+				</div>
+				<div class="footer-contact">
+					<p>721 S Milledge Ave<br>
+					Athens, GA 30605</p>
+					<p>Email: <a href="mailto:recs@renewvia.com">recs@renewvia.com</a></p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+	<script src="web/js/verify-data.js"></script>
+	<script src="web/js/verify-data-ui.js"></script>
+</body>
+</html>

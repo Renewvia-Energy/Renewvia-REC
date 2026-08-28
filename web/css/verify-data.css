@@ -1,0 +1,241 @@
+body {
+	background-color: #F9FAF7;
+}
+
+main {
+	margin: 0 1%;
+}
+
+.verify-hero {
+	padding: 2.5rem var(--left-padding) 1.5rem;
+	max-width: 44rem;
+	margin: 0 auto;
+	text-align: center;
+}
+.verify-hero h1 {
+	font-size: 1.8rem;
+	text-transform: capitalize;
+	margin-bottom: 0.6rem;
+}
+.verify-hero p {
+	font-weight: 300;
+	font-size: 1.05rem;
+	color: #5a5a5a;
+	line-height: 1.5;
+}
+
+.verify-body {
+	max-width: 44rem;
+	margin: 0 auto 4rem;
+	padding: 0 var(--left-padding);
+}
+
+/* Dropzone card, styled like the widget cards on account.html */
+.dropzone {
+	display: block;
+	background-color: #fff;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+	border-radius: 0.7rem;
+	border: 2px dashed #ccc;
+	padding: 3rem 1.5rem;
+	text-align: center;
+	cursor: pointer;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+}
+.dropzone:hover,
+.dropzone.dragover {
+	border-color: var(--orange);
+	background-color: rgba(240, 99, 0, 0.04);
+}
+.dropzone input[type="file"] {
+	display: none;
+}
+.dropzone .dz-icon {
+	font-size: 2.2rem;
+	color: var(--orange);
+	margin-bottom: 0.6rem;
+}
+.dropzone .dz-title {
+	font-weight: 500;
+	font-size: 1.1rem;
+}
+.dropzone .dz-hint {
+	color: #5a5a5a;
+	font-weight: 300;
+	font-size: 0.9rem;
+	margin-top: 0.3rem;
+}
+
+.status-line {
+	margin-top: 1rem;
+	font-weight: 300;
+	font-size: 0.95rem;
+	color: #5a5a5a;
+	display: flex;
+	align-items: center;
+	gap: 0.6rem;
+	min-height: 1.4rem;
+}
+.spinner {
+	width: 1rem;
+	height: 1rem;
+	border: 2px solid #eee;
+	border-top-color: var(--orange);
+	border-radius: 50%;
+	animation: verify-spin 0.7s linear infinite;
+	flex: none;
+}
+@keyframes verify-spin {
+	to { transform: rotate(360deg); }
+}
+
+.reset-btn {
+	display: none;
+	margin-top: 1rem;
+	background: #fff;
+	outline: 1px solid #ccc;
+	color: #5a5a5a;
+	border: none;
+	border-radius: 0.7rem;
+	text-transform: capitalize;
+	font-weight: 500;
+	font-size: 0.9rem;
+	padding: 0.5rem 1.2rem;
+	cursor: pointer;
+}
+.reset-btn:hover {
+	border-color: var(--orange);
+	color: var(--orange);
+}
+.reset-btn.show {
+	display: inline-block;
+}
+
+/* Overall verdict banner */
+.verdict-banner {
+	margin-top: 1.5rem;
+	padding: 1rem 1.5rem;
+	border-radius: 0.7rem;
+	color: #fff;
+	font-weight: 500;
+	font-size: 1.1rem;
+	display: none;
+	align-items: center;
+	gap: 0.6rem;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+.verdict-banner.show { display: flex; }
+.verdict-banner.pass { background: var(--green); }
+.verdict-banner.warn { background: linear-gradient(270deg, #F06300 0%, #eb7b2b 100%); }
+.verdict-banner.fail { background: #D93025; }
+
+.summary-counts {
+	display: flex;
+	gap: 0.7rem;
+	margin-top: 1rem;
+	flex-wrap: wrap;
+}
+.count-pill {
+	border-radius: 999px;
+	padding: 0.3rem 0.9rem;
+	font-size: 0.85rem;
+	font-weight: 500;
+	background: #fff;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+}
+.count-pill.pass { color: var(--green); }
+.count-pill.fail { color: #D93025; }
+.count-pill.warn { color: var(--orange); }
+.count-pill.skip { color: #5a5a5a; }
+
+/* Report sections, styled like the widget cards on account.html */
+.report-section {
+	margin-top: 2rem;
+}
+.report-section h2 {
+	text-transform: capitalize;
+	font-size: 1.3rem;
+	font-weight: 500;
+	padding-left: var(--left-padding);
+}
+.report-card {
+	background-color: #fff;
+	box-shadow: 0 0.1rem 0.2rem rgba(0, 0, 0, 0.2);
+	border-radius: 0.6rem;
+	overflow: hidden;
+}
+
+.check-row {
+	display: flex;
+	gap: 0.8rem;
+	padding: 0.8rem 1rem;
+	border-bottom: 2px solid #eee;
+	align-items: flex-start;
+}
+.check-row:last-child {
+	border-bottom: none;
+}
+.badge {
+	flex: none;
+	display: inline-flex;
+	align-items: center;
+	gap: 0.3rem;
+	min-width: 3.4rem;
+	justify-content: center;
+	border-radius: 0.4rem;
+	padding: 0.2rem 0.55rem;
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.03em;
+	margin-top: 0.1rem;
+}
+.badge.pass { background: rgba(15, 157, 88, 0.12); color: var(--green); }
+.badge.fail { background: rgba(217, 48, 37, 0.1); color: #D93025; }
+.badge.warn { background: rgba(240, 99, 0, 0.12); color: var(--orange); }
+.badge.skip { background: rgba(0, 0, 0, 0.06); color: #5a5a5a; }
+
+.check-text {
+	font-weight: 300;
+	font-size: 0.95rem;
+}
+.check-text .check-label {
+	font-weight: 500;
+	margin-right: 0.4rem;
+}
+.check-text .check-msg {
+	color: #5a5a5a;
+	font-size: 0.85rem;
+	word-break: break-word;
+}
+
+.verify-note {
+	margin-top: 2.5rem;
+	font-weight: 300;
+	font-size: 0.85rem;
+	color: #5a5a5a;
+	line-height: 1.6;
+	border-top: 1px solid #eee;
+	padding-top: 1rem;
+}
+.verify-note strong {
+	font-weight: 500;
+}
+
+.error-box {
+	margin-top: 1.5rem;
+	padding: 1rem 1.5rem;
+	border-radius: 0.7rem;
+	background: rgba(217, 48, 37, 0.08);
+	color: #D93025;
+	font-size: 0.9rem;
+	display: none;
+	white-space: pre-wrap;
+}
+.error-box.show { display: block; }
+
+@media screen and (max-width: 649px) {
+	.check-row {
+		flex-direction: column;
+		gap: 0.3rem;
+	}
+}

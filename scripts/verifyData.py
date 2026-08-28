@@ -530,6 +530,35 @@ def check_contracts_coverage(file_records, all_local_basenames, contracts_lookup
 # Cross-file checks
 # ---------------------------------------------------------------------------
 
+def _build_file_record(filepath, meta):
+	"""Build the cross-file-check record for a single parsed file."""
+	begin_dt = _parse_ts(_meta_get(meta, "Begin Timestamp"))
+	end_dt = _parse_ts(_meta_get(meta, "End Timestamp"))
+	lat_s = _meta_get(meta, "Latitude")
+	lon_s = _meta_get(meta, "Longitude")
+	try:
+		lat, lon = float(lat_s), float(lon_s)
+	except (ValueError, TypeError):
+		lat, lon = None, None
+	return {
+		"filename": filepath,
+		"project_name": _meta_get(meta, "Project Name"),
+		"lat": lat,
+		"lon": lon,
+		"begin_dt": begin_dt,
+		"end_dt": end_dt,
+		"meta_keys": list(meta.keys()),
+		"country": _meta_get(meta, "Country"),
+		"us_state": _meta_get(meta, "US State"),
+		"us_region": _meta_get(meta, "US Region"),
+		"lat_s": _meta_get(meta, "Latitude"),
+		"lon_s": _meta_get(meta, "Longitude"),
+		"dc_capacity": _meta_get(meta, "DC Capacity"),
+		"date_first_op": _meta_get(meta, "Date of First Operation"),
+		"type_installation": _meta_get(meta, "Type of Installation"),
+	}
+
+
 def check_all_temporal_overlaps(file_records):
 	"""
 	file_records: list of dicts with keys:
@@ -714,11 +743,26 @@ def main():
 	else:
 		files = all_files
 
+	# Parse every file in the directory once, regardless of --file: cross-file
+	# checks (overlaps, shared-project metadata, meta key consistency) need
+	# every sibling file's record even when only one file is being reported on.
+	parsed = {}  # filepath -> (meta, ts) on success, or an error string on failure
+	for filepath in all_files:
+		try:
+			parsed[filepath] = parse_file(filepath)
+		except Exception as e:
+			parsed[filepath] = str(e)
+
 	# Summary counters per file
 	summary = {}  # filename -> {"PASS":n, "FAIL":n, "WARN":n, "SKIP":n}
 
-	# Records for cross-file checks
-	file_records = []
+	# Records for cross-file checks: built from every parseable file in the
+	# directory, not just the ones being reported on this run.
+	file_records = [
+		_build_file_record(filepath, result[0])
+		for filepath, result in parsed.items()
+		if not isinstance(result, str)
+	]
 
 	for filepath in files:
 		fname = os.path.basename(filepath)
@@ -727,12 +771,12 @@ def main():
 		print(f"FILE: {fname}")
 		print(f"{'='*70}")
 
-		try:
-			meta, ts = parse_file(filepath)
-		except Exception as e:
-			print(f"  [FAIL] Parse error: {e}")
+		result = parsed[filepath]
+		if isinstance(result, str):
+			print(f"  [FAIL] Parse error: {result}")
 			summary[fname] = {"PASS": 0, "FAIL": 1, "WARN": 0, "SKIP": 0}
 			continue
+		meta, ts = result
 
 		def emit(level, msg, label):
 			counters[level] += 1
@@ -791,33 +835,6 @@ def main():
 		emit(lvl, msg, "No trailing empty rows")
 
 		summary[fname] = counters
-
-		# Collect record for cross-file checks
-		begin_dt = _parse_ts(_meta_get(meta, "Begin Timestamp"))
-		end_dt = _parse_ts(_meta_get(meta, "End Timestamp"))
-		lat_s = _meta_get(meta, "Latitude")
-		lon_s = _meta_get(meta, "Longitude")
-		try:
-			lat, lon = float(lat_s), float(lon_s)
-		except (ValueError, TypeError):
-			lat, lon = None, None
-		file_records.append({
-			"filename": filepath,
-			"project_name": _meta_get(meta, "Project Name"),
-			"lat": lat,
-			"lon": lon,
-			"begin_dt": begin_dt,
-			"end_dt": end_dt,
-			"meta_keys": list(meta.keys()),
-			"country": _meta_get(meta, "Country"),
-			"us_state": _meta_get(meta, "US State"),
-			"us_region": _meta_get(meta, "US Region"),
-			"lat_s": _meta_get(meta, "Latitude"),
-			"lon_s": _meta_get(meta, "Longitude"),
-			"dc_capacity": _meta_get(meta, "DC Capacity"),
-			"date_first_op": _meta_get(meta, "Date of First Operation"),
-			"type_installation": _meta_get(meta, "Type of Installation"),
-		})
 
 	# Cross-file checks
 	print(f"\n{'='*70}")
