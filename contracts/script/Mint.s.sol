@@ -20,8 +20,7 @@ contract RRECScript is Script {
 			"The verification data is located at ", vData, "\n",
 			"Do you want to proceed with deployment? (y/n)"));
 		if (keccak256(abi.encodePacked(userConfirmation)) != keccak256(abi.encodePacked("y"))) {
-			console.log("Deployment cancelled by user");
-			return;
+			revert("Mint cancelled by user");
 		}
 
 		vm.startBroadcast(vm.envUint("PRIVATE_KEY"));

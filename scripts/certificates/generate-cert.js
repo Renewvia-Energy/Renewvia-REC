@@ -62,7 +62,7 @@ async function generatePDF(htmlFile, outputFile) {
 	console.log(`PDF saved: ${outputFile}`);
 }
 
-async function generateAllCertificates(filterHash = null) {
+async function generateAllCertificates(filterHash = null, deleteHtml = false) {
 	const contracts = JSON.parse(fs.readFileSync('../../web/js/contracts.json', 'utf8'));
 	const companies = JSON.parse(fs.readFileSync('../../web/js/companies.json', 'utf8'));
 
@@ -124,29 +124,35 @@ async function generateAllCertificates(filterHash = null) {
 				HASH: tx.hash
 			};
 
+			// Generate the cert HTML + PDF unless the PDF already exists in out/
+			async function buildCertificate(certData, pdfFile) {
+				if (fs.existsSync(pdfFile)) {
+					console.log(`Skipping (already exists): ${pdfFile}`);
+					return;
+				}
+				const filename = await generateCertificate(certData);
+				await generatePDF(filename, pdfFile);
+			}
+
 			switch (tx.action) {
 				case 'mint':
 					data['USER'] = findCompanyName(tx.to)
-					filename = await generateCertificate(data);
-					await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
+					await buildCertificate(data, `out/certificate_${tx.blockNumber}.pdf`);
 					break
 
 				case 'transfer':
 					data['USER'] = findCompanyName(tx.from)
-					filename = await generateCertificate(data);
-					await generatePDF(filename, `out/certificate_sale_${tx.blockNumber}.pdf`);
+					await buildCertificate(data, `out/certificate_sale_${tx.blockNumber}.pdf`);
 
 					data['EVENT'] = 'Purchase'
 					data['USER'] = findCompanyName(tx.to)
 					data['ACTION'] = 'purchased'
-					filename = await generateCertificate(data);
-					await generatePDF(filename, `out/certificate_purchase_${tx.blockNumber}.pdf`);
+					await buildCertificate(data, `out/certificate_purchase_${tx.blockNumber}.pdf`);
 					break
 
 				case 'retire':
 					data['USER'] = findCompanyName(tx.from)
-					filename = await generateCertificate(data);
-					await generatePDF(filename, `out/certificate_${tx.blockNumber}.pdf`);
+					await buildCertificate(data, `out/certificate_${tx.blockNumber}.pdf`);
 					break
 
 				case 'return':
@@ -155,7 +161,17 @@ async function generateAllCertificates(filterHash = null) {
 			}
 		}
 	}
+
+	if (deleteHtml) {
+		const htmlFiles = fs.readdirSync('out').filter(f => f.endsWith('.html'));
+		for (const f of htmlFiles) {
+			fs.unlinkSync(path.join('out', f));
+		}
+		console.log(`Deleted ${htmlFiles.length} HTML file(s) from out/`);
+	}
 }
 
-const filterHash = process.argv[2] || null;
-generateAllCertificates(filterHash);
+const args = process.argv.slice(2);
+const deleteHtml = args.includes('--delete-html');
+const filterHash = args.find(a => !a.startsWith('--')) || null;
+generateAllCertificates(filterHash, deleteHtml);

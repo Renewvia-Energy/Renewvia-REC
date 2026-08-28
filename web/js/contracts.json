@@ -7,7 +7,9 @@
 		"img": "web/images/asset-images/Generic.jpg",
 		"description": "Cameroon R-RECs draw on the country's diverse renewable resources, reflecting a harmonious blend of tradition and sustainable innovation.",
 		"address": "0x7cafD97dA50Fc8A7d8Ed45749a29aD6A64bfFaf1",
-		"implementation": ["0x8E0cCeCB9744379ef3bb71d2Ed43841B6b5bd901"],
+		"implementation": [
+			"0x8E0cCeCB9744379ef3bb71d2Ed43841B6b5bd901"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1740955859",
@@ -205,7 +207,9 @@
 		"img": "web/images/asset-images/Generic.jpg",
 		"description": "Côte d'Ivoire R-RECs capture the golden essence of the nation's abundant tropical sunshine, weaving renewable energy into the fabric of its cocoa-rich landscapes and vibrant economic transformation.",
 		"address": "0x1E9c609Cc4F1801996eAe2E2b1171EdBefa2D871",
-		"implementation": ["0x8a71fdf7268537650e6C3e85Ba9D18b457448f0a"],
+		"implementation": [
+			"0x8a71fdf7268537650e6C3e85Ba9D18b457448f0a"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1751278586",
@@ -360,6 +364,46 @@
 				"from": "0x52414d67fb221815c2653b59174f7e96e194a7e7",
 				"blockNumber": "92434380",
 				"hash": "0xc118aa6def291983b043f88980453c4ea4e87deedb8443a35c277ac9a0a122d2"
+			},
+			{
+				"timeStamp": "1787880760",
+				"action": "mint",
+				"amount": 831,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/SIVOP_2026-01-01T000000-0000_2026-08-26T000000-0000.csv",
+				"to": "0xF9643Ce85c0ae1dBe2b6B2C0C7c511F12aE66c80",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "92783822",
+				"hash": "0xc8a629ae67aa9517ad5b6ac97768360937fe57a5d44b1e2dc666fde163c0af10"
+			},
+			{
+				"timeStamp": "1787881092",
+				"action": "mint",
+				"amount": 2551,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/ICP_2026-01-01T000000-0000_2026-08-26T000000-0000.csv",
+				"to": "0x3C546BE0e8069088f5A28E1aFdE26F1fe3Cd54d1",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "92784043",
+				"hash": "0x73d9afd42696103d0e39c39520bc8515d8b21366756225733e23e3d0999ea3ef"
+			},
+			{
+				"timeStamp": "1787882842",
+				"action": "transfer",
+				"amount": 449,
+				"verification_data": null,
+				"to": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300",
+				"from": "0xf9643ce85c0ae1dbe2b6b2c0c7c511f12ae66c80",
+				"blockNumber": "92785210",
+				"hash": "0xa1cc237e7e4df5eba422deb05076335421ea013a724578072ac065883a3ea0c3"
+			},
+			{
+				"timeStamp": "1787883196",
+				"action": "transfer",
+				"amount": 2551,
+				"verification_data": null,
+				"to": "0x99d0492cB37ce6E93a753d69B380EcD3e2459300",
+				"from": "0x3c546be0e8069088f5a28e1afde26f1fe3cd54d1",
+				"blockNumber": "92785446",
+				"hash": "0xec631bb8698475de19f83b939b9dc7216205ab4ce76ce0441a5b1c7240731c0e"
 			}
 		]
 	},
@@ -371,7 +415,9 @@
 		"img": "../images/asset-images/RREC-AL.jpg",
 		"description": "Alabama R-RECs channel the energy of the Southern sun, supporting renewable initiatives that contribute to the state's robust and sustainable energy transformation.",
 		"address": "0xbB0459Ae15fF77F7C7673DD0611bc98Dc3457B3c",
-		"implementation": ["0x0D6a0982CC903960aC15A0Ffc847dE304D972899"],
+		"implementation": [
+			"0x0D6a0982CC903960aC15A0Ffc847dE304D972899"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1781383524",
@@ -403,7 +449,9 @@
 		"img": "../images/asset-images/RREC-GA.jpg",
 		"description": "Georgia R-RECs are a beacon of progress in the Peach State, fueling its journey towards a clean and renewable energy future.",
 		"address": "0xb611D4C3Ed9bcf5CfafaEa42E77DEfae3610fF9C",
-		"implementation": ["0x84c02487C9F4Ab9Fd25d26942fe59c7f017F8BF6"],
+		"implementation": [
+			"0x84c02487C9F4Ab9Fd25d26942fe59c7f017F8BF6"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1781376952",
@@ -565,9 +613,10 @@
 		"img": "../images/asset-images/RREC-NC.jpg",
 		"description": "North Carolina R-RECs weave renewable energy into the state's tapestry, from its coastal plains to its mountainous ridges, supporting a green and prosperous future.",
 		"address": "0x41B14e35602d8660e38401DEF096fD7e689ED5eD",
-		"implementation": ["0xae4B0E083988c7369669E95fbdaf57687c2DF8F5"],
-		"transactions": [
-		]
+		"implementation": [
+			"0xae4B0E083988c7369669E95fbdaf57687c2DF8F5"
+		],
+		"transactions": []
 	},
 	{
 		"name": "Virginia R-REC",
@@ -577,7 +626,9 @@
 		"img": "../images/asset-images/RREC-VA.jpg",
 		"description": "Virginia R-RECs represent the Old Dominion's modern approach to clean energy, capturing solar power to brighten its future and preserve its natural heritage.",
 		"address": "0x5E07a763fF6328751afB8b54A9c7c9fc0BbD4096",
-		"implementation": ["0xbE8d26A719d5d5bf2c71058261d2551025dA627b"],
+		"implementation": [
+			"0xbE8d26A719d5d5bf2c71058261d2551025dA627b"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1781383632",
@@ -629,7 +680,9 @@
 		"img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6f/Flag_of_the_Democratic_Republic_of_the_Congo.svg/2560px-Flag_of_the_Democratic_Republic_of_the_Congo.svg.png",
 		"description": "Democratic Republic of Congo R-RECs harness the immense power of the Congo River and equatorial sun, channeling the heart of Africa's renewable potential to illuminate its vast forests and communities.",
 		"address": "0x252EcF3f1d28badc5924438d346Cd57ebB3F293b",
-		"implementation": ["0x95Ea4DF349897Fb7816417Ed4C9135eD0876Ed4B"],
+		"implementation": [
+			"0x95Ea4DF349897Fb7816417Ed4C9135eD0876Ed4B"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1781383395",
@@ -661,7 +714,9 @@
 		"img": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/Flag_of_Senegal.svg/1920px-Flag_of_Senegal.svg.png",
 		"description": "Senegal R-RECs are charged with the vibrancy of the Senegalese sun, illuminating the path to renewable energy adoption in West Africa.",
 		"address": "0x551F7E94E6b7a0CE7B42aAee66e69c6297520d96",
-		"implementation": ["0xCA242C8207ED479D28E59E30BD5db5e447A36B93"],
+		"implementation": [
+			"0xCA242C8207ED479D28E59E30BD5db5e447A36B93"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1759265485",
@@ -853,7 +908,9 @@
 		"img": "../images/asset-images/RREC-AZA.jpg",
 		"description": "South Africa R-RECs radiate with the potential of the Rainbow Nation's renewable resources, from its sunny coasts to its wind-swept plateaus.",
 		"address": "0x9601c04671B51f5920344339B475B4E835B1B538",
-		"implementation": ["0xF1C1ef7b368ec4dedD0453f5b37866b3D6ee3d88"],
+		"implementation": [
+			"0xF1C1ef7b368ec4dedD0453f5b37866b3D6ee3d88"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1762426611",
@@ -875,7 +932,9 @@
 		"img": "https://upload.wikimedia.org/wikipedia/commons/8/85/Mini-Grid_Bayelsa.jpg",
 		"description": "Nigeria R-RECs represent a giant leap towards a sustainable future, converting the country's abundant sunlight into a cornerstone of its energy matrix.",
 		"address": "0xFC5437DD98B723F5977c6851ED75Aa0072B4ef88",
-		"implementation": ["0xE1e2f18968fd3ac8d9B94d7fC27D1C03eDa04431"],
+		"implementation": [
+			"0xE1e2f18968fd3ac8d9B94d7fC27D1C03eDa04431"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1764930049",
@@ -917,7 +976,9 @@
 		"img": "https://r-recs.com/web/images/asset-images/RREC-AKE.jpg",
 		"description": "Kenya R-RECs are a beacon of innovation, capturing geothermal, wind, and solar energy that powers its vision for a sustainable and resilient future.",
 		"address": "0xeb245c9340711E26e26B06b1F876a0244ABed87C",
-		"implementation": ["0xabBaf7A5d7240fd505C1e3045918BbE2d1E7896B"],
+		"implementation": [
+			"0xabBaf7A5d7240fd505C1e3045918BbE2d1E7896B"
+		],
 		"transactions": [
 			{
 				"timeStamp": "1774870694",

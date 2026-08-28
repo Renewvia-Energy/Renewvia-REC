@@ -689,6 +689,37 @@ def check_meta_keys_consistency(file_records):
 	return results
 
 
+def check_files_json_coverage(data_dir):
+	"""Cross-file: files.json and the data directory list exactly the same files."""
+	files_json_path = os.path.join(data_dir, "files.json")
+	try:
+		with open(files_json_path, encoding="utf-8") as f:
+			listed = json.load(f)
+	except Exception as e:
+		return [("FAIL", f"Could not load {files_json_path}: {e}")]
+
+	if not isinstance(listed, list):
+		return [("FAIL", f"{files_json_path} is not a JSON array")]
+
+	listed_set = set(listed)
+	on_disk = {
+		name for name in os.listdir(data_dir)
+		if os.path.isfile(os.path.join(data_dir, name)) and name != "files.json"
+	}
+
+	results = [
+		("FAIL", f"File on disk not listed in files.json: {name}")
+		for name in sorted(on_disk - listed_set)
+	]
+	results += [
+		("FAIL", f"files.json lists a file missing from {data_dir}: {name}")
+		for name in sorted(listed_set - on_disk)
+	]
+	if not results:
+		results.append(("PASS", f"files.json matches the {len(on_disk)} files in {data_dir}"))
+	return results
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -855,6 +886,10 @@ def main():
 		print(f"  [{lvl}] {msg}")
 
 	for lvl, msg in check_meta_keys_consistency(file_records):
+		cross_counters[lvl] += 1
+		print(f"  [{lvl}] {msg}")
+
+	for lvl, msg in check_files_json_coverage(args.dir):
 		cross_counters[lvl] += 1
 		print(f"  [{lvl}] {msg}")
 

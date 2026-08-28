@@ -74,13 +74,36 @@ case $action in
 		;;
 	mint)
 		cmd="forge clean; forge script script/Mint.s.sol --rpc-url polygon"
-		
+
 		# Add broadcast flag if specified
 		if [ -n "$broadcast_flag" ]; then
 			cmd="$cmd $broadcast_flag"
 		fi
-		
+
 		eval $cmd
+		mint_exit=$?
+
+		# After a broadcast mint, refresh the web frontend's contracts.json from chain
+		if [ -n "$broadcast_flag" ] && [ $mint_exit -eq 0 ]; then
+			# Resolve the minted proxy address to a contract abbreviation for updateData.py's -c filter
+			contract_id=$(cd .. && python3 -c "
+import json, sys
+addr = sys.argv[1].lower()
+for c in json.load(open('web/js/contracts.json')):
+	if (c.get('address') or '').lower() == addr:
+		print(c['abbreviation'])
+		break
+" "$MINT_PROXY")
+
+			echo ""
+			if [ -n "$contract_id" ]; then
+				echo "Updating contracts.json for $contract_id ($MINT_PROXY)..."
+				(cd .. && python3 scripts/updateData.py -i -c "$contract_id")
+			else
+				echo "Warning: $MINT_PROXY not found in web/js/contracts.json; updating all contracts."
+				(cd .. && python3 scripts/updateData.py -i)
+			fi
+		fi
 		;;
 	*)
 		echo "Error: Invalid argument '$action'"

@@ -51,7 +51,8 @@ if __name__ == '__main__':
 	parser.add_argument('-k', '--api-key', default=os.getenv('ETHERSCAN_API_KEY'), help='Your API key (default: ETHERSCAN_API_KEY from .env)')
 	parser.add_argument('-f', '--contracts-fn', default='web/js/contracts.json', help='Path to contracts.json')
 	parser.add_argument('-a', '--abi-fn', default='web/js/abi.json', help='Path to abi.json')
-	parser.add_argument('-c', '--contract', help='Only update the specified contract')
+	parser.add_argument('-c', '--contract', help='Only update the specified contract, by abbreviation')
+	parser.add_argument('-i', '--in-place', action='store_true', help='Overwrite contracts.json directly instead of writing a separate _new.json file')
 	args = parser.parse_args()
 
 	# Load all R-REC contracts
@@ -167,5 +168,6 @@ if __name__ == '__main__':
 			else:
 				raise Exception(f"Error fetching data: {response.status_code}")
 
-	with open(addNewToFilename(args.contracts_fn), 'w', encoding='utf-8') as f:
+	out_fn = args.contracts_fn if args.in_place else addNewToFilename(args.contracts_fn)
+	with open(out_fn, 'w', encoding='utf-8') as f:
 		json.dump(contracts, f, ensure_ascii=False, indent='\t')
