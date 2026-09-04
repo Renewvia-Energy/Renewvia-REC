@@ -51,7 +51,19 @@ def abbr_addr(addr):
     return addr or '—'
 
 
+def build_addr_map(companies):
+    """Return lowercase-address → company name lookup."""
+    return {c['address'].lower(): c['name']
+            for c in companies if is_valid_address(c.get('address', ''))}
+
+
+def lookup_name(addr, addr_map):
+    return addr_map.get((addr or '').lower(), abbr_addr(addr))
+
+
 def compute_stats(companies, contracts):
+    addr_map = build_addr_map(companies)
+
     # Companies
     by_year_co = defaultdict(int)
     companies_by_year = defaultdict(list)
@@ -82,6 +94,29 @@ def compute_stats(companies, contracts):
     rec_txns = {}
     retire_txns = []
     return_txns = []
+    orders = []
+    sales = []
+
+    # Collect special wallet addresses to exclude from Sales
+    # (determined dynamically from retire/return destinations)
+    retire_wallets = set()
+    return_wallets = set()
+    main_addr = next(
+        (c['address'].lower() for c in companies if c.get('name') == 'Main'), None)
+
+    for contract in contracts:
+        for txn in contract.get('transactions', []):
+            if txn.get('ignore'):
+                continue
+            action = txn.get('action', '')
+            if action == 'retire' and txn.get('to'):
+                retire_wallets.add(txn['to'].lower())
+            elif action == 'return' and txn.get('to'):
+                return_wallets.add(txn['to'].lower())
+
+    special_wallets = retire_wallets | return_wallets
+    if main_addr:
+        special_wallets.add(main_addr)
 
     for contract in contracts:
         contract_minted = 0.0
@@ -97,13 +132,15 @@ def compute_stats(companies, contracts):
             action_totals[action] += amount
             by_year_txn[year][action] += 1
 
+            to_addr = txn.get('to', '')
+            from_addr = txn.get('from', '')
             info = {
                 'rec_name': contract['name'],
                 'action': action,
                 'amount': amount,
                 'date': fmt_date(ts),
-                'to': txn.get('to', ''),
-                'from': txn.get('from', ''),
+                'to': to_addr,
+                'from': from_addr,
                 'hash': txn.get('hash', ''),
                 'block_number': txn.get('blockNumber', '0'),
                 'verification_data': txn.get('verification_data'),
@@ -115,10 +152,29 @@ def compute_stats(companies, contracts):
                 contract_minted += amount
                 if txn.get('verification_data'):
                     verified_mints += 1
+                orders.append({
+                    'block_number': txn.get('blockNumber', '0'),
+                    'date': fmt_date(ts),
+                    'asset_name': contract['name'],
+                    'generator': lookup_name(to_addr, addr_map),
+                    'amount': amount,
+                })
             elif action == 'retire':
                 retire_txns.append(info)
             elif action == 'return':
                 return_txns.append(info)
+            elif action == 'transfer':
+                from_l = from_addr.lower()
+                to_l = to_addr.lower()
+                if from_l not in special_wallets and to_l not in special_wallets:
+                    sales.append({
+                        'block_number': txn.get('blockNumber', '0'),
+                        'date': fmt_date(ts),
+                        'asset_name': contract['name'],
+                        'buyer': lookup_name(to_addr, addr_map),
+                        'seller': lookup_name(from_addr, addr_map),
+                        'amount': amount,
+                    })
 
         rec_minted[contract['name']] = contract_minted
         rec_txns[contract['name']] = contract_txns
@@ -126,6 +182,9 @@ def compute_stats(companies, contracts):
     minted = action_totals.get('mint', 0)
     retired = action_totals.get('retire', 0)
     returned = action_totals.get('return', 0)
+
+    orders.sort(key=lambda r: int(r['block_number']) if r['block_number'].isdigit() else 0)
+    sales.sort(key=lambda r: int(r['block_number']) if r['block_number'].isdigit() else 0)
 
     return {
         'total_companies': len(companies),
@@ -154,6 +213,8 @@ def compute_stats(companies, contracts):
         'rec_txns': rec_txns,
         'retire_txns': retire_txns,
         'return_txns': return_txns,
+        'orders': orders,
+        'sales': sales,
     }
 
 
@@ -295,6 +356,31 @@ def render_html(stats, generated_at):
 
     region_pills = ''.join(f'<span class="pill">{r}</span>' for r in stats['regions'])
 
+    # --- Orders table rows ---
+    order_rows = ''.join(
+        f'<tr>'
+        f'<td class="num">{r["block_number"]}</td>'
+        f'<td>{r["date"]}</td>'
+        f'<td>{r["asset_name"]}</td>'
+        f'<td>{r["generator"]}</td>'
+        f'<td class="num">{fmt(r["amount"])}</td>'
+        f'</tr>'
+        for r in stats['orders']
+    ) or '<tr><td colspan="5" class="empty-cell">No orders.</td></tr>'
+
+    # --- Sales table rows ---
+    sale_rows = ''.join(
+        f'<tr>'
+        f'<td class="num">{r["block_number"]}</td>'
+        f'<td>{r["date"]}</td>'
+        f'<td>{r["asset_name"]}</td>'
+        f'<td>{r["seller"]}</td>'
+        f'<td>{r["buyer"]}</td>'
+        f'<td class="num">{fmt(r["amount"])}</td>'
+        f'</tr>'
+        for r in stats['sales']
+    ) or '<tr><td colspan="5" class="empty-cell">No sales.</td></tr>'
+
     return f"""<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -372,6 +458,7 @@ def render_html(stats, generated_at):
   .sub-table table {{ min-width: 480px; }}
   .empty {{ padding: 8px 14px; color: #999; font-size: 12px; font-style: italic;
             background: #f8fbf8; border-top: 1px solid #eee; }}
+  .empty-cell {{ color: #999; font-style: italic; }}
 
   /* Action tags */
   .tag {{ display: inline-block; padding: 1px 7px; border-radius: 100px; font-size: 11px; font-weight: 600; }}
@@ -471,6 +558,22 @@ def render_html(stats, generated_at):
     <table>
       <thead><tr>{year_header}</tr></thead>
       <tbody>{year_rows}</tbody>
+    </table>
+  </div>
+
+  <div class="card wide">
+    <h2>Orders (Minting Transactions)</h2>
+    <table>
+      <thead><tr><th class="num">Block</th><th>Date</th><th>Asset</th><th>Generator</th><th class="num">MWh</th></tr></thead>
+      <tbody>{order_rows}</tbody>
+    </table>
+  </div>
+
+  <div class="card wide">
+    <h2>Sales (Transfers)</h2>
+    <table>
+      <thead><tr><th class="num">Block</th><th>Date</th><th>Asset</th><th>Seller</th><th>Buyer</th><th class="num">MWh</th></tr></thead>
+      <tbody>{sale_rows}</tbody>
     </table>
   </div>
 
