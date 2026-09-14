@@ -35,6 +35,21 @@ export default defineEventHandler(async (event) => {
     }
   }
 
+  const DATA_FIELDS = [
+    'projectName', 'projectType', 'expectedAnnualGeneration',
+    'genGenerationType', 'genDocUrl', 'genDocType',
+    'genSecondarySrc', 'genSecondaryDesc', 'genTertiarySrc', 'genTertiaryDesc',
+    'capCapacity', 'capDocUrl', 'capDocType',
+    'locPhysicalAddress', 'locLat', 'locLon', 'locDocUrl', 'locDocType',
+    'dateDateOfFirstOperation', 'dateDocUrl', 'dateDocType',
+    'photosGen', 'photosMeter',
+  ] as const
+  const isFieldEdit = DATA_FIELDS.some(k => (body as Record<string, unknown>)[k] !== undefined)
+
+  if (user.isAdmin && isFieldEdit && existing.status !== 'pending') {
+    throw createError({ statusCode: 422, statusMessage: 'Can only edit fields on pending submissions' })
+  }
+
   const updates: Partial<typeof schema.onboardingSubmissions.$inferInsert> = {
     updatedAt: new Date(),
   }
@@ -64,6 +79,11 @@ export default defineEventHandler(async (event) => {
   if (body.photosGen                !== undefined) updates.photosGen                = body.photosGen
   if (body.photosMeter              !== undefined) updates.photosMeter              = body.photosMeter
   // LLM result fields are written only by the server-side analyze endpoint; never accepted from the client
+
+  if (user.isAdmin && isFieldEdit) {
+    updates.adminEditedAt = new Date()
+    updates.adminEditedBy = user.id
+  }
 
   // Status transition: generator can submit (draft → pending) or reopen (rejected → draft)
   if (body.status === 'pending' && existing.status === 'draft') {

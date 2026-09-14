@@ -152,9 +152,11 @@ export const onboardingSubmissions = pgTable('onboarding_submissions', {
   photosMeterLlmReason: text('photos_meter_llm_reason'),
 
   // Review
-  reviewNotes: text('review_notes'),
-  reviewedAt:  timestamp('reviewed_at'),
-  reviewedBy:  integer('reviewed_by').references(() => users.id),
+  reviewNotes:   text('review_notes'),
+  reviewedAt:    timestamp('reviewed_at'),
+  reviewedBy:    integer('reviewed_by').references(() => users.id),
+  adminEditedAt: timestamp('admin_edited_at'),
+  adminEditedBy: integer('admin_edited_by').references(() => users.id),
 
   createdAt: timestamp('created_at').defaultNow().notNull(),
   updatedAt: timestamp('updated_at').defaultNow().notNull(),

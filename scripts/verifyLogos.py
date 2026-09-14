@@ -11,6 +11,7 @@ import argparse
 import json
 import os
 import sys
+import time
 
 import requests
 
@@ -20,6 +21,8 @@ DEFAULT_COMPANIES = os.path.normpath(
 
 HEADERS = {"User-Agent": "Mozilla/5.0 (compatible; RenewviaRECBot/1.0)"}
 TIMEOUT = 20
+RETRY_429_DELAY = 5  # seconds to wait before retrying after a 429
+RETRY_429_MAX = 3
 
 # Magic-byte signatures for common raster formats. Some servers report an
 # incorrect Content-Type (e.g. text/html or binary/octet-stream) even though
@@ -54,10 +57,21 @@ def check_logo(name, url):
     if not url or not url.startswith(("http://", "https://")):
         return "FAIL", f"Not a valid http(s) URL: {url!r}"
 
-    try:
-        resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT, allow_redirects=True)
-    except requests.RequestException as e:
-        return "FAIL", f"Request error: {e}"
+    for attempt in range(1, RETRY_429_MAX + 1):
+        try:
+            resp = requests.get(url, headers=HEADERS, timeout=TIMEOUT, allow_redirects=True)
+        except requests.RequestException as e:
+            return "FAIL", f"Request error: {e}"
+
+        if resp.status_code != 429:
+            break
+
+        retry_after = int(resp.headers.get("Retry-After", RETRY_429_DELAY))
+        if attempt < RETRY_429_MAX:
+            print(f"       [429] rate-limited, retrying in {retry_after}s (attempt {attempt}/{RETRY_429_MAX})...")
+            time.sleep(retry_after)
+    else:
+        return "FAIL", f"HTTP 429 after {RETRY_429_MAX} retries"
 
     if resp.status_code != 200:
         return "FAIL", f"HTTP {resp.status_code}"
