@@ -27,6 +27,7 @@
           <span class="font-mono text-sm text-text-secondary" :title="sub.uuid">#{{ sub.uuid.slice(0, 8) }}</span>
           <span class="ml-3 font-medium text-text-primary">{{ sub.projectName ?? '(unnamed project)' }}</span>
           <span :class="`badge badge-${sub.status} ml-3`">{{ sub.status }}</span>
+          <span v-if="sub.username" class="ml-3 text-sm text-text-muted">@{{ sub.username }}</span>
         </div>
         <span class="text-sm text-text-muted">{{ formatDate(sub.createdAt) }}</span>
       </div>
@@ -174,7 +175,9 @@
 <script setup lang="ts">
 import type { OnboardingSubmission } from '~/server/db/schema'
 
-const props = defineProps<{ submissions: OnboardingSubmission[] }>()
+type SubmissionWithUser = OnboardingSubmission & { username: string | null }
+
+const props = defineProps<{ submissions: SubmissionWithUser[] }>()
 const emit  = defineEmits<{ refresh: [] }>()
 
 const activeFilter = ref('pending')
@@ -187,7 +190,7 @@ const filters = [
   { label: 'All',      value: '' },
 ]
 
-const filtered = computed(() =>
+const filtered = computed<SubmissionWithUser[]>(() =>
   activeFilter.value
     ? props.submissions.filter(s => s.status === activeFilter.value)
     : props.submissions,

@@ -11,14 +11,16 @@ export default defineEventHandler(async (event) => {
 
   const rows = showAll
     ? await db
-        .select()
+        .select({ submission: schema.onboardingSubmissions, username: schema.users.username })
         .from(schema.onboardingSubmissions)
+        .leftJoin(schema.users, eq(schema.onboardingSubmissions.userId, schema.users.id))
         .orderBy(desc(schema.onboardingSubmissions.createdAt))
     : await db
-        .select()
+        .select({ submission: schema.onboardingSubmissions, username: schema.users.username })
         .from(schema.onboardingSubmissions)
+        .leftJoin(schema.users, eq(schema.onboardingSubmissions.userId, schema.users.id))
         .where(eq(schema.onboardingSubmissions.userId, user.id))
         .orderBy(desc(schema.onboardingSubmissions.createdAt))
 
-  return { submissions: rows }
+  return { submissions: rows.map(r => ({ ...r.submission, username: r.username })) }
 })

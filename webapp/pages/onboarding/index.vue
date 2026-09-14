@@ -845,15 +845,20 @@ async function saveDraft() {
 }
 
 function validateSubmit(): string {
-  if (!form.projectName?.trim())       return 'Project name is required (step 1)'
-  if (!form.projectType)               return 'Project type is required (step 1)'
-  if (!form.genGenerationType)         return 'Primary energy source is required (step 2)'
-  if (!form.capCapacity)               return 'Installed capacity is required (step 3)'
+  if (!form.projectName?.trim())          return 'Project name is required (step 1)'
+  if (!form.projectType)                  return 'Project type is required (step 1)'
+  if (!form.genGenerationType)            return 'Primary energy source is required (step 2)'
+  if (!form.genDocUrl || !form.genDocType) return 'Generation type document is required (step 2)'
+  if (!form.capCapacity)                  return 'Installed capacity is required (step 3)'
+  if (!form.capDocUrl || !form.capDocType) return 'Capacity document is required (step 3)'
   if (!form.locLatStr || !form.locLonStr) return 'Latitude and longitude are required (step 4)'
   validateLatLon()
-  if (latError.value || lonError.value) return 'Coordinates require at least 2 decimal places (step 4)'
-  if (!form.dateDateOfFirstOperation)  return 'Date of first operation is required (step 5)'
-  if (form.photosGen.length === 0)     return 'At least one equipment photo is required (step 6)'
+  if (latError.value || lonError.value)   return 'Coordinates require at least 2 decimal places (step 4)'
+  if (!form.locDocUrl || !form.locDocType) return 'Location document is required (step 4)'
+  if (!form.dateDateOfFirstOperation)     return 'Date of first operation is required (step 5)'
+  if (!form.dateDocUrl || !form.dateDocType) return 'First operation document is required (step 5)'
+  if (form.photosGen.length === 0)        return 'At least one equipment photo is required (step 6)'
+  if (form.photosMeter.length === 0)      return 'At least one metering photo is required (step 7)'
   return ''
 }
 
