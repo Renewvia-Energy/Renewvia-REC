@@ -40,7 +40,7 @@ import handler from '~/server/api/orders/index.post'
 // Helpers
 // ---------------------------------------------------------------------------
 const mockEvent = {} as H3Event
-const mockReadBody = globalThis.readBody as ReturnType<typeof vi.fn>
+const mockReadBody = (globalThis as Record<string, unknown>).readBody as ReturnType<typeof vi.fn>
 
 function makeUser(overrides = {}) {
   return {

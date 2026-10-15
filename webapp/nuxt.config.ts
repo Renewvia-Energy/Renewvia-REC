@@ -1,6 +1,10 @@
+import tailwindcss from '@tailwindcss/vite'
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-11-01',
+  // Keep current flat directory layout (Nuxt 4 default is 'app/')
+  srcDir: '.',
   devtools: { enabled: true },
 
   app: {
@@ -25,11 +29,17 @@ export default defineNuxtConfig({
   modules: [
     '@pinia/nuxt',
     'nuxt-auth-utils',
-    '@nuxtjs/tailwindcss',
     '@vercel/analytics'
   ],
 
   css: ['~/assets/css/main.css'],
+
+  vite: {
+    plugins: [tailwindcss()],
+    optimizeDeps: {
+      include: ['chart.js', 'chartjs-adapter-date-fns', 'leaflet'],
+    },
+  },
 
   runtimeConfig: {
     // Server-only secrets
@@ -63,10 +73,6 @@ export default defineNuxtConfig({
     experimental: {
       wasm: true,
     },
-  },
-
-  tailwindcss: {
-    configPath: '~/tailwind.config.ts',
   },
 
   typescript: {

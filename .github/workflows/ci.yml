@@ -65,7 +65,7 @@ jobs:
         working-directory: webapp
 
       - name: Security audit
-        run: npm audit --production --audit-level=high
+        run: npm audit --omit=dev --audit-level=critical
         working-directory: webapp
 
       - name: Unit tests

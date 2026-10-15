@@ -30,7 +30,7 @@ function keyFromPublicUrl(publicUrl: string, r2PublicUrl: string): string {
 
 /** Infer MIME type from URL extension. */
 function mimeFromUrl(url: string): string {
-  const ext = url.split('?')[0].split('.').pop()?.toLowerCase()
+  const ext = url.split('?').at(0)!.split('.').pop()?.toLowerCase()
   switch (ext) {
     case 'pdf':  return 'application/pdf'
     case 'jpg':
@@ -135,8 +135,8 @@ export default defineEventHandler(async (event) => {
 
   const { docTypePrompt, contentPrompt } = buildPrompts(body)
 
-  const bytes    = await fetchDocBytes(body.urls[0], r2PublicUrl)
-  const mimeType = mimeFromUrl(body.urls[0])
+  const bytes    = await fetchDocBytes(body.urls[0]!, r2PublicUrl)
+  const mimeType = mimeFromUrl(body.urls[0]!)
 
   let result: Awaited<ReturnType<typeof analyzeDocument>>
   try {

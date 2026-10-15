@@ -44,8 +44,8 @@ function downsampleData(
   for (let i = 0; i < maxPoints; i++) {
     const end = Math.min(Math.floor((i + 1) * bucketSize), dates.length)
     // Take the last point in each bucket (most recent cumulative value)
-    outDates.push(dates[end - 1])
-    outValues.push(values[end - 1])
+    outDates.push(dates[end - 1]!)
+    outValues.push(values[end - 1]!)
   }
 
   return { dates: outDates, values: outValues }
@@ -96,8 +96,8 @@ function parseVerificationCsv(csvText: string): Array<{ date: Date; kWh: number 
     const parts = line.split(',')
     if (parts.length < 2) continue
 
-    const date = new Date(parts[0].trim())
-    const kWh  = parseFloat(parts[1].trim())
+    const date = new Date(parts[0]!.trim())
+    const kWh  = parseFloat(parts[1]!.trim())
 
     if (isNaN(date.getTime()) || isNaN(kWh)) continue
     points.push({ date, kWh })

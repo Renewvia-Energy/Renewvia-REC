@@ -89,7 +89,7 @@ export default async function globalSetup() {
     )
   }
 
-  const user = rows[0]
+  const user = rows[0]!
   if (!user.is_generator || !user.is_buyer) {
     throw new Error(
       `Test user id=${user.id} exists but is not a generator+buyer. ` +

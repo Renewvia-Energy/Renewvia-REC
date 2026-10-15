@@ -38,14 +38,14 @@ const [existing] = await db
 let result: { id: number; username: string; email: string }
 
 if (existing) {
-  ;[result] = await db
+  result = (await db
     .update(users)
     .set({ isGenerator: true, isBuyer: true, isAdmin: false })
     .where(eq(users.username, TEST_USERNAME))
-    .returning({ id: users.id, username: users.username, email: users.email })
+    .returning({ id: users.id, username: users.username, email: users.email }))[0]!
   console.log(`✓ Updated existing test user (id=${result.id})`)
 } else {
-  ;[result] = await db
+  result = (await db
     .insert(users)
     .values({
       username:      TEST_USERNAME,
@@ -57,7 +57,7 @@ if (existing) {
       companyWallet: null,
       createdBy:     null,
     })
-    .returning({ id: users.id, username: users.username, email: users.email })
+    .returning({ id: users.id, username: users.username, email: users.email }))[0]!
   console.log(`✓ Created new test user (id=${result.id})`)
 }
 

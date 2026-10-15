@@ -49,8 +49,8 @@ import handler from '~/server/api/orders/[id].patch'
 // Helpers
 // ---------------------------------------------------------------------------
 const mockEvent = {} as H3Event
-const mockReadBody = globalThis.readBody as ReturnType<typeof vi.fn>
-const mockGetRouterParam = globalThis.getRouterParam as ReturnType<typeof vi.fn>
+const mockReadBody = (globalThis as Record<string, unknown>).readBody as ReturnType<typeof vi.fn>
+const mockGetRouterParam = (globalThis as Record<string, unknown>).getRouterParam as ReturnType<typeof vi.fn>
 
 function makeUser(overrides = {}) {
   return {
@@ -171,7 +171,7 @@ describe('PATCH /api/orders/[id] — happy paths', () => {
     const updatedOrder = makeOrder({ status: 'cancelled' })
     setupUpdate(updatedOrder)
     const result = await handler(mockEvent)
-    expect(result.order.status).toBe('cancelled')
+    expect(result.order!.status).toBe('cancelled')
   })
 
   it('allows an admin to execute any pending order', async () => {
@@ -182,7 +182,7 @@ describe('PATCH /api/orders/[id] — happy paths', () => {
     const updatedOrder = makeOrder({ status: 'executed', processedBy: 99 })
     setupUpdate(updatedOrder)
     const result = await handler(mockEvent)
-    expect(result.order.status).toBe('executed')
+    expect(result.order!.status).toBe('executed')
   })
 
   it('allows an admin to cancel any pending order', async () => {
@@ -193,7 +193,7 @@ describe('PATCH /api/orders/[id] — happy paths', () => {
     const updatedOrder = makeOrder({ status: 'cancelled', processedBy: 99 })
     setupUpdate(updatedOrder)
     const result = await handler(mockEvent)
-    expect(result.order.status).toBe('cancelled')
+    expect(result.order!.status).toBe('cancelled')
   })
 })
 
@@ -209,7 +209,7 @@ describe('PATCH /api/orders/[id] — processedBy', () => {
     setupSelect(makeOrder({ userId: 1 }))
     const updateChain = setupUpdate(makeOrder({ status: 'executed', processedBy: 99 }))
     await handler(mockEvent)
-    const setArg = updateChain.set.mock.calls[0][0]
+    const setArg = updateChain.set.mock.calls[0]![0]
     expect(setArg.processedBy).toBe(99)
   })
 
@@ -221,7 +221,7 @@ describe('PATCH /api/orders/[id] — processedBy', () => {
     setupSelect(makeOrder({ userId: 1 }))
     const updateChain = setupUpdate(makeOrder({ status: 'cancelled', processedBy: 42 }))
     await handler(mockEvent)
-    const setArg = updateChain.set.mock.calls[0][0]
+    const setArg = updateChain.set.mock.calls[0]![0]
     expect(setArg.processedBy).toBe(42)
   })
 
@@ -232,7 +232,7 @@ describe('PATCH /api/orders/[id] — processedBy', () => {
     setupSelect(makeOrder({ userId: 1 }))
     const updateChain = setupUpdate(makeOrder({ status: 'cancelled' }))
     await handler(mockEvent)
-    const setArg = updateChain.set.mock.calls[0][0]
+    const setArg = updateChain.set.mock.calls[0]![0]
     expect(setArg.processedBy).toBeUndefined()
   })
 })

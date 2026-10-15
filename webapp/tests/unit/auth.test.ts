@@ -4,7 +4,7 @@ import type { H3Event } from 'h3'
 import { requireAuth, requireAdmin, requireBuyer, requireGenerator } from '~/server/utils/auth'
 
 // requireUserSession is a Nuxt auto-import stubbed in tests/setup.ts.
-const mockRequireUserSession = globalThis.requireUserSession as ReturnType<typeof vi.fn>
+const mockRequireUserSession = (globalThis as Record<string, unknown>).requireUserSession as ReturnType<typeof vi.fn>
 
 const mockEvent = {} as H3Event
 

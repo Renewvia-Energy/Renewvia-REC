@@ -48,7 +48,7 @@ export default defineEventHandler(async (event) => {
   }
 
   const db = useDb()
-  const [order] = await db
+  const order = (await db
     .insert(schema.orders)
     .values({
       userId:          user.id,
@@ -64,7 +64,7 @@ export default defineEventHandler(async (event) => {
       notes:           body.notes,
       status:          'pending',
     })
-    .returning()
+    .returning())[0]!
 
   logger.info({
     orderId:      order.id,

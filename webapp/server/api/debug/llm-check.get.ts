@@ -71,7 +71,7 @@ export default defineEventHandler(async (event) => {
           if (report.geminiModelReachable === true) {
             try {
               const ai = new GoogleGenAI({ apiKey: apiKey! })
-              const ext = docUrl.split('?')[0].split('.').pop()?.toLowerCase()
+              const ext = docUrl.split('?').at(0)!.split('.').pop()?.toLowerCase()
               const mimeType = ext === 'pdf' ? 'application/pdf'
                 : ext === 'png'  ? 'image/png'
                 : ext === 'webp' ? 'image/webp'

@@ -44,7 +44,7 @@ if (ADMIN_COMPANY_WALLET) {
 
 const passwordHash = await hash(ADMIN_PASSWORD, 12)
 
-const [created] = await db.insert(users).values({
+const created = (await db.insert(users).values({
   username:      ADMIN_USERNAME.trim().toLowerCase(),
   email:         ADMIN_EMAIL.toLowerCase().trim(),
   passwordHash,
@@ -53,7 +53,7 @@ const [created] = await db.insert(users).values({
   isAdmin:       true,
   companyWallet: ADMIN_COMPANY_WALLET,
   createdBy:     null, // no creator — this is the bootstrap admin
-}).returning({ id: users.id, username: users.username, email: users.email })
+}).returning({ id: users.id, username: users.username, email: users.email }))[0]!
 
 console.log(`✓ Admin user created (id=${created.id}, username=${created.username}, email=${created.email})`)
 console.log('You can now log in at /login with these credentials.')

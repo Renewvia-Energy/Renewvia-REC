@@ -111,10 +111,10 @@ export const useContractsStore = defineStore('contracts', () => {
   // skipHydrate: these are always populated client-side (onMounted), so they
   // must never be included in the SSR payload — avoids Pinia's shouldHydrate
   // crash on null-prototype objects that can appear in raw JSON fetch results.
-  const companies    = ref<CompanyRecord[]>(skipHydrate([]))
-  const contractsRaw = ref<ContractRecord[]>(skipHydrate([]))
-  const assets       = ref<AssetHolding[]>(skipHydrate([]))
-  const activity     = ref<ActivityItem[]>(skipHydrate([]))
+  const companies    = skipHydrate(ref<CompanyRecord[]>([]))
+  const contractsRaw = skipHydrate(ref<ContractRecord[]>([]))
+  const assets       = skipHydrate(ref<AssetHolding[]>([]))
+  const activity     = skipHydrate(ref<ActivityItem[]>([]))
 
   const loading = ref(false)
   const loaded = ref(false)
@@ -271,7 +271,7 @@ export const useContractsStore = defineStore('contracts', () => {
             commodity:    contract.commodity,
           })
         } else {
-          newAssets[idx].amount += signedAmount
+          newAssets[idx]!.amount += signedAmount
         }
       }
     }

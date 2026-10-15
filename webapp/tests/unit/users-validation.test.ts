@@ -50,7 +50,7 @@ import handler from '~/server/api/users/index.post'
 // Helpers
 // ---------------------------------------------------------------------------
 const mockEvent = {} as H3Event
-const mockReadBody = globalThis.readBody as ReturnType<typeof vi.fn>
+const mockReadBody = (globalThis as Record<string, unknown>).readBody as ReturnType<typeof vi.fn>
 
 function makeAdmin(overrides = {}) {
   return {
@@ -169,7 +169,7 @@ describe('POST /api/users — success', () => {
     const chain = setupDbInsert({ id: 7, username: 'trimmed', email: 'x@x.com', isGenerator: false, isBuyer: false, isAdmin: false, companyWallet: null, createdAt: new Date() })
     mockReadBody.mockResolvedValue(validBody({ username: '  TrimMed  ' }))
     await handler(mockEvent)
-    const insertedValues = chain.values.mock.calls[0][0]
+    const insertedValues = chain.values.mock.calls[0]![0]
     expect(insertedValues.username).toBe('trimmed')
   })
 
@@ -177,7 +177,7 @@ describe('POST /api/users — success', () => {
     const chain = setupDbInsert({ id: 8, username: 'u2', email: 'user@example.com', isGenerator: false, isBuyer: false, isAdmin: false, companyWallet: null, createdAt: new Date() })
     mockReadBody.mockResolvedValue(validBody({ email: '  User@Example.COM  ' }))
     await handler(mockEvent)
-    const insertedValues = chain.values.mock.calls[0][0]
+    const insertedValues = chain.values.mock.calls[0]![0]
     expect(insertedValues.email).toBe('user@example.com')
   })
 
@@ -185,7 +185,7 @@ describe('POST /api/users — success', () => {
     const chain = setupDbInsert({ id: 9, username: 'u3', email: 'u3@u.com', isGenerator: false, isBuyer: false, isAdmin: false, companyWallet: null, createdAt: new Date() })
     mockReadBody.mockResolvedValue(validBody())
     await handler(mockEvent)
-    const insertedValues = chain.values.mock.calls[0][0]
+    const insertedValues = chain.values.mock.calls[0]![0]
     expect(insertedValues.createdBy).toBe(10)  // makeAdmin().id
   })
 })
