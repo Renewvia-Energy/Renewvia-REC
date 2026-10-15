@@ -59,7 +59,7 @@ def addNewToFilename(filename):
 	return os.path.join(directory, filename_without_ext + '_new' + extension)
 
 if __name__ == '__main__':
-	load_dotenv()
+	load_dotenv(os.path.join(os.path.dirname(__file__), '..', 'contracts', '.env'))
 
 	# Argparse
 	parser = argparse.ArgumentParser(prog='Update Data', description='Update contracts.json from blockchain')
