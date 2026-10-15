@@ -1,3 +1,18 @@
+"""
+Syncs on-chain transaction history for R-REC ERC-20 contracts on Polygon into a local
+contracts.json file.
+
+For each contract in contracts.json the script fetches all transactions from the Etherscan
+v2 API (chain ID 137), decodes the calldata against the contract ABI using web3.py, and
+classifies each transaction as one of: mint, retire, return, or transfer.  Only transactions
+newer than the most recent already-recorded timestamp are appended, so re-runs are
+incremental.  Output is written to a parallel *_new.json file by default, or in-place with
+--in-place.
+
+Usage:
+    python updateData.py [-k API_KEY] [-f contracts.json] [-a abi.json]
+                         [-c CONTRACT_ABBREVIATION] [--in-place]
+"""
 import requests, json, argparse, web3.exceptions, os, time
 from dotenv import load_dotenv
 from web3 import Web3
