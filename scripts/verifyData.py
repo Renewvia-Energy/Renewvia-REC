@@ -697,6 +697,66 @@ def check_project_name_typos(file_records):
 	return results
 
 
+def _filename_stem(filepath):
+	"""Everything before the first _YYYY-MM-DD timestamp in the basename."""
+	name = os.path.splitext(os.path.basename(filepath))[0]
+	m = re.match(r'^(.+?)_\d{4}-\d{2}-\d{2}', name)
+	return m.group(1) if m else name
+
+
+def check_filename_stem_project_name_consistency(file_records):
+	"""Cross-file:
+	(a) every file sharing the same Project Name uses the same filename stem;
+	(b) every file sharing the same filename stem has the same Project Name."""
+	from collections import defaultdict
+
+	results = []
+
+	# (a) project name → distinct stems
+	by_project = defaultdict(set)
+	by_project_examples = defaultdict(list)
+	for r in file_records:
+		pname = r.get("project_name", "")
+		if not pname:
+			continue
+		stem = _filename_stem(r["filename"])
+		by_project[pname].add(stem)
+		by_project_examples[pname].append((stem, os.path.basename(r["filename"])))
+
+	for pname, stems in sorted(by_project.items()):
+		if len(stems) > 1:
+			detail = ", ".join(
+				f"{stem!r} ({fname})"
+				for stem, fname in sorted(by_project_examples[pname])
+			)
+			results.append(("FAIL",
+				f"Project {pname!r} has inconsistent filename stems: {detail}"
+			))
+
+	# (b) stem → distinct project names
+	by_stem = defaultdict(set)
+	by_stem_examples = defaultdict(list)
+	for r in file_records:
+		pname = r.get("project_name", "")
+		stem = _filename_stem(r["filename"])
+		by_stem[stem].add(pname)
+		by_stem_examples[stem].append((os.path.basename(r["filename"]), pname))
+
+	for stem, pnames in sorted(by_stem.items()):
+		if len(pnames) > 1:
+			detail = ", ".join(
+				f"{fname}={pname!r}"
+				for fname, pname in sorted(by_stem_examples[stem])
+			)
+			results.append(("FAIL",
+				f"Filename stem {stem!r} maps to multiple project names: {detail}"
+			))
+
+	if not results:
+		results.append(("PASS", "Filename stems and project names are mutually consistent"))
+	return results
+
+
 def check_no_trailing_empty_rows(filepath):
 	"""Fail if the file ends with one or more blank or all-comma rows."""
 	with open(filepath, encoding="utf-8-sig") as f:
@@ -952,6 +1012,10 @@ def _run(args):
 		print(f"  [{lvl}] {msg}")
 
 	for lvl, msg in check_project_name_typos(file_records):
+		cross_counters[lvl] += 1
+		print(f"  [{lvl}] {msg}")
+
+	for lvl, msg in check_filename_stem_project_name_consistency(file_records):
 		cross_counters[lvl] += 1
 		print(f"  [{lvl}] {msg}")
 

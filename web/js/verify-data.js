@@ -546,6 +546,49 @@ function checkProjectMetadataConsistency(fileRecords) {
 	return results;
 }
 
+function filenameStem(filename) {
+	const name = filename.replace(/\.csv$/i, "");
+	const m = name.match(/^(.+?)_\d{4}-\d{2}-\d{2}/);
+	return m ? m[1] : name;
+}
+
+function checkFilenameStemProjectNameConsistency(fileRecords) {
+	// (a) project name → distinct stems
+	const byProject = new Map();
+	for (const r of fileRecords) {
+		if (!r.projectName) continue;
+		const stem = filenameStem(r.filename);
+		if (!byProject.has(r.projectName)) byProject.set(r.projectName, []);
+		byProject.get(r.projectName).push({ stem, filename: r.filename });
+	}
+
+	// (b) stem → distinct project names
+	const byStem = new Map();
+	for (const r of fileRecords) {
+		const stem = filenameStem(r.filename);
+		if (!byStem.has(stem)) byStem.set(stem, []);
+		byStem.get(stem).push({ filename: r.filename, projectName: r.projectName });
+	}
+
+	const results = [];
+	for (const [pname, entries] of [...byProject.entries()].sort()) {
+		const stems = new Set(entries.map((e) => e.stem));
+		if (stems.size > 1) {
+			const detail = entries.map((e) => `${JSON.stringify(e.stem)} (${e.filename})`).sort().join(", ");
+			results.push(["FAIL", `Project ${JSON.stringify(pname)} has inconsistent filename stems: ${detail}`]);
+		}
+	}
+	for (const [stem, entries] of [...byStem.entries()].sort()) {
+		const pnames = new Set(entries.map((e) => e.projectName));
+		if (pnames.size > 1) {
+			const detail = entries.map((e) => `${e.filename}=${JSON.stringify(e.projectName)}`).sort().join(", ");
+			results.push(["FAIL", `Filename stem ${JSON.stringify(stem)} maps to multiple project names: ${detail}`]);
+		}
+	}
+	if (results.length === 0) results.push(["PASS", "Filename stems and project names are mutually consistent"]);
+	return results;
+}
+
 function checkProjectNameTypos(fileRecords) {
 	const results = [];
 	const valid = fileRecords.filter(
@@ -700,6 +743,7 @@ async function verifyUploadedFile(file, onProgress) {
 	pushCross("Metadata field consistency", checkMetaKeysConsistency(fileRecords));
 	pushCross("Project metadata consistency", checkProjectMetadataConsistency(fileRecords));
 	pushCross("Project name typos", checkProjectNameTypos(fileRecords));
+	pushCross("Filename stem consistency", checkFilenameStemProjectNameConsistency(fileRecords));
 
 	return { perFile, cross, filename };
 }
