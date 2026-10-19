@@ -100,7 +100,7 @@ case $action in
 					sleep 5
 					post_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null)
 					if [ -n "$post_supply" ] && [ "$post_supply" != "$pre_supply" ]; then
-						echo "Confirmed: totalSupply $pre_supply → $post_supply"
+						echo "Confirmed: totalSupply ${pre_supply::-18} → ${post_supply::-18}"
 						confirmed=1
 						break
 					fi
