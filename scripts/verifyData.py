@@ -7,6 +7,7 @@ Runs per-file and cross-file checks, printing a structured report with
 """
 
 import argparse
+import contextlib
 import glob
 import json
 import math
@@ -794,8 +795,20 @@ def main():
 		metavar="FILENAME",
 		help="Check only this CSV file (basename or full path; searched within --dir)",
 	)
+	parser.add_argument(
+		"-o",
+		default=None,
+		metavar="OUTPUT",
+		help="Write output to this file instead of stdout",
+	)
 	args = parser.parse_args()
 
+	out_cm = open(args.o, "w") if args.o else contextlib.nullcontext(sys.stdout)
+	with out_cm as out_f, contextlib.redirect_stdout(out_f):
+		_run(args)
+
+
+def _run(args):
 	contracts_lookup, contracts_err = _load_contracts(args.contracts)
 	if contracts_err:
 		print(f"[FAIL] Could not load contracts.json from {args.contracts!r}: {contracts_err}")
