@@ -216,6 +216,16 @@
 				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
 				"blockNumber": "95574015",
 				"hash": "0xa9e17b3bff542d8449bed375c2a441f1f7223d603e8063b980009d4ca13a9b6d"
+			},
+			{
+				"timeStamp": "1792421054",
+				"action": "mint",
+				"amount": 20,
+				"verification_data": "https://raw.githubusercontent.com/Renewvia-Energy/Renewvia-REC/refs/heads/main/verification_data/MPowerSAPB_2026-09-01T000000%2B0100_2026-10-18T000000%2B0100.csv",
+				"to": "0xE8Bd52c172Fe98b08fA1c7c9279c09d2d751E0A2",
+				"from": "0xf9c289f1c0341fb336224958a885163f5017bc16",
+				"blockNumber": "95810471",
+				"hash": "0x1d6fb6b7db46b4eea79b53e6c72ce7dc702bbc60a6606444a7232a5466ef8061"
 			}
 		]
 	},

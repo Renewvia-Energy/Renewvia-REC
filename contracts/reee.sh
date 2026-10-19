@@ -83,7 +83,7 @@ case $action in
 		# Snapshot totalSupply before broadcast so we can detect when the chain updates
 		pre_supply=""
 		if [ -n "$broadcast_flag" ]; then
-			pre_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null)
+			pre_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null | awk '{print $1}')
 		fi
 
 		eval $cmd
@@ -98,7 +98,7 @@ case $action in
 				confirmed=0
 				for i in $(seq 1 60); do
 					sleep 5
-					post_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null)
+					post_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null | awk '{print $1}')
 					if [ -n "$post_supply" ] && [ "$post_supply" != "$pre_supply" ]; then
 						echo "Confirmed: totalSupply ${pre_supply::-18} → ${post_supply::-18}"
 						confirmed=1
