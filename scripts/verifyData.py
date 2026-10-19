@@ -42,6 +42,9 @@ def _get_country_bbox(country):
 # Approximate degree threshold for ~100 m spatial proximity check
 SPATIAL_THRESHOLD_DEG = 0.0008
 
+# Degree threshold for project-name typo check (~5 km)
+TYPO_SPATIAL_THRESHOLD_DEG = 0.05
+
 # Relative tolerance for energy sum check (0.01%)
 DEFAULT_ENERGY_TOL = 1e-4
 
@@ -655,6 +658,44 @@ def check_project_metadata_consistency(file_records):
 	return results
 
 
+def check_project_name_typos(file_records):
+	"""Cross-file: warn if two files have different project names but the same
+	DC capacity and Date of First Operation and are geographically close.
+	These three matching signals together strongly suggest a typo in one name."""
+	results = []
+	valid = [
+		r for r in file_records
+		if r["lat"] is not None and r["dc_capacity"] and r["date_first_op"]
+	]
+	for i in range(len(valid)):
+		for j in range(i + 1, len(valid)):
+			a, b = valid[i], valid[j]
+			if a["project_name"] == b["project_name"]:
+				continue
+			dist = _deg_distance(a["lat"], a["lon"], b["lat"], b["lon"])
+			if dist > TYPO_SPATIAL_THRESHOLD_DEG:
+				continue
+			try:
+				dc_a, dc_b = float(a["dc_capacity"]), float(b["dc_capacity"])
+			except (ValueError, TypeError):
+				continue
+			if _rel_diff(dc_a, dc_b) > 0.01:
+				continue
+			dt_a = _parse_ts(a["date_first_op"])
+			dt_b = _parse_ts(b["date_first_op"])
+			if dt_a is None or dt_b is None or dt_a.date() != dt_b.date():
+				continue
+			results.append(("WARN", (
+				f"Possible project name typo: "
+				f"{a['project_name']!r} ({os.path.basename(a['filename'])}) "
+				f"vs {b['project_name']!r} ({os.path.basename(b['filename'])})"
+				f" — dist≈{dist:.4f}°, DC={dc_a} kWp, first_op={dt_a.date()}"
+			)))
+	if not results:
+		results.append(("PASS", "No likely project name typos detected"))
+	return results
+
+
 def check_no_trailing_empty_rows(filepath):
 	"""Fail if the file ends with one or more blank or all-comma rows."""
 	with open(filepath, encoding="utf-8-sig") as f:
@@ -894,6 +935,10 @@ def main():
 		print(f"  [{lvl}] {msg}")
 
 	for lvl, msg in check_project_metadata_consistency(file_records):
+		cross_counters[lvl] += 1
+		print(f"  [{lvl}] {msg}")
+
+	for lvl, msg in check_project_name_typos(file_records):
 		cross_counters[lvl] += 1
 		print(f"  [{lvl}] {msg}")
 

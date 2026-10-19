@@ -12,6 +12,7 @@ const CONTRACTS_URL = "web/js/contracts.json";
 const DATA_DIR = "verification_data/";
 
 const SPATIAL_THRESHOLD_DEG = 0.0008;
+const TYPO_SPATIAL_THRESHOLD_DEG = 0.05;
 const DEFAULT_ENERGY_TOL = 1e-4;
 const CARBON_TOL = 1e-3;
 
@@ -545,6 +546,34 @@ function checkProjectMetadataConsistency(fileRecords) {
 	return results;
 }
 
+function checkProjectNameTypos(fileRecords) {
+	const results = [];
+	const valid = fileRecords.filter(
+		(r) => r.lat !== null && r.dcCapacity && r.dateFirstOp
+	);
+	for (let i = 0; i < valid.length; i++) {
+		for (let j = i + 1; j < valid.length; j++) {
+			const a = valid[i], b = valid[j];
+			if (a.projectName === b.projectName) continue;
+			const dist = degDistance(a.lat, a.lon, b.lat, b.lon);
+			if (dist > TYPO_SPATIAL_THRESHOLD_DEG) continue;
+			if (!isNumericString(a.dcCapacity) || !isNumericString(b.dcCapacity)) continue;
+			if (relDiff(parseFloat(a.dcCapacity), parseFloat(b.dcCapacity)) > 0.01) continue;
+			const dtA = parseTs(a.dateFirstOp);
+			const dtB = parseTs(b.dateFirstOp);
+			if (!dtA || !dtB) continue;
+			if (dtA.toISOString().slice(0, 10) !== dtB.toISOString().slice(0, 10)) continue;
+			results.push(["WARN",
+				`Possible project name typo: ${JSON.stringify(a.projectName)} (${a.filename})` +
+				` vs ${JSON.stringify(b.projectName)} (${b.filename})` +
+				` — dist≈${dist.toFixed(4)}°, DC=${parseFloat(a.dcCapacity)} kWp, first_op=${dtA.toISOString().slice(0, 10)}`
+			]);
+		}
+	}
+	if (results.length === 0) results.push(["PASS", "No likely project name typos detected"]);
+	return results;
+}
+
 // ---------------------------------------------------------------------------
 // Building a file record (shared by the uploaded file and its siblings)
 // ---------------------------------------------------------------------------
@@ -670,6 +699,7 @@ async function verifyUploadedFile(file, onProgress) {
 	}
 	pushCross("Metadata field consistency", checkMetaKeysConsistency(fileRecords));
 	pushCross("Project metadata consistency", checkProjectMetadataConsistency(fileRecords));
+	pushCross("Project name typos", checkProjectNameTypos(fileRecords));
 
 	return { perFile, cross, filename };
 }
