@@ -1,0 +1,72 @@
+Project Name,SAPBC
+Country,Cameroon
+US State (if applicable),
+US Region (if applicable),
+Latitude,4.010422
+Longitude,9.873992
+DC Capacity (kWp),302.4
+Date of First Operation,2025-09-26
+Begin Timestamp,2026-09-01
+End Timestamp,2026-10-18
+Total Energy Production (MWh),20.294
+Total Carbon Reduction (tCO2e),
+AVERT Emissions Factor,
+Ember Emissions Factor (gCO2e/kWh),
+No. of Type 1 Customers,
+No. of Type 2 Customers,
+Type 1-MA Consumption (MWh),
+Type 1-MB Consumption (MWh),
+Type 2 Consumption (MWh),
+Diesel Consumption (L),
+Diesel Production (MWh),
+Type of Installation,Distributed PV
+,
+Datetime,Measured kWh
+2026-09-01,626
+2026-09-02,586
+2026-09-03,584
+2026-09-04,583
+2026-09-05,485
+2026-09-06,431
+2026-09-07,426
+2026-09-08,83
+2026-09-09,594
+2026-09-10,85
+2026-09-11,554
+2026-09-12,538
+2026-09-13,652
+2026-09-14,797
+2026-09-15,568
+2026-09-16,553
+2026-09-17,637
+2026-09-18,240
+2026-09-19,604
+2026-09-20,467
+2026-09-21,487
+2026-09-22,389
+2026-09-23,547
+2026-09-24,557
+2026-09-25,654
+2026-09-26,172
+2026-09-27,482
+2026-09-28,346
+2026-09-29,569
+2026-09-30,173
+2026-10-01,0
+2026-10-02,0
+2026-10-03,514
+2026-10-04,521
+2026-10-05,562
+2026-10-06,469
+2026-10-07,594
+2026-10-08,407
+2026-10-09,0
+2026-10-10,438
+2026-10-11,370
+2026-10-12,847
+2026-10-13,530
+2026-10-14,573
+2026-10-15,0
+2026-10-16,0
+2026-10-17,0
+2026-10-18,0
