@@ -80,11 +80,35 @@ case $action in
 			cmd="$cmd $broadcast_flag"
 		fi
 
+		# Snapshot totalSupply before broadcast so we can detect when the chain updates
+		pre_supply=""
+		if [ -n "$broadcast_flag" ]; then
+			pre_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null)
+		fi
+
 		eval $cmd
 		mint_exit=$?
 
 		# After a broadcast mint, refresh the web frontend's contracts.json from chain
 		if [ -n "$broadcast_flag" ] && [ $mint_exit -eq 0 ]; then
+			# Poll the chain until totalSupply reflects the mint (up to 5 minutes)
+			if [ -n "$pre_supply" ]; then
+				echo ""
+				echo "Waiting for on-chain confirmation..."
+				confirmed=0
+				for i in $(seq 1 60); do
+					sleep 5
+					post_supply=$(cast call "$MINT_PROXY" "totalSupply()(uint256)" --rpc-url polygon 2>/dev/null)
+					if [ -n "$post_supply" ] && [ "$post_supply" != "$pre_supply" ]; then
+						echo "Confirmed: totalSupply $pre_supply → $post_supply"
+						confirmed=1
+						break
+					fi
+					echo "  Still waiting... ($((i * 5))s elapsed)"
+				done
+				[ $confirmed -eq 0 ] && echo "Warning: timed out waiting for on-chain confirmation after 5 minutes."
+			fi
+
 			# Resolve the minted proxy address to a contract abbreviation for updateData.py's -c filter
 			contract_id=$(cd .. && python3 -c "
 import json, sys
